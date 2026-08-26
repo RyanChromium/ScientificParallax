@@ -7,3 +7,6 @@ dist/
 build/
 *.egg-info/
 artifacts/step0/runs/
+artifacts/gray_scott/runs/
+artifacts/protocol/runs/
+data/cache/

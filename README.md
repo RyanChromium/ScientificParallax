@@ -77,9 +77,10 @@ Scientific Parallax 关注的是更早期的“认识论裂缝”：
 
 ## 当前状态
 
-项目目前已进入 **Step 0 薄切片验证阶段**，尚未开始实现完整系统。
+项目目前已完成 **Step 0–3.5 的开发世界初版**，尚未进入 Protocol Freeze，
+也尚未实现范式—问题双种群进化。
 
-下一步不是建设通用多智能体平台，而是完成一个一周薄切片：
+Step 0 薄切片已经完成：
 
 - 一个低维合成世界；
 - 八个预先声明的竞争范式；
@@ -88,18 +89,22 @@ Scientific Parallax 关注的是更早期的“认识论裂缝”：
 - 随机选择、最大分歧和贝叶斯实验设计基线；
 - 明确的 go / redo / no-go 结果。
 
-薄切片不能证明基本闭环有效时，项目将停止平台化建设。
+薄切片给出了仅限机制和评价设计的 `go`。随后完成的开发组件包括：
 
-当前初版实现包括：
+- 稳定实验 ID、环境捕获、只写一次的运行清单和 CI；
+- 可在线查询和干预的二维 Gray–Scott 世界；
+- 五点与九点两套空间离散，以及周期/反射边界；
+- 匿名混合、降采样、遮挡、噪声和块状留出测量管线；
+- 固定特征预测器、bootstrap 集成和五种问题选择基线；
+- 有限类型 Paradigm IR 原型与等价变换检查；
+- 训练、开发与一次性最终证据的隔离状态机；
+- 右删失终点、分层 bootstrap 和预冻结负控干跑。
 
-- 一个区分理论遗漏、测量偏差和数值伪影的低维合成世界；
-- 八个预先声明的竞争候选；
-- 随机、最大分歧和贝叶斯实验设计策略；
-- 独立贝叶斯证据引擎；
-- 预测先于观测封存的哈希链式追加账本；
-- 可重复基准实验和随机矛盾候选负控。
-
-协议与运行方法见 [`docs/step0-protocol.md`](docs/step0-protocol.md)。
+Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Scott
+开发基线见 [`docs/gray-scott-baseline.md`](docs/gray-scott-baseline.md)，
+Step 3.5 协议候选见 [`docs/experiment-protocol.md`](docs/experiment-protocol.md)。
+Gate PF 前仍需解决的项目见
+[`docs/protocol-freeze-checklist.md`](docs/protocol-freeze-checklist.md)。
 
 ## 详细计划
 

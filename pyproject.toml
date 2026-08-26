@@ -4,12 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scientific-parallax"
-version = "0.1.0"
+version = "0.2.0"
 description = "Auditable experiments for paradigm-question co-evolution"
 readme = "README.md"
 requires-python = ">=3.12"
 authors = [{ name = "Scientific Parallax contributors" }]
-dependencies = []
+dependencies = [
+  "numpy>=2.0",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -26,6 +28,10 @@ packages = ["src/scientific_parallax"]
 [tool.pytest.ini_options]
 addopts = "-q"
 testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["scientific_parallax"]
 
 [tool.ruff]
 line-length = 100

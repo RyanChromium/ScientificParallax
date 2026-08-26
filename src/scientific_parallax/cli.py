@@ -6,6 +6,11 @@ import argparse
 import json
 from pathlib import Path
 
+from scientific_parallax.baselines.gray_scott import (
+    GrayScottBaselineConfig,
+    run_gray_scott_benchmark,
+)
+from scientific_parallax.protocol.dry_run import run_protocol_dry_run
 from scientific_parallax.step0.benchmark import run_benchmark
 from scientific_parallax.step0.experiment import ExperimentConfig, run_experiment
 from scientific_parallax.step0.ledger import verify_ledger
@@ -32,11 +37,37 @@ def _parser() -> argparse.ArgumentParser:
 
     verify = action.add_parser("verify-ledger", help="verify a ledger hash chain")
     verify.add_argument("ledger", type=Path)
+
+    gray_scott = command.add_parser("gray-scott", help="run Gray–Scott development baselines")
+    gray_action = gray_scott.add_subparsers(dest="gray_action", required=True)
+    gray_benchmark = gray_action.add_parser("benchmark", help="compare fixed baselines")
+    gray_benchmark.add_argument("--config", type=Path, required=True)
+    gray_benchmark.add_argument("--output", type=Path, required=True)
+
+    protocol = command.add_parser("protocol", help="run pre-freeze protocol diagnostics")
+    protocol_action = protocol.add_subparsers(dest="protocol_action", required=True)
+    dry_run = protocol_action.add_parser("dry-run", help="run Step 3.5 synthetic diagnostics")
+    dry_run.add_argument("--config", type=Path, required=True)
+    dry_run.add_argument("--output", type=Path, required=True)
     return parser
 
 
 def main() -> None:
     args = _parser().parse_args()
+    if args.command == "gray-scott":
+        config = GrayScottBaselineConfig.from_json(args.config)
+        raw_config = json.loads(args.config.read_text(encoding="utf-8"))
+        report = run_gray_scott_benchmark(
+            config,
+            args.output,
+            raw_config["strategies"],
+        )
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return
+    if args.command == "protocol":
+        report = run_protocol_dry_run(args.config, args.output)
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return
     if args.action == "verify-ledger":
         verify_ledger(args.ledger)
         print(f"valid ledger: {args.ledger}")

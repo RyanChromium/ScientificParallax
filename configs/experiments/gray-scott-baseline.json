@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "protocol_id": "gray-scott-baseline-v1",
+  "seed": 31415,
+  "grid_size": 24,
+  "steps": 60,
+  "max_queries": 14,
+  "posterior_threshold": 0.95,
+  "replicates": 12,
+  "bed_samples": 48,
+  "strategies": [
+    "random",
+    "coverage",
+    "active_learning",
+    "max_disagreement",
+    "bayesian_design"
+  ]
+}

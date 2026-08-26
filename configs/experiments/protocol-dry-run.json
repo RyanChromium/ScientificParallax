@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "protocol_id": "protocol-dry-run-v1",
+  "seed": 271828,
+  "primary_endpoint": "stable_top_k_identification_queries",
+  "ranking_threshold_k": 5,
+  "persistence_checkpoints": 5,
+  "world_query_budget": 200,
+  "candidate_generation_budget": 128,
+  "candidate_evaluation_budget": 4096,
+  "cpu_hour_budget": 8,
+  "minimum_relative_effect": 0.20
+}
