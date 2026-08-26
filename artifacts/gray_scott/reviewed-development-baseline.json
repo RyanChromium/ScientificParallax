@@ -1,0 +1,49 @@
+{
+  "artifact_status": "reviewed_development_baseline",
+  "code_revision": "443ca98b89dc40716569513ad3a0708a249ffbdd",
+  "run_manifest_hash": "b597721d47b1e44c1200389c1304dca8e5ba5388b691d1c3cbef5f953d38e85f",
+  "protocol_id": "gray-scott-baseline-v1",
+  "config_hash": "6702af7c92426f752fb050dd50503325f6abc370257301631e6167ccd9d9411d",
+  "candidate_spec_hash": "c496cb95bd5071ec3b9db4383a9d9edeae9bc8a48ceccb8489d2dcf145715c6e",
+  "question_pool_hash": "db761af84c2b6f295f533a2cadff0d947d2d534880f02a0f5c1b176ce0672be1",
+  "replicates": 12,
+  "question_pool_size": 16,
+  "query_budget": 14,
+  "summaries": {
+    "random": {
+      "median_final_true_posterior": 0.9261311892563707,
+      "median_final_true_rank": 1.0,
+      "posterior_0_95_successes": 0
+    },
+    "coverage": {
+      "median_final_true_posterior": 0.7621366450296958,
+      "median_final_true_rank": 1.0,
+      "posterior_0_95_successes": 0
+    },
+    "active_learning": {
+      "median_final_true_posterior": 0.9289539911649882,
+      "median_final_true_rank": 1.0,
+      "posterior_0_95_successes": 5
+    },
+    "max_disagreement": {
+      "median_final_true_posterior": 0.9490438794900099,
+      "median_final_true_rank": 1.0,
+      "posterior_0_95_successes": 3
+    },
+    "bayesian_design": {
+      "median_final_true_posterior": 0.9437023859526388,
+      "median_final_true_rank": 1.0,
+      "posterior_0_95_successes": 1
+    }
+  },
+  "surrogate_evaluation": {
+    "train_tasks": 12,
+    "held_out_parameter_tasks": 4,
+    "fixed_predictor_rmse": 0.042284509376891787,
+    "ensemble_rmse": 0.040629470799596355,
+    "ensemble_average_std": 0.0677241799575082,
+    "ensemble_rmse_to_predicted_std": 0.5999256222089109,
+    "ensemble_oob_calibration_scale": 4.474589456659139
+  },
+  "interpretation": "Development-world baseline only. The 0.95 posterior threshold is a diagnostic, not the future primary endpoint, and no strategy is declared the winner."
+}

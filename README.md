@@ -105,6 +105,9 @@ Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Sco
 Step 3.5 协议候选见 [`docs/experiment-protocol.md`](docs/experiment-protocol.md)。
 Gate PF 前仍需解决的项目见
 [`docs/protocol-freeze-checklist.md`](docs/protocol-freeze-checklist.md)。
+审核后的开发结果见
+[`artifacts/gray_scott/reviewed-development-baseline.md`](artifacts/gray_scott/reviewed-development-baseline.md)
+和 [`artifacts/protocol/reviewed-dry-run.md`](artifacts/protocol/reviewed-dry-run.md)。
 
 ## 详细计划
 
