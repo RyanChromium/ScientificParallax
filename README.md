@@ -92,6 +92,10 @@ Scientific Parallax 关注的是更早期的“认识论裂缝”：
 
 ## 详细计划
 
+项目的思想脉络与核心假设见：
+
+[Idea：从预测机器到人工科学生态](docs/idea.md)
+
 完整研究假设、统计终点、系统架构、数据路线、实施步骤、风险和停止条件见：
 
 [范式—问题共进化研究计划](plans/scientific-parallax-research-plan.md)
