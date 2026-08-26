@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "protocol_id": "step0-v1",
+  "noise_seed": 1729,
+  "max_queries": 32,
+  "posterior_threshold": 0.95,
+  "quadrature_points": 41,
+  "strategies": ["random", "max_disagreement", "bayesian_design"],
+  "replicates": 30
+}

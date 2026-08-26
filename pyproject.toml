@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scientific-parallax"
+version = "0.1.0"
+description = "Auditable experiments for paradigm-question co-evolution"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [{ name = "Scientific Parallax contributors" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "ruff>=0.9",
+]
+
+[project.scripts]
+scientific-parallax = "scientific_parallax.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scientific_parallax"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

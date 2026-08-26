@@ -1,0 +1,64 @@
+{
+  "artifact_status": "exploratory_reviewed_baseline",
+  "protocol_id": "step0-v1",
+  "config_hash": "abf722626571565c29a12034d9f4c0a99bab6b0bad80123c55c473d5c80f9997",
+  "replicates": 30,
+  "decision": {
+    "status": "go",
+    "scope": "Step 0 mechanics and evaluation design only",
+    "checks": {
+      "endpoint_measurable": true,
+      "bayesian_design_beats_random_in_each_batch": true,
+      "contradictory_control_rejected": true
+    }
+  },
+  "summaries": {
+    "random": {
+      "successes": 30,
+      "success_rate": 1.0,
+      "median_queries_with_censoring": 12.0,
+      "median_final_true_posterior": 0.9999998805126876
+    },
+    "max_disagreement": {
+      "successes": 30,
+      "success_rate": 1.0,
+      "median_queries_with_censoring": 8.0,
+      "median_final_true_posterior": 0.9999998805126876
+    },
+    "bayesian_design": {
+      "successes": 30,
+      "success_rate": 1.0,
+      "median_queries_with_censoring": 4.0,
+      "median_final_true_posterior": 0.9999998805126876
+    }
+  },
+  "batch_median_queries": [
+    {
+      "batch": 1,
+      "random": 11.0,
+      "max_disagreement": 7.5,
+      "bayesian_design": 3.0
+    },
+    {
+      "batch": 2,
+      "random": 12.0,
+      "max_disagreement": 9.0,
+      "bayesian_design": 4.0
+    },
+    {
+      "batch": 3,
+      "random": 14.5,
+      "max_disagreement": 7.0,
+      "bayesian_design": 4.5
+    }
+  ],
+  "negative_control": {
+    "control_id": "negative_control_contradictory",
+    "selection_strategy": "max_disagreement",
+    "initial_posterior": 0.11111111111111109,
+    "first_query_below_prior": 1,
+    "maximum_posterior_after_evidence": 1.60964984224442e-07,
+    "final_posterior": 0.0,
+    "true_final_posterior": 0.999999999888848
+  }
+}
