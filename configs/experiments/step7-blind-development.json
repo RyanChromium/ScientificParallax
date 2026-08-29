@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "challenge_version": "step7-blind-development-v0.1",
+  "scope": "development_rehearsal_only",
+  "protocol_config": "configs/experiments/protocol-dry-run.json",
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "seed": 173205,
+  "task_seed_base": 770000,
+  "measurement_seed_base": 880000,
+  "seeds_per_cluster": 5,
+  "grid_size": 16,
+  "steps": 20,
+  "world_query_budget": 8,
+  "candidate_generation_budget": 128,
+  "candidate_evaluation_budget": 4096,
+  "maximum_candidates": 32,
+  "active_candidates": 8,
+  "maximum_questions": 12,
+  "eig_samples": 16,
+  "ranking_threshold_k": 5,
+  "persistence_checkpoints": 5,
+  "minimum_relative_effect": 0.20,
+  "bootstrap_samples": 2000,
+  "primary_hypothesis": "coevolution reduces restricted mean stable-identification queries by more than 20 percent relative to matched Bayesian optimal design",
+  "primary_treatment": "coevolution",
+  "primary_control": "bayesian_optimal_design",
+  "decision_rule": {
+    "go": "bootstrap_95_percent_ci_lower_bound_strictly_above_0.20",
+    "redo": "bootstrap_95_percent_ci_contains_0.20; at most one newly preregistered rerun",
+    "stop": "bootstrap_95_percent_ci_upper_bound_strictly_below_0.20"
+  },
+  "arms": [
+    "coevolution",
+    "bayesian_optimal_design",
+    "random",
+    "passive_coverage",
+    "fixed_candidate_coevolution",
+    "no_question_evolution",
+    "no_representation_mutation",
+    "no_niches"
+  ],
+  "question_mutations": [
+    "feed_low",
+    "feed_high",
+    "kill_low",
+    "kill_high",
+    "cycle_initial_family",
+    "toggle_boundary",
+    "toggle_pulse",
+    "sampling_frequency",
+    "downsample",
+    "mix_channels"
+  ],
+  "question_cost_weights": {
+    "simulation": 0.000001,
+    "measurement": 0.0001,
+    "intervention": 0.25
+  },
+  "published_runner_stencil_updates_per_second": 23923601.47278246,
+  "semantic_blinding": {
+    "level_1": "state fields use anonymous x0/x1 and observations use field_0/field_1",
+    "level_2": "cluster labels and truth-equivalence membership are evaluator-only",
+    "level_3": "task and measurement seeds never enter strategy selection inputs"
+  },
+  "confirmatory_boundary": "do not read the sealed final-world tasks or create strategy-freeze.json during this development challenge"
+}

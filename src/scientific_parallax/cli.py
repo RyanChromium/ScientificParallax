@@ -10,6 +10,7 @@ from scientific_parallax.baselines.gray_scott import (
     GrayScottBaselineConfig,
     run_gray_scott_benchmark,
 )
+from scientific_parallax.challenge.runner import run_step7_development_challenge
 from scientific_parallax.coevolution.scheduler import run_step6_control
 from scientific_parallax.evolution.experiment import run_step4_control
 from scientific_parallax.protocol.dry_run import run_protocol_dry_run
@@ -94,6 +95,14 @@ def _parser() -> argparse.ArgumentParser:
     step6_run.add_argument("--config", type=Path, required=True)
     step6_run.add_argument("--output", type=Path, required=True)
     step6_run.add_argument("--resume", action="store_true")
+
+    step7 = command.add_parser("step7", help="run the blinded Step 7 development challenge")
+    step7_action = step7.add_subparsers(dest="step7_action", required=True)
+    step7_run = step7_action.add_parser(
+        "run", help="run preregistered development tasks without opening the final world"
+    )
+    step7_run.add_argument("--config", type=Path, required=True)
+    step7_run.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -141,6 +150,10 @@ def main() -> None:
         return
     if args.command == "step6":
         report = run_step6_control(args.config, args.output, resume=args.resume)
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return
+    if args.command == "step7":
+        report = run_step7_development_challenge(args.config, args.output)
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.action == "verify-ledger":
