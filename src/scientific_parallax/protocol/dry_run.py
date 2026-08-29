@@ -345,6 +345,21 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
         and accounting.snapshot.candidate_evaluations == 1
         and accounting.snapshot.candidate_evaluation_cache_hits == 1,
     }
+    protocol_freeze_blockers = [
+        "prepare final world commitment and access directory outside the development tree",
+        "independently review the 30% design-detectable effect versus the 20% null boundary",
+        "independently review numerical, survival, niche, generator, and accounting rules",
+    ]
+    if not environment_matches["runner_image_pinned"]:
+        protocol_freeze_blockers.insert(
+            0,
+            "publish and pin the final confirmatory runner image digest",
+        )
+    if not environment_spec.get("frozen_mix_profiled_in_published_runner", False):
+        protocol_freeze_blockers.insert(
+            1 if not environment_matches["runner_image_pinned"] else 0,
+            "retain the frozen-mix profile under that published runner digest",
+        )
     report = {
         "schema_version": 1,
         "status": "ready_for_protocol_freeze_review" if all(checks.values()) else "redo",
@@ -404,13 +419,7 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
         "warning": (
             "This dry run does not open or define the future final sealed Gray–Scott worlds."
         ),
-        "protocol_freeze_blockers": [
-            "publish and pin the final confirmatory runner image digest",
-            "retain the frozen-mix profile under that published runner digest",
-            "prepare final world commitment and access directory outside the development tree",
-            "independently review the 30% design-detectable effect versus the 20% null boundary",
-            "independently review numerical, survival, niche, generator, and accounting rules",
-        ],
+        "protocol_freeze_blockers": protocol_freeze_blockers,
     }
     report_path = output_dir / "report.json"
     report_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")

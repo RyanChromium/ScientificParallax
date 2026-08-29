@@ -35,15 +35,14 @@ synthetic dry-run passes all current checks. Gate PF has **not** been executed.
   hashes are pinned; a local arm64 candidate was built and profiled.
 - [x] A tag-triggered, commit-pinned GitHub Actions workflow can publish the
   exact multi-platform runner and emit a public machine-readable digest record.
+- [x] Runner `0.3.1` is published for Linux amd64/arm64, its OCI-index digest is
+  pinned, and the frozen task mix was profiled from the published digest.
 
 ## Remaining Gate PF blockers
 
 - [ ] Independently accept or revise the statistical design: a true 30%
   reduction has estimated power 0.90, while an effect exactly at the 20% null
   boundary is not expected to pass a lower-confidence-limit-above-20% test.
-- [ ] Publish the exact confirmatory runner, record its final content digest,
-  and repeat/retain the frozen 30-task cost profile under that digest. A local
-  candidate image ID is not a portable immutable runner identity.
 - [ ] Define and generate final sealed task instances outside the repository,
   create their commitment, and provision the external access directory.
 - [ ] Obtain independent review of the numerical tolerances, survival values,

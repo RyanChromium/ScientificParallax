@@ -45,6 +45,8 @@ def test_environment_spec_rejects_changed_lock(tmp_path: Path) -> None:
 def test_confirmatory_environment_pins_container_and_requirements() -> None:
     spec = load_environment_spec(Path("configs/environments/confirmatory-v1.json"), Path.cwd())
     assert spec["base_image_digest"].startswith("sha256:")
-    assert spec["container_image_digest"] is None
+    assert spec["container_image_digest"].startswith("sha256:")
+    assert spec["container_image_digest"] != spec["base_image_digest"]
+    assert spec["frozen_mix_profiled_in_published_runner"] is True
     assert set(spec["container_platforms"]) == {"linux/amd64", "linux/arm64"}
     assert spec["requirements_sha256"]

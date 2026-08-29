@@ -111,16 +111,18 @@ also met frozen external-validation limits: mean RMSE at most `0.02`, worst
 trajectory RMSE at most `0.04`, and at least 25% improvement.
 
 The confirmatory runner uses a digest-pinned Python 3.12.13 base and hash-pinned
-NumPy 2.5.2 wheels for Linux amd64 and arm64. The frozen task mix has run in a
-local arm64 candidate. This is not yet the final runner: Gate PF still requires
-publishing the exact image and recording its content digest.
+NumPy 2.5.2 wheels for Linux amd64 and arm64. Version `0.3.1` is published as a
+multi-platform OCI index at
+`ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:de68b02ebd7ea24f4b6c5c63e8ed39e1ab4c46427c1098894a7f18157b699998`.
+Both the release digest record and an exact repository copy are retained.
 
 Pushing a `runner-v*` tag invokes the repository's pinned-action publication
 workflow. It builds both declared Linux platforms, publishes them as one OCI
 index in GitHub Container Registry, and attaches a machine-readable
 `runner-digest.json` to the corresponding public GitHub release. Only that
 published digest may populate `container_image_digest`; a local image ID or
-base-image digest is insufficient.
+base-image digest is insufficient. The published arm64 manifest was pulled by
+the OCI-index digest and used for the frozen-mix profile.
 
 ## Required dry-run controls
 
