@@ -56,6 +56,7 @@ class RunResult:
     winner_id: str
     config_hash: str
     ledger_path: str
+    schema_version: int = 1
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

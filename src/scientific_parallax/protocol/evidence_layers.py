@@ -46,20 +46,63 @@ class EvidenceStore:
 
 @dataclass(frozen=True, slots=True)
 class ProtocolSpec:
+    schema_version: int
     protocol_id: str
     paradigm_ir_version: str
+    candidate_generator_hash: str
+    measurement_cluster_hash: str
+    task_design_hash: str
+    external_data_manifest_hash: str
+    execution_environment_hash: str
     equivalence_rule: str
     evidence_update_rule: str
     noise_calibration_rule: str
+    noise_calibration_parameters: dict[str, float | str]
     survival_rule: str
+    survival_parameters: dict[str, bool | int]
+    viability_thresholds: dict[str, float]
+    niche_capacities: dict[str, int]
     primary_endpoint: str
     endpoint_parameters: dict[str, float | int]
     statistical_method: str
+    statistical_parameters: dict[str, Any]
     minimum_relative_effect: float
+    numerical_methods: dict[str, str]
+    numerical_tolerances: dict[str, float]
+    power_design: dict[str, Any]
     budgets: dict[str, float | int]
+    budget_scope: dict[str, str]
+    evaluation_accounting: dict[str, str]
     baselines: tuple[str, ...]
     ablations: tuple[str, ...]
     stop_rule: str
+
+    def __post_init__(self) -> None:
+        if self.schema_version != 1:
+            raise ValueError("unsupported protocol schema")
+        hashes = (
+            self.candidate_generator_hash,
+            self.measurement_cluster_hash,
+            self.task_design_hash,
+            self.external_data_manifest_hash,
+            self.execution_environment_hash,
+        )
+        if any(
+            len(value) != 64 or any(char not in "0123456789abcdef" for char in value)
+            for value in hashes
+        ):
+            raise ValueError("protocol component hashes must be lowercase SHA-256 digests")
+        if not 0.0 < self.minimum_relative_effect < 1.0:
+            raise ValueError("minimum relative effect must lie strictly between zero and one")
+        if any(value <= 0 for value in self.budgets.values()):
+            raise ValueError("all protocol budgets must be positive")
+        if any(value < 1 for value in self.niche_capacities.values()):
+            raise ValueError("all niche capacities must be positive")
+        if (
+            self.endpoint_parameters.get("top_k", 0) < 1
+            or self.endpoint_parameters.get("persistence_checkpoints", 0) < 1
+        ):
+            raise ValueError("endpoint parameters must be positive")
 
     @property
     def protocol_hash(self) -> str:

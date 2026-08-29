@@ -525,8 +525,11 @@ def run_gray_scott_benchmark(
     raw_runs_path.write_text(
         json.dumps(
             {
-                strategy: [asdict(result) for result in results]
-                for strategy, results in all_results.items()
+                "schema_version": 1,
+                "strategies": {
+                    strategy: [asdict(result) for result in results]
+                    for strategy, results in all_results.items()
+                },
             },
             indent=2,
             sort_keys=True,
@@ -548,6 +551,7 @@ def run_gray_scott_benchmark(
         environment["git_revision"],
     )
     report = {
+        "schema_version": 1,
         "protocol_id": config.protocol_id,
         "config_hash": content_hash(raw_config),
         "candidate_count": len(fixed_candidate_pool()),

@@ -22,10 +22,29 @@ class EvidenceLedger:
             raise FileExistsError(f"refusing to overwrite ledger: {self.path}")
         self._previous_hash = "0" * 64
         self._pending_prediction_hash: str | None = None
+        self._next_index = 0
+
+    @classmethod
+    def resume(cls, path: Path) -> EvidenceLedger:
+        """Continue a valid ledger, including one interrupted after preregistration."""
+        if not path.exists():
+            raise FileNotFoundError(path)
+        state = _inspect_ledger(path, allow_pending=True)
+        ledger = cls.__new__(cls)
+        ledger.path = path
+        ledger._previous_hash = state.previous_hash
+        ledger._pending_prediction_hash = state.pending_prediction_hash
+        ledger._next_index = state.event_count
+        return ledger
+
+    @property
+    def pending_prediction_hash(self) -> str | None:
+        return self._pending_prediction_hash
 
     def append(self, event_type: str, payload: dict[str, Any]) -> str:
         body = {
-            "event_index": self._line_count(),
+            "schema_version": 1,
+            "event_index": self._next_index,
             "event_type": event_type,
             "payload": payload,
             "previous_hash": self._previous_hash,
@@ -36,6 +55,7 @@ class EvidenceLedger:
             stream.write(canonical_json(event) + "\n")
             stream.flush()
         self._previous_hash = event_hash
+        self._next_index += 1
         return event_hash
 
     def preregister(self, payload: dict[str, Any]) -> str:
@@ -55,20 +75,30 @@ class EvidenceLedger:
         self._pending_prediction_hash = None
         return event_hash
 
-    def _line_count(self) -> int:
-        if not self.path.exists():
-            return 0
-        with self.path.open(encoding="utf-8") as stream:
-            return sum(1 for _ in stream)
+
+class _LedgerState:
+    def __init__(
+        self,
+        event_count: int,
+        previous_hash: str,
+        pending_prediction_hash: str | None,
+    ) -> None:
+        self.event_count = event_count
+        self.previous_hash = previous_hash
+        self.pending_prediction_hash = pending_prediction_hash
 
 
-def verify_ledger(path: Path) -> None:
+def _inspect_ledger(path: Path, *, allow_pending: bool) -> _LedgerState:
     previous_hash = "0" * 64
     pending_prediction_hash: str | None = None
+    event_count = 0
     with path.open(encoding="utf-8") as stream:
         for expected_index, line in enumerate(stream):
             event = json.loads(line)
             event_hash = event.pop("event_hash")
+            schema_version = event.get("schema_version", 1)
+            if schema_version != 1:
+                raise ValueError(f"unsupported ledger event schema: {schema_version}")
             if event["event_index"] != expected_index:
                 raise ValueError("ledger event index is not contiguous")
             if event["previous_hash"] != previous_hash:
@@ -85,5 +115,11 @@ def verify_ledger(path: Path) -> None:
                     raise ValueError("observation does not reference its prediction")
                 pending_prediction_hash = None
             previous_hash = event_hash
-    if pending_prediction_hash is not None:
+            event_count = expected_index + 1
+    if pending_prediction_hash is not None and not allow_pending:
         raise ValueError("ledger ends with an unobserved preregistration")
+    return _LedgerState(event_count, previous_hash, pending_prediction_hash)
+
+
+def verify_ledger(path: Path) -> None:
+    _inspect_ledger(path, allow_pending=False)

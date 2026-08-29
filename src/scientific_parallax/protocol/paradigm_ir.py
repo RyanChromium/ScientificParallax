@@ -49,8 +49,11 @@ class ParadigmIR:
     measurement: MeasurementModel
     scope: Scope
     auxiliary_assumptions: tuple[str, ...] = ()
+    schema_version: int = 1
 
     def validate(self) -> None:
+        if self.schema_version != 1:
+            raise ValueError(f"unsupported Paradigm IR schema: {self.schema_version}")
         names = [variable.name for variable in self.variables]
         if not names or len(set(names)) != len(names):
             raise ValueError("Paradigm IR variables must be non-empty and unique")
@@ -89,6 +92,7 @@ class ParadigmIR:
                     )
                 )
             payload = {
+                "schema_version": self.schema_version,
                 "variables": variable_roles,
                 "terms": sorted(terms),
                 "measurement": sorted(rename[item] for item in self.measurement.observed_channels),

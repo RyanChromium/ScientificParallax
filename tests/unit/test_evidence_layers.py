@@ -1,6 +1,8 @@
+from copy import deepcopy
+
 import pytest
 
-from scientific_parallax.protocol.dry_run import protocol_spec_from_config
+from scientific_parallax.protocol.dry_run import protocol_spec_from_config, validate_protocol_config
 from scientific_parallax.protocol.evidence_layers import (
     CandidateEvidenceState,
     EvidenceRecord,
@@ -15,6 +17,7 @@ from scientific_parallax.protocol.evidence_layers import (
 
 def _config() -> dict[str, object]:
     return {
+        "schema_version": 1,
         "protocol_id": "test",
         "primary_endpoint": "endpoint",
         "ranking_threshold_k": 2,
@@ -24,6 +27,71 @@ def _config() -> dict[str, object]:
         "candidate_generation_budget": 2,
         "candidate_evaluation_budget": 4,
         "cpu_hour_budget": 1,
+        "candidate_generator": {
+            "version": "candidate-generator-v0.1",
+            "allowed_mutations": [
+                "remove_term",
+                "coefficient_low",
+                "coefficient_high",
+                "add_decay",
+            ],
+            "maximum_offspring_per_parent": 2,
+            "maximum_candidates_per_task": 2,
+        },
+        "task_design": {"seeds_per_cluster": 5, "grid_size": 32, "steps": 100},
+        "external_data_manifest": "data/manifests/the-well-gray-scott-test-v1.json",
+        "execution_environment_spec": "configs/environments/confirmatory-v1.json",
+        "numerical_tolerances": {
+            "field_mean_absolute": 0.005,
+            "field_max_absolute": 0.08,
+            "summary_l2": 0.015,
+        },
+        "numerical_methods": {
+            "primary_solver": "five_point",
+            "primary_integrator": "euler",
+            "reference_solver": "nine_point",
+            "reference_integrator": "rk4",
+        },
+        "noise_calibration": {"floor": 0.01, "source": "development"},
+        "survival_parameters": {
+            "dormancy_after": 2,
+            "death_after": 4,
+            "death_on_hard_contradiction": True,
+        },
+        "viability_thresholds": {
+            "minimum_evidence_score": 0.0,
+            "minimum_predictive_gain": 0.01,
+            "maximum_decoder_cost": 1.0,
+        },
+        "niche_capacities": {
+            "current_predictive_best": 4,
+            "minimum_description": 4,
+            "validated_structure_gain": 4,
+        },
+        "evaluation_accounting": {
+            "world_query": "one",
+            "candidate_generation": "one",
+            "candidate_evaluation": "one",
+            "cache_hit": "zero",
+        },
+        "budget_scope": {
+            "world_queries": "per replicate",
+            "candidate_generation": "per task",
+            "candidate_evaluation": "per task",
+            "cpu_hours": "per run",
+        },
+        "statistical_parameters": {
+            "bootstrap_samples": 2000,
+            "confidence_level": 0.95,
+            "censoring": "world_query_budget",
+        },
+        "power_design": {
+            "simulations": 10,
+            "bootstrap_samples": 20,
+            "assumed_relative_effects": [0.2, 0.3, 0.4],
+            "design_detectable_effect": 0.3,
+            "minimum_power": 0.8,
+        },
     }
 
 
@@ -56,3 +124,10 @@ def test_calibration_and_survival_rules_are_executable() -> None:
     assert policy.classify(CandidateEvidenceState("a", 2)) == SurvivalStatus.DORMANT
     assert policy.classify(CandidateEvidenceState("a", 4)) == SurvivalStatus.DEAD
     assert policy.classify(CandidateEvidenceState("a", 0, 1)) == SurvivalStatus.DEAD
+
+
+def test_protocol_config_rejects_unimplemented_numerical_method() -> None:
+    config = deepcopy(_config())
+    config["numerical_methods"]["reference_integrator"] = "invented"  # type: ignore[index]
+    with pytest.raises(ValueError, match="numerical methods"):
+        validate_protocol_config(config)

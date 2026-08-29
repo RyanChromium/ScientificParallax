@@ -28,6 +28,15 @@ def test_uniform_state_is_fixed_point_for_both_solvers() -> None:
         assert np.allclose(observation.fields["field_1"], 0.0)
 
 
+def test_uniform_state_is_fixed_point_for_rk4_reference() -> None:
+    observation = GrayScottWorld().observe(
+        _experiment(initial_family="uniform", solver="nine_point", integrator="rk4")
+    )
+    assert observation.integrator == "rk4"
+    assert np.allclose(observation.fields["field_0"], 1.0)
+    assert np.allclose(observation.fields["field_1"], 0.0)
+
+
 def test_measurement_pipeline_is_reproducible_and_anonymous() -> None:
     measurement = MeasurementSpec(
         sample_every=10,
@@ -56,7 +65,7 @@ def test_local_intervention_changes_observation() -> None:
 def test_two_discretizations_agree_within_declared_diagnostic_tolerance() -> None:
     world = GrayScottWorld()
     primary = world.observe(_experiment(solver="five_point", steps=40))
-    reference = world.observe(_experiment(solver="nine_point", steps=40))
+    reference = world.observe(_experiment(solver="nine_point", integrator="rk4", steps=40))
     difference = np.mean(abs(primary.fields["field_1"] - reference.fields["field_1"]))
     assert difference < 0.03
     assert difference > 0.0

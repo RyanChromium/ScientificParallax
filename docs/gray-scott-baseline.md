@@ -15,9 +15,10 @@ Two spatial discretizations are available:
 - `nine_point`: axial plus diagonal isotropic finite-difference Laplacian.
 
 They share the physical equation but not the spatial stencil. Agreement is a
-numerical-artifact diagnostic, not proof of physical truth. Both currently use
-explicit Euler time integration, so a future higher-independence check should
-add a separately implemented time integrator.
+numerical-artifact diagnostic, not proof of physical truth. The primary path
+uses explicit Euler, while the reference path can use separately implemented
+classical RK4 time integration. The external Well data uses a still more
+independent Fourier spectral plus ETDRK4 solver.
 
 Measurements support invertible channel mixing, anonymous field names,
 downsampling, one-channel partial observation, masking, Gaussian noise, and

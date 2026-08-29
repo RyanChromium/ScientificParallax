@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "dataset_id": "the-well-gray-scott-reaction-diffusion-test",
+  "source": "https://huggingface.co/datasets/polymathic-ai/gray_scott_reaction_diffusion",
+  "version": "65750596b1173300ef81a7ea112ea17bc81cf59f",
+  "license": "CC-BY-4.0",
+  "access_date": "2026-08-29",
+  "shards": [
+    {
+      "path": "data/test/gray_scott_reaction_diffusion_bubbles_F_0.098_k_0.057.hdf5",
+      "url": "https://huggingface.co/datasets/polymathic-ai/gray_scott_reaction_diffusion/resolve/65750596b1173300ef81a7ea112ea17bc81cf59f/data/test/gray_scott_reaction_diffusion_bubbles_F_0.098_k_0.057.hdf5",
+      "bytes": 2650800128,
+      "sha256": "db6bac94402d5c7a46e8c335d80e77c1f293fabda0d6521ba1dfbbe0c65c2ba1",
+      "downloaded": false
+    },
+    {
+      "path": "data/test/gray_scott_reaction_diffusion_gliders_F_0.014_k_0.054.hdf5",
+      "url": "https://huggingface.co/datasets/polymathic-ai/gray_scott_reaction_diffusion/resolve/65750596b1173300ef81a7ea112ea17bc81cf59f/data/test/gray_scott_reaction_diffusion_gliders_F_0.014_k_0.054.hdf5",
+      "bytes": 2650800128,
+      "sha256": "b22d51b7f1b33743934b608d94f845f458dd480fac4ee981cc516fb9170ff4e9",
+      "downloaded": false
+    },
+    {
+      "path": "data/test/gray_scott_reaction_diffusion_maze_F_0.029_k_0.057.hdf5",
+      "url": "https://huggingface.co/datasets/polymathic-ai/gray_scott_reaction_diffusion/resolve/65750596b1173300ef81a7ea112ea17bc81cf59f/data/test/gray_scott_reaction_diffusion_maze_F_0.029_k_0.057.hdf5",
+      "bytes": 2650800128,
+      "sha256": "87a2793031e3a4d14b70c947e72a1f8729b7a73eb21b662b6bcfa0441a2d160a",
+      "downloaded": false
+    },
+    {
+      "path": "data/test/gray_scott_reaction_diffusion_spirals_F_0.018_k_0.051.hdf5",
+      "url": "https://huggingface.co/datasets/polymathic-ai/gray_scott_reaction_diffusion/resolve/65750596b1173300ef81a7ea112ea17bc81cf59f/data/test/gray_scott_reaction_diffusion_spirals_F_0.018_k_0.051.hdf5",
+      "bytes": 2650800128,
+      "sha256": "8b0e58cea61e4786f36a77987429bf19d4be27becb25f8414ad90ae2411ad69d",
+      "downloaded": false
+    },
+    {
+      "path": "data/test/gray_scott_reaction_diffusion_spots_F_0.03_k_0.062.hdf5",
+      "url": "https://huggingface.co/datasets/polymathic-ai/gray_scott_reaction_diffusion/resolve/65750596b1173300ef81a7ea112ea17bc81cf59f/data/test/gray_scott_reaction_diffusion_spots_F_0.03_k_0.062.hdf5",
+      "bytes": 2650800128,
+      "sha256": "eaeb4c3c9f779b32069f61d526d0e98f6448a5f2237e3a69d1eb6920f3424095",
+      "downloaded": false
+    },
+    {
+      "path": "data/test/gray_scott_reaction_diffusion_worms_F_0.058_k_0.065.hdf5",
+      "url": "https://huggingface.co/datasets/polymathic-ai/gray_scott_reaction_diffusion/resolve/65750596b1173300ef81a7ea112ea17bc81cf59f/data/test/gray_scott_reaction_diffusion_worms_F_0.058_k_0.065.hdf5",
+      "bytes": 2650800128,
+      "sha256": "5035e742f727b34e3aec7dc62841f88545ebf465e851e0d31f1bce8d8b715546",
+      "downloaded": false
+    }
+  ],
+  "supports_novel_conditions": false,
+  "supports_intervention": false,
+  "notes": "Official test split metadata only. Each shard is about 2.65 GB; no shard is downloaded in CI or claimed as locally validated. The dataset card declares CC-BY-4.0. The Well code repository has a separate BSD-3-Clause license."
+}

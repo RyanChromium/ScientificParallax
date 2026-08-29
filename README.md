@@ -99,6 +99,15 @@ Step 0 薄切片已经完成：
 - 有限类型 Paradigm IR 原型与等价变换检查；
 - 训练、开发与一次性最终证据的隔离状态机；
 - 右删失终点、分层 bootstrap 和预冻结负控干跑。
+- 独立 Euler/RK4 时间积分、六类共 30 个测量任务及数值一致性门禁；
+- 有限候选生成器、精确预算/缓存计费与可恢复证据账本；
+- The Well 外部数据版本/许可/分片校验清单和显式大文件下载器；
+- schema-v1 迁移边界与位于开发目录外的一次性最终评估器。
+
+扩展后的本地 dry-run 已通过 21 项检查，但仍只是
+**ready for Protocol Freeze review**。30 个任务对 30% 改善的模拟功效为
+0.90；外部数据分片尚未下载，确认性 runner 镜像尚未固定，最终封存世界
+也尚未创建。因此 Gate PF 仍保持关闭。
 
 Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Scott
 开发基线见 [`docs/gray-scott-baseline.md`](docs/gray-scott-baseline.md)，

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
 from typing import Literal
 
@@ -13,8 +14,13 @@ from numpy.typing import NDArray
 from scientific_parallax.worlds.base import WorldCapabilities
 
 SolverName = Literal["five_point", "nine_point"]
+IntegratorName = Literal["euler", "rk4"]
 BoundaryName = Literal["periodic", "reflecting"]
 InitialFamily = Literal["center_square", "two_spots", "stripe", "uniform"]
+Laplacian = Callable[
+    [NDArray[np.float64], SolverName],
+    NDArray[np.float64],
+]
 
 
 @dataclass(frozen=True, slots=True)
@@ -97,6 +103,7 @@ class GrayScottExperiment:
     dt: float = 1.0
     boundary: BoundaryName = "periodic"
     solver: SolverName = "five_point"
+    integrator: IntegratorName = "euler"
     intervention: LocalPulse | None = None
     measurement: MeasurementSpec = field(default_factory=MeasurementSpec)
 
@@ -124,6 +131,7 @@ class GrayScottObservation:
     times: NDArray[np.float64]
     fields: dict[str, NDArray[np.float64]]
     solver: SolverName
+    integrator: IntegratorName
     capabilities: WorldCapabilities
 
     def summary(self) -> NDArray[np.float64]:
@@ -217,6 +225,28 @@ def _apply_pulse(
     np.clip(v, 0.0, 1.5, out=v)
 
 
+def _right_hand_side(
+    u: NDArray[np.float64],
+    v: NDArray[np.float64],
+    parameters: GrayScottParameters,
+    law: ReactionLaw,
+    laplacian: Laplacian,
+    solver: SolverName,
+) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
+    reaction = law.reaction_scale * u * np.power(np.clip(v, 0.0, None), law.reaction_power)
+    du = (
+        parameters.diffusion_u * law.diffusion_u_scale * laplacian(u, solver)
+        - reaction
+        + parameters.feed * law.feed_scale * (1.0 - u)
+    )
+    dv = (
+        parameters.diffusion_v * law.diffusion_v_scale * laplacian(v, solver)
+        + reaction
+        - (parameters.feed * law.feed_scale + parameters.kill + law.kill_offset) * v
+    )
+    return du, dv
+
+
 def simulate_gray_scott(
     experiment: GrayScottExperiment,
     law: ReactionLaw | None = None,
@@ -233,19 +263,40 @@ def simulate_gray_scott(
     for step in range(1, experiment.steps + 1):
         if experiment.intervention is not None and step == experiment.intervention.at_step:
             _apply_pulse(u, v, experiment.intervention)
-        reaction = law.reaction_scale * u * np.power(np.clip(v, 0.0, None), law.reaction_power)
-        du = (
-            p.diffusion_u * law.diffusion_u_scale * laplacian(u, experiment.solver)
-            - reaction
-            + p.feed * law.feed_scale * (1.0 - u)
-        )
-        dv = (
-            p.diffusion_v * law.diffusion_v_scale * laplacian(v, experiment.solver)
-            + reaction
-            - (p.feed * law.feed_scale + p.kill + law.kill_offset) * v
-        )
-        u = np.clip(u + experiment.dt * du, 0.0, 1.5)
-        v = np.clip(v + experiment.dt * dv, 0.0, 1.5)
+        if experiment.integrator == "euler":
+            du, dv = _right_hand_side(u, v, p, law, laplacian, experiment.solver)
+            u_next = u + experiment.dt * du
+            v_next = v + experiment.dt * dv
+        else:
+            k1_u, k1_v = _right_hand_side(u, v, p, law, laplacian, experiment.solver)
+            k2_u, k2_v = _right_hand_side(
+                u + 0.5 * experiment.dt * k1_u,
+                v + 0.5 * experiment.dt * k1_v,
+                p,
+                law,
+                laplacian,
+                experiment.solver,
+            )
+            k3_u, k3_v = _right_hand_side(
+                u + 0.5 * experiment.dt * k2_u,
+                v + 0.5 * experiment.dt * k2_v,
+                p,
+                law,
+                laplacian,
+                experiment.solver,
+            )
+            k4_u, k4_v = _right_hand_side(
+                u + experiment.dt * k3_u,
+                v + experiment.dt * k3_v,
+                p,
+                law,
+                laplacian,
+                experiment.solver,
+            )
+            u_next = u + experiment.dt * (k1_u + 2.0 * k2_u + 2.0 * k3_u + k4_u) / 6.0
+            v_next = v + experiment.dt * (k1_v + 2.0 * k2_v + 2.0 * k3_v + k4_v) / 6.0
+        u = np.clip(u_next, 0.0, 1.5)
+        v = np.clip(v_next, 0.0, 1.5)
         if step % experiment.measurement.sample_every == 0 or step == experiment.steps:
             recorded_u.append(u.copy())
             recorded_v.append(v.copy())
@@ -269,6 +320,8 @@ class GrayScottWorld:
         experiment.measurement.validate()
         if experiment.grid_size < 8 or experiment.steps < 1 or experiment.dt <= 0.0:
             raise ValueError("invalid grid, step count, or timestep")
+        if experiment.integrator not in ("euler", "rk4"):
+            raise ValueError("unsupported time integrator")
         maximum_diffusion = max(
             experiment.parameters.diffusion_u,
             experiment.parameters.diffusion_v,
@@ -290,7 +343,8 @@ class GrayScottWorld:
 
     def estimate_cost(self, experiment: GrayScottExperiment) -> float:
         stencil_factor = 1.0 if experiment.solver == "five_point" else 1.6
-        return stencil_factor * experiment.grid_size**2 * experiment.steps
+        integrator_factor = 1.0 if experiment.integrator == "euler" else 4.0
+        return integrator_factor * stencil_factor * experiment.grid_size**2 * experiment.steps
 
     def observe(self, experiment: GrayScottExperiment) -> GrayScottObservation:
         self.validate_experiment(experiment)
@@ -317,6 +371,7 @@ class GrayScottWorld:
             times,
             fields,
             experiment.solver,
+            experiment.integrator,
             self.capabilities(),
         )
 

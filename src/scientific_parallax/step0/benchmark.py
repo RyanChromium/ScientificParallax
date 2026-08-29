@@ -158,6 +158,7 @@ def run_benchmark(
         "contradictory_control_rejected": contradictory_control_rejected,
     }
     report: dict[str, Any] = {
+        "schema_version": 1,
         "protocol_id": config.protocol_id,
         "config_hash": config.config_hash,
         "replicates": replicates,

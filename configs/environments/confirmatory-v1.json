@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "environment_id": "confirmatory-v1-development-candidate",
+  "python": "3.12.13",
+  "dependency_lock": "uv.lock",
+  "dependency_lock_sha256": "b7e9299d9514cdb9b5a6520671f2cf2bb0225c1b3fe7152ff5333c4d62c7995c",
+  "operating_system": "Darwin 25.1.0",
+  "architecture": "arm64",
+  "container_image_digest": null,
+  "status": "development candidate; final runner image digest must be set before Gate PF"
+}

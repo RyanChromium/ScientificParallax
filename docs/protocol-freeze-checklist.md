@@ -1,46 +1,46 @@
 # Protocol Freeze review checklist
 
-Step 3.5 is implemented and its synthetic dry-run passes. Gate PF has **not**
-been executed. The following items remain blockers before freezing a
-confirmatory Gray–Scott protocol.
+Step 3.5 and the local pre-freeze hardening pass are implemented. The expanded
+synthetic dry-run passes 21 checks. Gate PF has **not** been executed.
 
-## Scientific blockers
+## Resolved locally
 
-- Define and generate final sealed Gray–Scott task clusters outside normal
-  development paths.
-- Replace the development-only posterior-0.95 diagnostic with the declared
-  top-`k`, five-checkpoint primary endpoint used by the frozen protocol.
-- Complete power analysis for six parameter/measurement clusters and 30 tasks.
-- Calibrate likelihood noise on designated development residuals without using
-  final tasks.
-- Freeze numerical tolerances for five-point versus nine-point solver checks.
-- Add a separately implemented time integrator before treating the reference
-  solver as high-independence numerical replication.
-- Obtain and checksum a licensed The Well Gray–Scott development shard. The
-  offline adapter exists, but no external shard is currently downloaded or
-  claimed as validated.
+- [x] The top-`k`, five-checkpoint primary endpoint is executable.
+- [x] Six parameter/measurement clusters and 30 tasks are content-hashed.
+- [x] Power is simulated at 20%, 30%, and 40% alternatives; the candidate
+  design has 0.90 estimated power at its 30% detectable alternative.
+- [x] Development-only noise calibration and positive floor are executable.
+- [x] Numerical tolerances are checked across all six full-size clusters.
+- [x] The reference path uses a separately implemented RK4 integrator.
+- [x] Numeric survival thresholds, viability gates, and niche capacities are
+  included in the protocol hash.
+- [x] A deterministic finite generator is shared by treatment and H2 control.
+- [x] Query, mutation-attempt, uncached-evaluation, and cache-hit accounting is
+  executable and included in the protocol hash.
+- [x] The actual frozen 30-task mix is microbenchmarked locally.
+- [x] Manifests, ledgers, Paradigm IR, and reports have schema-v1 boundaries.
+- [x] Interrupted Gray–Scott ledger recovery is integration-tested.
+- [x] A final evaluator enforces an external root and exclusive one-shot access
+  and result records.
+- [x] Official The Well test-shard metadata, sizes, license, revision, and
+  SHA-256 identities are pinned in a validated manifest.
 
-## Protocol blockers
+## Remaining Gate PF blockers
 
-- Turn Paradigm IR v0.1 strings for viability thresholds and niche capacities
-  into reviewed numeric values.
-- Freeze the exact candidate generator shared by treatment and the H2 Bayesian
-  design control; it does not exist yet because candidate evolution starts in
-  Step 4.
-- Freeze measurement-cluster definitions used by stratified bootstrap.
-- Freeze candidate and question evaluation accounting, including cache hits.
-- Re-profile the actual frozen candidate mix rather than relying on the Step 3
-  microbenchmark projection.
-- Store the final evaluator and access log outside ordinary development code.
+- [ ] Independently accept or revise the statistical design: a true 30%
+  reduction has estimated power 0.90, while an effect exactly at the 20% null
+  boundary is not expected to pass a lower-confidence-limit-above-20% test.
+- [ ] Download and checksum at least one pinned 2.65 GB The Well development
+  shard. Metadata validation alone is not external numerical validation.
+- [ ] Create a minimal licensed external-data fixture for CI; the repository
+  currently tests the official manifest without embedding third-party data.
+- [ ] Pin a confirmatory runner/container image digest, then rerun the frozen
+  30-task cost profile there. Python, OS, architecture, and `uv.lock` are pinned
+  only as a development candidate today.
+- [ ] Define and generate final sealed task instances outside the repository,
+  create their commitment, and provision the external access directory.
+- [ ] Obtain independent review of the numerical tolerances, survival values,
+  niche capacities, generator grammar, and exact budget-accounting language.
 
-## Engineering blockers
-
-- Add schema migration policy for manifests, ledgers, Paradigm IR, and reports.
-- Add interrupted-run recovery tests for Gray–Scott ledgers.
-- Add a small licensed external-data fixture to CI without downloading a large
-  dataset during tests.
-- Pin the execution environment used for confirmatory runs beyond the current
-  lockfile and environment manifest.
-
-Passing the current dry-run means these decisions can now be reviewed and made
-explicitly. It does not mean they have already been resolved.
+Until every unchecked item is resolved, the correct status is **ready for
+Protocol Freeze review**, not frozen and not ready for final-world access.

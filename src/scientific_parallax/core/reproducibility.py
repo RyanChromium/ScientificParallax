@@ -93,6 +93,10 @@ class RunManifest:
     inputs: dict[str, Any]
     outputs: dict[str, Any]
 
+    def __post_init__(self) -> None:
+        if self.schema_version != 1:
+            raise ValueError("unsupported run manifest schema")
+
     @property
     def manifest_hash(self) -> str:
         return content_hash(asdict(self))

@@ -8,7 +8,9 @@ from scientific_parallax.baselines.gray_scott import (
     fixed_candidate_pool,
     run_selection_baseline,
 )
-from scientific_parallax.step0.ledger import verify_ledger
+from scientific_parallax.core.reproducibility import content_hash
+from scientific_parallax.step0.ledger import EvidenceLedger, verify_ledger
+from scientific_parallax.worlds.gray_scott import GrayScottExperiment, GrayScottWorld
 
 
 def test_candidate_pool_has_one_declared_truth() -> None:
@@ -41,3 +43,26 @@ def test_evidence_rejects_candidate_mismatch() -> None:
         assert "do not match" in str(error)
     else:
         raise AssertionError("mismatched candidate evidence was accepted")
+
+
+def test_interrupted_gray_scott_query_recovers_from_preregistered_ledger(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "gray-scott-ledger.jsonl"
+    experiment = GrayScottExperiment("recovery", grid_size=16, steps=20)
+    ledger = EvidenceLedger(path)
+    prediction_hash = ledger.preregister(
+        {"experiment_hash": experiment.content_hash, "predicted_summary": [0.0] * 8}
+    )
+
+    # The world is deterministic, so a restarted process can recompute the pending query.
+    observation = GrayScottWorld().observe(experiment)
+    resumed = EvidenceLedger.resume(path)
+    resumed.record_observation(
+        {
+            "experiment_hash": observation.experiment_hash,
+            "summary_hash": content_hash(observation.summary().tolist()),
+        },
+        prediction_hash,
+    )
+    verify_ledger(path)

@@ -5,12 +5,15 @@ or defines the future final sealed Gray–Scott worlds.
 
 ## Frozen-candidate components
 
-The dry-run serializes a candidate `ProtocolSpec` containing:
+The dry-run serializes a schema-versioned candidate `ProtocolSpec` containing:
 
 - Paradigm IR version and equivalence rule;
 - evidence update, noise calibration, and survival rules;
 - one primary endpoint, `k`, persistence, minimum effect, and statistical method;
 - world-query, candidate-generation, candidate-evaluation, and CPU budgets;
+- exact cache accounting, numerical tolerances, and candidate-generator hash;
+- six measurement-cluster definitions and their content hash;
+- external-data manifest and execution-environment hashes;
 - confirmatory baselines and one-factor ablations;
 - mechanical stop conditions.
 
@@ -45,10 +48,11 @@ The state machine is a software guardrail, not a security sandbox. Final-world
 data must additionally be stored outside normal development paths before Gate
 PF.
 
-The development implementation includes executable active/dormant/dead
-transitions. Repeated sub-viability checkpoints first cause dormancy and later
-death; a declared hard contradiction can cause immediate death. Thresholds must
-be frozen at Gate PF.
+The candidate sets dormancy after two sub-viability checkpoints and death after
+four; a declared hard contradiction causes immediate death. Viability requires
+non-negative evidence, predictive gain of at least `0.01`, and decoder cost no
+greater than `1.0`. Three niches each have capacity four: current predictive
+best, minimum description, and validated structure gain.
 
 ## Endpoint and statistics
 
@@ -58,6 +62,48 @@ of checkpoints. Failures are right-censored at the query budget. Treatment and
 control are compared using restricted mean time to identification with
 bootstrap resampling stratified by parameter/measurement cluster.
 
+The candidate task design has six parameter/measurement clusters and five
+independent initial seeds per cluster (30 tasks). Simulation-based power is
+estimated at true relative reductions of 20%, 30%, and 40%. The current
+development run estimates power `0.00`, `0.90`, and `1.00`, respectively, for
+the stricter success rule that the 95% lower confidence limit exceed the 20%
+null boundary. Thus 30% is the design-detectable alternative; this does not mean
+the study can confirm an effect that is exactly on the 20% boundary.
+
+## Numerical and generator freeze candidates
+
+Primary simulations use the five-point stencil with explicit Euler. Numerical
+replication uses the nine-point stencil with separately implemented classical
+RK4. Across one full-size representative from every cluster, frozen tolerances
+are mean absolute field difference `0.005`, maximum absolute difference `0.08`,
+and summary-vector L2 difference `0.015`. Measurement noise and random masking
+are disabled only for this solver comparison so that it measures discretization
+rather than independent random draws.
+
+Treatment and the H2 Bayesian-design control share the same deterministic
+finite candidate generator. It allows term removal, coefficient-low/high
+variants, and adding a decay term; each parent has at most 32 mutation attempts
+and each task at most 128 candidates. Every attempted mutation is charged before
+equivalence deduplication.
+
+## Persistent-artifact and final-evidence boundaries
+
+Manifests, ledger events, Paradigm IR, and reports carry explicit schema version
+1. Future versions are rejected unless a one-version migration is registered.
+Evidence ledgers can resume after a completed observation or after interruption
+between preregistration and observation while preserving the hash chain.
+
+The final evaluator requires a pre-committed directory outside the development
+tree. It writes an exclusive access record before evaluation and an exclusive
+result record afterward, so a failed or repeated opening cannot silently become
+a second attempt. The actual external directory and world commitment do not yet
+exist; this mechanism is tested but Gate PF remains closed.
+
+The Well test-split manifest pins the official repository revision, CC-BY-4.0
+dataset license, byte counts, and SHA-256 values for all six 2.65 GB shards. No
+shard has been downloaded or claimed as validated. The downloader requires an
+explicit large-download flag and verifies both byte count and checksum.
+
 ## Required dry-run controls
 
 - variable-renaming equivalence and structural-change non-equivalence;
@@ -65,7 +111,8 @@ bootstrap resampling stratified by parameter/measurement cluster.
 - residual shuffling to destroy repeatable residual structure;
 - random contradictory candidate rejection;
 - synthetic-truth recovery by the endpoint and bootstrap code;
-- a naive compute-ceiling estimate before Protocol Freeze.
+- an exact accounting exercise and frozen-mix compute-ceiling estimate before
+  Protocol Freeze.
 
 Run with:
 
@@ -75,5 +122,7 @@ uv run scientific-parallax protocol dry-run \
   --output artifacts/protocol/runs/development
 ```
 
-Passing the dry-run means the protocol is ready for adversarial review. It does
-not itself execute Gate PF or authorize use of the final sealed worlds.
+Passing the dry-run means the local protocol mechanisms are ready for
+adversarial review. Gate PF still requires a validated external shard, a pinned
+runner image, an externally prepared final-world commitment, and independent
+acceptance of the power design.

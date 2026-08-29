@@ -9,5 +9,77 @@
   "candidate_generation_budget": 128,
   "candidate_evaluation_budget": 4096,
   "cpu_hour_budget": 8,
-  "minimum_relative_effect": 0.20
+  "minimum_relative_effect": 0.20,
+  "candidate_generator": {
+    "version": "candidate-generator-v0.1",
+    "allowed_mutations": [
+      "remove_term",
+      "coefficient_low",
+      "coefficient_high",
+      "add_decay"
+    ],
+    "maximum_offspring_per_parent": 32,
+    "maximum_candidates_per_task": 128
+  },
+  "task_design": {
+    "seeds_per_cluster": 5,
+    "grid_size": 32,
+    "steps": 100
+  },
+  "external_data_manifest": "data/manifests/the-well-gray-scott-test-v1.json",
+  "execution_environment_spec": "configs/environments/confirmatory-v1.json",
+  "numerical_tolerances": {
+    "field_mean_absolute": 0.005,
+    "field_max_absolute": 0.08,
+    "summary_l2": 0.015
+  },
+  "numerical_methods": {
+    "primary_solver": "five_point",
+    "primary_integrator": "euler",
+    "reference_solver": "nine_point",
+    "reference_integrator": "rk4"
+  },
+  "noise_calibration": {
+    "floor": 0.01,
+    "source": "Gray-Scott development held-out parameter-block residuals"
+  },
+  "survival_parameters": {
+    "dormancy_after": 2,
+    "death_after": 4,
+    "death_on_hard_contradiction": true
+  },
+  "viability_thresholds": {
+    "minimum_evidence_score": 0.0,
+    "minimum_predictive_gain": 0.01,
+    "maximum_decoder_cost": 1.0
+  },
+  "niche_capacities": {
+    "current_predictive_best": 4,
+    "minimum_description": 4,
+    "validated_structure_gain": 4
+  },
+  "evaluation_accounting": {
+    "world_query": "one completed World.observe call costs one query",
+    "candidate_generation": "every attempted mutation before equivalence deduplication costs one generation",
+    "candidate_evaluation": "one uncached candidate-question score costs one evaluation",
+    "cache_hit": "cache hits cost zero evaluations and are counted separately"
+  },
+  "budget_scope": {
+    "world_queries": "per strategy replicate on one task",
+    "candidate_generation": "per task",
+    "candidate_evaluation": "per task",
+    "cpu_hours": "per complete confirmatory run"
+  },
+  "statistical_parameters": {
+    "bootstrap_samples": 2000,
+    "confidence_level": 0.95,
+    "censoring": "world_query_budget"
+  },
+  "power_design": {
+    "simulations": 100,
+    "bootstrap_samples": 200,
+    "assumed_relative_effects": [0.20, 0.30, 0.40],
+    "design_detectable_effect": 0.30,
+    "minimum_power": 0.80
+  }
 }
