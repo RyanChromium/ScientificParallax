@@ -1,0 +1,42 @@
+{
+  "environment": {
+    "git_dirty": false,
+    "git_revision": "2d144c3e1b8f85e963165a145a81418342db2740",
+    "implementation": "CPython",
+    "machine": "arm64",
+    "numpy": "2.5.2",
+    "platform": "macOS-26.1-arm64-arm-64bit",
+    "process_id": 67715,
+    "python": "3.12.13"
+  },
+  "schema_version": 1,
+  "scope": "offline external numerical validation; not a queryable or final world",
+  "source_manifest_hash": "5979c24511442a869076a0856a6513930755a4548c74942a61edae2f6dc98907",
+  "source_shard": "data/test/gray_scott_reaction_diffusion_gliders_F_0.014_k_0.054.hdf5",
+  "source_shard_sha256": "b22d51b7f1b33743934b608d94f845f458dd480fac4ee981cc516fb9170ff4e9",
+  "status": "validated",
+  "validation": {
+    "dataset_name": "gray_scott_reaction_diffusion",
+    "feed": 0.014000000432133675,
+    "kill": 0.05400000140070915,
+    "maximum_reference_field_rmse": 0.02,
+    "maximum_reference_worst_trajectory_rmse": 0.04,
+    "minimum_reference_improvement": 0.25,
+    "passed": true,
+    "primary": {
+      "field_mean_absolute": 0.020447510101674084,
+      "field_rmse": 0.035113140420205406,
+      "worst_trajectory_mean_absolute": 0.0390247282389313,
+      "worst_trajectory_rmse": 0.05696949498772906
+    },
+    "reference": {
+      "field_mean_absolute": 0.011074538738796488,
+      "field_rmse": 0.017171823576354044,
+      "worst_trajectory_mean_absolute": 0.024837285649984678,
+      "worst_trajectory_rmse": 0.03547772704089023
+    },
+    "reference_improvement": 0.5109573404470329,
+    "source_interval": 10.0,
+    "trajectories": 20
+  }
+}

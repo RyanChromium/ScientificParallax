@@ -120,7 +120,8 @@ Gate PF 前仍需解决的项目见
 [`docs/protocol-freeze-checklist.md`](docs/protocol-freeze-checklist.md)。
 审核后的开发结果见
 [`artifacts/gray_scott/reviewed-development-baseline.md`](artifacts/gray_scott/reviewed-development-baseline.md)
-和 [`artifacts/protocol/reviewed-dry-run.md`](artifacts/protocol/reviewed-dry-run.md)。
+、[`artifacts/protocol/reviewed-dry-run.md`](artifacts/protocol/reviewed-dry-run.md)
+和 [`artifacts/external-data/reviewed-the-well-validation.md`](artifacts/external-data/reviewed-the-well-validation.md)。
 
 ## 详细计划
 
