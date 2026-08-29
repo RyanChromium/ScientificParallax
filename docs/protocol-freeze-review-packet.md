@@ -8,8 +8,10 @@ independent approval.
 
 - Protocol ID: `protocol-dry-run-v1`
 - Assurance mode: `local_single_account_self_audit`
-- Protocol hash: updated after the next runner digest is pinned
-- Confirmatory runner: updated after runner `0.3.5` is published
+- Protocol hash: updated by the clean dry-run after this digest promotion
+- Confirmatory runner:
+  `ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:1b99d310dfa0fe98019489d00763ec3321676ba86384ac2c6eb78979d0c6533f`
+- Runner source revision: `78a59bf68c58c592d30bcf8aeb2f145ecb347cfc`
 - Runner platforms: Linux amd64 and Linux arm64
 - External validation source SHA-256:
   `b22d51b7f1b33743934b608d94f845f458dd480fac4ee981cc516fb9170ff4e9`

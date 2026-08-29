@@ -36,7 +36,7 @@ executed.
   hashes are pinned; a local arm64 candidate was built and profiled.
 - [x] A tag-triggered, commit-pinned GitHub Actions workflow can publish the
   exact multi-platform runner and emit a public machine-readable digest record.
-- [x] Runner `0.3.4` is published for Linux amd64/arm64, its OCI-index digest is
+- [x] Runner `0.3.5` is published for Linux amd64/arm64, its OCI-index digest is
   pinned, and the frozen task mix was profiled from the published digest.
 - [x] Independent review and custody are explicitly waived; results must be
   labelled local self-audited and not independently confirmed.
@@ -47,8 +47,8 @@ executed.
 
 ## Remaining Gate PF blocker
 
-- [ ] Publish and pin the updated runner, then generate and verify the 30 local
-  final task instances outside the repository.
+- [ ] Generate and verify the 30 local final task instances outside the
+  repository using the pinned runner `0.3.5` protocol identity.
 
 Until the unchecked item is resolved, the correct status is **ready for local
 Protocol Freeze**, not frozen and not ready for final-world access.

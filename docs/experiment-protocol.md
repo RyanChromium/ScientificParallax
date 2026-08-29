@@ -120,9 +120,9 @@ also met frozen external-validation limits: mean RMSE at most `0.02`, worst
 trajectory RMSE at most `0.04`, and at least 25% improvement.
 
 The confirmatory runner uses a digest-pinned Python 3.12.13 base and hash-pinned
-NumPy 2.5.2 wheels for Linux amd64 and arm64. Version `0.3.4` is published as a
+NumPy 2.5.2 wheels for Linux amd64 and arm64. Version `0.3.5` is published as a
 multi-platform OCI index at
-`ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:d767d7ece6977d4900bd4b3ee505bf9d6a08a06f7a8ca15eb07f8e2ae301d250`.
+`ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:1b99d310dfa0fe98019489d00763ec3321676ba86384ac2c6eb78979d0c6533f`.
 Both the release digest record and an exact repository copy are retained.
 
 Pushing a `runner-v*` tag invokes the repository's pinned-action publication
