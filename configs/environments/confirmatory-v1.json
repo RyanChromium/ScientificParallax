@@ -3,7 +3,7 @@
   "environment_id": "confirmatory-v1-development-candidate",
   "python": "3.12.13",
   "dependency_lock": "uv.lock",
-  "dependency_lock_sha256": "7f529688d0115ea3414c1d5264d956b56ea285cf546ff3d8f07ca1a11ce2fdd8",
+  "dependency_lock_sha256": "b1455dc6939cf02a087a07892729e6f44f44a4b8b6b7e8bb82ee0cd5053fc6fb",
   "operating_system": "Darwin 25.1.0",
   "architecture": "arm64",
   "base_image": "docker.io/library/python:3.12.13-slim",

@@ -171,8 +171,7 @@ def validate_the_well_shard(path: Path, trajectories: int = 20) -> TheWellValida
         and improvement >= MINIMUM_REFERENCE_RMSE_IMPROVEMENT
         and reference.field_mean_absolute < primary.field_mean_absolute
         and reference.field_rmse <= MAXIMUM_REFERENCE_FIELD_RMSE
-        and reference.worst_trajectory_rmse
-        <= MAXIMUM_REFERENCE_WORST_TRAJECTORY_RMSE
+        and reference.worst_trajectory_rmse <= MAXIMUM_REFERENCE_WORST_TRAJECTORY_RMSE
     )
     return TheWellValidation(
         dataset_name,
