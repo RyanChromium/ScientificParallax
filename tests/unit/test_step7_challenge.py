@@ -10,6 +10,7 @@ from scientific_parallax.challenge.blind import DevelopmentBlindTask, anonymous_
 from scientific_parallax.challenge.runner import (
     _build_development_tasks,
     _decision,
+    _QuestionDiagnostic,
     _validate_config,
     run_step7_development_challenge,
 )
@@ -29,6 +30,15 @@ def test_blind_view_excludes_evaluator_coordinates_and_seeds() -> None:
     assert set(asdict(tasks[0].view)) == {"task_token", "capabilities", "summary_dimension"}
     assert "cluster" not in asdict(tasks[0].view)
     assert anonymous_task_token(1, 2, 3) == anonymous_task_token(1, 2, 3)
+
+
+def test_selection_diagnostic_cannot_carry_experiment_or_seed() -> None:
+    assert set(_QuestionDiagnostic.__dataclass_fields__) == {
+        "experiment_hash",
+        "expected_information_gain",
+        "disagreement",
+        "weighted_cost",
+    }
 
 
 def test_independent_scorer_uses_anonymous_tie_break_and_persistence() -> None:

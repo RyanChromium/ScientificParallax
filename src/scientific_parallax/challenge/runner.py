@@ -59,7 +59,6 @@ from scientific_parallax.worlds.gray_scott import (
 
 @dataclass(frozen=True, slots=True)
 class _QuestionDiagnostic:
-    experiment: GrayScottExperiment
     experiment_hash: str
     expected_information_gain: float
     disagreement: float
@@ -364,18 +363,19 @@ def _run_arm_task(
             selected_hashes,
             rng,
         )
+        selected_experiment = questions[selected.experiment_hash]
         predictions: dict[str, tuple[float, ...]] = {}
         prediction_work = 0
         for candidate_id, genotype in candidates.items():
             prediction, work = _predict_cached(
-                genotype, selected.experiment, prediction_cache, budget
+                genotype, selected_experiment, prediction_cache, budget
             )
             predictions[candidate_id] = prediction
             prediction_work += work
         simulation_work += prediction_work
         budget.charge_world_query()
-        simulation_work += int(world.estimate_cost(selected.experiment))
-        observation = tuple(float(value) for value in world.observe(selected.experiment).summary())
+        simulation_work += int(world.estimate_cost(selected_experiment))
+        observation = tuple(float(value) for value in world.observe(selected_experiment).summary())
         posterior = update_posterior(prior, predictions, observation, noise_floor)
         true_rank = score_truth_rank(posterior, aliases, founder.genotype_id)
         ranks.append(true_rank)
@@ -393,7 +393,7 @@ def _run_arm_task(
                 "active_candidate_count": len(active_ids),
             }
         )
-        history.append((selected.experiment, observation))
+        history.append((selected_experiment, observation))
         selected_hashes.add(selected.experiment_hash)
         if policy.evolving_questions:
             questions = _evolve_questions(
@@ -646,7 +646,6 @@ def _diagnose_questions(
         genotype = QuestionGenotype("diagnostic", experiment, active_ids)
         diagnostics.append(
             _QuestionDiagnostic(
-                experiment,
                 experiment_hash,
                 expected_information_gain(
                     restricted,
