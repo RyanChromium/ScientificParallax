@@ -1,0 +1,195 @@
+{
+  "arm_count": 8,
+  "arm_summaries": {
+    "bayesian_optimal_design": {
+      "identified": 30,
+      "mean_actual_information_gain": 0.35823898227441037,
+      "mean_candidate_evaluations": 310.53333333333336,
+      "mean_final_true_posterior": 0.8203077019432424,
+      "restricted_mean_queries": 1.0,
+      "runs": 30
+    },
+    "coevolution": {
+      "identified": 30,
+      "mean_actual_information_gain": 0.3704629529772936,
+      "mean_candidate_evaluations": 295.93333333333334,
+      "mean_final_true_posterior": 0.8422983692493243,
+      "restricted_mean_queries": 1.0,
+      "runs": 30
+    },
+    "fixed_candidate_coevolution": {
+      "identified": 30,
+      "mean_actual_information_gain": 0.3471108137672525,
+      "mean_candidate_evaluations": 205.43333333333334,
+      "mean_final_true_posterior": 0.9035308110505004,
+      "restricted_mean_queries": 1.0,
+      "runs": 30
+    },
+    "no_niches": {
+      "identified": 30,
+      "mean_actual_information_gain": 0.369064131990011,
+      "mean_candidate_evaluations": 296.06666666666666,
+      "mean_final_true_posterior": 0.8356966621019644,
+      "restricted_mean_queries": 1.0,
+      "runs": 30
+    },
+    "no_question_evolution": {
+      "identified": 30,
+      "mean_actual_information_gain": 0.37136615523758437,
+      "mean_candidate_evaluations": 96.0,
+      "mean_final_true_posterior": 0.8400828816723386,
+      "restricted_mean_queries": 1.0,
+      "runs": 30
+    },
+    "no_representation_mutation": {
+      "identified": 30,
+      "mean_actual_information_gain": 0.32601308317478295,
+      "mean_candidate_evaluations": 300.03333333333336,
+      "mean_final_true_posterior": 0.7220645648791618,
+      "restricted_mean_queries": 1.0,
+      "runs": 30
+    },
+    "passive_coverage": {
+      "identified": 30,
+      "mean_actual_information_gain": 0.34261413245593747,
+      "mean_candidate_evaluations": 311.06666666666666,
+      "mean_final_true_posterior": 0.7650401181982918,
+      "restricted_mean_queries": 1.0333333333333334,
+      "runs": 30
+    },
+    "random": {
+      "identified": 30,
+      "mean_actual_information_gain": 0.3307824094036096,
+      "mean_candidate_evaluations": 311.6,
+      "mean_final_true_posterior": 0.7186058471911217,
+      "restricted_mean_queries": 1.0,
+      "runs": 30
+    }
+  },
+  "assurance_mode": "local_single_account_self_audit",
+  "candidate_generator_hash": "f6842002c59c21a5c4c944491e78a93f3b9d2c3a23702b5f7f7a6c3325f915fc",
+  "challenge_version": "step7-blind-development-v0.1",
+  "checks": {
+    "all_resource_ceilings_respected": true,
+    "confidence_interval_finite": true,
+    "final_world_not_accessed": true,
+    "independent_question_validation_passes": true,
+    "multi_seed_result": true,
+    "preregistered_complete_arm_set": true,
+    "primary_endpoint_executable": true,
+    "same_primary_budget_envelope": true,
+    "same_primary_candidate_initialization": true,
+    "six_clusters_five_seeds": true,
+    "strategy_view_excludes_cluster_truth_and_seeds": true
+  },
+  "confirmatory_boundary": "do not read the sealed final-world tasks or create strategy-freeze.json during this development challenge",
+  "decision": "stop",
+  "failure_modes": [
+    {
+      "detail": "matched Bayesian control is not beaten by the preregistered 20% margin",
+      "id": "primary-effect-below-threshold",
+      "severity": "stop"
+    },
+    {
+      "detail": "the frozen mutation grammar preserves exactly two state variables",
+      "id": "novel-variable-claim-unreachable",
+      "severity": "design"
+    },
+    {
+      "detail": "the known true structural class is explicitly present in every initial candidate pool, which can make top-5 identification insensitive to question strategy",
+      "id": "truth-in-founder-pool",
+      "severity": "design"
+    }
+  ],
+  "independent_validation": {
+    "all_six_conditions_and_five_seeds_present": true,
+    "leave_one_seed_out": {
+      "exclude_seed_index_0": "stop",
+      "exclude_seed_index_1": "stop",
+      "exclude_seed_index_2": "stop",
+      "exclude_seed_index_3": "stop",
+      "exclude_seed_index_4": "stop"
+    },
+    "multi_seed_and_condition_stability": {
+      "clean-spots": {
+        "identified": 5,
+        "median_final_rank": 1.0,
+        "runs": 5
+      },
+      "downsampled-worms": {
+        "identified": 5,
+        "median_final_rank": 1.0,
+        "runs": 5
+      },
+      "masked-reflecting": {
+        "identified": 5,
+        "median_final_rank": 1.0,
+        "runs": 5
+      },
+      "mixed-maze": {
+        "identified": 5,
+        "median_final_rank": 1.0,
+        "runs": 5
+      },
+      "noisy-gliders": {
+        "identified": 5,
+        "median_final_rank": 1.0,
+        "runs": 5
+      },
+      "partial-spirals": {
+        "identified": 5,
+        "median_final_rank": 1.0,
+        "runs": 5
+      }
+    },
+    "novel_state_variables_proposed": 0,
+    "novel_variable_validation": "not_applicable",
+    "novelty_boundary": "the Gate-PF candidate grammar cannot add state variables; Step 7 cannot support a positive novel-variable claim",
+    "questions_distinguish_paradigms": true,
+    "result_not_single_seed": true,
+    "scorer_ownership": "evaluator-only truth rank; strategy receives no truth membership",
+    "state_variable_counts": [
+      2
+    ]
+  },
+  "preregistration_hash": "ca64745074cd69d16a2f510997a48323278d60021eb1754edea7f35f55b0b7e8",
+  "primary_analysis": {
+    "bootstrap_samples": 2000,
+    "censoring_budget": 8,
+    "confidence_interval": [
+      0.0,
+      0.0
+    ],
+    "control": "bayesian_optimal_design",
+    "control_restricted_mean_queries": 1.0,
+    "endpoint": "stable_top_k_identification_queries",
+    "minimum_meaningful_effect": 0.2,
+    "persistence_checkpoints": 5,
+    "relative_query_reduction": 0.0,
+    "top_k": 5,
+    "treatment": "coevolution",
+    "treatment_restricted_mean_queries": 1.0
+  },
+  "primary_hypothesis": "coevolution reduces restricted mean stable-identification queries by more than 20 percent relative to matched Bayesian optimal design",
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "readiness": "stop_before_final_strategy_freeze_and_do_not_advance_to_step8",
+  "resource_accounting": {
+    "candidate_evaluation_cache_hits": 415030,
+    "candidate_evaluations": 63800,
+    "candidate_generations": 8886,
+    "projected_cpu_hours_at_published_runner_rate": 0.003906955420185467,
+    "published_runner_stencil_updates_per_second": 23923601.47278246,
+    "simulation_stencil_updates": 336486400,
+    "world_queries": 1920
+  },
+  "run_count": 240,
+  "schema_version": 1,
+  "scope": "preregistered blind development rehearsal only; no sealed final-world task was read",
+  "semantic_blinding": {
+    "level_1": "state fields use anonymous x0/x1 and observations use field_0/field_1",
+    "level_2": "cluster labels and truth-equivalence membership are evaluator-only",
+    "level_3": "task and measurement seeds never enter strategy selection inputs"
+  },
+  "status": "step7_development_challenge_complete",
+  "task_count": 30
+}

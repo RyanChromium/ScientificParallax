@@ -1,0 +1,29 @@
+{
+  "config_hash": "ca64745074cd69d16a2f510997a48323278d60021eb1754edea7f35f55b0b7e8",
+  "environment": {
+    "git_dirty": false,
+    "git_revision": "6c1df312d36c574d100b2c4ec09ebe0bd6c7d68c",
+    "implementation": "CPython",
+    "machine": "arm64",
+    "numpy": "2.5.2",
+    "platform": "macOS-26.1-arm64-arm-64bit",
+    "process_id": 85439,
+    "python": "3.12.13"
+  },
+  "experiment_id": "step7-blind-development-v0.1-65135d43e870e1a3",
+  "inputs": {
+    "config": "configs/experiments/step7-blind-development.json",
+    "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+    "task_source": "deterministically generated development holdout"
+  },
+  "manifest_hash": "60add6d2ae33662ea4f21f548badd733fbaa146e074dc1a60ea4f1cac3a8d6af",
+  "outputs": {
+    "report": "report.json",
+    "report_hash": "9b7c0afc134aef167baec16ff88a49f02b3b6d8062b129189bd6ce340f253ede",
+    "task_results": "task-results.jsonl",
+    "task_results_sha256": "3a32b29c5b0b15351c2965c07376ff66517e1a10eb0d02d6935ee0dcf028ef59"
+  },
+  "protocol_id": "step7-blind-development-v0.1",
+  "schema_version": 1,
+  "seed": 173205
+}

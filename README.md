@@ -78,8 +78,9 @@ Scientific Parallax 关注的是更早期的“认识论裂缝”：
 ## 当前状态
 
 项目目前已完成 **Step 0–3.5**、本地单账户自审计 Protocol Freeze，以及
-**Step 4 范式种群初版**、**Step 5 问题种群初版**和 **Step 6 共进化调度器初版**；
-尚未运行 Step 7 盲化挑战。
+**Step 4 范式种群初版**、**Step 5 问题种群初版**、**Step 6 共进化调度器初版**，
+以及 **Step 7 盲化开发挑战**。Step 7 按预注册规则得到 `stop`，因此未冻结策略、
+未打开最终世界，也不会自动进入 Step 8。
 
 Step 0 薄切片已经完成：
 
@@ -113,6 +114,8 @@ Step 0 薄切片已经完成：
 - 固定范式、只进化问题的 Step 5 对照，以及独立证据更新和预计—实际信息增益审计。
 - 预算/收敛驱动的双种群调度、三类问题生态位、Pareto 档案和动态候选证据重建；
 - 预测预注册、逐轮生命周期、哈希检查点、中断恢复，以及循环奖励和泄漏负控。
+- 六类测量移位、五种子和八实验臂的 Step 7 语义盲化开发挑战；
+- 独立真值排名、逐种子剔除敏感性分析、完整预算核算和 `go/redo/stop` 裁决。
 
 扩展后的本地 dry-run 已通过全部机制检查，Gate PF 已完成。30 个任务对
 30% 改善的模拟功效为
@@ -121,7 +124,14 @@ Step 0 薄切片已经完成：
 门槛。Linux amd64/arm64 确认性 runner 已发布、固定 OCI 摘要并完成摘要下
 画像。确认阶段已明确降级为本地单账户自审计：不再要求独立审查或独立保管，
 但结论不得称为独立确认。30 个最终任务已在仓库外完成承诺与双重哈希验证，
-Gate PF 已关闭；任务内容保持未打开，等待未来策略冻结后的一次性评估。
+Gate PF 已关闭；任务内容保持未打开。由于 Step 7 已触发 `stop`，当前协议不会
+创建策略冻结或执行这次一次性评估；封存承诺仅作为未访问记录保留。
+
+Step 7 的共进化与匹配 Bayesian 对照在唯一主终点上都需要 1.0 次查询，
+相对缩减为 0%，95% 分层 bootstrap 区间为 `[0, 0]`，低于 20% 门槛。
+主要原因是已知真结构从一开始就在 founder 候选池中，导致 top-5 终点饱和；
+同时冻结变异语法不能新增状态变量。该结果明确否证当前协议下的核心优势主张，
+不是一次可按原协议重跑的“不确定”结果。
 
 Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Scott
 开发基线见 [`docs/gray-scott-baseline.md`](docs/gray-scott-baseline.md)，
@@ -138,12 +148,15 @@ Step 5 实现与边界见
 [`docs/step5-question-evolution.md`](docs/step5-question-evolution.md)。
 Step 6 实现与边界见
 [`docs/step6-coevolution-scheduler.md`](docs/step6-coevolution-scheduler.md)。
+Step 7 设计、盲化边界与停止结论见
+[`docs/step7-blind-development-challenge.md`](docs/step7-blind-development-challenge.md)。
 审核后的开发结果见
 [`artifacts/gray_scott/reviewed-development-baseline.md`](artifacts/gray_scott/reviewed-development-baseline.md)
 、[`artifacts/protocol/reviewed-dry-run.md`](artifacts/protocol/reviewed-dry-run.md)
 、[`artifacts/step4/reviewed-paradigm-evolution.md`](artifacts/step4/reviewed-paradigm-evolution.md)
 、[`artifacts/step5/reviewed-question-evolution.md`](artifacts/step5/reviewed-question-evolution.md)
 、[`artifacts/step6/reviewed-coevolution.md`](artifacts/step6/reviewed-coevolution.md)
+、[`artifacts/step7/reviewed-blind-development.md`](artifacts/step7/reviewed-blind-development.md)
 和 [`artifacts/external-data/reviewed-the-well-validation.md`](artifacts/external-data/reviewed-the-well-validation.md)。
 
 ## 详细计划
