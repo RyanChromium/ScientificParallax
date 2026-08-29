@@ -1,0 +1,13 @@
+{
+  "digest": "sha256:d539bae216e82dc629e0ff1c46fda5ac6fa554f3e500c24673a0fc53c641cd72",
+  "image": "ghcr.io/ryanchromium/scientific-parallax-confirmatory",
+  "platforms": [
+    "linux/amd64",
+    "linux/arm64"
+  ],
+  "schema_version": 1,
+  "source_ref": "runner-v0.3.2",
+  "source_revision": "98dc5702110c83ad1e22bc74fb5eb3612bf1a442",
+  "version": "0.3.2",
+  "workflow_run_id": "33241658107"
+}
