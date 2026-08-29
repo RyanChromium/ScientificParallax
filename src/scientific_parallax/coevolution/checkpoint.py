@@ -35,7 +35,7 @@ def write_checkpoint(
     }
     checkpoint_hash = content_hash(body)
     path.write_text(
-        json.dumps({**body, "checkpoint_hash": checkpoint_hash}, indent=2, sort_keys=True) + "\n",
+        canonical_json({**body, "checkpoint_hash": checkpoint_hash}) + "\n",
         encoding="utf-8",
     )
     return checkpoint_hash
