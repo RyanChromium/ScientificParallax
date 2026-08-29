@@ -153,3 +153,17 @@ is sufficient for build and cost-profile diagnostics, but its local image ID is
 not recorded as the confirmatory runner digest. Gate PF requires publication of
 the exact final image and retention of its registry content digest; the base
 image digest must never be substituted for that identity.
+
+## ADR-011: World sealing precedes strategy freezing
+
+- Status: accepted before Protocol Freeze
+- Date: 2026-08-29
+- Applies to: Gate PF and final evaluation
+
+Gate PF occurs before Step 4 strategy development, so a final-world commitment
+cannot truthfully require the eventual strategy hash. The external custodian
+first commits schema-v2 world bytes to the frozen protocol hash. After strategy
+development and before the single final opening, a separate strategy-freeze
+record binds the strategy hash to the unchanged world-commitment hash. The
+evaluator verifies both records and includes both hashes in its exclusive access
+record. Changing either record after strategy freeze prevents evaluation.

@@ -40,12 +40,24 @@ class ExternalSealedEvaluator:
     def evaluate_once(self) -> dict[str, Any]:
         commitment_path = self.sealed_root / "commitment.json"
         commitment = json.loads(commitment_path.read_text(encoding="utf-8"))
-        if commitment.get("schema_version") != 1:
+        if commitment.get("schema_version") != 2:
             raise ValueError("unsupported sealed-world commitment schema")
         if commitment.get("protocol_hash") != self._protocol_hash:
             raise PermissionError("sealed-world commitment does not match the frozen protocol")
-        if commitment.get("strategy_hash") != self._strategy_hash:
-            raise PermissionError("sealed-world commitment does not match the frozen strategy")
+        if not commitment.get("world_hash"):
+            raise ValueError("sealed-world commitment requires a world hash")
+
+        commitment_hash = content_hash(commitment)
+        strategy_freeze_path = self.sealed_root / "strategy-freeze.json"
+        strategy_freeze = json.loads(strategy_freeze_path.read_text(encoding="utf-8"))
+        if strategy_freeze.get("schema_version") != 1:
+            raise ValueError("unsupported strategy-freeze schema")
+        if strategy_freeze.get("protocol_hash") != self._protocol_hash:
+            raise PermissionError("strategy freeze does not match the frozen protocol")
+        if strategy_freeze.get("strategy_hash") != self._strategy_hash:
+            raise PermissionError("strategy freeze does not match the evaluated strategy")
+        if strategy_freeze.get("world_commitment_hash") != commitment_hash:
+            raise PermissionError("strategy freeze does not match the sealed world commitment")
 
         access_path = self.sealed_root / "access-log.json"
         access = {
@@ -53,7 +65,8 @@ class ExternalSealedEvaluator:
             "opened_at_utc": datetime.now(UTC).isoformat(),
             "protocol_hash": self._protocol_hash,
             "strategy_hash": self._strategy_hash,
-            "commitment_hash": content_hash(commitment),
+            "commitment_hash": commitment_hash,
+            "strategy_freeze_hash": content_hash(strategy_freeze),
         }
         with access_path.open("x", encoding="utf-8") as stream:
             stream.write(json.dumps(access, indent=2, sort_keys=True) + "\n")

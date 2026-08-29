@@ -100,6 +100,14 @@ result record afterward, so a failed or repeated opening cannot silently become
 a second attempt. The actual external directory and world commitment do not yet
 exist; this mechanism is tested but Gate PF remains closed.
 
+Sealing is deliberately two-stage. At Gate PF, an external custodian creates a
+schema-v2 world commitment containing the protocol and world hashes, before any
+Step 4 strategy exists. Immediately before final evaluation, a separate
+strategy-freeze record binds the completed strategy hash to that unchanged
+world commitment. The evaluator verifies both hashes before creating its
+one-shot access record. This avoids requiring a future strategy hash when the
+world is first sealed.
+
 The Well test-split manifest pins the official repository revision, CC-BY-4.0
 dataset license, byte counts, and SHA-256 values for all six 2.65 GB shards.
 The gliders shard was downloaded outside Git and verified byte-for-byte. A
