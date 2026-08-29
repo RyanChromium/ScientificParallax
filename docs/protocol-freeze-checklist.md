@@ -35,7 +35,7 @@ synthetic dry-run passes all current checks. Gate PF has **not** been executed.
   hashes are pinned; a local arm64 candidate was built and profiled.
 - [x] A tag-triggered, commit-pinned GitHub Actions workflow can publish the
   exact multi-platform runner and emit a public machine-readable digest record.
-- [x] Runner `0.3.2` is published for Linux amd64/arm64, its OCI-index digest is
+- [x] Runner `0.3.3` is published for Linux amd64/arm64, its OCI-index digest is
   pinned, and the frozen task mix was profiled from the published digest.
 
 ## Remaining Gate PF blockers

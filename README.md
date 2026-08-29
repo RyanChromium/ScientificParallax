@@ -110,8 +110,8 @@ Step 0 薄切片已经完成：
 **ready for Protocol Freeze review**。30 个任务对 30% 改善的模拟功效为
 0.90。一个 2.65 GB 官方测试分片已按 SHA-256 验证；独立的九点/RK4
 路径相对五点/Euler 的一步外部 RMSE 改善 51.1%，并满足预声明绝对误差
-门槛。确认性 runner 已在本地候选镜像中画像，但最终可分发镜像摘要、
-最终封存世界和独立审查仍未完成，因此 Gate PF 继续保持关闭。
+门槛。Linux amd64/arm64 确认性 runner 已发布、固定 OCI 摘要并完成摘要下
+画像；最终封存世界和独立审查仍未完成，因此 Gate PF 继续保持关闭。
 
 Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Scott
 开发基线见 [`docs/gray-scott-baseline.md`](docs/gray-scott-baseline.md)，
