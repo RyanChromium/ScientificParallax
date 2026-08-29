@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "artifact_status": "reviewed_protocol_freeze_candidate_dry_run",
-  "code_revision": "656867fe0e1b367b933d2923eee68d1521dd8681",
+  "code_revision": "312aaf32c877fb6d7cdaf8c9b8ad06ca1c9914f1",
   "git_dirty": false,
-  "run_manifest_hash": "8c39130ff8822efce022768acd12c8611f5f8fe48e248d0986b47459db02eb13",
-  "report_hash": "7edb99d391e79f4426628da8bb2e002564c5039d63970d715fbedd2419837062",
+  "run_manifest_hash": "cfb9aeaf7d42ae03738f5df17369a5b9cdd15f2d2ca891bc479304d9aae391af",
+  "report_hash": "327a6436703bda5d61b0291b45a86765958c8a357b9997c5906717d4ecc19607",
   "protocol_id": "protocol-dry-run-v1",
-  "protocol_hash": "8a28aeae581f0e7d2820bddc590cfef63f0f4e0ab103b408d3a30749558ffb29",
+  "protocol_hash": "41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b",
   "status": "ready_for_protocol_freeze_review",
   "checks_passed": 22,
   "checks_failed": 0,
@@ -16,7 +16,7 @@
     "task_design": "5900730540ee715a40f973266069d707a8c0d2ad4452614811c18502c62ce6b5",
     "external_data_manifest": "5979c24511442a869076a0856a6513930755a4548c74942a61edae2f6dc98907",
     "external_fixture_manifest": "d512d2f933c1b670e19f2e050da2869a057f552370cc25a025a298a6228d047d",
-    "execution_environment": "237be66016c0335909bf17790462540a2eae78e5a98c29639f10974e7c4b8f02"
+    "execution_environment": "2f71c49c3af132f695f2608ed36656db6329b25713c252db1c4681c5cefc1959"
   },
   "power_analysis": [
     {"assumed_relative_effect": 0.20, "estimated_power": 0.00, "tasks": 30},
@@ -37,17 +37,17 @@
     "frozen_tasks": 30,
     "candidate_evaluation_ceiling": 4096,
     "projected_stencil_updates": 419430400.0,
-    "projected_cpu_hours_from_host_single_process_microbenchmark": 0.004553623331917657,
-    "projected_cpu_hours_from_published_container_microbenchmark": 0.004870021120231185
+    "projected_cpu_hours_from_host_single_process_microbenchmark": 0.004448378880818685,
+    "projected_cpu_hours_from_published_container_microbenchmark": 0.004857647786848247
   },
   "published_container_runner": {
     "platform": "linux/arm64",
-    "oci_index_digest": "sha256:56080a851d6dba6ea2008e6e441d29bcec2e72e4e06f3e6a9331dbcf56a13348",
-    "platform_manifest_digest": "sha256:94abd694f33ead99773bd32b910d6b25734bff360c9548174d2a562671ecc73a",
-    "loaded_image_id": "sha256:08f94187a4b934d0c5dcad7a1de0e13727fefc871ca8dadcaf89a94125a858e9",
-    "source_revision": "e51f9272ada5346daa22b4fe9ff6c285b0480ddc",
-    "report_hash": "6ac159ee6eb8d9fff0bc573cf87700262fb7fd097dc61357e692d50e9f7039cf",
-    "run_manifest_hash": "be4841cfa802f4552f6dcf951ee5f2e693c55fc747dd601f9c2de72266aca517",
+    "oci_index_digest": "sha256:d767d7ece6977d4900bd4b3ee505bf9d6a08a06f7a8ca15eb07f8e2ae301d250",
+    "platform_manifest_digest": "sha256:1178c7db2525d3b1cd177028135dcb480a54e03f0fbd4c94242008a264b2de55",
+    "loaded_image_id": "sha256:a4bbc2a9c1a17b883f8451812cc0dfcba457c730154cfbc50e6129602f568336",
+    "source_revision": "453dd9bdf0cc85d42d2e2f3e545f1d3a0685afcb",
+    "report_hash": "4c2584dc4e2068faab00c56e19495ddd494d18b859cfbe8abea603b76b871433",
+    "run_manifest_hash": "2075010133d397b7ff2025738e7ec7dabd713305210e4fc8650c19f099b0874b",
     "checks_passed": 22,
     "checks_failed": 0,
     "runner_image_pinned": true

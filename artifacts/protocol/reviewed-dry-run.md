@@ -1,12 +1,12 @@
 # Reviewed Protocol Freeze candidate dry-run
 
 Exact clean code revision:
-`656867fe0e1b367b933d2923eee68d1521dd8681`
+`312aaf32c877fb6d7cdaf8c9b8ad06ca1c9914f1`
 
 The expanded dry-run passed all 22 local mechanism checks. Its protocol hash is
-`8a28aeae581f0e7d2820bddc590cfef63f0f4e0ab103b408d3a30749558ffb29`.
+`41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b`.
 The write-once run manifest hash is
-`8c39130ff8822efce022768acd12c8611f5f8fe48e248d0986b47459db02eb13`.
+`cfb9aeaf7d42ae03738f5df17369a5b9cdd15f2d2ca891bc479304d9aae391af`.
 
 The reviewed additions are:
 
@@ -36,11 +36,11 @@ limit to exceed 20%, so 20% is the null boundary and 30% is the current
 design-detectable alternative. This distinction still needs independent review.
 
 The host frozen-mix microbenchmark projects 419,430,400 stencil updates and
-about 0.00455 single-process CPU hours at the 4,096-evaluation ceiling. The
+about 0.00445 single-process CPU hours at the 4,096-evaluation ceiling. The
 published Linux/arm64 runner passed the same 22 checks and projected about
-0.00487 CPU hours. The final multi-platform runner is pinned as
-`ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:56080a851d6dba6ea2008e6e441d29bcec2e72e4e06f3e6a9331dbcf56a13348`.
-Its source revision is `e51f9272ada5346daa22b4fe9ff6c285b0480ddc`.
+0.00486 CPU hours. The final multi-platform runner is pinned as
+`ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:d767d7ece6977d4900bd4b3ee505bf9d6a08a06f7a8ca15eb07f8e2ae301d250`.
+Its source revision is `453dd9bdf0cc85d42d2e2f3e545f1d3a0685afcb`.
 
 The exact The Well gliders shard passed all external numerical gates across 20
 trajectories. Nine-point/RK4 achieved RMSE `0.01717`, a 51.1% improvement over
