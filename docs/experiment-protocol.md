@@ -115,6 +115,13 @@ NumPy 2.5.2 wheels for Linux amd64 and arm64. The frozen task mix has run in a
 local arm64 candidate. This is not yet the final runner: Gate PF still requires
 publishing the exact image and recording its content digest.
 
+Pushing a `runner-v*` tag invokes the repository's pinned-action publication
+workflow. It builds both declared Linux platforms, publishes them as one OCI
+index in GitHub Container Registry, and attaches a machine-readable
+`runner-digest.json` to the corresponding public GitHub release. Only that
+published digest may populate `container_image_digest`; a local image ID or
+base-image digest is insufficient.
+
 ## Required dry-run controls
 
 - variable-renaming equivalence and structural-change non-equivalence;

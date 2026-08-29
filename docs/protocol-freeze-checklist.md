@@ -33,6 +33,8 @@ synthetic dry-run passes all current checks. Gate PF has **not** been executed.
   51.1% improvement over the primary method.
 - [x] The Python base-image digest, NumPy version, and Linux amd64/arm64 wheel
   hashes are pinned; a local arm64 candidate was built and profiled.
+- [x] A tag-triggered, commit-pinned GitHub Actions workflow can publish the
+  exact multi-platform runner and emit a public machine-readable digest record.
 
 ## Remaining Gate PF blockers
 
