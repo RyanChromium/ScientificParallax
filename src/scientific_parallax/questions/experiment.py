@@ -49,6 +49,7 @@ from scientific_parallax.worlds.gray_scott import (
 def run_step5_control(config_path: Path, output_dir: Path) -> dict[str, Any]:
     if output_dir.exists():
         raise FileExistsError(f"refusing to overwrite Step 5 output: {output_dir}")
+    environment = capture_environment(Path.cwd())
     output_dir.mkdir(parents=True)
     config = json.loads(config_path.read_text(encoding="utf-8"))
     if config.get("schema_version") != 1:
@@ -309,7 +310,6 @@ def run_step5_control(config_path: Path, output_dir: Path) -> dict[str, Any]:
     }
     report_path = output_dir / "report.json"
     report_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    environment = capture_environment(Path.cwd())
     identity = ExperimentIdentity(
         "step5-question-evolution-control-v1",
         config,
