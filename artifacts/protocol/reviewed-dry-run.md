@@ -1,12 +1,12 @@
 # Reviewed Protocol Freeze candidate dry-run
 
 Exact clean code revision:
-`6e117463f8bfaf92535c05040cd32bef60fab3b1`
+`656867fe0e1b367b933d2923eee68d1521dd8681`
 
 The expanded dry-run passed all 22 local mechanism checks. Its protocol hash is
-`2f1f59560946584cb12a2708877d4e38d7cff37d9e145ba9c4235cc9855b1312`.
+`8a28aeae581f0e7d2820bddc590cfef63f0f4e0ab103b408d3a30749558ffb29`.
 The write-once run manifest hash is
-`e9615d5c9f29cabcd28c4812212861ea13ed6409cbb7fe50f8cc4215888ef5bb`.
+`8c39130ff8822efce022768acd12c8611f5f8fe48e248d0986b47459db02eb13`.
 
 The reviewed additions are:
 
@@ -36,18 +36,21 @@ limit to exceed 20%, so 20% is the null boundary and 30% is the current
 design-detectable alternative. This distinction still needs independent review.
 
 The host frozen-mix microbenchmark projects 419,430,400 stencil updates and
-about 0.00437 single-process CPU hours at the 4,096-evaluation ceiling. A local
-Linux/arm64 candidate image passed the same 22 checks and projected about
-0.00481 CPU hours. Its local image ID is
-`sha256:c6d8787b17776dbffce7205119aa0392c731f5b8a0d2369aaa200e7615756f2f`;
-this is diagnostic and is deliberately not recorded as the final runner digest.
+about 0.00455 single-process CPU hours at the 4,096-evaluation ceiling. The
+published Linux/arm64 runner passed the same 22 checks and projected about
+0.00487 CPU hours. The final multi-platform runner is pinned as
+`ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:56080a851d6dba6ea2008e6e441d29bcec2e72e4e06f3e6a9331dbcf56a13348`.
+Its source revision is `e51f9272ada5346daa22b4fe9ff6c285b0480ddc`.
 
 The exact The Well gliders shard passed all external numerical gates across 20
 trajectories. Nine-point/RK4 achieved RMSE `0.01717`, a 51.1% improvement over
 five-point/Euler. The attributed CI fixture is independently bound into the
 protocol hash.
 
+Final-world sealing now has two explicit phases: Gate PF commits the world to
+the protocol before Step 4, then a separate strategy-freeze record binds the
+eventual strategy to that unchanged commitment immediately before evaluation.
+
 Status: **ready for Protocol Freeze review**, not frozen. Gate PF remains
-blocked until the final confirmatory runner is published and pinned, its profile
-is retained under that digest, final worlds are externally committed, and the
-statistical and protocol choices are independently accepted.
+blocked until final worlds are externally committed and the statistical and
+protocol choices are independently accepted.

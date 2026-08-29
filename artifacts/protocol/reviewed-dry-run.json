@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "artifact_status": "reviewed_protocol_freeze_candidate_dry_run",
-  "code_revision": "6e117463f8bfaf92535c05040cd32bef60fab3b1",
+  "code_revision": "656867fe0e1b367b933d2923eee68d1521dd8681",
   "git_dirty": false,
-  "run_manifest_hash": "e9615d5c9f29cabcd28c4812212861ea13ed6409cbb7fe50f8cc4215888ef5bb",
-  "report_hash": "8aef3ad2f84e17accbf8c38bcbe76c90289936b711c78fbd17362ea1bec45a63",
+  "run_manifest_hash": "8c39130ff8822efce022768acd12c8611f5f8fe48e248d0986b47459db02eb13",
+  "report_hash": "7edb99d391e79f4426628da8bb2e002564c5039d63970d715fbedd2419837062",
   "protocol_id": "protocol-dry-run-v1",
-  "protocol_hash": "2f1f59560946584cb12a2708877d4e38d7cff37d9e145ba9c4235cc9855b1312",
+  "protocol_hash": "8a28aeae581f0e7d2820bddc590cfef63f0f4e0ab103b408d3a30749558ffb29",
   "status": "ready_for_protocol_freeze_review",
   "checks_passed": 22,
   "checks_failed": 0,
@@ -16,7 +16,7 @@
     "task_design": "5900730540ee715a40f973266069d707a8c0d2ad4452614811c18502c62ce6b5",
     "external_data_manifest": "5979c24511442a869076a0856a6513930755a4548c74942a61edae2f6dc98907",
     "external_fixture_manifest": "d512d2f933c1b670e19f2e050da2869a057f552370cc25a025a298a6228d047d",
-    "execution_environment": "cb5d8e40499acd66ad6657d66ab5d3d85b6b47cf1687ddaecd5b11fca5d8d956"
+    "execution_environment": "237be66016c0335909bf17790462540a2eae78e5a98c29639f10974e7c4b8f02"
   },
   "power_analysis": [
     {"assumed_relative_effect": 0.20, "estimated_power": 0.00, "tasks": 30},
@@ -37,16 +37,20 @@
     "frozen_tasks": 30,
     "candidate_evaluation_ceiling": 4096,
     "projected_stencil_updates": 419430400.0,
-    "projected_cpu_hours_from_host_single_process_microbenchmark": 0.004367171128590901,
-    "projected_cpu_hours_from_local_container_microbenchmark": 0.004810618880049636
+    "projected_cpu_hours_from_host_single_process_microbenchmark": 0.004553623331917657,
+    "projected_cpu_hours_from_published_container_microbenchmark": 0.004870021120231185
   },
-  "local_container_candidate": {
+  "published_container_runner": {
     "platform": "linux/arm64",
-    "image_id": "sha256:c6d8787b17776dbffce7205119aa0392c731f5b8a0d2369aaa200e7615756f2f",
-    "source_revision": "2d144c3e1b8f85e963165a145a81418342db2740",
+    "oci_index_digest": "sha256:56080a851d6dba6ea2008e6e441d29bcec2e72e4e06f3e6a9331dbcf56a13348",
+    "platform_manifest_digest": "sha256:94abd694f33ead99773bd32b910d6b25734bff360c9548174d2a562671ecc73a",
+    "loaded_image_id": "sha256:08f94187a4b934d0c5dcad7a1de0e13727fefc871ca8dadcaf89a94125a858e9",
+    "source_revision": "e51f9272ada5346daa22b4fe9ff6c285b0480ddc",
+    "report_hash": "6ac159ee6eb8d9fff0bc573cf87700262fb7fd097dc61357e692d50e9f7039cf",
+    "run_manifest_hash": "be4841cfa802f4552f6dcf951ee5f2e693c55fc747dd601f9c2de72266aca517",
     "checks_passed": 22,
     "checks_failed": 0,
-    "runner_image_pinned": false
+    "runner_image_pinned": true
   },
   "external_validation": {
     "source_shard_sha256": "b22d51b7f1b33743934b608d94f845f458dd480fac4ee981cc516fb9170ff4e9",
@@ -56,8 +60,6 @@
     "passed": true
   },
   "remaining_gate_pf_blockers": [
-    "publish and pin the final confirmatory runner image digest",
-    "retain the frozen-mix profile under that published runner digest",
     "prepare final world commitment and access directory outside the development tree",
     "independently review the 30% design-detectable effect versus the 20% null boundary",
     "independently review numerical, survival, niche, generator, and accounting rules"
