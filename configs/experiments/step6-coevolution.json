@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "strategy_version": "step6-coevolution-v0.1",
+  "seed": 141421,
+  "protocol_config": "configs/experiments/protocol-dry-run.json",
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "max_world_queries": 4,
+  "minimum_world_queries": 4,
+  "convergence_patience": 3,
+  "convergence_top_k": 3,
+  "eig_samples": 48,
+  "question_niche_capacity": 2,
+  "max_question_candidates_per_round": 48,
+  "max_question_generation_attempts": 160,
+  "minimum_disagreement": 1e-12,
+  "minimum_expected_information_gain": 1e-12,
+  "initial_paradigm_niches": {
+    "current_predictive_best": 4,
+    "minimum_description": 4,
+    "validated_structure_gain": 4
+  },
+  "question_mutations": [
+    "feed_low",
+    "feed_high",
+    "kill_low",
+    "kill_high",
+    "cycle_initial_family",
+    "toggle_boundary",
+    "toggle_pulse",
+    "sampling_frequency",
+    "downsample",
+    "mix_channels"
+  ],
+  "patch_cost_weights": {
+    "new_entity": 8.0,
+    "new_parameter": 4.0,
+    "special_condition": 6.0,
+    "scope_contraction": 10.0,
+    "preregistration_violation": 100.0
+  },
+  "question_cost_weights": {
+    "simulation": 0.000001,
+    "measurement": 0.0001,
+    "intervention": 0.25
+  },
+  "fixed_probes": [
+    {
+      "feed": 0.030,
+      "kill": 0.062,
+      "initial_family": "center_square",
+      "initial_seed": 61001,
+      "grid_size": 16,
+      "steps": 20,
+      "boundary": "periodic"
+    },
+    {
+      "feed": 0.045,
+      "kill": 0.060,
+      "initial_family": "two_spots",
+      "initial_seed": 61002,
+      "grid_size": 16,
+      "steps": 20,
+      "boundary": "reflecting"
+    }
+  ],
+  "seed_questions": [
+    {
+      "label": "co-evolution central seed",
+      "feed": 0.035,
+      "kill": 0.060,
+      "initial_family": "center_square",
+      "initial_seed": 62001,
+      "grid_size": 16,
+      "steps": 25,
+      "boundary": "periodic",
+      "noise_std": 0.006
+    },
+    {
+      "label": "co-evolution boundary seed",
+      "feed": 0.045,
+      "kill": 0.063,
+      "initial_family": "two_spots",
+      "initial_seed": 62002,
+      "grid_size": 16,
+      "steps": 25,
+      "boundary": "reflecting",
+      "noise_std": 0.006
+    },
+    {
+      "label": "co-evolution stripe seed",
+      "feed": 0.025,
+      "kill": 0.055,
+      "initial_family": "stripe",
+      "initial_seed": 62003,
+      "grid_size": 16,
+      "steps": 25,
+      "boundary": "periodic",
+      "noise_std": 0.006
+    }
+  ]
+}

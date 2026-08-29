@@ -23,6 +23,7 @@ from scientific_parallax.protocol.paradigm_ir import LawTerm, ParadigmIR
 from scientific_parallax.worlds.gray_scott import (
     GrayScottExperiment,
     GrayScottWorld,
+    _apply_pulse,
     _initial_state,
     _laplacian_periodic,
     _laplacian_reflecting,
@@ -178,6 +179,14 @@ def phenotype_on_probes(
     return ParadigmPhenotype(tuple(signature), probe_set_hash)
 
 
+def summary_on_experiment(
+    genotype: ParadigmGenotype,
+    experiment: GrayScottExperiment,
+) -> tuple[float, ...]:
+    """Predict one executable question without access to its realized outcome."""
+    return _simulate_summary(genotype, experiment)
+
+
 def world_phenotype_on_probes(
     probes: tuple[GrayScottExperiment, ...],
 ) -> ParadigmPhenotype:
@@ -208,7 +217,13 @@ def _simulate_summary(
     )
     state = {variable_names[0]: u, variable_names[1]: v}
     laplacian = _laplacian_periodic if experiment.boundary == "periodic" else _laplacian_reflecting
-    for _ in range(experiment.steps):
+    for step in range(1, experiment.steps + 1):
+        if experiment.intervention is not None and step == experiment.intervention.at_step:
+            _apply_pulse(
+                state[variable_names[0]],
+                state[variable_names[1]],
+                experiment.intervention,
+            )
         derivatives = {name: np.zeros_like(value) for name, value in state.items()}
         for term in genotype.ir.terms:
             basis = _term_basis(term, state, laplacian, experiment)
@@ -217,9 +232,13 @@ def _simulate_summary(
             name: np.clip(value + experiment.dt * derivatives[name], 0.0, 1.5)
             for name, value in state.items()
         }
+    ordered_state = np.stack([state[name] for name in variable_names])
+    measurement = experiment.measurement
+    mixed = np.einsum("ij,jxy->ixy", np.asarray(measurement.mixing), ordered_state)
+    mixed = mixed[:, :: measurement.downsample, :: measurement.downsample]
     features: list[float] = []
-    for name in variable_names:
-        final = state[name]
+    for channel_index in measurement.visible_channels:
+        final = mixed[channel_index]
         mean = float(np.mean(final))
         standard_deviation = float(np.std(final))
         gy, gx = np.gradient(final)

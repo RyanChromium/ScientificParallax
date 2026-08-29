@@ -38,6 +38,24 @@ class BudgetLedger:
         self._candidate_evaluations = 0
         self._candidate_evaluation_cache_hits = 0
 
+    @classmethod
+    def resume(cls, limits: BudgetLimits, snapshot: BudgetSnapshot) -> BudgetLedger:
+        values = asdict(snapshot)
+        if min(values.values()) < 0:
+            raise ValueError("budget snapshot counts cannot be negative")
+        if (
+            snapshot.world_queries > limits.world_queries
+            or snapshot.candidate_generations > limits.candidate_generations
+            or snapshot.candidate_evaluations > limits.candidate_evaluations
+        ):
+            raise ValueError("budget snapshot exceeds its declared limits")
+        ledger = cls(limits)
+        ledger._world_queries = snapshot.world_queries
+        ledger._candidate_generations = snapshot.candidate_generations
+        ledger._candidate_evaluations = snapshot.candidate_evaluations
+        ledger._candidate_evaluation_cache_hits = snapshot.candidate_evaluation_cache_hits
+        return ledger
+
     @property
     def snapshot(self) -> BudgetSnapshot:
         return BudgetSnapshot(

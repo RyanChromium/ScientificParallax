@@ -51,8 +51,12 @@ def posterior_for_outcome(
     posterior: dict[str, float],
     predictions: dict[str, NDArray[np.float64]],
     outcome: NDArray[np.float64],
+    *,
+    noise: NDArray[np.float64] | None = None,
 ) -> dict[str, float]:
-    noise = summary_noise(len(outcome))
+    noise = summary_noise(len(outcome)) if noise is None else np.asarray(noise, dtype=float)
+    if noise.shape != outcome.shape or not np.all(np.isfinite(noise)) or np.any(noise <= 0.0):
+        raise ValueError("likelihood noise must be finite, positive, and match the outcome")
     log_values: dict[str, float] = {}
     for paradigm_id, prediction in predictions.items():
         residual = (outcome - prediction) / noise
@@ -70,6 +74,7 @@ def expected_information_gain(
     *,
     samples: int,
     seed: int,
+    noise: NDArray[np.float64] | None = None,
 ) -> float:
     if samples < 8:
         raise ValueError("expected-information-gain sampling requires at least 8 draws")
@@ -77,14 +82,19 @@ def expected_information_gain(
     probabilities = np.asarray([posterior[item] for item in ids], dtype=float)
     target_mass = float(probabilities.sum())
     probabilities /= target_mass
-    noise = summary_noise(len(next(iter(predictions.values()))))
+    dimension = len(next(iter(predictions.values())))
+    noise = summary_noise(dimension) if noise is None else np.asarray(noise, dtype=float)
+    if noise.shape != (dimension,) or not np.all(np.isfinite(noise)) or np.any(noise <= 0.0):
+        raise ValueError("expected-information-gain noise is malformed")
     rng = np.random.default_rng(seed)
     expected_entropy = 0.0
     restricted_prior = {item: posterior[item] / target_mass for item in ids}
     for _ in range(samples):
         source = ids[int(rng.choice(len(ids), p=probabilities))]
         outcome = predictions[source] + rng.normal(0.0, noise)
-        expected_entropy += entropy(posterior_for_outcome(restricted_prior, predictions, outcome))
+        expected_entropy += entropy(
+            posterior_for_outcome(restricted_prior, predictions, outcome, noise=noise)
+        )
     prior_entropy = entropy(restricted_prior)
     return min(prior_entropy, max(0.0, prior_entropy - expected_entropy / samples))
 
@@ -92,12 +102,16 @@ def expected_information_gain(
 def predicted_disagreement(
     posterior: dict[str, float],
     predictions: dict[str, NDArray[np.float64]],
+    *,
+    noise: NDArray[np.float64] | None = None,
 ) -> float:
     ids = sorted(predictions)
     probabilities = np.asarray([posterior[item] for item in ids], dtype=float)
     probabilities /= probabilities.sum()
     values = np.stack([predictions[item] for item in ids])
-    noise = summary_noise(values.shape[1])
+    noise = summary_noise(values.shape[1]) if noise is None else np.asarray(noise, dtype=float)
+    if noise.shape != (values.shape[1],) or not np.all(np.isfinite(noise)) or np.any(noise <= 0.0):
+        raise ValueError("disagreement noise is malformed")
     scaled = values / noise
     center = np.average(scaled, axis=0, weights=probabilities)
     return float(np.sum(probabilities[:, None] * (scaled - center) ** 2))

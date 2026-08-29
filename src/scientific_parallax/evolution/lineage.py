@@ -38,6 +38,15 @@ class LineageLedger:
         self._previous_hash = "0" * 64
         self._next_index = 0
 
+    @classmethod
+    def resume(cls, path: Path) -> LineageLedger:
+        rebuilt = rebuild_lineage(path)
+        ledger = cls.__new__(cls)
+        ledger.path = path
+        ledger._previous_hash = rebuilt.ledger_hash
+        ledger._next_index = rebuilt.event_count
+        return ledger
+
     def _append(self, event_type: str, payload: dict[str, Any]) -> str:
         body = {
             "schema_version": 1,
