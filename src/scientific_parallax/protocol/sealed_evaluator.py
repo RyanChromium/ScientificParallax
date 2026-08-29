@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from scientific_parallax.core.reproducibility import content_hash
+from scientific_parallax.protocol.final_world import verify_local_final_world
 
 
 class ExternalSealedEvaluator:
@@ -25,6 +26,7 @@ class ExternalSealedEvaluator:
     ) -> None:
         self.sealed_root = sealed_root.resolve()
         development_root = development_root.resolve()
+        self._development_root = development_root
         inside_development = (
             self.sealed_root == development_root
             or self.sealed_root.is_relative_to(development_root)
@@ -46,6 +48,11 @@ class ExternalSealedEvaluator:
             raise PermissionError("sealed-world commitment does not match the frozen protocol")
         if not commitment.get("world_hash"):
             raise ValueError("sealed-world commitment requires a world hash")
+        verify_local_final_world(
+            sealed_root=self.sealed_root,
+            expected_protocol_hash=self._protocol_hash,
+            development_root=self._development_root,
+        )
 
         commitment_hash = content_hash(commitment)
         strategy_freeze_path = self.sealed_root / "strategy-freeze.json"

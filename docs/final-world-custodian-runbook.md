@@ -1,65 +1,77 @@
-# Final-world custodian runbook
+# Local final-world sealing runbook
 
-Status: instructions for an external custodian. Do not generate or place final
-world bytes in this repository or in a directory visible during development.
+Status: procedure for the explicitly chosen
+`local_single_account_self_audit` assurance mode. This mode preserves ordering,
+hash integrity, and one-shot evaluation, but it does not provide independent
+review or independent custody.
 
-## Separation of duties
+## Assurance boundary
 
-The custodian should be a person or service separate from strategy development.
-They receive the frozen protocol hash and final-task generation specification,
-create the task instances under a separately controlled external root, and
-return only the commitment record. Developers must not receive task seeds,
-world bytes, hidden labels, or previews before the one-shot evaluation.
-
-Current protocol hash:
-`41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b`.
+The same local user develops the strategy and stores the final-world bundle.
+The final directory must still be outside the repository. The tool does not
+print hidden initial-state or measurement seeds, makes committed task files
+read-only, and refuses to overwrite an existing bundle. These controls prevent
+accidental preview, regeneration, and silent reuse; the local user can override
+them and must not describe the resulting evidence as independently confirmed.
 
 ## Gate PF world commitment
 
-At Gate PF, before Step 4 strategy development, the custodian creates the final
-task files and a deterministic manifest of every relative path, byte count, and
-SHA-256. Hash that manifest as `world_hash`, then place this record alongside
-the inaccessible world files:
+After the final runner digest and protocol hash are fixed, but before Step 4
+strategy development, run:
 
-```json
-{
-  "schema_version": 2,
-  "protocol_hash": "41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b",
-  "world_hash": "<lowercase SHA-256 of the deterministic world manifest>"
-}
+```bash
+uv run scientific-parallax protocol seal-world \
+  --config configs/experiments/protocol-dry-run.json \
+  --output /Users/ran/ScientificParallax-FinalWorld-v1 \
+  --development-root /Users/ran/Project/ScientificParallax \
+  --acknowledge-local-self-audit
 ```
 
-The external root must not be equal to or nested beneath the development
-repository. Access should be denied to the development process until the final
-evaluation ceremony. The custodian retains the unhashed manifest privately so
-the evaluated bytes can later be checked against `world_hash`.
+The generator draws a fresh 32-byte local secret, derives separate initial and
+measurement seeds with HMAC-SHA-256, and writes 30 task descriptors. It does
+not retain the secret. `manifest.json` binds every relative path, byte count,
+and SHA-256; `commitment.json` binds the canonical manifest hash to the frozen
+protocol and the local self-audit assurance mode.
+
+Verify the result without printing task contents:
+
+```bash
+uv run scientific-parallax protocol verify-world \
+  --root /Users/ran/ScientificParallax-FinalWorld-v1 \
+  --protocol-hash <frozen-protocol-hash> \
+  --development-root /Users/ran/Project/ScientificParallax
+```
+
+Keep only the verification summary and commitment in normal project records.
+Do not inspect files below `tasks/` before the one-shot evaluation.
 
 ## Later strategy freeze
 
-After Steps 4–7 are complete, but before final-world access, freeze the exact
-strategy source/configuration hash. Create `strategy-freeze.json` in the
-external root:
+After Steps 4–7, freeze the exact strategy source/configuration hash and create
+`strategy-freeze.json` in the final-world root:
 
 ```json
 {
   "schema_version": 1,
-  "protocol_hash": "41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b",
+  "protocol_hash": "<frozen protocol SHA-256>",
   "strategy_hash": "<frozen strategy SHA-256>",
   "world_commitment_hash": "<canonical content hash of commitment.json>"
 }
 ```
 
-The strategy-freeze record binds a future strategy to the world already sealed
-at Gate PF; it does not permit regenerating or changing that world.
+The strategy-freeze record binds the future strategy to the already committed
+world. Regenerating the world requires a new protocol run and must not replace
+the existing directory.
 
 ## One-shot opening
 
-The evaluator verifies both records before writing `access-log.json` with
-exclusive-create semantics. It writes the access record before reading final
-evidence, then writes `result.json` exactly once. A missing, mismatched, or
-modified commitment; repeated access; or strategy mismatch must stop the run.
+The evaluator rehashes every committed task before creating `access-log.json`.
+It then verifies the strategy-freeze record, writes the access record with
+exclusive-create semantics, evaluates once, and writes `result.json` once. A
+changed file, mismatched hash, repeated access, or different strategy stops the
+run.
 
-The custodian should retain the final directory, permissions audit, commitment,
-strategy freeze, access log, result, and runner digest as one immutable evidence
-bundle. If any pre-access integrity check fails, do not repair the bundle in
-place; record the failure and return to Protocol Freeze review.
+Retain the final directory, commitment, strategy freeze, access log, result,
+protocol hash, and runner digest as one evidence bundle. If a pre-access check
+fails, preserve the failed bundle and return to Protocol Freeze instead of
+repairing it in place.

@@ -1,7 +1,7 @@
 # Step 3.5 protocol candidate and dry-run
 
-Status: ready for review before Protocol Freeze. Nothing in this document opens
-or defines the future final sealed Gray–Scott worlds.
+Status: ready for local single-account Protocol Freeze. Nothing in this
+document opens the future final sealed Gray–Scott worlds.
 
 ## Frozen-candidate components
 
@@ -45,9 +45,10 @@ Final evidence is owned by a separate `ProtocolGate`. It cannot be accessed
 before the protocol and strategy hash are frozen, rejects a different strategy
 hash, and can be opened only once.
 
-The state machine is a software guardrail, not a security sandbox. Final-world
-data must additionally be stored outside normal development paths before Gate
-PF.
+The state machine is a software guardrail, not a security sandbox. The selected
+assurance mode is explicitly local and self-audited: final-world data remains
+outside normal development paths, but the same operating-system account can
+override permissions. Results cannot be described as independently confirmed.
 
 The candidate sets dormancy after two sub-viability checkpoints and death after
 four; a declared hard contradiction causes immediate death. Viability requires
@@ -95,18 +96,18 @@ Evidence ledgers can resume after a completed observation or after interruption
 between preregistration and observation while preserving the hash chain.
 
 The final evaluator requires a pre-committed directory outside the development
-tree. It writes an exclusive access record before evaluation and an exclusive
-result record afterward, so a failed or repeated opening cannot silently become
-a second attempt. The actual external directory and world commitment do not yet
-exist; this mechanism is tested but Gate PF remains closed.
+tree. The local provisioner derives 30 hidden task and measurement seeds from a
+fresh 32-byte secret, writes deterministic JSON task descriptors, and commits a
+manifest of paths, sizes, and file hashes. The verifier rehashes all bytes before
+the evaluator writes an exclusive access record and result record. The actual
+directory and commitment do not yet exist; Gate PF therefore remains closed.
 
-Sealing is deliberately two-stage. At Gate PF, an external custodian creates a
-schema-v2 world commitment containing the protocol and world hashes, before any
-Step 4 strategy exists. Immediately before final evaluation, a separate
-strategy-freeze record binds the completed strategy hash to that unchanged
-world commitment. The evaluator verifies both hashes before creating its
-one-shot access record. This avoids requiring a future strategy hash when the
-world is first sealed.
+Sealing is deliberately two-stage. At Gate PF, the local user creates a
+schema-v2 world commitment containing the protocol, assurance-mode, generator,
+task-count, and world hashes before any Step 4 strategy exists. Immediately
+before final evaluation, a separate strategy-freeze record binds the completed
+strategy hash to that unchanged commitment. The evaluator verifies the full
+manifest and both records before creating its one-shot access record.
 
 The Well test-split manifest pins the official repository revision, CC-BY-4.0
 dataset license, byte counts, and SHA-256 values for all six 2.65 GB shards.
@@ -150,7 +151,7 @@ uv run scientific-parallax protocol dry-run \
   --output artifacts/protocol/runs/development
 ```
 
-Passing the dry-run means the local protocol mechanisms are ready for
-adversarial review. Gate PF still requires a published and digest-pinned final
-runner image, an externally prepared final-world commitment, and independent
-acceptance of the power design and numerical/protocol choices.
+Passing the dry-run means the mechanisms are ready for local Protocol Freeze.
+Gate PF still requires the updated published runner digest and a verified local
+final-world commitment outside the repository. The statistical and protocol
+choices are accepted under self-audit only.

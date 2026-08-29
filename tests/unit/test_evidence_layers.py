@@ -19,6 +19,7 @@ def _config() -> dict[str, object]:
     return {
         "schema_version": 1,
         "protocol_id": "test",
+        "assurance_mode": "local_single_account_self_audit",
         "primary_endpoint": "endpoint",
         "ranking_threshold_k": 2,
         "persistence_checkpoints": 3,
@@ -39,6 +40,14 @@ def _config() -> dict[str, object]:
             "maximum_candidates_per_task": 2,
         },
         "task_design": {"seeds_per_cluster": 5, "grid_size": 32, "steps": 100},
+        "final_world_design": {
+            "generator_version": "sealed-gray-scott-v1",
+            "tasks_per_cluster": 5,
+            "secret_bytes": 32,
+            "seed_derivation": "hmac-sha256-protocol-cluster-index-v1",
+            "task_format": "gray-scott-experiment-json-v1",
+            "commitment_rule": "canonical-manifest-content-hash-v1",
+        },
         "external_data_manifest": "data/manifests/the-well-gray-scott-test-v1.json",
         "external_fixture_manifest": "data/manifests/the-well-gray-scott-mini-v1.json",
         "execution_environment_spec": "configs/environments/confirmatory-v1.json",

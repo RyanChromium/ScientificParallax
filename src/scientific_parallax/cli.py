@@ -11,6 +11,10 @@ from scientific_parallax.baselines.gray_scott import (
     run_gray_scott_benchmark,
 )
 from scientific_parallax.protocol.dry_run import run_protocol_dry_run
+from scientific_parallax.protocol.final_world import (
+    provision_local_final_world,
+    verify_local_final_world,
+)
 from scientific_parallax.step0.benchmark import run_benchmark
 from scientific_parallax.step0.experiment import ExperimentConfig, run_experiment
 from scientific_parallax.step0.ledger import verify_ledger
@@ -49,6 +53,19 @@ def _parser() -> argparse.ArgumentParser:
     dry_run = protocol_action.add_parser("dry-run", help="run Step 3.5 synthetic diagnostics")
     dry_run.add_argument("--config", type=Path, required=True)
     dry_run.add_argument("--output", type=Path, required=True)
+    seal_world = protocol_action.add_parser(
+        "seal-world", help="create a local single-account final-world commitment"
+    )
+    seal_world.add_argument("--config", type=Path, required=True)
+    seal_world.add_argument("--output", type=Path, required=True)
+    seal_world.add_argument("--development-root", type=Path, default=Path.cwd())
+    seal_world.add_argument("--acknowledge-local-self-audit", action="store_true")
+    verify_world = protocol_action.add_parser(
+        "verify-world", help="verify a local final-world commitment"
+    )
+    verify_world.add_argument("--root", type=Path, required=True)
+    verify_world.add_argument("--protocol-hash", required=True)
+    verify_world.add_argument("--development-root", type=Path, default=Path.cwd())
     return parser
 
 
@@ -65,7 +82,25 @@ def main() -> None:
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.command == "protocol":
-        report = run_protocol_dry_run(args.config, args.output)
+        if args.protocol_action == "dry-run":
+            report = run_protocol_dry_run(args.config, args.output)
+        elif args.protocol_action == "seal-world":
+            if not args.acknowledge_local_self_audit:
+                raise SystemExit(
+                    "seal-world requires --acknowledge-local-self-audit because this mode "
+                    "does not provide independent custody"
+                )
+            report = provision_local_final_world(
+                config_path=args.config,
+                output_root=args.output,
+                development_root=args.development_root,
+            )
+        else:
+            report = verify_local_final_world(
+                sealed_root=args.root,
+                expected_protocol_hash=args.protocol_hash,
+                development_root=args.development_root,
+            )
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.action == "verify-ledger":

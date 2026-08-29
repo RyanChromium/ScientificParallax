@@ -1,7 +1,8 @@
 # Protocol Freeze review checklist
 
-Step 3.5 and the local pre-freeze hardening pass are implemented. The expanded
-synthetic dry-run passes all current checks. Gate PF has **not** been executed.
+Step 3.5 and the local pre-freeze hardening pass are implemented. The protocol
+now explicitly uses local single-account self-audit. Gate PF has **not** been
+executed.
 
 ## Resolved locally
 
@@ -37,16 +38,17 @@ synthetic dry-run passes all current checks. Gate PF has **not** been executed.
   exact multi-platform runner and emit a public machine-readable digest record.
 - [x] Runner `0.3.4` is published for Linux amd64/arm64, its OCI-index digest is
   pinned, and the frozen task mix was profiled from the published digest.
+- [x] Independent review and custody are explicitly waived; results must be
+  labelled local self-audited and not independently confirmed.
+- [x] The final-world generation rule, random-seed derivation, task format, and
+  manifest commitment are bound into the protocol hash.
+- [x] A local provisioner refuses repository paths and overwrites; its verifier
+  rehashes all 30 tasks before one-shot evaluation.
 
-## Remaining Gate PF blockers
+## Remaining Gate PF blocker
 
-- [ ] Independently accept or revise the statistical design: a true 30%
-  reduction has estimated power 0.90, while an effect exactly at the 20% null
-  boundary is not expected to pass a lower-confidence-limit-above-20% test.
-- [ ] Define and generate final sealed task instances outside the repository,
-  create their commitment, and provision the external access directory.
-- [ ] Obtain independent review of the numerical tolerances, survival values,
-  niche capacities, generator grammar, and exact budget-accounting language.
+- [ ] Publish and pin the updated runner, then generate and verify the 30 local
+  final task instances outside the repository.
 
-Until every unchecked item is resolved, the correct status is **ready for
-Protocol Freeze review**, not frozen and not ready for final-world access.
+Until the unchecked item is resolved, the correct status is **ready for local
+Protocol Freeze**, not frozen and not ready for final-world access.

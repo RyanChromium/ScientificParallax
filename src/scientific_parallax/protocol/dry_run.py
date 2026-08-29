@@ -79,6 +79,21 @@ def validate_protocol_config(config: dict[str, Any]) -> None:
     power = config["power_design"]
     if power["design_detectable_effect"] not in power["assumed_relative_effects"]:
         raise ValueError("detectable effect must be included in the simulated power curve")
+    if config.get("assurance_mode") != "local_single_account_self_audit":
+        raise ValueError("protocol must explicitly declare the local self-audit assurance mode")
+    final_world = config["final_world_design"]
+    if final_world.get("generator_version") != "sealed-gray-scott-v1":
+        raise ValueError("unsupported final-world generator")
+    if final_world.get("tasks_per_cluster") != config["task_design"]["seeds_per_cluster"]:
+        raise ValueError("final-world task count must match the power design")
+    if final_world.get("secret_bytes", 0) < 32:
+        raise ValueError("final-world seed secret must contain at least 32 random bytes")
+    if final_world.get("seed_derivation") != "hmac-sha256-protocol-cluster-index-v1":
+        raise ValueError("unsupported final-world seed derivation")
+    if final_world.get("task_format") != "gray-scott-experiment-json-v1":
+        raise ValueError("unsupported final-world task format")
+    if final_world.get("commitment_rule") != "canonical-manifest-content-hash-v1":
+        raise ValueError("unsupported final-world commitment rule")
 
 
 def gray_scott_ir(paradigm_id: str, u_name: str = "u", v_name: str = "v") -> ParadigmIR:
@@ -120,9 +135,11 @@ def protocol_spec_from_config(config: dict[str, Any]) -> ProtocolSpec:
         candidate_generator_hash=candidate_generator.spec_hash,
         measurement_cluster_hash=cluster_hash,
         task_design_hash=task_design_hash,
+        final_world_design_hash=content_hash(config["final_world_design"]),
         external_data_manifest_hash=content_hash(external_manifest),
         external_fixture_manifest_hash=content_hash(external_fixture_manifest),
         execution_environment_hash=content_hash(environment_lock),
+        assurance_mode=config["assurance_mode"],
         equivalence_rule="canonical finite-variable permutations plus equal intervention behavior",
         evidence_update_rule="fixed calibrated likelihood owned by EvidenceEngine",
         noise_calibration_rule=(
@@ -331,6 +348,8 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
         ),
         "task_design_bound_to_protocol": spec.task_design_hash
         == content_hash([asdict(task) for task in task_design]),
+        "final_world_design_bound_to_protocol": spec.final_world_design_hash
+        == content_hash(config["final_world_design"]),
         "external_manifest_bound_to_protocol": spec.external_data_manifest_hash
         == content_hash(load_dataset_manifest(Path(config["external_data_manifest"]))),
         "external_fixture_bound_to_protocol": spec.external_fixture_manifest_hash
@@ -346,9 +365,8 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
         and accounting.snapshot.candidate_evaluation_cache_hits == 1,
     }
     protocol_freeze_blockers = [
-        "prepare final world commitment and access directory outside the development tree",
-        "independently review the 30% design-detectable effect versus the 20% null boundary",
-        "independently review numerical, survival, niche, generator, and accounting rules",
+        "create and verify the local single-account final-world commitment "
+        "outside the development tree",
     ]
     if not environment_matches["runner_image_pinned"]:
         protocol_freeze_blockers.insert(
@@ -362,7 +380,7 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
         )
     report = {
         "schema_version": 1,
-        "status": "ready_for_protocol_freeze_review" if all(checks.values()) else "redo",
+        "status": "ready_for_local_protocol_freeze" if all(checks.values()) else "redo",
         "scope": "development worlds and synthetic truth only",
         "protocol_hash": spec.protocol_hash,
         "checks": checks,
@@ -417,7 +435,9 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
         },
         "protocol_freeze_candidate": asdict(spec),
         "warning": (
-            "This dry run does not open or define the future final sealed Gray–Scott worlds."
+            "This self-audited dry run does not open or define the future final sealed "
+            "Gray–Scott worlds. Local single-account custody prevents accidental reuse but "
+            "does not provide independent assurance."
         ),
         "protocol_freeze_blockers": protocol_freeze_blockers,
     }

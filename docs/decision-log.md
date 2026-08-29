@@ -87,7 +87,7 @@ confirmatory evaluation.
 
 ## ADR-006: Protocol candidate uses six clusters and a 30% detectable alternative
 
-- Status: proposed for independent Protocol Freeze review
+- Status: accepted under local self-audit
 - Date: 2026-08-29
 - Applies to: Gate PF candidate
 
@@ -95,12 +95,12 @@ The design uses six parameter/measurement clusters with five independent seeds
 each. Its success rule remains a 95% lower confidence limit above a 20% relative
 query reduction. Simulation estimates power 0.00 at a true 20% effect, 0.90 at
 30%, and 1.00 at 40%. This is expected at the null boundary, but makes 30%—not
-20%—the design-detectable alternative. Gate PF requires explicit independent
-acceptance of that distinction.
+20%—the design-detectable alternative. The distinction is accepted for the
+local self-audited run and remains an explicit limitation.
 
 ## ADR-007: Numerical replication couples a different stencil and integrator
 
-- Status: proposed for independent Protocol Freeze review
+- Status: accepted under local self-audit
 - Date: 2026-08-29
 - Applies to: Gate PF candidate
 
@@ -113,7 +113,7 @@ to avoid comparing unrelated random draws.
 
 ## ADR-008: Candidate and evaluation budgets count attempted work
 
-- Status: proposed for independent Protocol Freeze review
+- Status: accepted under local self-audit
 - Date: 2026-08-29
 - Applies to: Gate PF candidate
 
@@ -161,9 +161,23 @@ image digest must never be substituted for that identity.
 - Applies to: Gate PF and final evaluation
 
 Gate PF occurs before Step 4 strategy development, so a final-world commitment
-cannot truthfully require the eventual strategy hash. The external custodian
-first commits schema-v2 world bytes to the frozen protocol hash. After strategy
+cannot truthfully require the eventual strategy hash. The local provisioner
+first commits schema-v2 world task descriptors to the frozen protocol hash. After strategy
 development and before the single final opening, a separate strategy-freeze
 record binds the strategy hash to the unchanged world-commitment hash. The
 evaluator verifies both records and includes both hashes in its exclusive access
 record. Changing either record after strategy freeze prevents evaluation.
+
+## ADR-012: Confirmatory assurance is local single-account self-audit
+
+- Status: accepted
+- Date: 2026-08-29
+- Applies to: Gate PF and final evaluation
+
+Independent review and independent final-world custody are waived because all
+operations must run under one local account. The protocol retains a repository-
+external directory, random hidden task seeds, a content-hashed manifest,
+read-only committed task files, strategy freeze, and exclusive one-shot access.
+These are audit and mistake-prevention controls, not a security boundary against
+the local user. Every report must use the label `local_single_account_self_audit`
+and must not claim independent confirmation.

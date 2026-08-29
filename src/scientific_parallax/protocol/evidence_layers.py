@@ -52,9 +52,11 @@ class ProtocolSpec:
     candidate_generator_hash: str
     measurement_cluster_hash: str
     task_design_hash: str
+    final_world_design_hash: str
     external_data_manifest_hash: str
     external_fixture_manifest_hash: str
     execution_environment_hash: str
+    assurance_mode: str
     equivalence_rule: str
     evidence_update_rule: str
     noise_calibration_rule: str
@@ -85,6 +87,7 @@ class ProtocolSpec:
             self.candidate_generator_hash,
             self.measurement_cluster_hash,
             self.task_design_hash,
+            self.final_world_design_hash,
             self.external_data_manifest_hash,
             self.external_fixture_manifest_hash,
             self.execution_environment_hash,
@@ -96,6 +99,8 @@ class ProtocolSpec:
             raise ValueError("protocol component hashes must be lowercase SHA-256 digests")
         if not 0.0 < self.minimum_relative_effect < 1.0:
             raise ValueError("minimum relative effect must lie strictly between zero and one")
+        if self.assurance_mode != "local_single_account_self_audit":
+            raise ValueError("unsupported confirmatory assurance mode")
         if any(value <= 0 for value in self.budgets.values()):
             raise ValueError("all protocol budgets must be positive")
         if any(value < 1 for value in self.niche_capacities.values()):

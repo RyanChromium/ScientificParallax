@@ -106,19 +106,20 @@ Step 0 薄切片已经完成：
 - 固定基础镜像与 NumPy wheel 哈希的确认性 runner 构建输入；
 - schema-v1 迁移边界与位于开发目录外的一次性最终评估器。
 
-扩展后的本地 dry-run 已通过全部机制检查，但仍只是
-**ready for Protocol Freeze review**。30 个任务对 30% 改善的模拟功效为
+扩展后的本地 dry-run 已通过全部机制检查，目前是
+**ready for local Protocol Freeze**。30 个任务对 30% 改善的模拟功效为
 0.90。一个 2.65 GB 官方测试分片已按 SHA-256 验证；独立的九点/RK4
 路径相对五点/Euler 的一步外部 RMSE 改善 51.1%，并满足预声明绝对误差
 门槛。Linux amd64/arm64 确认性 runner 已发布、固定 OCI 摘要并完成摘要下
-画像；最终封存世界和独立审查仍未完成，因此 Gate PF 继续保持关闭。
+画像。确认阶段已明确降级为本地单账户自审计：不再要求独立审查或独立保管，
+但结论不得称为独立确认。最终封存世界尚未生成，因此 Gate PF 继续保持关闭。
 
 Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Scott
 开发基线见 [`docs/gray-scott-baseline.md`](docs/gray-scott-baseline.md)，
 Step 3.5 协议候选见 [`docs/experiment-protocol.md`](docs/experiment-protocol.md)。
 Gate PF 前仍需解决的项目见
 [`docs/protocol-freeze-checklist.md`](docs/protocol-freeze-checklist.md)。
-外部审查材料见
+本地自审计记录见
 [`docs/protocol-freeze-review-packet.md`](docs/protocol-freeze-review-packet.md)，
 最终世界保管流程见
 [`docs/final-world-custodian-runbook.md`](docs/final-world-custodian-runbook.md)。
