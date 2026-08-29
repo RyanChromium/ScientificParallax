@@ -1,21 +1,22 @@
 {
   "schema_version": 1,
   "artifact_status": "reviewed_protocol_freeze_candidate_dry_run",
-  "code_revision": "3de7bb76958856e02acb78bba44e77969dbf48d8",
+  "code_revision": "6e117463f8bfaf92535c05040cd32bef60fab3b1",
   "git_dirty": false,
-  "run_manifest_hash": "50d3980923198b503e9c51ba78313d482a12a7d1ae2af19d35587bd99a55fab0",
-  "report_hash": "6c97191ca54210edf11a1bda9162aba404148525c2bc896a7504461fd5c2613a",
+  "run_manifest_hash": "e9615d5c9f29cabcd28c4812212861ea13ed6409cbb7fe50f8cc4215888ef5bb",
+  "report_hash": "8aef3ad2f84e17accbf8c38bcbe76c90289936b711c78fbd17362ea1bec45a63",
   "protocol_id": "protocol-dry-run-v1",
-  "protocol_hash": "e69f41f07cf120e72510171543e7994847fd1dcccab7b8fdcd1d0d2f4a88eb03",
+  "protocol_hash": "2f1f59560946584cb12a2708877d4e38d7cff37d9e145ba9c4235cc9855b1312",
   "status": "ready_for_protocol_freeze_review",
-  "checks_passed": 21,
+  "checks_passed": 22,
   "checks_failed": 0,
   "component_hashes": {
     "candidate_generator": "f6842002c59c21a5c4c944491e78a93f3b9d2c3a23702b5f7f7a6c3325f915fc",
     "measurement_clusters": "68c909b092bbe81d15bcd9f93c893b614a24a9fff42ee75ae09bbe9822921c83",
-    "task_design": "e29edd83f61e8c7dbe17c65dc7953e7e6a03049db015f26e142475289e794aae",
-    "external_data_manifest": "700c23a7758930927af4337e8a1c6bbbc93105947539daf90346cd5a981e556a",
-    "execution_environment": "a7b4390b165ac25e94b6b52248104f286096f1a17e4294c4f875315d0b1c9aef"
+    "task_design": "5900730540ee715a40f973266069d707a8c0d2ad4452614811c18502c62ce6b5",
+    "external_data_manifest": "5979c24511442a869076a0856a6513930755a4548c74942a61edae2f6dc98907",
+    "external_fixture_manifest": "d512d2f933c1b670e19f2e050da2869a057f552370cc25a025a298a6228d047d",
+    "execution_environment": "cb5d8e40499acd66ad6657d66ab5d3d85b6b47cf1687ddaecd5b11fca5d8d956"
   },
   "power_analysis": [
     {"assumed_relative_effect": 0.20, "estimated_power": 0.00, "tasks": 30},
@@ -36,13 +37,30 @@
     "frozen_tasks": 30,
     "candidate_evaluation_ceiling": 4096,
     "projected_stencil_updates": 419430400.0,
-    "projected_cpu_hours_from_local_single_process_microbenchmark": 0.0042332444588343305
+    "projected_cpu_hours_from_host_single_process_microbenchmark": 0.004367171128590901,
+    "projected_cpu_hours_from_local_container_microbenchmark": 0.004810618880049636
+  },
+  "local_container_candidate": {
+    "platform": "linux/arm64",
+    "image_id": "sha256:c6d8787b17776dbffce7205119aa0392c731f5b8a0d2369aaa200e7615756f2f",
+    "source_revision": "2d144c3e1b8f85e963165a145a81418342db2740",
+    "checks_passed": 22,
+    "checks_failed": 0,
+    "runner_image_pinned": false
+  },
+  "external_validation": {
+    "source_shard_sha256": "b22d51b7f1b33743934b608d94f845f458dd480fac4ee981cc516fb9170ff4e9",
+    "trajectories": 20,
+    "reference_field_rmse": 0.017171823576354044,
+    "reference_improvement": 0.5109573404470329,
+    "passed": true
   },
   "remaining_gate_pf_blockers": [
-    "download and validate at least one pinned The Well development shard",
-    "pin the confirmatory runner image digest and rerun the frozen mix profile",
+    "publish and pin the final confirmatory runner image digest",
+    "retain the frozen-mix profile under that published runner digest",
     "prepare final world commitment and access directory outside the development tree",
-    "independently review the 30% design-detectable effect versus the 20% null boundary"
+    "independently review the 30% design-detectable effect versus the 20% null boundary",
+    "independently review numerical, survival, niche, generator, and accounting rules"
   ],
   "warning": "This is a reviewed development dry-run, not Protocol Freeze and not final sealed evidence."
 }

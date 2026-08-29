@@ -1,12 +1,12 @@
 # Reviewed Protocol Freeze candidate dry-run
 
 Exact clean code revision:
-`3de7bb76958856e02acb78bba44e77969dbf48d8`
+`6e117463f8bfaf92535c05040cd32bef60fab3b1`
 
-The expanded dry-run passed all 21 local mechanism checks. Its protocol hash is
-`e69f41f07cf120e72510171543e7994847fd1dcccab7b8fdcd1d0d2f4a88eb03`.
+The expanded dry-run passed all 22 local mechanism checks. Its protocol hash is
+`2f1f59560946584cb12a2708877d4e38d7cff37d9e145ba9c4235cc9855b1312`.
 The write-once run manifest hash is
-`50d3980923198b503e9c51ba78313d482a12a7d1ae2af19d35587bd99a55fab0`.
+`e9615d5c9f29cabcd28c4812212861ea13ed6409cbb7fe50f8cc4215888ef5bb`.
 
 The reviewed additions are:
 
@@ -16,9 +16,11 @@ The reviewed additions are:
 - a deterministic finite mutation grammar shared by treatment and H2 control;
 - exact mutation-attempt, uncached-evaluation, cache-hit, and world-query accounting;
 - schema-v1 artifact boundaries and interrupted-ledger recovery;
-- pinned The Well test-shard metadata and an opt-in checksum-enforced downloader;
+- pinned The Well source and attributed fixture manifests, a resumable
+  checksum-enforced downloader, and 20-trajectory external validation;
 - an external-root, one-shot final evaluator mechanism;
-- a candidate execution environment bound to the protocol hash.
+- hash-pinned runner inputs and a candidate execution environment bound to the
+  protocol hash.
 
 The largest observed numerical differences remained below the frozen limits:
 
@@ -33,11 +35,19 @@ The simulated power curve is 0.00 at a true 20% reduction, 0.90 at 30%, and
 limit to exceed 20%, so 20% is the null boundary and 30% is the current
 design-detectable alternative. This distinction still needs independent review.
 
-The local frozen-mix microbenchmark projects 419,430,400 stencil updates and
-about 0.00423 single-process CPU hours at the 4,096-evaluation ceiling. That
-timing is diagnostic only and must be repeated on the pinned confirmatory runner.
+The host frozen-mix microbenchmark projects 419,430,400 stencil updates and
+about 0.00437 single-process CPU hours at the 4,096-evaluation ceiling. A local
+Linux/arm64 candidate image passed the same 22 checks and projected about
+0.00481 CPU hours. Its local image ID is
+`sha256:c6d8787b17776dbffce7205119aa0392c731f5b8a0d2369aaa200e7615756f2f`;
+this is diagnostic and is deliberately not recorded as the final runner digest.
+
+The exact The Well gliders shard passed all external numerical gates across 20
+trajectories. Nine-point/RK4 achieved RMSE `0.01717`, a 51.1% improvement over
+five-point/Euler. The attributed CI fixture is independently bound into the
+protocol hash.
 
 Status: **ready for Protocol Freeze review**, not frozen. Gate PF remains
-blocked until at least one pinned The Well shard is downloaded and validated,
-the confirmatory runner image is pinned, final worlds are externally committed,
-and the statistical design is independently accepted.
+blocked until the final confirmatory runner is published and pinned, its profile
+is retained under that digest, final worlds are externally committed, and the
+statistical and protocol choices are independently accepted.
