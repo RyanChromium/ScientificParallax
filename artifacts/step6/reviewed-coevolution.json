@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "artifact_status": "reviewed_step6_development_control",
+  "status": "step6_control_complete",
+  "code_revision": "143774bcdf30080a7b5de247cdd29101ee2dfe63",
+  "git_dirty": false,
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "candidate_generator_hash": "f6842002c59c21a5c4c944491e78a93f3b9d2c3a23702b5f7f7a6c3325f915fc",
+  "report_file_sha256": "21894933b5d103794794d8a13babfa097af09eeaaccfd5e9c12ae500b0bb40a3",
+  "report_content_hash": "b773f0182fec0bbdd51896b7bb26b286441f393337d81adecb548879ac0d44fd",
+  "run_manifest_hash": "644b4df67debf20132871831061430533fb45a023e642eb6988f19991e61c190",
+  "evidence_ledger_file_sha256": "9662110b507834e2b67f45cf9aec1acea759b6c9cfa2f7ba7114f3b5c87d71f6",
+  "evidence_ledger_final_event_hash": "212ee7d026691aac8cc041d530844ada719dc44b4d910ae95af9667d24abb024",
+  "paradigm_lineage_file_sha256": "af10260554e196ee9618e1f55fc4910b97a019cb6a3eb4a863ae742390cc28ec",
+  "paradigm_lineage_final_event_hash": "b00691dbe0e91f9403ddb8e1437b5efa88d25bf8e9cc77e52db54876f7299805",
+  "question_lineage_file_sha256": "978574e8a9a8dda71d6931b58bc6ca0a0056503fbafa41be6990f216c8ca975c",
+  "question_lineage_final_event_hash": "2a921750c639a7457fec316580baf638af727da010d7ef309ffc888c8fe0b2d0",
+  "scheduler_ledger_file_sha256": "3f549cc04e887f852be1332f329b82050ef8808afd9e13a2a0cb4def7da2790c",
+  "scheduler_ledger_final_event_hash": "facad14919d4bfa491c4ea7758b560027217e25a77739bfc9c6911dd67d710a8",
+  "final_checkpoint_hash": "78b04c4c5c8c219d7ce4531b00a87f31ec575d4201831b6c892f5e14685805a5",
+  "checks_passed": 22,
+  "checks_failed": 0,
+  "deterministic_resume": {
+    "report_byte_identical": true,
+    "evidence_ledger_byte_identical": true,
+    "paradigm_lineage_byte_identical": true,
+    "question_lineage_byte_identical": true,
+    "scheduler_ledger_byte_identical": true
+  },
+  "stop_reason": "world_query_budget_exhausted",
+  "budget": {
+    "world_queries": 4,
+    "candidate_generations": 120,
+    "candidate_evaluations": 846,
+    "candidate_evaluation_cache_hits": 1212,
+    "question_generation_attempts": 93
+  },
+  "paradigm_population": {
+    "individuals": 81,
+    "lineage_events": 540,
+    "failed_or_equivalent_fossils": 20,
+    "splits": 4,
+    "pareto_archive": 16
+  },
+  "question_population": {
+    "unique_experiments": 82,
+    "lineage_events": 83,
+    "niches": [
+      "information_efficiency",
+      "raw_disagreement",
+      "minimum_cost"
+    ]
+  },
+  "recombination": {
+    "requests_audited": true,
+    "executed": false,
+    "reason": "Gate PF candidate generator did not freeze a recombination operator"
+  },
+  "final_world": {
+    "accessed_for_evaluation": false,
+    "commitment_verified_after_run": true,
+    "world_hash": "755df6b5ee69a75f7e6d8dff771356222d3633a493663ebd889a394d9e15a26b",
+    "commitment_hash": "39e3e4bce8f185431df9eb7274bb06ef5cddab50d5c86e1b88988b21784a0167",
+    "task_count": 30,
+    "strategy_freeze_absent": true,
+    "access_log_absent": true,
+    "result_absent": true
+  },
+  "scope": "development-only paradigm-question co-evolution; not final-world evidence"
+}

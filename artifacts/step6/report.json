@@ -1,0 +1,793 @@
+{
+  "assurance": "Step 6 is development-only scheduler evidence under local single-account self-audit; it is not final-world evidence.",
+  "budget": {
+    "candidate_evaluation_cache_hits": 1212,
+    "candidate_evaluations": 846,
+    "candidate_generations": 120,
+    "world_queries": 4
+  },
+  "budget_limits": {
+    "candidate_evaluations": 4096,
+    "candidate_generations": 128,
+    "world_queries": 4
+  },
+  "candidate_generator_hash": "f6842002c59c21a5c4c944491e78a93f3b9d2c3a23702b5f7f7a6c3325f915fc",
+  "checks": {
+    "checkpoint_chain_verifies": true,
+    "circular_reward_negative_control_passes": true,
+    "evidence_updates_fully_reconstruct": true,
+    "failed_paradigms_preserved": true,
+    "final_world_not_accessed": true,
+    "frozen_candidate_generator_matches": true,
+    "frozen_mutation_operators_exercised": true,
+    "frozen_protocol_hash_matches": true,
+    "leakage_negative_control_passes": true,
+    "multiple_question_objectives_receive_resources": true,
+    "paradigm_splits_traceable": true,
+    "pareto_archive_preserved": true,
+    "pareto_fronts_recorded_each_round": true,
+    "predictions_preregistered_before_observations": true,
+    "preregistered_predictions_hash_protected": true,
+    "question_lineage_fully_traceable": true,
+    "question_mutation_operators_exercised": true,
+    "round_count_budget_or_convergence_driven": true,
+    "same_world_budget_and_separate_compute_budget_reported": true,
+    "survival_lifecycle_exercised": true,
+    "three_question_niches_maintained": true,
+    "unfrozen_recombination_blocked_and_audited": true
+  },
+  "comparison_budget_envelope": {
+    "ablation_world_queries": 4,
+    "baseline_world_queries": 4,
+    "rule": "all arms receive the same world-query ceiling; compute is reported separately",
+    "treatment_world_queries": 4
+  },
+  "evidence_rebuild": {
+    "observations": 4,
+    "posterior": {
+      "step6-founder": 0.9043739859242077,
+      "step6-founder:coefficient-high-0:12:coefficient-low-0:6": 0.005166983331779086,
+      "step6-founder:coefficient-high-4:16:coefficient-low-0:6": 0.05666205234446144,
+      "step6-founder:coefficient-high-4:16:coefficient-low-4:10": 0.016898489199775858,
+      "step6-founder:coefficient-low-4:10:coefficient-high-4:16": 0.016898489199775858
+    },
+    "state_rebuilds": 4
+  },
+  "evidence_rules": {
+    "noise_calibration": "development-world residual standard deviation with frozen positive floor",
+    "noise_parameters": {
+      "floor": 0.01,
+      "source": "Gray-Scott development held-out parameter-block residuals"
+    },
+    "survival": "hard viability gate followed by frozen niche capacities",
+    "survival_parameters": {
+      "death_after": 4,
+      "death_on_hard_contradiction": true,
+      "dormancy_after": 2
+    },
+    "update": "fixed calibrated likelihood owned by EvidenceEngine"
+  },
+  "final_posterior": {
+    "step6-founder": 0.9043739859242077,
+    "step6-founder:coefficient-high-0:12:coefficient-low-0:6": 0.005166983331779086,
+    "step6-founder:coefficient-high-4:16:coefficient-low-0:6": 0.05666205234446144,
+    "step6-founder:coefficient-high-4:16:coefficient-low-4:10": 0.016898489199775858,
+    "step6-founder:coefficient-low-4:10:coefficient-high-4:16": 0.016898489199775858
+  },
+  "independent_compute_budget": {
+    "candidate_evaluation_cache_hits": 1212,
+    "candidate_question_evaluations": 846,
+    "question_generation_attempts": 93
+  },
+  "paradigm_lineage": {
+    "events": 540,
+    "failed": 20,
+    "individuals": 81,
+    "ledger_hash": "b00691dbe0e91f9403ddb8e1437b5efa88d25bf8e9cc77e52db54876f7299805",
+    "splits": 4
+  },
+  "paradigm_pareto_archive": [
+    "step6-founder",
+    "step6-founder:add-decay-v:19",
+    "step6-founder:coefficient-high-0:12:add-decay-v:19",
+    "step6-founder:coefficient-high-0:12:remove-4:4",
+    "step6-founder:coefficient-high-0:12:remove-5:5",
+    "step6-founder:coefficient-high-4:16:add-decay-v:19",
+    "step6-founder:coefficient-high-4:16:remove-0:0",
+    "step6-founder:coefficient-high-4:16:remove-4:4",
+    "step6-founder:coefficient-low-4:10:remove-0:0",
+    "step6-founder:coefficient-low-4:10:remove-2:2",
+    "step6-founder:coefficient-low-4:10:remove-3:3",
+    "step6-founder:remove-0:0",
+    "step6-founder:remove-2:2",
+    "step6-founder:remove-3:3",
+    "step6-founder:remove-4:4",
+    "step6-founder:remove-5:5"
+  ],
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "question_generation_attempts": 93,
+  "question_population": {
+    "lineage_events": 83,
+    "niches": [
+      "information_efficiency",
+      "raw_disagreement",
+      "minimum_cost"
+    ],
+    "unique_experiments": 82
+  },
+  "recombination_boundary": "typed requests are audited, but execution is blocked because Gate PF did not freeze a recombination operator",
+  "rounds": [
+    {
+      "active_paradigms": [
+        "step6-founder",
+        "step6-founder:coefficient-high-0:12",
+        "step6-founder:coefficient-high-4:16",
+        "step6-founder:coefficient-low-4:10"
+      ],
+      "actual_information_gain": 1.479714421902119,
+      "budget": {
+        "candidate_evaluation_cache_hits": 10,
+        "candidate_evaluations": 51,
+        "candidate_generations": 20,
+        "world_queries": 1
+      },
+      "dormant_paradigms": [
+        "step6-founder:add-decay-u:18",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:coefficient-high-1:13",
+        "step6-founder:coefficient-high-2:14",
+        "step6-founder:coefficient-high-3:15",
+        "step6-founder:coefficient-high-5:17",
+        "step6-founder:coefficient-low-0:6",
+        "step6-founder:coefficient-low-1:7",
+        "step6-founder:coefficient-low-2:8",
+        "step6-founder:coefficient-low-3:9",
+        "step6-founder:coefficient-low-5:11",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-1:1",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-4:4",
+        "step6-founder:remove-5:5"
+      ],
+      "expected_information_gain": 1.575180822069613,
+      "fossil_paradigms": [],
+      "paradigm_niches": {
+        "current_predictive_best": [
+          "step6-founder",
+          "step6-founder:coefficient-low-4:10",
+          "step6-founder:coefficient-high-4:16",
+          "step6-founder:coefficient-high-0:12"
+        ],
+        "minimum_description": [
+          "step6-founder",
+          "step6-founder:coefficient-low-4:10",
+          "step6-founder:coefficient-high-4:16",
+          "step6-founder:coefficient-high-0:12"
+        ],
+        "validated_structure_gain": [
+          "step6-founder",
+          "step6-founder:coefficient-low-4:10",
+          "step6-founder:coefficient-high-4:16",
+          "step6-founder:coefficient-high-0:12"
+        ]
+      },
+      "paradigm_pareto_archive": [
+        "step6-founder",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-4:4",
+        "step6-founder:remove-5:5"
+      ],
+      "paradigm_pareto_front": [
+        "step6-founder",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-4:4",
+        "step6-founder:remove-5:5"
+      ],
+      "posterior": {
+        "step6-founder:remove-0:0": 0.028566549955491013,
+        "step6-founder:remove-2:2": 4.4522371862613855e-124,
+        "step6-founder:remove-3:3": 6.828704988284059e-20,
+        "step6-founder:remove-4:4": 0.9714334500445091,
+        "step6-founder:remove-5:5": 7.830373364910996e-116
+      },
+      "prior": {
+        "step6-founder:remove-0:0": 0.2,
+        "step6-founder:remove-2:2": 0.2,
+        "step6-founder:remove-3:3": 0.2,
+        "step6-founder:remove-4:4": 0.2,
+        "step6-founder:remove-5:5": 0.2
+      },
+      "question_niches": {
+        "information_efficiency": [
+          "9c283fbd0713d7cce14f63f99a97cbdc71bd26f845be21923f8db940fca6242c",
+          "f72b71ee2450b5ebb449e1a07948cab1f443afe3a76837879bcfe4e3ae775517"
+        ],
+        "minimum_cost": [
+          "9c283fbd0713d7cce14f63f99a97cbdc71bd26f845be21923f8db940fca6242c",
+          "f72b71ee2450b5ebb449e1a07948cab1f443afe3a76837879bcfe4e3ae775517"
+        ],
+        "raw_disagreement": [
+          "9c283fbd0713d7cce14f63f99a97cbdc71bd26f845be21923f8db940fca6242c",
+          "f72b71ee2450b5ebb449e1a07948cab1f443afe3a76837879bcfe4e3ae775517"
+        ]
+      },
+      "question_pareto_front": [
+        "9c283fbd0713d7cce14f63f99a97cbdc71bd26f845be21923f8db940fca6242c"
+      ],
+      "question_population": 2,
+      "round": 0,
+      "selected_question_hash": "9c283fbd0713d7cce14f63f99a97cbdc71bd26f845be21923f8db940fca6242c",
+      "selected_question_niche": "information_efficiency"
+    },
+    {
+      "active_paradigms": [
+        "step6-founder",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6",
+        "step6-founder:coefficient-high-0:12:coefficient-low-4:10",
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6",
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16"
+      ],
+      "actual_information_gain": 0.22937924169294388,
+      "budget": {
+        "candidate_evaluation_cache_hits": 135,
+        "candidate_evaluations": 394,
+        "candidate_generations": 100,
+        "world_queries": 2
+      },
+      "dormant_paradigms": [
+        "step6-founder:add-decay-u:18",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12",
+        "step6-founder:coefficient-high-0:12:add-decay-u:18",
+        "step6-founder:coefficient-high-0:12:coefficient-high-0:12",
+        "step6-founder:coefficient-high-0:12:coefficient-high-1:13",
+        "step6-founder:coefficient-high-0:12:coefficient-high-2:14",
+        "step6-founder:coefficient-high-0:12:coefficient-high-3:15",
+        "step6-founder:coefficient-high-0:12:coefficient-high-4:16",
+        "step6-founder:coefficient-high-0:12:coefficient-high-5:17",
+        "step6-founder:coefficient-high-0:12:coefficient-low-1:7",
+        "step6-founder:coefficient-high-0:12:coefficient-low-2:8",
+        "step6-founder:coefficient-high-0:12:coefficient-low-3:9",
+        "step6-founder:coefficient-high-0:12:coefficient-low-5:11",
+        "step6-founder:coefficient-high-0:12:remove-0:0",
+        "step6-founder:coefficient-high-0:12:remove-1:1",
+        "step6-founder:coefficient-high-0:12:remove-2:2",
+        "step6-founder:coefficient-high-0:12:remove-3:3",
+        "step6-founder:coefficient-high-0:12:remove-4:4",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-1:13",
+        "step6-founder:coefficient-high-2:14",
+        "step6-founder:coefficient-high-3:15",
+        "step6-founder:coefficient-high-4:16",
+        "step6-founder:coefficient-high-4:16:add-decay-u:18",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:coefficient-high-1:13",
+        "step6-founder:coefficient-high-4:16:coefficient-high-2:14",
+        "step6-founder:coefficient-high-4:16:coefficient-high-3:15",
+        "step6-founder:coefficient-high-4:16:coefficient-high-4:16",
+        "step6-founder:coefficient-high-4:16:coefficient-high-5:17",
+        "step6-founder:coefficient-high-4:16:coefficient-low-1:7",
+        "step6-founder:coefficient-high-4:16:coefficient-low-2:8",
+        "step6-founder:coefficient-high-4:16:coefficient-low-3:9",
+        "step6-founder:coefficient-high-4:16:coefficient-low-5:11",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-1:1",
+        "step6-founder:coefficient-high-4:16:remove-2:2",
+        "step6-founder:coefficient-high-4:16:remove-3:3",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-high-4:16:remove-5:5",
+        "step6-founder:coefficient-high-5:17",
+        "step6-founder:coefficient-low-0:6",
+        "step6-founder:coefficient-low-1:7",
+        "step6-founder:coefficient-low-2:8",
+        "step6-founder:coefficient-low-3:9",
+        "step6-founder:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:add-decay-u:18",
+        "step6-founder:coefficient-low-4:10:add-decay-v:19",
+        "step6-founder:coefficient-low-4:10:coefficient-high-1:13",
+        "step6-founder:coefficient-low-4:10:coefficient-high-2:14",
+        "step6-founder:coefficient-low-4:10:coefficient-high-3:15",
+        "step6-founder:coefficient-low-4:10:coefficient-high-5:17",
+        "step6-founder:coefficient-low-4:10:coefficient-low-0:6",
+        "step6-founder:coefficient-low-4:10:coefficient-low-1:7",
+        "step6-founder:coefficient-low-4:10:coefficient-low-2:8",
+        "step6-founder:coefficient-low-4:10:coefficient-low-3:9",
+        "step6-founder:coefficient-low-4:10:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:coefficient-low-5:11",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-1:1",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3",
+        "step6-founder:coefficient-low-4:10:remove-5:5",
+        "step6-founder:coefficient-low-5:11",
+        "step6-founder:remove-1:1",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-5:5"
+      ],
+      "expected_information_gain": 0.40212070445685155,
+      "fossil_paradigms": [
+        "step6-founder:coefficient-high-4:16:coefficient-high-0:12",
+        "step6-founder:coefficient-low-4:10:coefficient-high-0:12",
+        "step6-founder:coefficient-low-4:10:remove-4:4",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-4:4"
+      ],
+      "paradigm_niches": {
+        "current_predictive_best": [
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+          "step6-founder:coefficient-low-4:10:coefficient-high-4:16",
+          "step6-founder:coefficient-high-4:16:coefficient-low-0:6"
+        ],
+        "minimum_description": [
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-0:6",
+          "step6-founder:coefficient-high-0:12:coefficient-low-0:6",
+          "step6-founder:coefficient-high-0:12:coefficient-low-4:10"
+        ],
+        "validated_structure_gain": [
+          "step6-founder:coefficient-high-0:12:add-decay-v:19",
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+          "step6-founder:coefficient-low-4:10:coefficient-high-4:16"
+        ]
+      },
+      "paradigm_pareto_archive": [
+        "step6-founder",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:remove-4:4",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-4:4",
+        "step6-founder:remove-5:5"
+      ],
+      "paradigm_pareto_front": [
+        "step6-founder",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:remove-4:4",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3"
+      ],
+      "posterior": {
+        "step6-founder": 0.3891962121739676,
+        "step6-founder:coefficient-high-0:12:add-decay-v:19": 0.03322155984380496,
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6": 0.06603005741919878,
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6": 0.07379840045873062,
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10": 0.21887688499725771,
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16": 0.21887688499725771,
+        "step6-founder:coefficient-low-4:10:coefficient-low-1:7": 1.0978268293265796e-10
+      },
+      "prior": {
+        "step6-founder": 0.35485802363783875,
+        "step6-founder:coefficient-high-0:12:add-decay-v:19": 0.03376605892146951,
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6": 0.08909662032187453,
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6": 0.12210551426713422,
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10": 0.15722966535883048,
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16": 0.15722966535883048,
+        "step6-founder:coefficient-low-4:10:coefficient-low-1:7": 0.08571445213402197
+      },
+      "question_niches": {
+        "information_efficiency": [
+          "5b0b95d0e22752dc613b911cbdf163904234a86165ef88f0002c646ed9b2ae81",
+          "dc73e4c91756c9254bc0ee51d9e3a9e0216329d573f87cf7c00f4e52fd0a7c3c"
+        ],
+        "minimum_cost": [
+          "5b0b95d0e22752dc613b911cbdf163904234a86165ef88f0002c646ed9b2ae81",
+          "dc73e4c91756c9254bc0ee51d9e3a9e0216329d573f87cf7c00f4e52fd0a7c3c"
+        ],
+        "raw_disagreement": [
+          "dc73e4c91756c9254bc0ee51d9e3a9e0216329d573f87cf7c00f4e52fd0a7c3c",
+          "03a15b0fad26a5b1f7c7f3dca12e6686e75b66b4110750930fdd7a4151778715"
+        ]
+      },
+      "question_pareto_front": [
+        "50b83ae3748678d1447d82431baa15c275bf711aff81e0a16ceb7a963ec9862d",
+        "5b0b95d0e22752dc613b911cbdf163904234a86165ef88f0002c646ed9b2ae81",
+        "93940e11c356022553f4e3d973b939524fbcdd81f581a53697708133b11bfffc",
+        "9ae90bfde1f020e7dda0fd2b6a5407f5770d882e091ad70145eb564bc8048917",
+        "dc73e4c91756c9254bc0ee51d9e3a9e0216329d573f87cf7c00f4e52fd0a7c3c"
+      ],
+      "question_population": 3,
+      "round": 1,
+      "selected_question_hash": "dc73e4c91756c9254bc0ee51d9e3a9e0216329d573f87cf7c00f4e52fd0a7c3c",
+      "selected_question_niche": "raw_disagreement"
+    },
+    {
+      "active_paradigms": [
+        "step6-founder",
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6",
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6",
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16"
+      ],
+      "actual_information_gain": 0.5319341750341489,
+      "budget": {
+        "candidate_evaluation_cache_hits": 601,
+        "candidate_evaluations": 665,
+        "candidate_generations": 120,
+        "world_queries": 3
+      },
+      "dormant_paradigms": [
+        "step6-founder:add-decay-u:18",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12",
+        "step6-founder:coefficient-high-0:12:add-decay-u:18",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:coefficient-high-0:12",
+        "step6-founder:coefficient-high-0:12:coefficient-high-1:13",
+        "step6-founder:coefficient-high-0:12:coefficient-high-2:14",
+        "step6-founder:coefficient-high-0:12:coefficient-high-3:15",
+        "step6-founder:coefficient-high-0:12:coefficient-high-4:16",
+        "step6-founder:coefficient-high-0:12:coefficient-high-5:17",
+        "step6-founder:coefficient-high-0:12:coefficient-low-1:7",
+        "step6-founder:coefficient-high-0:12:coefficient-low-2:8",
+        "step6-founder:coefficient-high-0:12:coefficient-low-3:9",
+        "step6-founder:coefficient-high-0:12:coefficient-low-4:10",
+        "step6-founder:coefficient-high-0:12:coefficient-low-5:11",
+        "step6-founder:coefficient-high-0:12:remove-0:0",
+        "step6-founder:coefficient-high-0:12:remove-1:1",
+        "step6-founder:coefficient-high-0:12:remove-2:2",
+        "step6-founder:coefficient-high-0:12:remove-3:3",
+        "step6-founder:coefficient-high-0:12:remove-4:4",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-1:13",
+        "step6-founder:coefficient-high-2:14",
+        "step6-founder:coefficient-high-3:15",
+        "step6-founder:coefficient-high-4:16",
+        "step6-founder:coefficient-high-4:16:add-decay-u:18",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:coefficient-high-1:13",
+        "step6-founder:coefficient-high-4:16:coefficient-high-2:14",
+        "step6-founder:coefficient-high-4:16:coefficient-high-3:15",
+        "step6-founder:coefficient-high-4:16:coefficient-high-4:16",
+        "step6-founder:coefficient-high-4:16:coefficient-high-5:17",
+        "step6-founder:coefficient-high-4:16:coefficient-low-1:7",
+        "step6-founder:coefficient-high-4:16:coefficient-low-2:8",
+        "step6-founder:coefficient-high-4:16:coefficient-low-3:9",
+        "step6-founder:coefficient-high-4:16:coefficient-low-5:11",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-1:1",
+        "step6-founder:coefficient-high-4:16:remove-2:2",
+        "step6-founder:coefficient-high-4:16:remove-3:3",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-high-4:16:remove-5:5",
+        "step6-founder:coefficient-high-5:17",
+        "step6-founder:coefficient-low-0:6",
+        "step6-founder:coefficient-low-1:7",
+        "step6-founder:coefficient-low-2:8",
+        "step6-founder:coefficient-low-3:9",
+        "step6-founder:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:add-decay-u:18",
+        "step6-founder:coefficient-low-4:10:add-decay-v:19",
+        "step6-founder:coefficient-low-4:10:coefficient-high-1:13",
+        "step6-founder:coefficient-low-4:10:coefficient-high-2:14",
+        "step6-founder:coefficient-low-4:10:coefficient-high-3:15",
+        "step6-founder:coefficient-low-4:10:coefficient-high-5:17",
+        "step6-founder:coefficient-low-4:10:coefficient-low-0:6",
+        "step6-founder:coefficient-low-4:10:coefficient-low-1:7",
+        "step6-founder:coefficient-low-4:10:coefficient-low-2:8",
+        "step6-founder:coefficient-low-4:10:coefficient-low-3:9",
+        "step6-founder:coefficient-low-4:10:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:coefficient-low-5:11",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-1:1",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3",
+        "step6-founder:coefficient-low-4:10:remove-5:5",
+        "step6-founder:coefficient-low-5:11",
+        "step6-founder:remove-1:1",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-5:5"
+      ],
+      "expected_information_gain": 0.38997927315626857,
+      "fossil_paradigms": [
+        "step6-founder:coefficient-high-4:16:coefficient-high-0:12",
+        "step6-founder:coefficient-low-4:10:coefficient-high-0:12",
+        "step6-founder:coefficient-low-4:10:remove-4:4",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-4:4"
+      ],
+      "paradigm_niches": {
+        "current_predictive_best": [
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+          "step6-founder:coefficient-low-4:10:coefficient-high-4:16",
+          "step6-founder:coefficient-high-4:16:coefficient-low-0:6"
+        ],
+        "minimum_description": [
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-0:6",
+          "step6-founder:coefficient-high-0:12:coefficient-low-0:6",
+          "step6-founder:coefficient-high-4:16:coefficient-low-4:10"
+        ],
+        "validated_structure_gain": [
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+          "step6-founder:coefficient-low-4:10:coefficient-high-4:16",
+          "step6-founder:coefficient-high-4:16:coefficient-low-0:6"
+        ]
+      },
+      "paradigm_pareto_archive": [
+        "step6-founder",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:remove-4:4",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-4:4",
+        "step6-founder:remove-5:5"
+      ],
+      "paradigm_pareto_front": [
+        "step6-founder",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3"
+      ],
+      "posterior": {
+        "step6-founder": 0.676625396595199,
+        "step6-founder:coefficient-high-0:12:add-decay-v:19": 0.00039230459453208736,
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6": 0.029561411834177938,
+        "step6-founder:coefficient-high-0:12:coefficient-low-4:10": 0.006337465290175735,
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6": 0.07789844580042737,
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10": 0.10459248794274391,
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16": 0.10459248794274391
+      },
+      "prior": {
+        "step6-founder": 0.3774926839074879,
+        "step6-founder:coefficient-high-0:12:add-decay-v:19": 0.032222553552051225,
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6": 0.06404446604068492,
+        "step6-founder:coefficient-high-0:12:coefficient-low-4:10": 0.03007102315448653,
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6": 0.07157920705763025,
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10": 0.21229503314382958,
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16": 0.21229503314382958
+      },
+      "question_niches": {
+        "information_efficiency": [
+          "e82fbc6b3bcfaf9e567a7e0026137d6f5629f6e8f45aa81e688e2d36b21fe276",
+          "d421b7329b9de9997511137320f494bb8204f61aa83dfe0979c46e723174074f"
+        ],
+        "minimum_cost": [
+          "e82fbc6b3bcfaf9e567a7e0026137d6f5629f6e8f45aa81e688e2d36b21fe276",
+          "d421b7329b9de9997511137320f494bb8204f61aa83dfe0979c46e723174074f"
+        ],
+        "raw_disagreement": [
+          "f236a2fd347d8d305be22e66cb0d85bab19f17b47f75cecc213964138576f58e",
+          "3276fedaa26ae97fa8c398a83fcc416cd1ab336dac657fe82a90726813b0c84e"
+        ]
+      },
+      "question_pareto_front": [
+        "e82fbc6b3bcfaf9e567a7e0026137d6f5629f6e8f45aa81e688e2d36b21fe276",
+        "f236a2fd347d8d305be22e66cb0d85bab19f17b47f75cecc213964138576f58e"
+      ],
+      "question_population": 4,
+      "round": 2,
+      "selected_question_hash": "e82fbc6b3bcfaf9e567a7e0026137d6f5629f6e8f45aa81e688e2d36b21fe276",
+      "selected_question_niche": "minimum_cost"
+    },
+    {
+      "active_paradigms": [
+        "step6-founder",
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6",
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16"
+      ],
+      "actual_information_gain": 0.621123596533538,
+      "budget": {
+        "candidate_evaluation_cache_hits": 1212,
+        "candidate_evaluations": 846,
+        "candidate_generations": 120,
+        "world_queries": 4
+      },
+      "dormant_paradigms": [
+        "step6-founder:coefficient-high-0:12",
+        "step6-founder:coefficient-high-0:12:add-decay-u:18",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:coefficient-high-0:12",
+        "step6-founder:coefficient-high-0:12:coefficient-high-1:13",
+        "step6-founder:coefficient-high-0:12:coefficient-high-2:14",
+        "step6-founder:coefficient-high-0:12:coefficient-high-3:15",
+        "step6-founder:coefficient-high-0:12:coefficient-high-4:16",
+        "step6-founder:coefficient-high-0:12:coefficient-high-5:17",
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6",
+        "step6-founder:coefficient-high-0:12:coefficient-low-1:7",
+        "step6-founder:coefficient-high-0:12:coefficient-low-2:8",
+        "step6-founder:coefficient-high-0:12:coefficient-low-3:9",
+        "step6-founder:coefficient-high-0:12:coefficient-low-4:10",
+        "step6-founder:coefficient-high-0:12:coefficient-low-5:11",
+        "step6-founder:coefficient-high-0:12:remove-0:0",
+        "step6-founder:coefficient-high-0:12:remove-1:1",
+        "step6-founder:coefficient-high-0:12:remove-2:2",
+        "step6-founder:coefficient-high-0:12:remove-3:3",
+        "step6-founder:coefficient-high-0:12:remove-4:4",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-4:16",
+        "step6-founder:coefficient-high-4:16:add-decay-u:18",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:coefficient-high-1:13",
+        "step6-founder:coefficient-high-4:16:coefficient-high-2:14",
+        "step6-founder:coefficient-high-4:16:coefficient-high-3:15",
+        "step6-founder:coefficient-high-4:16:coefficient-high-4:16",
+        "step6-founder:coefficient-high-4:16:coefficient-high-5:17",
+        "step6-founder:coefficient-high-4:16:coefficient-low-1:7",
+        "step6-founder:coefficient-high-4:16:coefficient-low-2:8",
+        "step6-founder:coefficient-high-4:16:coefficient-low-3:9",
+        "step6-founder:coefficient-high-4:16:coefficient-low-5:11",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-1:1",
+        "step6-founder:coefficient-high-4:16:remove-2:2",
+        "step6-founder:coefficient-high-4:16:remove-3:3",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-high-4:16:remove-5:5",
+        "step6-founder:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:add-decay-u:18",
+        "step6-founder:coefficient-low-4:10:add-decay-v:19",
+        "step6-founder:coefficient-low-4:10:coefficient-high-1:13",
+        "step6-founder:coefficient-low-4:10:coefficient-high-2:14",
+        "step6-founder:coefficient-low-4:10:coefficient-high-3:15",
+        "step6-founder:coefficient-low-4:10:coefficient-high-5:17",
+        "step6-founder:coefficient-low-4:10:coefficient-low-0:6",
+        "step6-founder:coefficient-low-4:10:coefficient-low-1:7",
+        "step6-founder:coefficient-low-4:10:coefficient-low-2:8",
+        "step6-founder:coefficient-low-4:10:coefficient-low-3:9",
+        "step6-founder:coefficient-low-4:10:coefficient-low-4:10",
+        "step6-founder:coefficient-low-4:10:coefficient-low-5:11",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-1:1",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3",
+        "step6-founder:coefficient-low-4:10:remove-5:5"
+      ],
+      "expected_information_gain": 0.3345672059850995,
+      "fossil_paradigms": [
+        "step6-founder:add-decay-u:18",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:coefficient-high-1:13",
+        "step6-founder:coefficient-high-2:14",
+        "step6-founder:coefficient-high-3:15",
+        "step6-founder:coefficient-high-4:16:coefficient-high-0:12",
+        "step6-founder:coefficient-high-5:17",
+        "step6-founder:coefficient-low-0:6",
+        "step6-founder:coefficient-low-1:7",
+        "step6-founder:coefficient-low-2:8",
+        "step6-founder:coefficient-low-3:9",
+        "step6-founder:coefficient-low-4:10:coefficient-high-0:12",
+        "step6-founder:coefficient-low-4:10:remove-4:4",
+        "step6-founder:coefficient-low-5:11",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-1:1",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-4:4",
+        "step6-founder:remove-5:5"
+      ],
+      "paradigm_niches": {
+        "current_predictive_best": [
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-0:6",
+          "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+          "step6-founder:coefficient-low-4:10:coefficient-high-4:16"
+        ],
+        "minimum_description": [
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-0:6",
+          "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+          "step6-founder:coefficient-low-4:10:coefficient-high-4:16"
+        ],
+        "validated_structure_gain": [
+          "step6-founder",
+          "step6-founder:coefficient-high-4:16:coefficient-low-0:6",
+          "step6-founder:coefficient-high-4:16:coefficient-low-4:10",
+          "step6-founder:coefficient-low-4:10:coefficient-high-4:16"
+        ]
+      },
+      "paradigm_pareto_archive": [
+        "step6-founder",
+        "step6-founder:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:remove-4:4",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3",
+        "step6-founder:remove-0:0",
+        "step6-founder:remove-2:2",
+        "step6-founder:remove-3:3",
+        "step6-founder:remove-4:4",
+        "step6-founder:remove-5:5"
+      ],
+      "paradigm_pareto_front": [
+        "step6-founder",
+        "step6-founder:coefficient-high-0:12:add-decay-v:19",
+        "step6-founder:coefficient-high-0:12:remove-5:5",
+        "step6-founder:coefficient-high-4:16:add-decay-v:19",
+        "step6-founder:coefficient-high-4:16:remove-0:0",
+        "step6-founder:coefficient-high-4:16:remove-4:4",
+        "step6-founder:coefficient-low-4:10:remove-0:0",
+        "step6-founder:coefficient-low-4:10:remove-2:2",
+        "step6-founder:coefficient-low-4:10:remove-3:3"
+      ],
+      "posterior": {
+        "step6-founder": 0.9043739859242077,
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6": 0.005166983331779086,
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6": 0.05666205234446144,
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10": 0.016898489199775858,
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16": 0.016898489199775858
+      },
+      "prior": {
+        "step6-founder": 0.6812097816690438,
+        "step6-founder:coefficient-high-0:12:coefficient-low-0:6": 0.029761701234865996,
+        "step6-founder:coefficient-high-4:16:coefficient-low-0:6": 0.07842623632381031,
+        "step6-founder:coefficient-high-4:16:coefficient-low-4:10": 0.10530114038614,
+        "step6-founder:coefficient-low-4:10:coefficient-high-4:16": 0.10530114038614
+      },
+      "question_niches": {
+        "information_efficiency": [
+          "61d0ca73c71df1a864894c61208b65b22eb6099aa7abd4b3ef1c74e72c338ac2",
+          "29ea71082931cead929901039f30ebef23ccefa1a7dcf50321e25b194db8cf4f"
+        ],
+        "minimum_cost": [
+          "61d0ca73c71df1a864894c61208b65b22eb6099aa7abd4b3ef1c74e72c338ac2",
+          "29ea71082931cead929901039f30ebef23ccefa1a7dcf50321e25b194db8cf4f"
+        ],
+        "raw_disagreement": [
+          "61d0ca73c71df1a864894c61208b65b22eb6099aa7abd4b3ef1c74e72c338ac2",
+          "2708c522b726ef02397d1acf0e086b5f8af557273c45768465044c14f8da5a8f"
+        ]
+      },
+      "question_pareto_front": [
+        "61d0ca73c71df1a864894c61208b65b22eb6099aa7abd4b3ef1c74e72c338ac2"
+      ],
+      "question_population": 3,
+      "round": 3,
+      "selected_question_hash": "61d0ca73c71df1a864894c61208b65b22eb6099aa7abd4b3ef1c74e72c338ac2",
+      "selected_question_niche": "information_efficiency"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "development Gray-Scott world only; final sealed tasks were not accessed",
+  "status": "step6_control_complete",
+  "stop_reason": "world_query_budget_exhausted",
+  "strategy_version": "step6-coevolution-v0.1"
+}

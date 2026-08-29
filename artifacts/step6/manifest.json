@@ -1,0 +1,36 @@
+{
+  "config_hash": "040ca2e77cdea8a21692835cc66c94865ac0f643c9e9bf2d701637f9d7a3823a",
+  "environment": {
+    "git_dirty": false,
+    "git_revision": "143774bcdf30080a7b5de247cdd29101ee2dfe63",
+    "implementation": "CPython",
+    "machine": "arm64",
+    "numpy": "2.5.2",
+    "platform": "macOS-26.1-arm64-arm-64bit",
+    "process_id": 83368,
+    "python": "3.12.13"
+  },
+  "experiment_id": "step6-coevolution-control-v1-d7e509cf17f7318f",
+  "inputs": {
+    "candidate_generator_hash": "f6842002c59c21a5c4c944491e78a93f3b9d2c3a23702b5f7f7a6c3325f915fc",
+    "config": "configs/experiments/step6-coevolution.json",
+    "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892"
+  },
+  "manifest_hash": "644b4df67debf20132871831061430533fb45a023e642eb6988f19991e61c190",
+  "outputs": {
+    "checkpoint_hash": "78b04c4c5c8c219d7ce4531b00a87f31ec575d4201831b6c892f5e14685805a5",
+    "evidence_ledger": "evidence.jsonl",
+    "evidence_ledger_hash": "212ee7d026691aac8cc041d530844ada719dc44b4d910ae95af9667d24abb024",
+    "paradigm_lineage": "paradigm-lineage.jsonl",
+    "paradigm_lineage_hash": "b00691dbe0e91f9403ddb8e1437b5efa88d25bf8e9cc77e52db54876f7299805",
+    "question_lineage": "question-lineage.jsonl",
+    "question_lineage_hash": "2a921750c639a7457fec316580baf638af727da010d7ef309ffc888c8fe0b2d0",
+    "report": "report.json",
+    "report_hash": "b773f0182fec0bbdd51896b7bb26b286441f393337d81adecb548879ac0d44fd",
+    "scheduler_ledger": "scheduler.jsonl",
+    "scheduler_ledger_hash": "facad14919d4bfa491c4ea7758b560027217e25a77739bfc9c6911dd67d710a8"
+  },
+  "protocol_id": "step6-coevolution-control-v1",
+  "schema_version": 1,
+  "seed": 141421
+}
