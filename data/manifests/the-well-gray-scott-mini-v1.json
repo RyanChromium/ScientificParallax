@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "dataset_id": "the-well-gray-scott-gliders-mini-ci-fixture",
+  "source": "https://huggingface.co/datasets/polymathic-ai/gray_scott_reaction_diffusion",
+  "version": "derived-from-65750596b1173300ef81a7ea112ea17bc81cf59f",
+  "license": "CC-BY-4.0",
+  "access_date": "2026-08-29",
+  "shards": [
+    {
+      "path": "data/fixtures/the-well-gray-scott-gliders-mini-v1.npz",
+      "url": "repository:data/fixtures/the-well-gray-scott-gliders-mini-v1.npz",
+      "bytes": 16439,
+      "sha256": "70d5c60693bfda3b15a6135f1dc112b325192fc3a9ec4e10cf85afcf127a8578",
+      "derived_from_sha256": "b22d51b7f1b33743934b608d94f845f458dd480fac4ee981cc516fb9170ff4e9"
+    }
+  ],
+  "supports_novel_conditions": false,
+  "supports_intervention": false,
+  "notes": "Modified CI subset: trajectory 0, first two times, fields A/B, every fourth spatial sample. Attribution and transformation metadata are embedded in the NPZ."
+}

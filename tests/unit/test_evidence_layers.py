@@ -40,6 +40,7 @@ def _config() -> dict[str, object]:
         },
         "task_design": {"seeds_per_cluster": 5, "grid_size": 32, "steps": 100},
         "external_data_manifest": "data/manifests/the-well-gray-scott-test-v1.json",
+        "external_fixture_manifest": "data/manifests/the-well-gray-scott-mini-v1.json",
         "execution_environment_spec": "configs/environments/confirmatory-v1.json",
         "numerical_tolerances": {
             "field_mean_absolute": 0.005,

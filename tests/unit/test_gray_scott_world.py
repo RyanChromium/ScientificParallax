@@ -11,6 +11,7 @@ from scientific_parallax.worlds.gray_scott import (
     MeasurementSpec,
     ReactionLaw,
     block_holdout,
+    simulate_gray_scott,
 )
 from scientific_parallax.worlds.offline import OfflineTrajectoryWorld
 
@@ -35,6 +36,23 @@ def test_uniform_state_is_fixed_point_for_rk4_reference() -> None:
     assert observation.integrator == "rk4"
     assert np.allclose(observation.fields["field_0"], 1.0)
     assert np.allclose(observation.fields["field_1"], 0.0)
+
+
+def test_external_initial_state_and_spatial_spacing_are_supported() -> None:
+    initial_u = np.ones((16, 16))
+    initial_v = np.zeros((16, 16))
+    initial_v[8, 8] = 0.2
+    experiment = GrayScottExperiment(
+        "external-state",
+        grid_size=16,
+        steps=2,
+        spatial_spacing=0.5,
+        parameters=GrayScottParameters(diffusion_u=0.01, diffusion_v=0.005),
+    )
+    _, u, v = simulate_gray_scott(experiment, initial_state=(initial_u, initial_v))
+    assert u.shape == (2, 16, 16)
+    assert v.shape == (2, 16, 16)
+    assert not np.shares_memory(u[0], initial_u)
 
 
 def test_measurement_pipeline_is_reproducible_and_anonymous() -> None:

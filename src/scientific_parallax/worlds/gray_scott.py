@@ -101,6 +101,8 @@ class GrayScottExperiment:
     grid_size: int = 32
     steps: int = 100
     dt: float = 1.0
+    spatial_spacing: float = 1.0
+    clip_bounds: tuple[float, float] | None = (0.0, 1.5)
     boundary: BoundaryName = "periodic"
     solver: SolverName = "five_point"
     integrator: IntegratorName = "euler"
@@ -232,15 +234,23 @@ def _right_hand_side(
     law: ReactionLaw,
     laplacian: Laplacian,
     solver: SolverName,
+    spatial_spacing: float,
 ) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
+    inverse_spacing_squared = 1.0 / spatial_spacing**2
     reaction = law.reaction_scale * u * np.power(np.clip(v, 0.0, None), law.reaction_power)
     du = (
-        parameters.diffusion_u * law.diffusion_u_scale * laplacian(u, solver)
+        parameters.diffusion_u
+        * law.diffusion_u_scale
+        * laplacian(u, solver)
+        * inverse_spacing_squared
         - reaction
         + parameters.feed * law.feed_scale * (1.0 - u)
     )
     dv = (
-        parameters.diffusion_v * law.diffusion_v_scale * laplacian(v, solver)
+        parameters.diffusion_v
+        * law.diffusion_v_scale
+        * laplacian(v, solver)
+        * inverse_spacing_squared
         + reaction
         - (parameters.feed * law.feed_scale + parameters.kill + law.kill_offset) * v
     )
@@ -250,12 +260,26 @@ def _right_hand_side(
 def simulate_gray_scott(
     experiment: GrayScottExperiment,
     law: ReactionLaw | None = None,
+    initial_state: tuple[NDArray[np.float64], NDArray[np.float64]] | None = None,
 ) -> tuple[NDArray[np.float64], NDArray[np.float64], NDArray[np.float64]]:
     GrayScottWorld.validate_static(experiment)
     law = law or ReactionLaw()
     law.validate()
     p = experiment.parameters
-    u, v = _initial_state(experiment.grid_size, experiment.initial_family, experiment.initial_seed)
+    if initial_state is None:
+        u, v = _initial_state(
+            experiment.grid_size,
+            experiment.initial_family,
+            experiment.initial_seed,
+        )
+    else:
+        u = np.asarray(initial_state[0], dtype=float).copy()
+        v = np.asarray(initial_state[1], dtype=float).copy()
+        expected_shape = (experiment.grid_size, experiment.grid_size)
+        if u.shape != expected_shape or v.shape != expected_shape:
+            raise ValueError("initial state shape does not match the experiment grid")
+        if not np.all(np.isfinite(u)) or not np.all(np.isfinite(v)):
+            raise ValueError("initial state must be finite")
     recorded_u = [u.copy()]
     recorded_v = [v.copy()]
     times = [0.0]
@@ -264,11 +288,27 @@ def simulate_gray_scott(
         if experiment.intervention is not None and step == experiment.intervention.at_step:
             _apply_pulse(u, v, experiment.intervention)
         if experiment.integrator == "euler":
-            du, dv = _right_hand_side(u, v, p, law, laplacian, experiment.solver)
+            du, dv = _right_hand_side(
+                u,
+                v,
+                p,
+                law,
+                laplacian,
+                experiment.solver,
+                experiment.spatial_spacing,
+            )
             u_next = u + experiment.dt * du
             v_next = v + experiment.dt * dv
         else:
-            k1_u, k1_v = _right_hand_side(u, v, p, law, laplacian, experiment.solver)
+            k1_u, k1_v = _right_hand_side(
+                u,
+                v,
+                p,
+                law,
+                laplacian,
+                experiment.solver,
+                experiment.spatial_spacing,
+            )
             k2_u, k2_v = _right_hand_side(
                 u + 0.5 * experiment.dt * k1_u,
                 v + 0.5 * experiment.dt * k1_v,
@@ -276,6 +316,7 @@ def simulate_gray_scott(
                 law,
                 laplacian,
                 experiment.solver,
+                experiment.spatial_spacing,
             )
             k3_u, k3_v = _right_hand_side(
                 u + 0.5 * experiment.dt * k2_u,
@@ -284,6 +325,7 @@ def simulate_gray_scott(
                 law,
                 laplacian,
                 experiment.solver,
+                experiment.spatial_spacing,
             )
             k4_u, k4_v = _right_hand_side(
                 u + experiment.dt * k3_u,
@@ -292,11 +334,15 @@ def simulate_gray_scott(
                 law,
                 laplacian,
                 experiment.solver,
+                experiment.spatial_spacing,
             )
             u_next = u + experiment.dt * (k1_u + 2.0 * k2_u + 2.0 * k3_u + k4_u) / 6.0
             v_next = v + experiment.dt * (k1_v + 2.0 * k2_v + 2.0 * k3_v + k4_v) / 6.0
-        u = np.clip(u_next, 0.0, 1.5)
-        v = np.clip(v_next, 0.0, 1.5)
+        if experiment.clip_bounds is None:
+            u, v = u_next, v_next
+        else:
+            u = np.clip(u_next, *experiment.clip_bounds)
+            v = np.clip(v_next, *experiment.clip_bounds)
         if step % experiment.measurement.sample_every == 0 or step == experiment.steps:
             recorded_u.append(u.copy())
             recorded_v.append(v.copy())
@@ -318,15 +364,25 @@ class GrayScottWorld:
     def validate_static(experiment: GrayScottExperiment) -> None:
         experiment.parameters.validate()
         experiment.measurement.validate()
-        if experiment.grid_size < 8 or experiment.steps < 1 or experiment.dt <= 0.0:
+        if (
+            experiment.grid_size < 8
+            or experiment.steps < 1
+            or experiment.dt <= 0.0
+            or experiment.spatial_spacing <= 0.0
+        ):
             raise ValueError("invalid grid, step count, or timestep")
         if experiment.integrator not in ("euler", "rk4"):
             raise ValueError("unsupported time integrator")
+        if experiment.clip_bounds is not None:
+            lower, upper = experiment.clip_bounds
+            if not np.isfinite(lower) or not np.isfinite(upper) or lower >= upper:
+                raise ValueError("clip bounds must be finite and increasing")
         maximum_diffusion = max(
             experiment.parameters.diffusion_u,
             experiment.parameters.diffusion_v,
         )
-        if experiment.dt * maximum_diffusion > 0.24:
+        diffusion_number = experiment.dt * maximum_diffusion / experiment.spatial_spacing**2
+        if diffusion_number > 0.24:
             raise ValueError("explicit diffusion step violates the conservative stability bound")
         pulse = experiment.intervention
         if pulse is not None:

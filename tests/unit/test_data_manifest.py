@@ -14,7 +14,7 @@ def test_committed_the_well_manifest_has_pinned_shards() -> None:
     manifest = load_dataset_manifest(path)
     assert len(manifest["shards"]) == 6
     assert len({shard["sha256"] for shard in manifest["shards"]}) == 6
-    assert all(shard["downloaded"] is False for shard in manifest["shards"])
+    assert all("downloaded" not in shard for shard in manifest["shards"])
 
 
 def test_manifest_rejects_invalid_checksum() -> None:

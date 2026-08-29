@@ -5,10 +5,15 @@ from __future__ import annotations
 import argparse
 import hashlib
 import shutil
+import urllib.error
 import urllib.request
 from pathlib import Path
 
 from scientific_parallax.core.data_manifest import load_dataset_manifest
+
+
+class ResumeRejected(RuntimeError):
+    pass
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -17,6 +22,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--shard", required=True, help="exact shard path from the manifest")
     parser.add_argument("--destination", type=Path, required=True)
     parser.add_argument("--allow-large-download", action="store_true")
+    parser.add_argument("--resume", action="store_true")
     return parser
 
 
@@ -34,24 +40,49 @@ def main() -> None:
     destination.mkdir(parents=True, exist_ok=True)
     output = destination / Path(shard["path"]).name
     partial = output.with_suffix(output.suffix + ".partial")
-    if output.exists() or partial.exists():
+    if output.exists() or (partial.exists() and not args.resume):
         raise FileExistsError(f"refusing to overwrite existing download: {output}")
-    if shutil.disk_usage(destination).free < int(shard["bytes"] * 1.10):
-        raise OSError("insufficient free space for shard plus checksum margin")
-
     digest = hashlib.sha256()
-    written = 0
-    try:
-        with urllib.request.urlopen(shard["url"]) as response, partial.open("xb") as stream:
-            while block := response.read(1024 * 1024):
-                stream.write(block)
+    written = partial.stat().st_size if partial.exists() else 0
+    if written > shard["bytes"]:
+        raise ValueError("partial download exceeds the declared shard size")
+    remaining = shard["bytes"] - written
+    if shutil.disk_usage(destination).free < int(remaining * 1.10):
+        raise OSError("insufficient free space for remaining shard bytes plus margin")
+    if written:
+        with partial.open("rb") as existing:
+            for block in iter(lambda: existing.read(1024 * 1024), b""):
                 digest.update(block)
-                written += len(block)
+    if written == shard["bytes"]:
+        if digest.hexdigest() != shard["sha256"]:
+            partial.unlink()
+            raise ValueError("completed partial does not match the frozen SHA-256")
+        partial.replace(output)
+        print(f"verified shard: {output}")
+        return
+    request = urllib.request.Request(shard["url"])
+    if written:
+        request.add_header("Range", f"bytes={written}-")
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            if written:
+                content_range = response.headers.get("Content-Range", "")
+                if response.status != 206 or not content_range.startswith(f"bytes {written}-"):
+                    raise ResumeRejected("server did not honor the requested verified byte range")
+            mode = "ab" if written else "xb"
+            with partial.open(mode) as stream:
+                while block := response.read(1024 * 1024):
+                    stream.write(block)
+                    digest.update(block)
+                    written += len(block)
         if written != shard["bytes"] or digest.hexdigest() != shard["sha256"]:
             raise ValueError("download does not match the frozen byte count and SHA-256")
         partial.replace(output)
-    except BaseException:
+    except ValueError:
         partial.unlink(missing_ok=True)
+        raise
+    except (OSError, ResumeRejected, TimeoutError, urllib.error.URLError):
+        print(f"network transfer stopped; resumable partial preserved: {partial}")
         raise
     print(f"verified shard: {output}")
 

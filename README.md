@@ -101,13 +101,17 @@ Step 0 薄切片已经完成：
 - 右删失终点、分层 bootstrap 和预冻结负控干跑。
 - 独立 Euler/RK4 时间积分、六类共 30 个测量任务及数值一致性门禁；
 - 有限候选生成器、精确预算/缓存计费与可恢复证据账本；
-- The Well 外部数据版本/许可/分片校验清单和显式大文件下载器；
+- The Well 外部数据版本/许可/分片校验清单、可续传下载器和带署名 CI 夹具；
+- 基于完整官方 gliders 测试分片的 20 轨迹外部数值校验；
+- 固定基础镜像与 NumPy wheel 哈希的确认性 runner 构建输入；
 - schema-v1 迁移边界与位于开发目录外的一次性最终评估器。
 
-扩展后的本地 dry-run 已通过 21 项检查，但仍只是
+扩展后的本地 dry-run 已通过全部机制检查，但仍只是
 **ready for Protocol Freeze review**。30 个任务对 30% 改善的模拟功效为
-0.90；外部数据分片尚未下载，确认性 runner 镜像尚未固定，最终封存世界
-也尚未创建。因此 Gate PF 仍保持关闭。
+0.90。一个 2.65 GB 官方测试分片已按 SHA-256 验证；独立的九点/RK4
+路径相对五点/Euler 的一步外部 RMSE 改善 51.1%，并满足预声明绝对误差
+门槛。确认性 runner 已在本地候选镜像中画像，但最终可分发镜像摘要、
+最终封存世界和独立审查仍未完成，因此 Gate PF 继续保持关闭。
 
 Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Scott
 开发基线见 [`docs/gray-scott-baseline.md`](docs/gray-scott-baseline.md)，

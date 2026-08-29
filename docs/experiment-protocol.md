@@ -13,7 +13,8 @@ The dry-run serializes a schema-versioned candidate `ProtocolSpec` containing:
 - world-query, candidate-generation, candidate-evaluation, and CPU budgets;
 - exact cache accounting, numerical tolerances, and candidate-generator hash;
 - six measurement-cluster definitions and their content hash;
-- external-data manifest and execution-environment hashes;
+- external-data source manifest, attributed CI-fixture manifest, and
+  execution-environment hashes;
 - confirmatory baselines and one-factor ablations;
 - mechanical stop conditions.
 
@@ -100,9 +101,19 @@ a second attempt. The actual external directory and world commitment do not yet
 exist; this mechanism is tested but Gate PF remains closed.
 
 The Well test-split manifest pins the official repository revision, CC-BY-4.0
-dataset license, byte counts, and SHA-256 values for all six 2.65 GB shards. No
-shard has been downloaded or claimed as validated. The downloader requires an
-explicit large-download flag and verifies both byte count and checksum.
+dataset license, byte counts, and SHA-256 values for all six 2.65 GB shards.
+The gliders shard was downloaded outside Git and verified byte-for-byte. A
+deterministic 16 KB, attributed, modified fixture is committed for CI and bound
+to the protocol hash. Across all 20 trajectories over the first stored
+10-second interval, nine-point/RK4 reduced field RMSE from `0.03511` to
+`0.01717` relative to five-point/Euler (51.1% improvement). The reference path
+also met frozen external-validation limits: mean RMSE at most `0.02`, worst
+trajectory RMSE at most `0.04`, and at least 25% improvement.
+
+The confirmatory runner uses a digest-pinned Python 3.12.13 base and hash-pinned
+NumPy 2.5.2 wheels for Linux amd64 and arm64. The frozen task mix has run in a
+local arm64 candidate. This is not yet the final runner: Gate PF still requires
+publishing the exact image and recording its content digest.
 
 ## Required dry-run controls
 
@@ -123,6 +134,6 @@ uv run scientific-parallax protocol dry-run \
 ```
 
 Passing the dry-run means the local protocol mechanisms are ready for
-adversarial review. Gate PF still requires a validated external shard, a pinned
+adversarial review. Gate PF still requires a published and digest-pinned final
 runner image, an externally prepared final-world commitment, and independent
-acceptance of the power design.
+acceptance of the power design and numerical/protocol choices.

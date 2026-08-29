@@ -111,6 +111,7 @@ def protocol_spec_from_config(config: dict[str, Any]) -> ProtocolSpec:
     task_design = build_task_design(**config["task_design"])
     task_design_hash = content_hash([asdict(task) for task in task_design])
     external_manifest = load_dataset_manifest(Path(config["external_data_manifest"]))
+    external_fixture_manifest = load_dataset_manifest(Path(config["external_fixture_manifest"]))
     environment_lock = load_environment_spec(Path(config["execution_environment_spec"]), Path.cwd())
     return ProtocolSpec(
         schema_version=1,
@@ -120,6 +121,7 @@ def protocol_spec_from_config(config: dict[str, Any]) -> ProtocolSpec:
         measurement_cluster_hash=cluster_hash,
         task_design_hash=task_design_hash,
         external_data_manifest_hash=content_hash(external_manifest),
+        external_fixture_manifest_hash=content_hash(external_fixture_manifest),
         execution_environment_hash=content_hash(environment_lock),
         equivalence_rule="canonical finite-variable permutations plus equal intervention behavior",
         evidence_update_rule="fixed calibrated likelihood owned by EvidenceEngine",
@@ -331,8 +333,10 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
         == content_hash([asdict(task) for task in task_design]),
         "external_manifest_bound_to_protocol": spec.external_data_manifest_hash
         == content_hash(load_dataset_manifest(Path(config["external_data_manifest"]))),
-        "development_runtime_matches_candidate": all(
-            value for key, value in environment_matches.items() if key != "runner_image_pinned"
+        "external_fixture_bound_to_protocol": spec.external_fixture_manifest_hash
+        == content_hash(load_dataset_manifest(Path(config["external_fixture_manifest"]))),
+        "development_runtime_matches_candidate": (
+            environment_matches["development_host"] or environment_matches["confirmatory_container"]
         ),
         "design_power_at_detectable_effect": detectable_power
         >= config["power_design"]["minimum_power"],
@@ -401,10 +405,11 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
             "This dry run does not open or define the future final sealed Gray–Scott worlds."
         ),
         "protocol_freeze_blockers": [
-            "download and validate at least one pinned The Well development shard",
-            "pin the confirmatory runner image digest and rerun the frozen mix profile",
+            "publish and pin the final confirmatory runner image digest",
+            "retain the frozen-mix profile under that published runner digest",
             "prepare final world commitment and access directory outside the development tree",
             "independently review the 30% design-detectable effect versus the 20% null boundary",
+            "independently review numerical, survival, niche, generator, and accounting rules",
         ],
     }
     report_path = output_dir / "report.json"
@@ -427,6 +432,8 @@ def run_protocol_dry_run(config_path: Path, output_dir: Path) -> dict[str, Any]:
             "config": str(config_path),
             "external_data_manifest": config["external_data_manifest"],
             "external_data_manifest_hash": spec.external_data_manifest_hash,
+            "external_fixture_manifest": config["external_fixture_manifest"],
+            "external_fixture_manifest_hash": spec.external_fixture_manifest_hash,
             "execution_environment_spec": config["execution_environment_spec"],
             "execution_environment_hash": spec.execution_environment_hash,
         },

@@ -53,6 +53,7 @@ class ProtocolSpec:
     measurement_cluster_hash: str
     task_design_hash: str
     external_data_manifest_hash: str
+    external_fixture_manifest_hash: str
     execution_environment_hash: str
     equivalence_rule: str
     evidence_update_rule: str
@@ -85,6 +86,7 @@ class ProtocolSpec:
             self.measurement_cluster_hash,
             self.task_design_hash,
             self.external_data_manifest_hash,
+            self.external_fixture_manifest_hash,
             self.execution_environment_hash,
         )
         if any(

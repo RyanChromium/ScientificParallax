@@ -40,3 +40,11 @@ def test_environment_spec_rejects_changed_lock(tmp_path: Path) -> None:
     )
     with pytest.raises(ValueError, match="checksum"):
         load_environment_spec(spec, tmp_path)
+
+
+def test_confirmatory_environment_pins_container_and_requirements() -> None:
+    spec = load_environment_spec(Path("configs/environments/confirmatory-v1.json"), Path.cwd())
+    assert spec["base_image_digest"].startswith("sha256:")
+    assert spec["container_image_digest"] is None
+    assert set(spec["container_platforms"]) == {"linux/amd64", "linux/arm64"}
+    assert spec["requirements_sha256"]

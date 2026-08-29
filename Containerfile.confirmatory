@@ -1,0 +1,19 @@
+ARG BASE_IMAGE=python:3.12.13-slim@sha256:229a2c5bfa27522db7815ea81f9bed70af17ccb9de9fc7ad142b1877b5830d36
+FROM ${BASE_IMAGE}
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONHASHSEED=0 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/opt/scientific-parallax/src
+
+WORKDIR /workspace
+COPY configs/environments/requirements-confirmatory.txt /tmp/requirements-confirmatory.txt
+ARG PIP_FIND_LINKS
+ARG PIP_NO_INDEX
+ARG PIP_TRUSTED_HOST
+RUN python -m pip install --no-cache-dir --require-hashes \
+    -r /tmp/requirements-confirmatory.txt
+
+COPY src /opt/scientific-parallax/src
+
+ENTRYPOINT ["python", "-m", "scientific_parallax.cli"]

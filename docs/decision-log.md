@@ -123,15 +123,33 @@ evaluations but is counted separately. A completed `World.observe` call costs
 one world query. Treatment and H2 control share the same content-hashed finite
 generator with 32 attempts per parent and 128 candidates per task.
 
-## ADR-009: External evidence is committed but remains physically absent
+## ADR-009: External validation is offline and source-identical
 
-- Status: accepted for development; blocks Gate PF until provisioned
+- Status: accepted for development before Protocol Freeze
 - Date: 2026-08-29
 - Applies to: external validation and final evidence
 
 The Well test manifest pins official revision, license, sizes, and SHA-256 for
-six shards, but marks all shards undownloaded. The final evaluator refuses a
-directory under the development tree and creates its one-shot access record
-before reading final data. These controls make absent external inputs visible;
-they do not substitute for downloading a development shard or externally
-provisioning the final world.
+six shards. A gliders test shard was acquired outside Git and matched its exact
+2,650,800,128-byte identity. A deterministic attributed subset is committed for
+CI. Full-shard validation treats The Well only as offline external numerical
+evidence; it does not expose it as a queryable world and cannot replace the
+future sealed final evaluation.
+
+The source generator uses a Fourier spectral discretization and ETDRK4. Across
+all 20 trajectories, the local nine-point/RK4 reference improves one-interval
+RMSE by 51.1% over five-point/Euler and meets absolute error gates. These gates
+were fixed before retaining the reviewed report.
+
+## ADR-010: Runner base and final runner have separate identities
+
+- Status: accepted for development; final digest blocks Gate PF
+- Date: 2026-08-29
+- Applies to: Gate PF candidate
+
+The multi-platform Python 3.12.13 base image is digest-pinned, and NumPy 2.5.2
+wheels are hash-pinned for Linux amd64 and arm64. A local arm64 candidate image
+is sufficient for build and cost-profile diagnostics, but its local image ID is
+not recorded as the confirmatory runner digest. Gate PF requires publication of
+the exact final image and retention of its registry content digest; the base
+image digest must never be substituted for that identity.

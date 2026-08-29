@@ -1,7 +1,7 @@
 # Protocol Freeze review checklist
 
 Step 3.5 and the local pre-freeze hardening pass are implemented. The expanded
-synthetic dry-run passes 21 checks. Gate PF has **not** been executed.
+synthetic dry-run passes all current checks. Gate PF has **not** been executed.
 
 ## Resolved locally
 
@@ -24,19 +24,24 @@ synthetic dry-run passes 21 checks. Gate PF has **not** been executed.
   and result records.
 - [x] Official The Well test-shard metadata, sizes, license, revision, and
   SHA-256 identities are pinned in a validated manifest.
+- [x] One pinned 2.65 GB The Well gliders shard was downloaded outside Git and
+  matched its declared byte count and SHA-256.
+- [x] A deterministic 16 KB CC-BY-4.0 fixture with source attribution and
+  modification metadata is committed and checked in CI.
+- [x] All 20 external trajectories passed the frozen one-interval numerical
+  validation: reference RMSE `0.01717`, worst-trajectory RMSE `0.03548`, and
+  51.1% improvement over the primary method.
+- [x] The Python base-image digest, NumPy version, and Linux amd64/arm64 wheel
+  hashes are pinned; a local arm64 candidate was built and profiled.
 
 ## Remaining Gate PF blockers
 
 - [ ] Independently accept or revise the statistical design: a true 30%
   reduction has estimated power 0.90, while an effect exactly at the 20% null
   boundary is not expected to pass a lower-confidence-limit-above-20% test.
-- [ ] Download and checksum at least one pinned 2.65 GB The Well development
-  shard. Metadata validation alone is not external numerical validation.
-- [ ] Create a minimal licensed external-data fixture for CI; the repository
-  currently tests the official manifest without embedding third-party data.
-- [ ] Pin a confirmatory runner/container image digest, then rerun the frozen
-  30-task cost profile there. Python, OS, architecture, and `uv.lock` are pinned
-  only as a development candidate today.
+- [ ] Publish the exact confirmatory runner, record its final content digest,
+  and repeat/retain the frozen 30-task cost profile under that digest. A local
+  candidate image ID is not a portable immutable runner identity.
 - [ ] Define and generate final sealed task instances outside the repository,
   create their commitment, and provision the external access directory.
 - [ ] Obtain independent review of the numerical tolerances, survival values,
