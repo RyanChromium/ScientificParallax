@@ -1,7 +1,7 @@
 # Reviewed Step 6 co-evolution control
 
 The clean run at revision
-`143774bcdf30080a7b5de247cdd29101ee2dfe63` passed all 22 Step 6 mechanism
+`097d9f654a530b394c5b145cb3302ae6a8d9653c` passed all 22 Step 6 mechanism
 checks. A separate interrupted-after-round-zero run resumed from its immutable
 checkpoint and produced byte-identical `report.json`, evidence, paradigm lineage,
 question lineage, and scheduler ledgers.
@@ -44,7 +44,7 @@ Reproducibility identities:
 - report content hash:
   `b773f0182fec0bbdd51896b7bb26b286441f393337d81adecb548879ac0d44fd`;
 - run-manifest hash:
-  `644b4df67debf20132871831061430533fb45a023e642eb6988f19991e61c190`;
+  `7152dc5256ca9bd8ee34f0fbf59c12829dff8798b172c7612d71d568d6ae909f`;
 - evidence-ledger file SHA-256:
   `9662110b507834e2b67f45cf9aec1acea759b6c9cfa2f7ba7114f3b5c87d71f6`;
 - final evidence event hash:

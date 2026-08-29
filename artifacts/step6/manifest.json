@@ -2,21 +2,21 @@
   "config_hash": "040ca2e77cdea8a21692835cc66c94865ac0f643c9e9bf2d701637f9d7a3823a",
   "environment": {
     "git_dirty": false,
-    "git_revision": "143774bcdf30080a7b5de247cdd29101ee2dfe63",
+    "git_revision": "097d9f654a530b394c5b145cb3302ae6a8d9653c",
     "implementation": "CPython",
     "machine": "arm64",
     "numpy": "2.5.2",
     "platform": "macOS-26.1-arm64-arm-64bit",
-    "process_id": 83368,
+    "process_id": 83778,
     "python": "3.12.13"
   },
-  "experiment_id": "step6-coevolution-control-v1-d7e509cf17f7318f",
+  "experiment_id": "step6-coevolution-control-v1-23442b3f095a0f57",
   "inputs": {
     "candidate_generator_hash": "f6842002c59c21a5c4c944491e78a93f3b9d2c3a23702b5f7f7a6c3325f915fc",
     "config": "configs/experiments/step6-coevolution.json",
     "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892"
   },
-  "manifest_hash": "644b4df67debf20132871831061430533fb45a023e642eb6988f19991e61c190",
+  "manifest_hash": "7152dc5256ca9bd8ee34f0fbf59c12829dff8798b172c7612d71d568d6ae909f",
   "outputs": {
     "checkpoint_hash": "78b04c4c5c8c219d7ce4531b00a87f31ec575d4201831b6c892f5e14685805a5",
     "evidence_ledger": "evidence.jsonl",

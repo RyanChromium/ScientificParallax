@@ -2,12 +2,12 @@
   "config_hash": "040ca2e77cdea8a21692835cc66c94865ac0f643c9e9bf2d701637f9d7a3823a",
   "environment": {
     "git_dirty": false,
-    "git_revision": "143774bcdf30080a7b5de247cdd29101ee2dfe63",
+    "git_revision": "097d9f654a530b394c5b145cb3302ae6a8d9653c",
     "implementation": "CPython",
     "machine": "arm64",
     "numpy": "2.5.2",
     "platform": "macOS-26.1-arm64-arm-64bit",
-    "process_id": 83368,
+    "process_id": 83778,
     "python": "3.12.13"
   },
   "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
