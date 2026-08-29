@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "strategy_version": "step4-paradigm-evolution-v0.1",
+  "seed": 314159,
+  "protocol_config": "configs/experiments/protocol-dry-run.json",
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "generations": 2,
+  "patch_cost_weights": {
+    "new_entity": 8.0,
+    "new_parameter": 4.0,
+    "special_condition": 6.0,
+    "scope_contraction": 10.0,
+    "preregistration_violation": 100.0
+  },
+  "fixed_probes": [
+    {
+      "feed": 0.030,
+      "kill": 0.062,
+      "initial_family": "center_square",
+      "initial_seed": 41001,
+      "grid_size": 16,
+      "steps": 25,
+      "boundary": "periodic"
+    },
+    {
+      "feed": 0.018,
+      "kill": 0.051,
+      "initial_family": "stripe",
+      "initial_seed": 41002,
+      "grid_size": 16,
+      "steps": 25,
+      "boundary": "periodic"
+    },
+    {
+      "feed": 0.035,
+      "kill": 0.060,
+      "initial_family": "two_spots",
+      "initial_seed": 41003,
+      "grid_size": 16,
+      "steps": 25,
+      "boundary": "reflecting"
+    }
+  ]
+}

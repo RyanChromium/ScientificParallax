@@ -10,6 +10,7 @@ from scientific_parallax.baselines.gray_scott import (
     GrayScottBaselineConfig,
     run_gray_scott_benchmark,
 )
+from scientific_parallax.evolution.experiment import run_step4_control
 from scientific_parallax.protocol.dry_run import run_protocol_dry_run
 from scientific_parallax.protocol.final_world import (
     provision_local_final_world,
@@ -66,6 +67,14 @@ def _parser() -> argparse.ArgumentParser:
     verify_world.add_argument("--root", type=Path, required=True)
     verify_world.add_argument("--protocol-hash", required=True)
     verify_world.add_argument("--development-root", type=Path, default=Path.cwd())
+
+    step4 = command.add_parser("step4", help="run Step 4 paradigm-evolution controls")
+    step4_action = step4.add_subparsers(dest="step4_action", required=True)
+    step4_run = step4_action.add_parser(
+        "run", help="run the fixed-question paradigm-only evolution control"
+    )
+    step4_run.add_argument("--config", type=Path, required=True)
+    step4_run.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -101,6 +110,10 @@ def main() -> None:
                 expected_protocol_hash=args.protocol_hash,
                 development_root=args.development_root,
             )
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return
+    if args.command == "step4":
+        report = run_step4_control(args.config, args.output)
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.action == "verify-ledger":

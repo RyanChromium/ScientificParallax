@@ -181,3 +181,17 @@ read-only committed task files, strategy freeze, and exclusive one-shot access.
 These are audit and mistake-prevention controls, not a security boundary against
 the local user. Every report must use the label `local_single_account_self_audit`
 and must not claim independent confirmation.
+
+## ADR-013: Step 4 cannot expand the frozen mutation grammar
+
+- Status: accepted
+- Date: 2026-08-29
+- Applies to: Step 4 strategy development
+
+The research-plan draft asks for the first five broad mutation classes, while
+Gate PF froze a narrower finite generator: term removal, coefficient decrease,
+coefficient increase, and field-decay addition. Step 4 implements and audits
+that exact grammar. It does not add nonlinear state combinations, coordinate
+reparameterization, or coarse-graining after seeing development behavior.
+Adding those operators requires a protocol amendment, a new runner identity,
+and a newly committed final-world bundle.
