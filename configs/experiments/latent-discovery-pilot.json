@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "experiment_version": "latent-discovery-pilot-v0.2",
+  "scope": "development_pilot_only",
+  "seed": 223607,
+  "task_seed_base": 910000,
+  "measurement_seed_base": 920000,
+  "seeds_per_truth_cluster": 3,
+  "null_control_seeds": 3,
+  "grid_size": 12,
+  "steps": 36,
+  "sample_every": 12,
+  "world_query_budget": 12,
+  "candidate_generation_budget": 128,
+  "candidate_evaluation_budget": 4096,
+  "maximum_candidates": 48,
+  "active_candidates": 10,
+  "maximum_questions": 12,
+  "eig_samples": 16,
+  "likelihood_noise_floor": 0.015,
+  "complete_structure_posterior_threshold": 0.60,
+  "minimum_validation_improvement": 0.20,
+  "persistence_checkpoints": 3,
+  "minimum_task_success_rate": 0.80,
+  "maximum_null_false_positive_rate": 0.10,
+  "minimum_query_reduction_vs_matched_bed": 0.10,
+  "bootstrap_samples": 1000,
+  "arms": [
+    "coevolution",
+    "matched_bayesian_design",
+    "random",
+    "passive_coverage",
+    "fixed_representation_bed",
+    "no_niches",
+    "oracle_structure_bed"
+  ],
+  "question_mutations": [
+    "pulse_early",
+    "pulse_late",
+    "pulse_strong",
+    "double_pulse",
+    "feed_low",
+    "feed_high",
+    "kill_low",
+    "kill_high",
+    "cycle_initial_family",
+    "toggle_boundary",
+    "extend_duration"
+  ],
+  "truth_clusters": [
+    {
+      "cluster_id": "nominal-memory",
+      "latent_drive": 0.08,
+      "latent_decay": 0.04,
+      "latent_feedback": 2.5
+    },
+    {
+      "cluster_id": "slow-memory",
+      "latent_drive": 0.064,
+      "latent_decay": 0.032,
+      "latent_feedback": 2.5
+    },
+    {
+      "cluster_id": "fast-memory",
+      "latent_drive": 0.10,
+      "latent_decay": 0.05,
+      "latent_feedback": 2.5
+    },
+    {
+      "cluster_id": "strong-feedback",
+      "latent_drive": 0.08,
+      "latent_decay": 0.04,
+      "latent_feedback": 3.125
+    }
+  ],
+  "scientific_claim_boundary": {
+    "capability": "recover a complete latent feedback structure absent from every founder and validate it on unseen interventions",
+    "comparative": "reduce restricted mean discovery queries relative to matched Bayesian design",
+    "failure": "do not proceed if capability success is below 80 percent or held-out improvement does not exceed 20 percent"
+  }
+}

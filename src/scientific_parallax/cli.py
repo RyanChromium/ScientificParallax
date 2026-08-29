@@ -12,6 +12,7 @@ from scientific_parallax.baselines.gray_scott import (
 )
 from scientific_parallax.challenge.runner import run_step7_development_challenge
 from scientific_parallax.coevolution.scheduler import run_step6_control
+from scientific_parallax.discovery.latent_runner import run_latent_discovery_pilot
 from scientific_parallax.evolution.experiment import run_step4_control
 from scientific_parallax.protocol.dry_run import run_protocol_dry_run
 from scientific_parallax.protocol.final_world import (
@@ -103,6 +104,14 @@ def _parser() -> argparse.ArgumentParser:
     )
     step7_run.add_argument("--config", type=Path, required=True)
     step7_run.add_argument("--output", type=Path, required=True)
+
+    discovery = command.add_parser("discovery", help="run open-structure discovery pilots")
+    discovery_action = discovery.add_subparsers(dest="discovery_action", required=True)
+    latent_pilot = discovery_action.add_parser(
+        "latent-pilot", help="discover an unobserved dynamical state from wrong founders"
+    )
+    latent_pilot.add_argument("--config", type=Path, required=True)
+    latent_pilot.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -154,6 +163,10 @@ def main() -> None:
         return
     if args.command == "step7":
         report = run_step7_development_challenge(args.config, args.output)
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return
+    if args.command == "discovery":
+        report = run_latent_discovery_pilot(args.config, args.output)
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.action == "verify-ledger":
