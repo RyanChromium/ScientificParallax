@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "strategy_version": "step5-question-evolution-v0.1",
+  "seed": 161803,
+  "protocol_config": "configs/experiments/protocol-dry-run.json",
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "generations": 2,
+  "population_capacity": 6,
+  "max_world_queries": 3,
+  "eig_samples": 64,
+  "minimum_disagreement": 1e-12,
+  "minimum_expected_information_gain": 1e-12,
+  "allowed_mutations": [
+    "feed_low",
+    "feed_high",
+    "kill_low",
+    "kill_high",
+    "cycle_initial_family",
+    "toggle_boundary",
+    "toggle_pulse",
+    "sampling_frequency",
+    "downsample",
+    "mix_channels"
+  ],
+  "cost_weights": {
+    "simulation": 0.000001,
+    "measurement": 0.0001,
+    "intervention": 0.25
+  },
+  "seed_questions": [
+    {
+      "label": "central-pattern baseline",
+      "feed": 0.035,
+      "kill": 0.060,
+      "initial_family": "center_square",
+      "initial_seed": 51001,
+      "grid_size": 16,
+      "steps": 25,
+      "boundary": "periodic",
+      "noise_std": 0.006
+    },
+    {
+      "label": "two-spot boundary contrast",
+      "feed": 0.045,
+      "kill": 0.063,
+      "initial_family": "two_spots",
+      "initial_seed": 51002,
+      "grid_size": 16,
+      "steps": 25,
+      "boundary": "reflecting",
+      "noise_std": 0.006
+    }
+  ]
+}

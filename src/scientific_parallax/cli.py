@@ -16,6 +16,7 @@ from scientific_parallax.protocol.final_world import (
     provision_local_final_world,
     verify_local_final_world,
 )
+from scientific_parallax.questions.experiment import run_step5_control
 from scientific_parallax.step0.benchmark import run_benchmark
 from scientific_parallax.step0.experiment import ExperimentConfig, run_experiment
 from scientific_parallax.step0.ledger import verify_ledger
@@ -75,6 +76,14 @@ def _parser() -> argparse.ArgumentParser:
     )
     step4_run.add_argument("--config", type=Path, required=True)
     step4_run.add_argument("--output", type=Path, required=True)
+
+    step5 = command.add_parser("step5", help="run Step 5 question-evolution controls")
+    step5_action = step5.add_subparsers(dest="step5_action", required=True)
+    step5_run = step5_action.add_parser(
+        "run", help="run the fixed-paradigm question-only evolution control"
+    )
+    step5_run.add_argument("--config", type=Path, required=True)
+    step5_run.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -114,6 +123,10 @@ def main() -> None:
         return
     if args.command == "step4":
         report = run_step4_control(args.config, args.output)
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return
+    if args.command == "step5":
+        report = run_step5_control(args.config, args.output)
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.action == "verify-ledger":
