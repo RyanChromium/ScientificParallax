@@ -1,0 +1,95 @@
+{
+    "schema_version": 1,
+    "experiment_version": "latent-discovery-confirmatory-v1",
+    "scope": "confirmatory_v2",
+    "assurance_mode": "local_single_account_self_audit",
+    "seed": 264575,
+    "task_seed_base": 0,
+    "measurement_seed_base": 0,
+    "seeds_per_truth_cluster": 5,
+    "null_control_seeds": 30,
+    "null_control_arms": ["coevolution"],
+    "grid_size": 12,
+    "steps": 36,
+    "sample_every": 12,
+    "world_query_budget": 12,
+    "candidate_generation_budget": 128,
+    "candidate_evaluation_budget": 4096,
+    "maximum_candidates": 48,
+    "active_candidates": 10,
+    "maximum_questions": 12,
+    "eig_samples": 16,
+    "likelihood_noise_floor": 0.015,
+    "complete_structure_posterior_threshold": 0.60,
+    "minimum_validation_improvement": 0.20,
+    "persistence_checkpoints": 3,
+    "minimum_task_success_rate": 0.80,
+    "maximum_null_false_positive_rate": 0.10,
+    "minimum_query_reduction_vs_matched_bed": 0.10,
+    "bootstrap_samples": 2000,
+    "arms": [
+        "coevolution",
+        "matched_bayesian_design",
+        "random",
+        "passive_coverage",
+        "fixed_representation_bed",
+        "no_niches",
+        "oracle_structure_bed"
+    ],
+    "question_mutations": [
+        "pulse_early",
+        "pulse_late",
+        "pulse_strong",
+        "double_pulse",
+        "feed_low",
+        "feed_high",
+        "kill_low",
+        "kill_high",
+        "cycle_initial_family",
+        "toggle_boundary",
+        "extend_duration"
+    ],
+    "truth_clusters": [
+        {
+            "cluster_id": "weak-feedback-holdout",
+            "latent_drive": 0.08,
+            "latent_decay": 0.04,
+            "latent_feedback": 1.875
+        },
+        {
+            "cluster_id": "slow-strong-holdout",
+            "latent_drive": 0.064,
+            "latent_decay": 0.032,
+            "latent_feedback": 3.125
+        },
+        {
+            "cluster_id": "fast-weak-holdout",
+            "latent_drive": 0.10,
+            "latent_decay": 0.05,
+            "latent_feedback": 1.875
+        },
+        {
+            "cluster_id": "fast-strong-holdout",
+            "latent_drive": 0.10,
+            "latent_decay": 0.05,
+            "latent_feedback": 3.125
+        }
+    ],
+    "scientific_claim_boundary": {
+        "primary_h3": "recover a complete latent feedback structure absent from every founder and validate it on unseen interventions",
+        "mechanistic_h1": "structural niches preserve the neutral bridge needed for discovery",
+        "secondary_h2": "question coevolution reduces restricted mean discovery queries relative to matched Bayesian design"
+    },
+    "decision_rule": {
+        "h3_go": "one-sided 95 percent success lower bound above 0.80, held-out improvement lower bound above 0.20, null false-positive upper bound below 0.10, and valid multistep lineages",
+        "h3_stop": "any H3 gate fails",
+        "h2_supported": "two-sided 95 percent query-reduction interval lower bound above 0.10",
+        "h2_rejected": "H3 may still pass, but no question-coevolution advantage may be claimed"
+    },
+    "final_world_design": {
+        "generator_version": "sealed-latent-gray-scott-v2",
+        "secret_bytes": 32,
+        "seed_derivation": "hmac-sha256-v2-cluster-index-purpose",
+        "task_format": "latent-gray-scott-task-json-v1"
+    }
+}

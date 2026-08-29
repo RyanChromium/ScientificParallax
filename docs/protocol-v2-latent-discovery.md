@@ -119,3 +119,36 @@ After pilot iteration ends, v2 requires a committed strategy hash, immutable
 thresholds, new hidden seeds, and a new sealed test bundle outside the repository.
 Changing the world, grammar, endpoint, or thresholds after that bundle is opened
 would invalidate the result.
+
+## Confirmatory v1 registration
+
+The confirmatory configuration was fixed only after two development pilots. The
+first demonstrated reliable latent recovery but no question-selection advantage.
+The second added no-latent controls and multi-generation question replacement;
+it again recovered all 12 latent tasks, produced no false positives in three
+development null worlds, and again failed to beat matched Bayesian design. The
+strategy was not tuned further to manufacture an H2 win.
+
+The new sealed test contains 20 latent tasks from four parameter combinations
+not used as pilot clusters, plus 30 no-latent controls. All seven arms run the 20
+latent tasks. Only the preregistered co-evolution treatment runs the 30 null tasks,
+which provides enough zero-event trials for a one-sided Wilson upper bound below
+10%.
+
+The one-shot H3 decision requires all of the following:
+
+- one-sided 95% task-success lower bound strictly above 80%;
+- 95% stratified-bootstrap held-out-improvement lower bound strictly above 20%;
+- one-sided 95% null false-positive upper bound strictly below 10%;
+- valid three-operation structural lineages for every successful task.
+
+H1 is evaluated by the paired success-rate difference between co-evolution and
+the no-niches ablation. H2 remains separate: its 10% query-reduction margin and
+two-sided bootstrap interval are reported even if H3 and H1 pass. The permitted
+overall outcome is therefore mixed—representation discovery may be supported
+while question-coevolution advantage is rejected.
+
+The test bundle must live outside the repository. Its task seeds are derived from
+a fresh 32-byte secret, every task byte is committed in a manifest, and a clean
+code revision plus exact strategy component hashes must be bound to that world
+before the exclusive access log can be created.

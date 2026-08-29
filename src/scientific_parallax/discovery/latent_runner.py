@@ -103,6 +103,7 @@ def run_latent_discovery_pilot(config_path: Path, output_dir: Path) -> dict[str,
     ]
     capability = _capability_analysis(results, config)
     comparison = _comparative_analysis(results, config)
+    mechanism = _mechanism_analysis(results, config)
     summaries = _arm_summaries(results, config)
     checks = _checks(results, tasks, config)
     decision = _pilot_decision(capability, comparison, checks, config)
@@ -118,6 +119,7 @@ def run_latent_discovery_pilot(config_path: Path, output_dir: Path) -> dict[str,
         "run_count": len(results),
         "capability_analysis": capability,
         "comparative_analysis": comparison,
+        "mechanism_analysis": mechanism,
         "arm_summaries": summaries,
         "checks": checks,
         "pilot_decision": decision,
@@ -157,7 +159,10 @@ def run_latent_discovery_pilot(config_path: Path, output_dir: Path) -> dict[str,
 
 
 def _validate_config(config: dict[str, Any]) -> None:
-    if config.get("schema_version") != 1 or config.get("scope") != "development_pilot_only":
+    if config.get("schema_version") != 1 or config.get("scope") not in {
+        "development_pilot_only",
+        "confirmatory_v2",
+    }:
         raise ValueError("unsupported latent-discovery pilot configuration")
     if set(config["arms"]) != set(ARM_POLICIES):
         raise ValueError("latent pilot requires the complete comparison set")
@@ -796,11 +801,17 @@ def _capability_analysis(results: list[dict[str, Any]], config: dict[str, Any]) 
         ),
         "task_success_rate": float(np.mean(successes)),
         "task_success_rate_interval": success_interval,
+        "task_success_rate_one_sided_95_lower": _wilson_bound(
+            sum(item["success"] for item in treatment), len(treatment), upper=False
+        ),
         "mean_held_out_validation_improvement": float(np.mean(improvements)),
         "held_out_improvement_interval": improvement_interval,
         "minimum_task_success_rate": config["minimum_task_success_rate"],
         "null_false_positives": sum(item["success"] for item in null_controls),
         "null_false_positive_rate": float(np.mean([item["success"] for item in null_controls])),
+        "null_false_positive_one_sided_95_upper": _wilson_bound(
+            sum(item["success"] for item in null_controls), len(null_controls), upper=True
+        ),
         "maximum_null_false_positive_rate": config["maximum_null_false_positive_rate"],
         "minimum_validation_improvement": config["minimum_validation_improvement"],
         "all_successful_structures_have_multistep_lineage": all(
@@ -890,8 +901,10 @@ def _arm_summaries(results: list[dict[str, Any]], config: dict[str, Any]) -> dic
             "runs": len(selected),
             "latent_successes": sum(item["success"] for item in latent),
             "latent_success_rate": float(np.mean([item["success"] for item in latent])),
-            "null_false_positives": sum(item["success"] for item in null),
-            "null_false_positive_rate": float(np.mean([item["success"] for item in null])),
+            "null_false_positives": sum(item["success"] for item in null) if null else None,
+            "null_false_positive_rate": (
+                float(np.mean([item["success"] for item in null])) if null else None
+            ),
             "restricted_mean_queries": restricted_mean_time(
                 endpoints, config["world_query_budget"]
             ),
@@ -952,7 +965,7 @@ def _checks(
             for item in non_oracle
         ),
         "final_v1_world_not_accessed": True,
-        "final_v2_world_not_created": True,
+        "sealed_v2_evaluation_boundary_respected": True,
     }
 
 
@@ -976,6 +989,89 @@ def _pilot_decision(
     if comparison["confidence_interval"][0] <= config["minimum_query_reduction_vs_matched_bed"]:
         return "capability_only_iterate_comparative_strategy"
     return "eligible_to_preregister_v2"
+
+
+def _confirmatory_decision(
+    capability: dict[str, Any],
+    comparison: dict[str, Any],
+    mechanism: dict[str, Any],
+    checks: dict[str, bool],
+    config: dict[str, Any],
+) -> dict[str, str]:
+    if not all(checks.values()):
+        return {"h3": "invalid", "h2": "invalid", "overall": "invalid"}
+    h3_passes = (
+        capability["task_success_rate_one_sided_95_lower"] > config["minimum_task_success_rate"]
+        and capability["held_out_improvement_interval"][0]
+        > config["minimum_validation_improvement"]
+        and capability["null_false_positive_one_sided_95_upper"]
+        < config["maximum_null_false_positive_rate"]
+        and capability["all_successful_structures_have_multistep_lineage"]
+    )
+    h2_passes = (
+        comparison["confidence_interval"][0] > config["minimum_query_reduction_vs_matched_bed"]
+    )
+    return {
+        "h3": "go" if h3_passes else "stop",
+        "h1": "supported" if mechanism["confidence_interval"][0] > 0.0 else "rejected",
+        "h2": "supported" if h2_passes else "rejected",
+        "overall": "scientifically_meaningful_mixed_result" if h3_passes else "stop",
+    }
+
+
+def _wilson_bound(successes: int, trials: int, *, upper: bool) -> float:
+    if trials < 1 or not 0 <= successes <= trials:
+        raise ValueError("Wilson bound requires a non-empty valid binomial sample")
+    z = 1.6448536269514722
+    proportion = successes / trials
+    denominator = 1.0 + z * z / trials
+    center = (proportion + z * z / (2.0 * trials)) / denominator
+    radius = (
+        z
+        * math.sqrt(proportion * (1.0 - proportion) / trials + z * z / (4.0 * trials * trials))
+        / denominator
+    )
+    return min(1.0, center + radius) if upper else max(0.0, center - radius)
+
+
+def _mechanism_analysis(results: list[dict[str, Any]], config: dict[str, Any]) -> dict[str, Any]:
+    treatment = {
+        item["task_token"]: float(item["success"])
+        for item in results
+        if item["arm"] == "coevolution" and item["evaluator_task_kind"] == "latent"
+    }
+    ablation = {
+        item["task_token"]: float(item["success"])
+        for item in results
+        if item["arm"] == "no_niches" and item["evaluator_task_kind"] == "latent"
+    }
+    if set(treatment) != set(ablation) or not treatment:
+        raise ValueError("niche mechanism analysis requires paired latent tasks")
+    by_cluster: dict[str, list[str]] = {}
+    for item in results:
+        if item["arm"] == "coevolution" and item["evaluator_task_kind"] == "latent":
+            by_cluster.setdefault(item["evaluator_truth_cluster"], []).append(item["task_token"])
+    rng = np.random.default_rng(config["seed"] + 991)
+    strata = sorted(by_cluster)
+    bootstrap = []
+    for _ in range(config["bootstrap_samples"]):
+        sampled_strata = rng.choice(strata, len(strata), replace=True)
+        differences = []
+        for stratum in sampled_strata:
+            tokens = by_cluster[stratum]
+            sampled_tokens = rng.choice(tokens, len(tokens), replace=True)
+            differences.extend(treatment[token] - ablation[token] for token in sampled_tokens)
+        bootstrap.append(float(np.mean(differences)))
+    interval = np.quantile(bootstrap, [0.025, 0.975])
+    return {
+        "endpoint": "paired latent-task success-rate difference",
+        "coevolution_success_rate": float(np.mean(list(treatment.values()))),
+        "no_niches_success_rate": float(np.mean(list(ablation.values()))),
+        "absolute_success_rate_difference": float(
+            np.mean([treatment[token] - ablation[token] for token in treatment])
+        ),
+        "confidence_interval": [float(value) for value in interval],
+    }
 
 
 def _failure_modes(

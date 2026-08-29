@@ -12,6 +12,11 @@ from scientific_parallax.baselines.gray_scott import (
 )
 from scientific_parallax.challenge.runner import run_step7_development_challenge
 from scientific_parallax.coevolution.scheduler import run_step6_control
+from scientific_parallax.discovery.latent_final_world import (
+    evaluate_latent_final_world_once,
+    freeze_latent_strategy,
+    provision_latent_final_world,
+)
 from scientific_parallax.discovery.latent_runner import run_latent_discovery_pilot
 from scientific_parallax.evolution.experiment import run_step4_control
 from scientific_parallax.protocol.dry_run import run_protocol_dry_run
@@ -112,6 +117,25 @@ def _parser() -> argparse.ArgumentParser:
     )
     latent_pilot.add_argument("--config", type=Path, required=True)
     latent_pilot.add_argument("--output", type=Path, required=True)
+    latent_seal = discovery_action.add_parser(
+        "seal-latent-world", help="create a new external Protocol v2 test commitment"
+    )
+    latent_seal.add_argument("--config", type=Path, required=True)
+    latent_seal.add_argument("--output", type=Path, required=True)
+    latent_seal.add_argument("--development-root", type=Path, default=Path.cwd())
+    latent_seal.add_argument("--acknowledge-local-self-audit", action="store_true")
+    latent_freeze = discovery_action.add_parser(
+        "freeze-latent-strategy", help="bind clean strategy bytes to the v2 commitment"
+    )
+    latent_freeze.add_argument("--config", type=Path, required=True)
+    latent_freeze.add_argument("--root", type=Path, required=True)
+    latent_freeze.add_argument("--development-root", type=Path, default=Path.cwd())
+    latent_final = discovery_action.add_parser(
+        "latent-confirmatory", help="open and evaluate the Protocol v2 world once"
+    )
+    latent_final.add_argument("--config", type=Path, required=True)
+    latent_final.add_argument("--root", type=Path, required=True)
+    latent_final.add_argument("--development-root", type=Path, default=Path.cwd())
     return parser
 
 
@@ -166,7 +190,28 @@ def main() -> None:
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.command == "discovery":
-        report = run_latent_discovery_pilot(args.config, args.output)
+        if args.discovery_action == "latent-pilot":
+            report = run_latent_discovery_pilot(args.config, args.output)
+        elif args.discovery_action == "seal-latent-world":
+            if not args.acknowledge_local_self_audit:
+                raise SystemExit("seal-latent-world requires --acknowledge-local-self-audit")
+            report = provision_latent_final_world(
+                config_path=args.config,
+                output_root=args.output,
+                development_root=args.development_root,
+            )
+        elif args.discovery_action == "freeze-latent-strategy":
+            report = freeze_latent_strategy(
+                config_path=args.config,
+                sealed_root=args.root,
+                development_root=args.development_root,
+            )
+        else:
+            report = evaluate_latent_final_world_once(
+                config_path=args.config,
+                sealed_root=args.root,
+                development_root=args.development_root,
+            )
         print(json.dumps(report, indent=2, sort_keys=True))
         return
     if args.action == "verify-ledger":
