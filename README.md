@@ -78,7 +78,7 @@ Scientific Parallax 关注的是更早期的“认识论裂缝”：
 ## 当前状态
 
 项目目前已完成 **Step 0–3.5**、本地单账户自审计 Protocol Freeze，以及
-**Step 4 范式种群初版**；尚未实现问题种群和完整双种群共进化。
+**Step 4 范式种群初版**和 **Step 5 问题种群初版**；尚未实现完整双种群共进化。
 
 Step 0 薄切片已经完成：
 
@@ -108,6 +108,8 @@ Step 0 薄切片已经完成：
 - 可执行范式基因型/表现型、父子谱系、结构化冻结变异和逐项补丁成本；
 - 可完整重建的哈希谱系账本、失败谱系化石档案和三个容量受限生态位；
 - 固定开发问题、只进化范式的 Step 4 对照实验。
+- 可执行问题基因型、十类有限变异、语义去重、成本与预计信息增益评分；
+- 固定范式、只进化问题的 Step 5 对照，以及独立证据更新和预计—实际信息增益审计。
 
 扩展后的本地 dry-run 已通过全部机制检查，Gate PF 已完成。30 个任务对
 30% 改善的模拟功效为
@@ -129,10 +131,13 @@ Gate PF 完成记录见
 [`docs/final-world-custodian-runbook.md`](docs/final-world-custodian-runbook.md)。
 Step 4 实现与边界见
 [`docs/step4-paradigm-evolution.md`](docs/step4-paradigm-evolution.md)。
+Step 5 实现与边界见
+[`docs/step5-question-evolution.md`](docs/step5-question-evolution.md)。
 审核后的开发结果见
 [`artifacts/gray_scott/reviewed-development-baseline.md`](artifacts/gray_scott/reviewed-development-baseline.md)
 、[`artifacts/protocol/reviewed-dry-run.md`](artifacts/protocol/reviewed-dry-run.md)
 、[`artifacts/step4/reviewed-paradigm-evolution.md`](artifacts/step4/reviewed-paradigm-evolution.md)
+、[`artifacts/step5/reviewed-question-evolution.md`](artifacts/step5/reviewed-question-evolution.md)
 和 [`artifacts/external-data/reviewed-the-well-validation.md`](artifacts/external-data/reviewed-the-well-validation.md)。
 
 ## 详细计划

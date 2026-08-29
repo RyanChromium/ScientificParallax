@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "artifact_status": "reviewed_step5_development_control",
+  "status": "step5_control_complete",
+  "code_revision": "497b97896cd6ca17b316c9de50319648a9bf4a77",
+  "git_dirty": false,
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "fixed_paradigm_hash": "eb48e1f96387035ec1bf8489b00ac0fbccd6c1f629c3fa011ffe6f7920099bad",
+  "report_file_sha256": "6aeabb0f30dd87e54db4848ec1a9f374dbd1f5b2aa87a70ba3c547f0f52c328c",
+  "report_content_hash": "0ad01a61888efab3dade1f68686a9bff5fe6323cce3d1220184e99bcd8828fdf",
+  "run_manifest_hash": "e9f8009ae492407c937ab55125b075718b21ab452f303fe87245614750ac2395",
+  "evidence_ledger_file_sha256": "b233070526c409787bdff497f00fc14f2b166c0e743649ce7ceb3108ab41183f",
+  "evidence_ledger_final_event_hash": "e6459e850de19141a7989b1a7ea647e0a9375ea7f7b60217b9c3285d067b6ea9",
+  "question_lineage_file_sha256": "ff40af24c61bc5fe16102f856eab589b1626d701ae6b79fc3bb03e067664886b",
+  "question_lineage_final_event_hash": "ea764b91ac44e72b638d123b3657f8d991f03a52baa8621de82c60d520493817",
+  "checks_passed": 14,
+  "checks_failed": 0,
+  "deterministic_replay": {
+    "report_byte_identical": true,
+    "evidence_ledger_byte_identical": true,
+    "question_lineage_byte_identical": true
+  },
+  "budget": {
+    "world_queries": 3,
+    "question_generation_attempts": 82,
+    "unique_questions": 64,
+    "prediction_evaluations": 704,
+    "realized_weighted_cost": 0.1728
+  },
+  "rejection_counts": {
+    "semantic_duplicate": 18,
+    "capacity_limit": 74
+  },
+  "round_information_gain": [
+    {
+      "generation": 0,
+      "expected": 0.5760978896675402,
+      "actual": 0.25794316265587147,
+      "actual_minus_expected": -0.3181547270116687
+    },
+    {
+      "generation": 1,
+      "expected": 0.41228003532324475,
+      "actual": 0.4797353672485054,
+      "actual_minus_expected": 0.06745533192526065
+    },
+    {
+      "generation": 2,
+      "expected": 0.20777591804726914,
+      "actual": 0.2201855936467254,
+      "actual_minus_expected": 0.012409675599456271
+    }
+  ],
+  "mutation_operators": [
+    "cycle_initial_family",
+    "downsample",
+    "feed_high",
+    "feed_low",
+    "kill_high",
+    "kill_low",
+    "mix_channels",
+    "sampling_frequency",
+    "toggle_boundary",
+    "toggle_pulse"
+  ],
+  "final_world": {
+    "accessed_for_evaluation": false,
+    "commitment_verified_after_run": true,
+    "world_hash": "755df6b5ee69a75f7e6d8dff771356222d3633a493663ebd889a394d9e15a26b",
+    "commitment_hash": "39e3e4bce8f185431df9eb7274bb06ef5cddab50d5c86e1b88988b21784a0167",
+    "task_count": 30,
+    "strategy_freeze_absent": true,
+    "access_log_absent": true,
+    "result_absent": true
+  },
+  "scope": "development-only fixed-paradigm question evolution; not final-world evidence"
+}

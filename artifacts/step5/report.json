@@ -1,0 +1,164 @@
+{
+  "assurance": "Step 5 is strategy development after local self-audited Protocol Freeze; this report is not final-world evidence.",
+  "boundary": "Question genotypes can propose executable experiments and target registered paradigms, but cannot observe hidden labels or alter evidence updates.",
+  "budget": {
+    "prediction_evaluations": 704,
+    "question_generation_attempts": 82,
+    "realized_weighted_cost": 0.1728,
+    "unique_questions": 64,
+    "world_queries": 3
+  },
+  "checks": {
+    "all_mutation_operators_exercised": true,
+    "all_questions_traceable": true,
+    "evidence_engine_does_not_accept_question_objects": true,
+    "evidence_ledgers_verify": true,
+    "expected_actual_information_gain_recorded": true,
+    "final_world_not_accessed": true,
+    "fixed_paradigms_unchanged": true,
+    "frozen_protocol_hash_matches": true,
+    "invalid_question_rejected": true,
+    "known_distinguishing_experiment_selected": true,
+    "language_only_novelty_gets_no_resource": true,
+    "question_has_no_hidden_label_or_update_fields": true,
+    "semantic_duplicate_rejected": true,
+    "world_query_budget_respected": true
+  },
+  "cost_weights": {
+    "intervention": 0.25,
+    "measurement": 0.0001,
+    "simulation": 1e-06
+  },
+  "final_posterior": {
+    "diffusion_ratio": 0.009601686655338967,
+    "feed_low": 0.3542905063520077,
+    "kill_high": 0.20562531389665964,
+    "reaction_high": 0.00013458784749884723,
+    "reaction_low": 0.0032701404433877032,
+    "reaction_p1.95": 2.1291656338829367e-07,
+    "reaction_p2.05": 8.814700899107731e-05,
+    "standard": 0.4269894048795527
+  },
+  "fixed_paradigm_hash": "eb48e1f96387035ec1bf8489b00ac0fbccd6c1f629c3fa011ffe6f7920099bad",
+  "fixed_paradigm_ids": [
+    "standard",
+    "reaction_p1.95",
+    "reaction_p2.05",
+    "reaction_low",
+    "reaction_high",
+    "feed_low",
+    "kill_high",
+    "diffusion_ratio"
+  ],
+  "mutation_operators": [
+    "cycle_initial_family",
+    "downsample",
+    "feed_high",
+    "feed_low",
+    "kill_high",
+    "kill_low",
+    "mix_channels",
+    "sampling_frequency",
+    "toggle_boundary",
+    "toggle_pulse"
+  ],
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "rejection_counts": {
+    "capacity_limit": 74,
+    "semantic_duplicate": 18
+  },
+  "rounds": [
+    {
+      "actual_information_gain": 0.25794316265587147,
+      "actual_minus_expected_information_gain": -0.3181547270116687,
+      "expected_information_gain": 0.5760978896675402,
+      "generation": 0,
+      "known_questions": 2,
+      "mutation": null,
+      "parent_question_hash": null,
+      "population_size": 2,
+      "posterior": {
+        "diffusion_ratio": 0.09575267995080092,
+        "feed_low": 0.2428428466820722,
+        "kill_high": 0.2107988907999113,
+        "reaction_high": 0.07265057001864798,
+        "reaction_low": 0.06814584071546968,
+        "reaction_p1.95": 0.03399284201620399,
+        "reaction_p2.05": 0.023872833050448072,
+        "standard": 0.2519434967664459
+      },
+      "predicted_disagreement": 1.9617677088955472,
+      "resource_score": 5.295017368267832,
+      "selected_question_hash": "74a4f57d28b96f0154a6ad84b1e17616cb8b96c779e0a4d7dcf00727f41ccf94",
+      "selected_question_id": "step5-seed-0"
+    },
+    {
+      "actual_information_gain": 0.4797353672485054,
+      "actual_minus_expected_information_gain": 0.06745533192526065,
+      "expected_information_gain": 0.41228003532324475,
+      "generation": 1,
+      "known_questions": 22,
+      "mutation": {
+        "attempted_index": 8,
+        "child_semantic_hash": "c3a290b7175f1ca4fe210ce113ad6c9fd4115b89a6174753b121706f2025d3db",
+        "details": {
+          "downsample": 2
+        },
+        "operator": "downsample",
+        "parent_semantic_hash": "74a4f57d28b96f0154a6ad84b1e17616cb8b96c779e0a4d7dcf00727f41ccf94"
+      },
+      "parent_question_hash": "74a4f57d28b96f0154a6ad84b1e17616cb8b96c779e0a4d7dcf00727f41ccf94",
+      "population_size": 6,
+      "posterior": {
+        "diffusion_ratio": 0.03455055323224956,
+        "feed_low": 0.3328788414680563,
+        "kill_high": 0.2379157585658201,
+        "reaction_high": 0.014290923954522734,
+        "reaction_low": 0.016304366905325027,
+        "reaction_p1.95": 0.0019797949633487922,
+        "reaction_p2.05": 0.0015025308249107493,
+        "standard": 0.36057723008576675
+      },
+      "predicted_disagreement": 1.249282615758292,
+      "resource_score": 12.883751103851399,
+      "selected_question_hash": "c3a290b7175f1ca4fe210ce113ad6c9fd4115b89a6174753b121706f2025d3db",
+      "selected_question_id": "step5-g1-step5-seed-0-08"
+    },
+    {
+      "actual_information_gain": 0.2201855936467254,
+      "actual_minus_expected_information_gain": 0.012409675599456271,
+      "expected_information_gain": 0.20777591804726914,
+      "generation": 2,
+      "known_questions": 64,
+      "mutation": {
+        "attempted_index": 4,
+        "child_semantic_hash": "37b49536ec18660a0426324d5d66a78474fbb9e8a80aef6d529f24bd3ea1d2a2",
+        "details": {
+          "initial_family": "two_spots"
+        },
+        "operator": "cycle_initial_family",
+        "parent_semantic_hash": "c3a290b7175f1ca4fe210ce113ad6c9fd4115b89a6174753b121706f2025d3db"
+      },
+      "parent_question_hash": "c3a290b7175f1ca4fe210ce113ad6c9fd4115b89a6174753b121706f2025d3db",
+      "population_size": 6,
+      "posterior": {
+        "diffusion_ratio": 0.009601686655338967,
+        "feed_low": 0.3542905063520077,
+        "kill_high": 0.20562531389665964,
+        "reaction_high": 0.00013458784749884723,
+        "reaction_low": 0.0032701404433877032,
+        "reaction_p1.95": 2.1291656338829367e-07,
+        "reaction_p2.05": 8.814700899107731e-05,
+        "standard": 0.4269894048795527
+      },
+      "predicted_disagreement": 0.556184078742872,
+      "resource_score": 6.49299743897716,
+      "selected_question_hash": "37b49536ec18660a0426324d5d66a78474fbb9e8a80aef6d529f24bd3ea1d2a2",
+      "selected_question_id": "step5-g2-step5-g1-step5-seed-0-08-04"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "development Gray-Scott world only; final sealed tasks were not accessed",
+  "status": "step5_control_complete",
+  "strategy_version": "step5-question-evolution-v0.1"
+}

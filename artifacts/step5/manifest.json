@@ -1,0 +1,31 @@
+{
+  "config_hash": "f3444941f909803b90232ab519e9ae1315369bd28cbef4019e4b4c07edefed1d",
+  "environment": {
+    "git_dirty": false,
+    "git_revision": "497b97896cd6ca17b316c9de50319648a9bf4a77",
+    "implementation": "CPython",
+    "machine": "arm64",
+    "numpy": "2.5.2",
+    "platform": "macOS-26.1-arm64-arm-64bit",
+    "process_id": 75278,
+    "python": "3.12.13"
+  },
+  "experiment_id": "step5-question-evolution-control-v1-18a1793164dff022",
+  "inputs": {
+    "config": "configs/experiments/step5-question-evolution.json",
+    "fixed_paradigm_hash": "eb48e1f96387035ec1bf8489b00ac0fbccd6c1f629c3fa011ffe6f7920099bad",
+    "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892"
+  },
+  "manifest_hash": "e9f8009ae492407c937ab55125b075718b21ab452f303fe87245614750ac2395",
+  "outputs": {
+    "evidence_ledger": "evidence.jsonl",
+    "evidence_ledger_hash": "e6459e850de19141a7989b1a7ea647e0a9375ea7f7b60217b9c3285d067b6ea9",
+    "question_lineage": "question-lineage.jsonl",
+    "question_lineage_hash": "ea764b91ac44e72b638d123b3657f8d991f03a52baa8621de82c60d520493817",
+    "report": "report.json",
+    "report_hash": "0ad01a61888efab3dade1f68686a9bff5fe6323cce3d1220184e99bcd8828fdf"
+  },
+  "protocol_id": "step5-question-evolution-control-v1",
+  "schema_version": 1,
+  "seed": 161803
+}
