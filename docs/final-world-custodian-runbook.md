@@ -12,7 +12,7 @@ return only the commitment record. Developers must not receive task seeds,
 world bytes, hidden labels, or previews before the one-shot evaluation.
 
 Current protocol hash:
-`8a28aeae581f0e7d2820bddc590cfef63f0f4e0ab103b408d3a30749558ffb29`.
+`41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b`.
 
 ## Gate PF world commitment
 
@@ -24,7 +24,7 @@ the inaccessible world files:
 ```json
 {
   "schema_version": 2,
-  "protocol_hash": "8a28aeae581f0e7d2820bddc590cfef63f0f4e0ab103b408d3a30749558ffb29",
+  "protocol_hash": "41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b",
   "world_hash": "<lowercase SHA-256 of the deterministic world manifest>"
 }
 ```
@@ -43,7 +43,7 @@ external root:
 ```json
 {
   "schema_version": 1,
-  "protocol_hash": "8a28aeae581f0e7d2820bddc590cfef63f0f4e0ab103b408d3a30749558ffb29",
+  "protocol_hash": "41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b",
   "strategy_hash": "<frozen strategy SHA-256>",
   "world_commitment_hash": "<canonical content hash of commitment.json>"
 }

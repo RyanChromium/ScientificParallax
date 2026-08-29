@@ -7,11 +7,11 @@ does not execute Gate PF.
 
 - Protocol ID: `protocol-dry-run-v1`
 - Protocol hash:
-  `8a28aeae581f0e7d2820bddc590cfef63f0f4e0ab103b408d3a30749558ffb29`
+  `41b8229b388e2fb9f0345c7d15fd8a33746c94cd31a103393a692e10a969548b`
 - Confirmatory runner:
-  `ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:56080a851d6dba6ea2008e6e441d29bcec2e72e4e06f3e6a9331dbcf56a13348`
+  `ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:d767d7ece6977d4900bd4b3ee505bf9d6a08a06f7a8ca15eb07f8e2ae301d250`
 - Runner platforms: Linux amd64 and Linux arm64
-- Runner source revision: `e51f9272ada5346daa22b4fe9ff6c285b0480ddc`
+- Runner source revision: `453dd9bdf0cc85d42d2e2f3e545f1d3a0685afcb`
 - External validation source SHA-256:
   `b22d51b7f1b33743934b608d94f845f458dd480fac4ee981cc516fb9170ff4e9`
 
