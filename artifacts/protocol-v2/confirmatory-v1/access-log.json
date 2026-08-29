@@ -1,0 +1,8 @@
+{
+  "experiment_version": "latent-discovery-confirmatory-v1",
+  "opened_at_utc": "2026-08-29T17:00:13.993888+00:00",
+  "schema_version": 1,
+  "strategy_freeze_hash": "639ee53af589eb581b61fc5955da41780f595e322ea6a849a029faa5e6ecf7b7",
+  "strategy_hash": "7d8745844e28b2c8a344a3fe4de576bc74d6af48c3da4fa0e36f1df5af11ce34",
+  "world_commitment_hash": "b1a7e3ed4dd50399ffe75958ade5fbb0499b2398ae14d67782c2f4aeea86b85e"
+}

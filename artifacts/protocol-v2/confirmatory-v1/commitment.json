@@ -1,0 +1,8 @@
+{
+  "assurance_mode": "local_single_account_self_audit",
+  "config_hash": "1f014226c37f137014de599b8e8fc1ebeb3ace1b6b82b3b172a22efcc69eb8cd",
+  "experiment_version": "latent-discovery-confirmatory-v1",
+  "schema_version": 1,
+  "task_count": 50,
+  "world_hash": "825912334812797f84b8471f24a11aec55fea7a4912fae2ac4a19e687ab2f2c2"
+}

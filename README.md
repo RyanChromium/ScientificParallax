@@ -133,6 +133,18 @@ Step 7 的共进化与匹配 Bayesian 对照在唯一主终点上都需要 1.0 �
 同时冻结变异语法不能新增状态变量。该结果明确否证当前协议下的核心优势主张，
 不是一次可按原协议重跑的“不确定”结果。
 
+在保留该 `stop` 结论后，项目另行建立了 **Protocol v2 潜变量发现薄切片**。
+这一版本不再把真结构放入 founder 池：所有普通 founder 都是错误的两变量模型，
+必须依次增加潜变量、连接可见驱动、连接反应反馈，并在未见干预上优于最佳两变量
+模型。一次性测试得到 20/20 潜变量任务成功、0/30 null world 假阳性；无生态位
+消融仅成功 4/20，固定表示为 0/20。由此 H3 表征发现得到 `go`，H1 结构生态位
+机制得到支持。
+
+同时，问题共进化与匹配 Bayesian 设计都需要 4.5 次查询，查询缩减为 0%，因此
+H2 仍被拒绝。当前最窄且可信的结论是：结构生态位能保留通往有效潜变量的中性
+变异桥梁；没有证据证明问题共进化优于标准 Bayesian 实验设计。这仍是合成世界
+中的受控结构恢复，不是自然界新定律发现，也未自动进入 Step 8。
+
 Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Scott
 开发基线见 [`docs/gray-scott-baseline.md`](docs/gray-scott-baseline.md)，
 Step 3.5 协议候选见 [`docs/experiment-protocol.md`](docs/experiment-protocol.md)。
@@ -150,6 +162,8 @@ Step 6 实现与边界见
 [`docs/step6-coevolution-scheduler.md`](docs/step6-coevolution-scheduler.md)。
 Step 7 设计、盲化边界与停止结论见
 [`docs/step7-blind-development-challenge.md`](docs/step7-blind-development-challenge.md)。
+Protocol v2 的潜变量世界、结构语法和确认规则见
+[`docs/protocol-v2-latent-discovery.md`](docs/protocol-v2-latent-discovery.md)。
 审核后的开发结果见
 [`artifacts/gray_scott/reviewed-development-baseline.md`](artifacts/gray_scott/reviewed-development-baseline.md)
 、[`artifacts/protocol/reviewed-dry-run.md`](artifacts/protocol/reviewed-dry-run.md)
@@ -157,6 +171,7 @@ Step 7 设计、盲化边界与停止结论见
 、[`artifacts/step5/reviewed-question-evolution.md`](artifacts/step5/reviewed-question-evolution.md)
 、[`artifacts/step6/reviewed-coevolution.md`](artifacts/step6/reviewed-coevolution.md)
 、[`artifacts/step7/reviewed-blind-development.md`](artifacts/step7/reviewed-blind-development.md)
+、[`artifacts/protocol-v2/reviewed-latent-discovery.md`](artifacts/protocol-v2/reviewed-latent-discovery.md)
 和 [`artifacts/external-data/reviewed-the-well-validation.md`](artifacts/external-data/reviewed-the-well-validation.md)。
 
 ## 详细计划

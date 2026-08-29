@@ -152,3 +152,18 @@ The test bundle must live outside the repository. Its task seeds are derived fro
 a fresh 32-byte secret, every task byte is committed in a manifest, and a clean
 code revision plus exact strategy component hashes must be bound to that world
 before the exclusive access log can be created.
+
+## Confirmatory outcome
+
+The one-shot test completed from frozen revision
+`40841cbc330f0ff5aabb8c22b22b71b271e5b0b6`. H3 passed: all 20 latent tasks
+recovered a complete three-step latent lineage; the one-sided 95% success lower
+bound was 88.1%, held-out intervention improvement had a 54.6% lower bound, and
+0/30 null controls produced a false discovery. H1 was supported by a 20/20 versus
+4/20 co-evolution/no-niches comparison.
+
+H2 was rejected. Co-evolution and matched Bayesian design both required 4.5
+restricted-mean queries, with zero estimated reduction. Random and passive
+question strategies also recovered all latent tasks. Protocol v2 therefore
+supports structural-niche preservation, not a general question-coevolution
+advantage.

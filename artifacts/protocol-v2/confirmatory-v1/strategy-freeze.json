@@ -1,0 +1,16 @@
+{
+  "code_revision": "40841cbc330f0ff5aabb8c22b22b71b271e5b0b6",
+  "component_hashes": {
+    "src/scientific_parallax/discovery/latent_model.py": "3a464b8692c04d644d3d54299a4a0136b1d2f4642b5d7a785b5bc5f8fe9899e4",
+    "src/scientific_parallax/discovery/latent_questions.py": "200674833bbbe925889e816e5bb7c22eeab9d2dce5a67d202cdc243f8168b131",
+    "src/scientific_parallax/discovery/latent_runner.py": "99f269eb1c73082e62cae6daf6bb88b0cf156287ac20a5cbcc5d98c0b2d3721f",
+    "src/scientific_parallax/worlds/latent_gray_scott.py": "5aa05ddfe5611be74d676ced48d7e60f0a09699eae9349e794256ae85ebc4a6f"
+  },
+  "config_file_sha256": "bf3e23a14c13c5fe1e30e1becbb5575525de3150cb6017703f236da1181112b6",
+  "config_hash": "1f014226c37f137014de599b8e8fc1ebeb3ace1b6b82b3b172a22efcc69eb8cd",
+  "entrypoint": "evaluate_latent_final_world_once",
+  "experiment_version": "latent-discovery-confirmatory-v1",
+  "schema_version": 1,
+  "strategy_hash": "7d8745844e28b2c8a344a3fe4de576bc74d6af48c3da4fa0e36f1df5af11ce34",
+  "world_commitment_hash": "b1a7e3ed4dd50399ffe75958ade5fbb0499b2398ae14d67782c2f4aeea86b85e"
+}

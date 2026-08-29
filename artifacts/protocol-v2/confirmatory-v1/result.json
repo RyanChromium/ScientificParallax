@@ -1,0 +1,162 @@
+{
+  "report": {
+    "arm_summaries": {
+      "coevolution": {
+        "latent_success_rate": 1.0,
+        "latent_successes": 20,
+        "mean_candidate_evaluations": 714.58,
+        "mean_validation_improvement": 0.6443706418231447,
+        "null_false_positive_rate": 0.0,
+        "null_false_positives": 0,
+        "restricted_mean_queries": 4.5,
+        "runs": 50
+      },
+      "fixed_representation_bed": {
+        "latent_success_rate": 0.0,
+        "latent_successes": 0,
+        "mean_candidate_evaluations": 321.6,
+        "mean_validation_improvement": -1.0,
+        "null_false_positive_rate": null,
+        "null_false_positives": null,
+        "restricted_mean_queries": 12.0,
+        "runs": 20
+      },
+      "matched_bayesian_design": {
+        "latent_success_rate": 1.0,
+        "latent_successes": 20,
+        "mean_candidate_evaluations": 576.0,
+        "mean_validation_improvement": 0.618233770119424,
+        "null_false_positive_rate": null,
+        "null_false_positives": null,
+        "restricted_mean_queries": 4.5,
+        "runs": 20
+      },
+      "no_niches": {
+        "latent_success_rate": 0.2,
+        "latent_successes": 4,
+        "mean_candidate_evaluations": 744.4,
+        "mean_validation_improvement": -0.6029105945465277,
+        "null_false_positive_rate": null,
+        "null_false_positives": null,
+        "restricted_mean_queries": 10.95,
+        "runs": 20
+      },
+      "oracle_structure_bed": {
+        "latent_success_rate": 1.0,
+        "latent_successes": 20,
+        "mean_candidate_evaluations": 576.0,
+        "mean_validation_improvement": 0.8482078286884676,
+        "null_false_positive_rate": null,
+        "null_false_positives": null,
+        "restricted_mean_queries": 1.0,
+        "runs": 20
+      },
+      "passive_coverage": {
+        "latent_success_rate": 1.0,
+        "latent_successes": 20,
+        "mean_candidate_evaluations": 576.0,
+        "mean_validation_improvement": 0.6117157910277569,
+        "null_false_positive_rate": null,
+        "null_false_positives": null,
+        "restricted_mean_queries": 4.55,
+        "runs": 20
+      },
+      "random": {
+        "latent_success_rate": 1.0,
+        "latent_successes": 20,
+        "mean_candidate_evaluations": 576.0,
+        "mean_validation_improvement": 0.6264820392165388,
+        "null_false_positive_rate": null,
+        "null_false_positives": null,
+        "restricted_mean_queries": 4.65,
+        "runs": 20
+      }
+    },
+    "assurance": "local single-account self-audit; this does not provide independent custody or independent confirmation",
+    "capability_analysis": {
+      "all_successful_structures_have_multistep_lineage": true,
+      "held_out_improvement_interval": [
+        0.546245273108457,
+        0.7304769132223368
+      ],
+      "maximum_null_false_positive_rate": 0.1,
+      "mean_held_out_validation_improvement": 0.6443706418231447,
+      "minimum_task_success_rate": 0.8,
+      "minimum_validation_improvement": 0.2,
+      "null_false_positive_one_sided_95_upper": 0.08272430812509929,
+      "null_false_positive_rate": 0.0,
+      "null_false_positives": 0,
+      "ordinary_founders_all_two_state": true,
+      "task_success_rate": 1.0,
+      "task_success_rate_interval": [
+        1.0,
+        1.0
+      ],
+      "task_success_rate_one_sided_95_lower": 0.8808421626390356
+    },
+    "checks": {
+      "all_arms_use_equal_world_query_ceiling": true,
+      "all_resource_ceilings_respected": true,
+      "complete_preregistered_arm_set": true,
+      "final_v1_world_not_accessed": true,
+      "fixed_representation_never_adds_latent": true,
+      "held_out_conditions_never_queried": true,
+      "multiple_truth_parameters_and_seeds": true,
+      "null_world_controls_present": true,
+      "ordinary_complete_structures_require_three_generations": true,
+      "ordinary_founders_all_structurally_wrong": true,
+      "sealed_v2_evaluation_boundary_respected": true
+    },
+    "comparative_analysis": {
+      "confidence_interval": [
+        -0.11544117647058817,
+        0.09375000000000004
+      ],
+      "control_restricted_mean_queries": 4.5,
+      "minimum_query_reduction": 0.1,
+      "relative_query_reduction": 0.0,
+      "treatment_restricted_mean_queries": 4.5
+    },
+    "config_hash": "1f014226c37f137014de599b8e8fc1ebeb3ace1b6b82b3b172a22efcc69eb8cd",
+    "decision": {
+      "h1": "supported",
+      "h2": "rejected",
+      "h3": "go",
+      "overall": "scientifically_meaningful_mixed_result"
+    },
+    "experiment_version": "latent-discovery-confirmatory-v1",
+    "failure_modes": [
+      {
+        "detail": "question coevolution has not beaten the matched Bayesian control",
+        "id": "matched-bed-not-beaten"
+      }
+    ],
+    "independent_validation_evaluations": 6234,
+    "mechanism_analysis": {
+      "absolute_success_rate_difference": 0.8,
+      "coevolution_success_rate": 1.0,
+      "confidence_interval": [
+        0.4,
+        1.0
+      ],
+      "endpoint": "paired latent-task success-rate difference",
+      "no_niches_success_rate": 0.2
+    },
+    "resource_accounting": {
+      "candidate_evaluation_cache_hits": 1665818,
+      "candidate_evaluations": 103129,
+      "candidate_generations": 16680,
+      "world_queries": 2040
+    },
+    "run_count": 170,
+    "schema_version": 1,
+    "scope": "one-shot sealed Protocol v2 test under local single-account self-audit",
+    "status": "latent_discovery_confirmatory_complete",
+    "strategy_hash": "7d8745844e28b2c8a344a3fe4de576bc74d6af48c3da4fa0e36f1df5af11ce34",
+    "task_count": 50,
+    "world_hash": "825912334812797f84b8471f24a11aec55fea7a4912fae2ac4a19e687ab2f2c2"
+  },
+  "report_hash": "979596aa2af4eb0c9ce6d25674a3006ec488c920c4f506a4eb58cc8233049d36",
+  "schema_version": 1,
+  "task_results_sha256": "c625f50db6d9af62af5fb6be50e7ddf7048f75bbe4a207538e67b20af906dfd3"
+}
