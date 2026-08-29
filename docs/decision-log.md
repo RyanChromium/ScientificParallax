@@ -143,7 +143,7 @@ were fixed before retaining the reviewed report.
 
 ## ADR-010: Runner base and final runner have separate identities
 
-- Status: accepted for development; final digest blocks Gate PF
+- Status: accepted and satisfied at Gate PF
 - Date: 2026-08-29
 - Applies to: Gate PF candidate
 
@@ -162,8 +162,8 @@ image digest must never be substituted for that identity.
 
 Gate PF occurs before Step 4 strategy development, so a final-world commitment
 cannot truthfully require the eventual strategy hash. The local provisioner
-first commits schema-v2 world task descriptors to the frozen protocol hash. After strategy
-development and before the single final opening, a separate strategy-freeze
+first commits schema-v2 world task descriptors to the frozen protocol hash.
+After strategy development and before the single final opening, a separate strategy-freeze
 record binds the strategy hash to the unchanged world-commitment hash. The
 evaluator verifies both records and includes both hashes in its exclusive access
 record. Changing either record after strategy freeze prevents evaluation.

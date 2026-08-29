@@ -16,8 +16,8 @@ them and must not describe the resulting evidence as independently confirmed.
 
 ## Gate PF world commitment
 
-After the final runner digest and protocol hash are fixed, but before Step 4
-strategy development, run:
+For the frozen v1 record, the command was run after the final runner digest and
+protocol hash were fixed, before Step 4 strategy development:
 
 ```bash
 uv run scientific-parallax protocol seal-world \
@@ -38,7 +38,7 @@ Verify the result without printing task contents:
 ```bash
 uv run scientific-parallax protocol verify-world \
   --root /Users/ran/ScientificParallax-FinalWorld-v1 \
-  --protocol-hash <frozen-protocol-hash> \
+  --protocol-hash 0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892 \
   --development-root /Users/ran/Project/ScientificParallax
 ```
 

@@ -1,0 +1,8 @@
+{
+  "assurance_mode": "local_single_account_self_audit",
+  "generator_version": "sealed-gray-scott-v1",
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "schema_version": 2,
+  "task_count": 30,
+  "world_hash": "755df6b5ee69a75f7e6d8dff771356222d3633a493663ebd889a394d9e15a26b"
+}

@@ -1,7 +1,7 @@
 # Step 3.5 protocol candidate and dry-run
 
-Status: ready for local single-account Protocol Freeze. Nothing in this
-document opens the future final sealed Gray–Scott worlds.
+Status: frozen under local single-account self-audit on 2026-08-29. Nothing in
+this document opens the final sealed Gray–Scott worlds.
 
 ## Frozen-candidate components
 
@@ -100,7 +100,8 @@ tree. The local provisioner derives 30 hidden task and measurement seeds from a
 fresh 32-byte secret, writes deterministic JSON task descriptors, and commits a
 manifest of paths, sizes, and file hashes. The verifier rehashes all bytes before
 the evaluator writes an exclusive access record and result record. The actual
-directory and commitment do not yet exist; Gate PF therefore remains closed.
+directory now exists outside the repository and its verified commitment is
+recorded; task contents remain unopened.
 
 Sealing is deliberately two-stage. At Gate PF, the local user creates a
 schema-v2 world commitment containing the protocol, assurance-mode, generator,
@@ -151,7 +152,6 @@ uv run scientific-parallax protocol dry-run \
   --output artifacts/protocol/runs/development
 ```
 
-Passing the dry-run means the mechanisms are ready for local Protocol Freeze.
-Gate PF still requires the updated published runner digest and a verified local
-final-world commitment outside the repository. The statistical and protocol
-choices are accepted under self-audit only.
+The dry-run, updated published runner, and repository-external final-world
+commitment have passed Gate PF. The statistical and protocol choices are
+accepted under self-audit only; Step 4 may begin without opening final tasks.

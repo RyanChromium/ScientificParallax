@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "protocol_frozen_local_self_audit",
+  "assurance_mode": "local_single_account_self_audit",
+  "date": "2026-08-29",
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "runner": {
+    "image": "ghcr.io/ryanchromium/scientific-parallax-confirmatory",
+    "oci_index_digest": "sha256:1b99d310dfa0fe98019489d00763ec3321676ba86384ac2c6eb78979d0c6533f",
+    "arm64_manifest_digest": "sha256:0ad8ba755627b7a960c1f8254d95d4e15ae72387d3a02c2300a53065dfa732c9",
+    "source_revision": "78a59bf68c58c592d30bcf8aeb2f145ecb347cfc",
+    "version": "0.3.5"
+  },
+  "dry_run": {
+    "host_report_sha256": "a3bdff77edd2d6bab062cbe4d25b3f2dc7ec81123c01c8b9dce9ed2505e4b748",
+    "host_manifest_hash": "aa4e85d055e4d92bd945775f0045493b62040262fdb65786ca5bb880230e85cc",
+    "published_arm64_report_sha256": "bde254ac2f8e1c4911cfea30314d97231373b867f09c478649cae42430262c96",
+    "published_arm64_manifest_hash": "9852dc46ea0a3fa605dbaaea46fd10defb4b6e3789c197e62e30d7e448daf359",
+    "checks_passed": 23,
+    "checks_failed": 0
+  },
+  "final_world": {
+    "repository_external_root": "/Users/ran/ScientificParallax-FinalWorld-v1",
+    "task_count": 30,
+    "world_hash": "755df6b5ee69a75f7e6d8dff771356222d3633a493663ebd889a394d9e15a26b",
+    "commitment_content_hash": "39e3e4bce8f185431df9eb7274bb06ef5cddab50d5c86e1b88988b21784a0167",
+    "commitment_file_sha256": "5a457032d9b331d887b70c3e476a583bbb9e7b72a90700e12e35bbdbd5964d23",
+    "manifest_file_sha256": "2a449bdebca1895f2b7e7eaa828962070f63910111cf9d6418fcc37d3b439e89",
+    "host_verified": true,
+    "published_arm64_runner_verified": true,
+    "committed_files_read_only": true
+  },
+  "limitations": [
+    "independent review was waived",
+    "independent custody was waived",
+    "the local account can override filesystem permissions",
+    "results must not be described as independently confirmed"
+  ],
+  "remaining_gate_pf_blockers": []
+}

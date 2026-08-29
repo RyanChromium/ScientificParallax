@@ -1,14 +1,15 @@
 # Protocol Freeze local self-audit record
 
-Status: candidate for local single-account Protocol Freeze. Independent review
-and custody are explicitly waived; this record must not be represented as an
-independent approval.
+Status: accepted and frozen under local single-account self-audit. Independent
+review and custody are explicitly waived; this record is not an independent
+approval.
 
 ## Frozen candidate identity
 
 - Protocol ID: `protocol-dry-run-v1`
 - Assurance mode: `local_single_account_self_audit`
-- Protocol hash: updated by the clean dry-run after this digest promotion
+- Protocol hash:
+  `0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892`
 - Confirmatory runner:
   `ghcr.io/ryanchromium/scientific-parallax-confirmatory@sha256:1b99d310dfa0fe98019489d00763ec3321676ba86384ac2c6eb78979d0c6533f`
 - Runner source revision: `78a59bf68c58c592d30bcf8aeb2f145ecb347cfc`
@@ -37,7 +38,7 @@ Primary evidence:
 | Accounting | Charge attempts, uncached evaluations, completed queries | Executable ledger and fixed ceilings |
 | Custody | Same account, repository-external write-once bundle | Prevents accidents; cannot prevent deliberate local access |
 
-Any change to a hashed component requires a new protocol hash and, for code or
-runtime changes, a newly published runner. Gate PF can close only after the
-local final-world verification summary is recorded against those final
-identities.
+The local final-world verification summary is recorded in
+`../artifacts/protocol/gate-pf-local-v1.json`. Any change to a hashed component
+requires a new protocol hash and, for code or runtime changes, a newly
+published runner and a newly named final-world bundle.

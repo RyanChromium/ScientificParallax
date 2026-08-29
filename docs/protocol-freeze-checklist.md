@@ -1,8 +1,8 @@
 # Protocol Freeze review checklist
 
 Step 3.5 and the local pre-freeze hardening pass are implemented. The protocol
-now explicitly uses local single-account self-audit. Gate PF has **not** been
-executed.
+now explicitly uses local single-account self-audit. Gate PF was executed on
+2026-08-29 under that limited assurance mode.
 
 ## Resolved locally
 
@@ -45,10 +45,15 @@ executed.
 - [x] A local provisioner refuses repository paths and overwrites; its verifier
   rehashes all 30 tasks before one-shot evaluation.
 
-## Remaining Gate PF blocker
+## Gate PF completion
 
-- [ ] Generate and verify the 30 local final task instances outside the
-  repository using the pinned runner `0.3.5` protocol identity.
+- [x] Generated 30 local final task instances outside the repository using the
+  pinned runner `0.3.5` protocol identity.
+- [x] Host and published arm64 runner verification produced the same protocol,
+  world, commitment, and task-count summary.
+- [x] The final commitment and Gate PF record are retained in
+  `artifacts/protocol/`; task descriptors remain outside the repository.
 
-Until the unchecked item is resolved, the correct status is **ready for local
-Protocol Freeze**, not frozen and not ready for final-world access.
+Status is **protocol frozen under local single-account self-audit**. The task
+bundle must remain unopened until a future strategy hash is frozen for the
+one-shot evaluation.
