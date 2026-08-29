@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "artifact_status": "reviewed_step4_development_control",
+  "status": "step4_control_complete",
+  "code_revision": "2773d4a93e86d6cfc20d774719d50fae485074b3",
+  "git_dirty": false,
+  "protocol_hash": "0c4685639302f4db81fc2c752911d0b7f70bfb8937e0aa2a55a3fc5bd2a8d892",
+  "candidate_generator_hash": "f6842002c59c21a5c4c944491e78a93f3b9d2c3a23702b5f7f7a6c3325f915fc",
+  "fixed_probe_set_hash": "ab363da6b78812f57cb54c1277159bb92d10dbf56f837d1b1ca6632dec9bc620",
+  "report_sha256": "d052fc14be83e9b77f696159ac2bdea40b0382ea17d07ce44b7372987911493f",
+  "run_manifest_hash": "f4a2d53f7f02a6f39ecb3ea4aa43970b822279c1af50dc2fa5948ac51dd01dae",
+  "lineage_file_sha256": "0505442d2337b34573a650e62198fc19e687b06383a1ad302d7d2f473f3bc2fa",
+  "lineage_final_event_hash": "1af9467925d12d0ff043045e1d5e72c4191e38d9e0a17abf2590db882bf7669f",
+  "checks_passed": 11,
+  "checks_failed": 0,
+  "deterministic_replay": {
+    "report_byte_identical": true,
+    "lineage_byte_identical": true
+  },
+  "budget": {
+    "world_queries": 3,
+    "candidate_generations": 123,
+    "candidate_evaluations": 103,
+    "candidate_evaluation_cache_hits": 20
+  },
+  "lineage": {
+    "founders": 2,
+    "offspring": 103,
+    "individuals": 105,
+    "events": 199,
+    "failed_or_equivalent_fossils": 10
+  },
+  "population_by_generation": [
+    {
+      "generation": 0,
+      "created": 2,
+      "active": 1,
+      "dormant": 0,
+      "fossils": 1
+    },
+    {
+      "generation": 1,
+      "created": 20,
+      "active": 8,
+      "dormant": 13,
+      "fossils": 1
+    },
+    {
+      "generation": 2,
+      "created": 83,
+      "active": 11,
+      "dormant": 71,
+      "fossils": 10
+    }
+  ],
+  "final_niche_sizes": {
+    "current_predictive_best": 4,
+    "minimum_description": 4,
+    "validated_structure_gain": 4
+  },
+  "mutation_operators": [
+    "add_decay",
+    "coefficient_high",
+    "coefficient_low",
+    "remove_term"
+  ],
+  "final_world": {
+    "accessed": false,
+    "commitment_verified_after_run": true,
+    "access_log_absent": true,
+    "result_absent": true
+  },
+  "scope": "development-only fixed-question paradigm evolution; not final-world evidence"
+}
