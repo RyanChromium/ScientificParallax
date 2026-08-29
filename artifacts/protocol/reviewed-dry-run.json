@@ -1,31 +1,48 @@
 {
-  "artifact_status": "reviewed_step_3_5_dry_run",
-  "code_revision": "443ca98b89dc40716569513ad3a0708a249ffbdd",
-  "run_manifest_hash": "1cc148fbcbdf1887170bfaa3a7b158816a7c3cbcd585ae88d4b175f90dd232b3",
+  "schema_version": 1,
+  "artifact_status": "reviewed_protocol_freeze_candidate_dry_run",
+  "code_revision": "3de7bb76958856e02acb78bba44e77969dbf48d8",
+  "git_dirty": false,
+  "run_manifest_hash": "50d3980923198b503e9c51ba78313d482a12a7d1ae2af19d35587bd99a55fab0",
+  "report_hash": "6c97191ca54210edf11a1bda9162aba404148525c2bc896a7504461fd5c2613a",
   "protocol_id": "protocol-dry-run-v1",
-  "protocol_hash": "1f228ad6060301f4c1a72fa6b5292affe0255b416161cc89983d9bc004234778",
+  "protocol_hash": "e69f41f07cf120e72510171543e7994847fd1dcccab7b8fdcd1d0d2f4a88eb03",
   "status": "ready_for_protocol_freeze_review",
-  "checks": {
-    "renaming_collapses": true,
-    "structural_change_remains_distinct": true,
-    "final_world_blocked_before_freeze": true,
-    "final_world_single_use": true,
-    "final_result_bound_to_strategy": true,
-    "synthetic_effect_recovered": true,
-    "residual_shuffle_breaks_structure": true,
-    "contradictory_control_rejected": true,
-    "noise_calibration_has_positive_floor": true,
-    "survival_policy_transitions": true
+  "checks_passed": 21,
+  "checks_failed": 0,
+  "component_hashes": {
+    "candidate_generator": "f6842002c59c21a5c4c944491e78a93f3b9d2c3a23702b5f7f7a6c3325f915fc",
+    "measurement_clusters": "68c909b092bbe81d15bcd9f93c893b614a24a9fff42ee75ae09bbe9822921c83",
+    "task_design": "e29edd83f61e8c7dbe17c65dc7953e7e6a03049db015f26e142475289e794aae",
+    "external_data_manifest": "700c23a7758930927af4337e8a1c6bbbc93105947539daf90346cd5a981e556a",
+    "execution_environment": "a7b4390b165ac25e94b6b52248104f286096f1a17e4294c4f875315d0b1c9aef"
   },
-  "statistics_dry_run": {
-    "relative_query_reduction": 0.43103448275862066,
-    "confidence_interval": [0.3749808282208588, 0.5023396637608966],
-    "bootstrap_samples": 1000
+  "power_analysis": [
+    {"assumed_relative_effect": 0.20, "estimated_power": 0.00, "tasks": 30},
+    {"assumed_relative_effect": 0.30, "estimated_power": 0.90, "tasks": 30},
+    {"assumed_relative_effect": 0.40, "estimated_power": 1.00, "tasks": 30}
+  ],
+  "numerical_agreement_maxima": {
+    "field_mean_absolute": 0.002085421360970471,
+    "field_max_absolute": 0.020583022157586117,
+    "summary_l2": 0.005571573205365686
+  },
+  "numerical_tolerances": {
+    "field_mean_absolute": 0.005,
+    "field_max_absolute": 0.08,
+    "summary_l2": 0.015
   },
   "budget_projection": {
+    "frozen_tasks": 30,
     "candidate_evaluation_ceiling": 4096,
-    "projected_stencil_updates": 141557760.0,
-    "projected_cpu_hours_from_single_process_microbenchmark": 0.0024867555499076843
+    "projected_stencil_updates": 419430400.0,
+    "projected_cpu_hours_from_local_single_process_microbenchmark": 0.0042332444588343305
   },
-  "warning": "Passing this dry run permits Protocol Freeze review only. Final sealed worlds were not opened or defined."
+  "remaining_gate_pf_blockers": [
+    "download and validate at least one pinned The Well development shard",
+    "pin the confirmatory runner image digest and rerun the frozen mix profile",
+    "prepare final world commitment and access directory outside the development tree",
+    "independently review the 30% design-detectable effect versus the 20% null boundary"
+  ],
+  "warning": "This is a reviewed development dry-run, not Protocol Freeze and not final sealed evidence."
 }
