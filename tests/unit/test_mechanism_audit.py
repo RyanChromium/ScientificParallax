@@ -14,6 +14,7 @@ from scientific_parallax.discovery.latent_runner import ARM_POLICIES, _build_tas
 from scientific_parallax.discovery.mechanism_audit import (
     POLICIES,
     _interval,
+    field_rmse,
     fixed_reference,
     graph_descriptor,
     load_config,
@@ -189,6 +190,47 @@ def test_development_v2_fixed_grid_includes_every_founder():
     assert {item.law.reaction_scale for item in two_state_founders()} <= set(
         audit["fixed_reaction_scales"]
     )
+
+
+def test_frozen_validation_seeds_and_truth_combinations_are_new():
+    _, development = load_config(CONFIG, Path.cwd())
+    _, validation = load_config(
+        Path("configs/experiments/mechanism-audit-validation-v1.json"), Path.cwd()
+    )
+    fields = ("latent_drive", "latent_decay", "latent_feedback")
+    old_laws = {tuple(cluster[key] for key in fields) for cluster in development["truth_clusters"]}
+    new_laws = {tuple(cluster[key] for key in fields) for cluster in validation["truth_clusters"]}
+    assert not old_laws & new_laws
+    old_tasks, new_tasks = _build_tasks(development), _build_tasks(validation)
+    assert not {x.task_token for x in old_tasks} & {x.task_token for x in new_tasks}
+    assert not {x.measurement_seed for x in old_tasks} & {x.measurement_seed for x in new_tasks}
+    assert len(new_tasks) == 54
+
+
+def test_field_metric_is_zero_for_exact_noiseless_prediction(small_config):
+    _, config = small_config
+    task = _build_tasks(config)[0]
+    experiments = tuple(
+        replace(x, measurement=replace(x.measurement, noise_std=0.0)) for x in task.validation
+    )
+    observations = {
+        x.content_hash: LatentGrayScottWorld(0, task.law).observe(x) for x in experiments
+    }
+    candidate = LatentCandidate("exact", task.law, 0, None, None)
+    assert field_rmse(candidate, experiments, observations) == 0.0
+
+
+def test_changing_validation_does_not_change_search_or_final_selection(small_config):
+    audit, config = small_config
+    task = _build_tasks(config)[0]
+    changed = replace(
+        task, validation=tuple(replace(x, feed=x.feed + 0.001) for x in task.validation)
+    )
+    first = run_task(task, "p1e1", config, audit)
+    second = run_task(changed, "p1e1", config, audit)
+    assert first["trace"] == second["trace"]
+    assert first["selected_law"] == second["selected_law"]
+    assert first["budget"] == second["budget"]
 
 
 def test_small_audit_records_every_arm_and_refuses_overwrite(tmp_path, small_config):

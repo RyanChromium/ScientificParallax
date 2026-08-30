@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "experiment_version": "mechanism-audit-validation-v1",
+  "scope": "frozen_validation",
+  "base_config": "configs/experiments/latent-discovery-pilot.json",
+  "workers": 4,
+  "archive_capacity": 10,
+  "fixed_reaction_scales": [0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1.0, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6],
+  "overrides": {
+    "seed": 903127,
+    "task_seed_base": 1700000,
+    "measurement_seed_base": 1800000,
+    "seeds_per_truth_cluster": 4,
+    "null_control_seeds": 30,
+    "bootstrap_samples": 5000,
+    "truth_clusters": [
+      {"cluster_id": "validation-slow-weak", "latent_drive": 0.058, "latent_decay": 0.027, "latent_feedback": 2.0},
+      {"cluster_id": "validation-slow-strong", "latent_drive": 0.071, "latent_decay": 0.039, "latent_feedback": 3.0},
+      {"cluster_id": "validation-fast-weak", "latent_drive": 0.096, "latent_decay": 0.053, "latent_feedback": 2.1},
+      {"cluster_id": "validation-fast-strong", "latent_drive": 0.108, "latent_decay": 0.061, "latent_feedback": 3.2},
+      {"cluster_id": "validation-intermediate", "latent_drive": 0.085, "latent_decay": 0.047, "latent_feedback": 2.65},
+      {"cluster_id": "validation-persistent", "latent_drive": 0.077, "latent_decay": 0.031, "latent_feedback": 3.5}
+    ]
+  }
+}

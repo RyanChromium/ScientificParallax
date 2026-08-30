@@ -119,3 +119,24 @@ change v1 or v2 sealed outcomes.
 
 The implementation is invoked as a separate module so frozen v2 source files,
 configuration files and dependency lock remain byte-identical.
+
+## Frozen validation design
+
+`configs/experiments/mechanism-audit-validation-v1.json` specifies six new
+parameter combinations with four seeds each (24 latent tasks), plus 30 null
+tasks. All 12 arms run every task, for 648 arm-task runs. Query, generation and
+evaluation ceilings remain 12, 128 and 4096, respectively. The source and this
+configuration must be committed before execution. No strategy adjustment is
+permitted after seeing this validation. Every result, including negative and
+null results, is retained. Bootstrap intervals use 5000 hierarchical draws.
+
+For reproduction, run from the recorded code revision with a fresh output
+directory outside the worktree:
+
+```sh
+uv run python -m scientific_parallax.discovery.mechanism_audit \
+  --config configs/experiments/mechanism-audit-validation-v1.json \
+  --output /absolute/path/to/new-audit-output
+```
+
+A reproduction of these now-public seeds is not a new unseen validation.
