@@ -135,15 +135,31 @@ Step 7 的共进化与匹配 Bayesian 对照在唯一主终点上都需要 1.0 �
 
 在保留该 `stop` 结论后，项目另行建立了 **Protocol v2 潜变量发现薄切片**。
 这一版本不再把真结构放入 founder 池：所有普通 founder 都是错误的两变量模型，
-必须依次增加潜变量、连接可见驱动、连接反应反馈，并在未见干预上优于最佳两变量
-模型。一次性测试得到 20/20 潜变量任务成功、0/30 null world 假阳性；无生态位
-消融仅成功 4/20，固定表示为 0/20。由此 H3 表征发现得到 `go`，H1 结构生态位
-机制得到支持。
+必须依次增加潜变量、连接可见驱动、连接反应反馈，并在未见干预上优于已生成的
+两变量候选中的最佳者（并非所有可能的两变量模型）。一次性测试得到 20/20
+潜变量任务成功、0/30 null world 假阳性；原消融成功 4/20，固定表示为 0/20。
+原协议判定 H3 为 `go`、H1 为 `supported`；这些历史记录保留，但 H1 的独立
+机制解释已被下述 v3 审计收紧。
 
 同时，问题共进化与匹配 Bayesian 设计都需要 4.5 次查询，查询缩减为 0%，因此
-H2 仍被拒绝。当前最窄且可信的结论是：结构生态位能保留通往有效潜变量的中性
-变异桥梁；没有证据证明问题共进化优于标准 Bayesian 实验设计。这仍是合成世界
-中的受控结构恢复，不是自然界新定律发现，也未自动进入 Step 8。
+H2 仍被拒绝。这仍是合成世界中的受控结构恢复，不是自然界新定律发现，
+也未自动进入 Step 8。
+
+随后根据 NEAT、MAP-Elites、SymDer、QDSR 等相关研究，完成了 **Protocol v3
+机制归因审计**。代码审计发现，原“生态位”开关同时改变父模型扩展优先级和
+提问候选子集，并未从父模型池删除中间结构。四组拆分、被动提问负控和通用
+搜索对照经过两轮开发，再在 24 个新潜变量任务、30 个空世界上冻结验证，
+共完成 648 次验证策略运行。
+
+未见任务中，“只开结构推进优先级”和完整策略均为 23/24 预测达标，通用
+MAP-Elites 式对照也为 23/24。优先级的平均摘要 RMSE 收益为 0.038622，
+描述性 95% 区间 `[0.026908, 0.050805]`；提问子集平衡收益的区间跨过零。
+完整策略相对 MAP-Elites 的优势没有得到明确支持，不能据此声称方法等价。
+
+因此，当前结论是：**撤回“旧消融单独证明了中性结构保护”的归因，保留受限
+世界中的能力结果；尚未证明独特算法优势，不继续靠调整此世界来争取正结果。**
+这次产出是可复现的归因审计与纠正。更开放语法、SymDer 实跑和历史模型对照
+尚未开展，当前不进入 Step 8。
 
 Step 0 协议见 [`docs/step0-protocol.md`](docs/step0-protocol.md)，Gray–Scott
 开发基线见 [`docs/gray-scott-baseline.md`](docs/gray-scott-baseline.md)，
@@ -164,6 +180,8 @@ Step 7 设计、盲化边界与停止结论见
 [`docs/step7-blind-development-challenge.md`](docs/step7-blind-development-challenge.md)。
 Protocol v2 的潜变量世界、结构语法和确认规则见
 [`docs/protocol-v2-latent-discovery.md`](docs/protocol-v2-latent-discovery.md)。
+最新的机制归因实验与停止规则见
+[`docs/protocol-v3-mechanism-audit.md`](docs/protocol-v3-mechanism-audit.md)。
 审核后的开发结果见
 [`artifacts/gray_scott/reviewed-development-baseline.md`](artifacts/gray_scott/reviewed-development-baseline.md)
 、[`artifacts/protocol/reviewed-dry-run.md`](artifacts/protocol/reviewed-dry-run.md)
@@ -172,6 +190,7 @@ Protocol v2 的潜变量世界、结构语法和确认规则见
 、[`artifacts/step6/reviewed-coevolution.md`](artifacts/step6/reviewed-coevolution.md)
 、[`artifacts/step7/reviewed-blind-development.md`](artifacts/step7/reviewed-blind-development.md)
 、[`artifacts/protocol-v2/reviewed-latent-discovery.md`](artifacts/protocol-v2/reviewed-latent-discovery.md)
+、[`artifacts/protocol-v3/reviewed-mechanism-audit.md`](artifacts/protocol-v3/reviewed-mechanism-audit.md)
 和 [`artifacts/external-data/reviewed-the-well-validation.md`](artifacts/external-data/reviewed-the-well-validation.md)。
 
 ## 详细计划

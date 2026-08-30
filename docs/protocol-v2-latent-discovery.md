@@ -167,3 +167,16 @@ restricted-mean queries, with zero estimated reduction. Random and passive
 question strategies also recovered all latent tasks. Protocol v2 therefore
 supports structural-niche preservation, not a general question-coevolution
 advantage.
+
+## Subsequent interpretation correction: Protocol v3
+
+The paragraph above records the original v2 interpretation. The later
+[v3 attribution audit](../artifacts/protocol-v3/reviewed-mechanism-audit.md)
+showed that the original ablation combined stage-prioritized parent expansion
+with question-ensemble balancing, while never deleting intermediate candidates
+from the parent pool. The isolated neutral-intermediate-survival interpretation
+is therefore withdrawn. Historical v2 data and protocol decisions are unchanged;
+they demonstrate a composite strategy difference, not an isolated mechanism.
+The new factorial evidence favors parent-priority scheduling in this restricted
+grammar and does not demonstrate a distinct advantage over a MAP-Elites-style
+control. This does not establish that structural diversity is generally useless.

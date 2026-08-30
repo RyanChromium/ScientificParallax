@@ -1,0 +1,613 @@
+{
+  "arm_summaries": {
+    "breadth_first": {
+      "compatibility_v2_successes": 0,
+      "complete_structure_selected": 0,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 607.4444444444445,
+      "mean_full_field_rmse": 0.16013955997116142,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.07993710440660624,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 0
+    },
+    "map_elites": {
+      "compatibility_v2_successes": 23,
+      "complete_structure_selected": 23,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 726.6666666666666,
+      "mean_full_field_rmse": 0.05944326223052216,
+      "mean_generation_attempts": 93.0,
+      "mean_validation_rmse": 0.027833370636619725,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 23
+    },
+    "p0e0": {
+      "compatibility_v2_successes": 4,
+      "complete_structure_selected": 7,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 746.2407407407408,
+      "mean_full_field_rmse": 0.1303749152627367,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.06346153589887059,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 6
+    },
+    "p0e1": {
+      "compatibility_v2_successes": 7,
+      "complete_structure_selected": 7,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 736.2777777777778,
+      "mean_full_field_rmse": 0.11943344495978452,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.05859338033070024,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 7
+    },
+    "p1e0": {
+      "compatibility_v2_successes": 23,
+      "complete_structure_selected": 23,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 744.3333333333334,
+      "mean_full_field_rmse": 0.04883232388987446,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.022297596436950715,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 23
+    },
+    "p1e1": {
+      "compatibility_v2_successes": 23,
+      "complete_structure_selected": 23,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 712.8518518518518,
+      "mean_full_field_rmse": 0.049509225142555534,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.022512984794480415,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 23
+    },
+    "passive_p0e0": {
+      "compatibility_v2_successes": 2,
+      "complete_structure_selected": 6,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 576.0,
+      "mean_full_field_rmse": 0.14134670162034,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.06939462435315265,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 5
+    },
+    "passive_p0e1": {
+      "compatibility_v2_successes": 2,
+      "complete_structure_selected": 6,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 576.0,
+      "mean_full_field_rmse": 0.14134670162034,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.06939462435315265,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 5
+    },
+    "passive_p1e0": {
+      "compatibility_v2_successes": 24,
+      "complete_structure_selected": 24,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 576.0,
+      "mean_full_field_rmse": 0.04950327613239053,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.02265649729037426,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 24
+    },
+    "passive_p1e1": {
+      "compatibility_v2_successes": 24,
+      "complete_structure_selected": 24,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 576.0,
+      "mean_full_field_rmse": 0.04950327613239053,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.02265649729037426,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 24
+    },
+    "scalar_archive": {
+      "compatibility_v2_successes": 3,
+      "complete_structure_selected": 4,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 740.1111111111111,
+      "mean_full_field_rmse": 0.13948208247376326,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.06898057806319136,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 4
+    },
+    "uniform": {
+      "compatibility_v2_successes": 2,
+      "complete_structure_selected": 6,
+      "latent_tasks": 24,
+      "mean_candidate_evaluations": 683.0370370370371,
+      "mean_full_field_rmse": 0.13617700556211973,
+      "mean_generation_attempts": 108.0,
+      "mean_validation_rmse": 0.06684587648822281,
+      "null_complete_structure_selected": 0,
+      "null_latent_predictive_wins": 0,
+      "null_tasks": 30,
+      "predictive_wins": 5
+    }
+  },
+  "assurance": "local frozen out-of-sample replication; not independent custody",
+  "audit_config": {
+    "archive_capacity": 10,
+    "base_config": "configs/experiments/latent-discovery-pilot.json",
+    "experiment_version": "mechanism-audit-validation-v1",
+    "fixed_reaction_scales": [
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95,
+      1.0,
+      1.05,
+      1.1,
+      1.15,
+      1.2,
+      1.25,
+      1.3,
+      1.35,
+      1.4,
+      1.45,
+      1.5,
+      1.55,
+      1.6
+    ],
+    "overrides": {
+      "bootstrap_samples": 5000,
+      "measurement_seed_base": 1800000,
+      "null_control_seeds": 30,
+      "seed": 903127,
+      "seeds_per_truth_cluster": 4,
+      "task_seed_base": 1700000,
+      "truth_clusters": [
+        {
+          "cluster_id": "validation-slow-weak",
+          "latent_decay": 0.027,
+          "latent_drive": 0.058,
+          "latent_feedback": 2.0
+        },
+        {
+          "cluster_id": "validation-slow-strong",
+          "latent_decay": 0.039,
+          "latent_drive": 0.071,
+          "latent_feedback": 3.0
+        },
+        {
+          "cluster_id": "validation-fast-weak",
+          "latent_decay": 0.053,
+          "latent_drive": 0.096,
+          "latent_feedback": 2.1
+        },
+        {
+          "cluster_id": "validation-fast-strong",
+          "latent_decay": 0.061,
+          "latent_drive": 0.108,
+          "latent_feedback": 3.2
+        },
+        {
+          "cluster_id": "validation-intermediate",
+          "latent_decay": 0.047,
+          "latent_drive": 0.085,
+          "latent_feedback": 2.65
+        },
+        {
+          "cluster_id": "validation-persistent",
+          "latent_decay": 0.031,
+          "latent_drive": 0.077,
+          "latent_feedback": 3.5
+        }
+      ]
+    },
+    "schema_version": 1,
+    "scope": "frozen_validation",
+    "workers": 4
+  },
+  "checks": {
+    "complete_arm_set_per_task": true,
+    "equal_world_query_counts": true,
+    "finite_prediction_scores": true,
+    "held_out_conditions_never_queried": true,
+    "passive_ensemble_toggle_is_exact_null": true,
+    "resource_ceilings_respected": true,
+    "source_bytes_unchanged_during_run": true,
+    "unique_task_arm_pairs": true
+  },
+  "config_hash": "3d1c17a52e3dd55f20a639562f4ec01f5817254eacbb1569c6aca42614bbc955",
+  "environment": {
+    "git_dirty": false,
+    "git_revision": "250569d88e35c0ea3ce37b9cdaa0e604d2b8e531",
+    "implementation": "CPython",
+    "machine": "arm64",
+    "numpy": "2.5.2",
+    "platform": "macOS-26.1-arm64-arm-64bit",
+    "process_id": 9836,
+    "python": "3.12.13"
+  },
+  "experiment_version": "mechanism-audit-validation-v1",
+  "factorial_raw_rmse_effects": {
+    "secondary_full_field_rmse": {
+      "ensemble_main_benefit": {
+        "cluster_count": 6,
+        "interval_95": [
+          -0.009621648709006829,
+          0.0213514640018755
+        ],
+        "mean": 0.0051322845251355565,
+        "task_count": 24,
+        "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+      },
+      "interaction": {
+        "cluster_count": 6,
+        "interval_95": [
+          -0.043305028573612715,
+          0.019241015945583494
+        ],
+        "mean": -0.01161837155563325,
+        "task_count": 24,
+        "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+      },
+      "parent_priority_main_benefit": {
+        "cluster_count": 6,
+        "interval_95": [
+          0.050570057806935555,
+          0.10115347622645156
+        ],
+        "mean": 0.07573340559504561,
+        "task_count": 24,
+        "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+      }
+    },
+    "validation_rmse": {
+      "ensemble_main_benefit": {
+        "cluster_count": 6,
+        "interval_95": [
+          -0.0048530573800868275,
+          0.01002867511965276
+        ],
+        "mean": 0.0023263836053203225,
+        "task_count": 24,
+        "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+      },
+      "interaction": {
+        "cluster_count": 6,
+        "interval_95": [
+          -0.019892331970488585,
+          0.009453434767329828
+        ],
+        "mean": -0.005083543925700048,
+        "task_count": 24,
+        "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+      },
+      "parent_priority_main_benefit": {
+        "cluster_count": 6,
+        "interval_95": [
+          0.026907965309738595,
+          0.050805432256371734
+        ],
+        "mean": 0.03862216749906985,
+        "task_count": 24,
+        "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+      }
+    }
+  },
+  "factorial_sign_convention": "positive main effect = lower error when enabled; interaction = priority benefit at E1 minus priority benefit at E0",
+  "interpretation_boundary": [
+    "Factorial cells separate parent priority from ensemble balancing, not survival.",
+    "The generic archive remains confined to the hand-designed three-step grammar.",
+    "Predictive wins do not identify a unique physical hidden state.",
+    "Intervals are descriptive, not multiplicity-corrected evidence of superiority.",
+    "SymDer, QDSR and history-based dynamical models have not been run on these tasks."
+  ],
+  "paired_comparisons": {
+    "ensemble_at_p0": {
+      "cluster_count": 6,
+      "control": "p0e0",
+      "interval_95": [
+        -0.23438965459207778,
+        0.23460458349964872
+      ],
+      "mean": 0.02807654370797352,
+      "metric": "paired relative terminal RMSE reduction; positive favors treatment",
+      "task_count": 24,
+      "treatment": "p0e1",
+      "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+    },
+    "ensemble_at_p1": {
+      "cluster_count": 6,
+      "control": "p1e0",
+      "interval_95": [
+        -0.054699246694183495,
+        0.036605814127783604
+      ],
+      "mean": -0.006031144188799964,
+      "metric": "paired relative terminal RMSE reduction; positive favors treatment",
+      "task_count": 24,
+      "treatment": "p1e1",
+      "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+    },
+    "guided_vs_breadth_first": {
+      "cluster_count": 6,
+      "control": "breadth_first",
+      "interval_95": [
+        0.6147831468759688,
+        0.7774503242014197
+      ],
+      "mean": 0.70621657281687,
+      "metric": "paired relative terminal RMSE reduction; positive favors treatment",
+      "task_count": 24,
+      "treatment": "p1e1",
+      "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+    },
+    "guided_vs_map": {
+      "cluster_count": 6,
+      "control": "map_elites",
+      "interval_95": [
+        -0.33127441359568816,
+        0.3476679970917835
+      ],
+      "mean": 0.023010204566426096,
+      "metric": "paired relative terminal RMSE reduction; positive favors treatment",
+      "task_count": 24,
+      "treatment": "p1e1",
+      "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+    },
+    "guided_vs_uniform": {
+      "cluster_count": 6,
+      "control": "uniform",
+      "interval_95": [
+        0.3340423450179871,
+        0.7292035749629092
+      ],
+      "mean": 0.5547465349680917,
+      "metric": "paired relative terminal RMSE reduction; positive favors treatment",
+      "task_count": 24,
+      "treatment": "p1e1",
+      "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+    },
+    "map_vs_scalar_archive": {
+      "cluster_count": 6,
+      "control": "scalar_archive",
+      "interval_95": [
+        0.42730271463205016,
+        0.6616626566579268
+      ],
+      "mean": 0.5549504514278697,
+      "metric": "paired relative terminal RMSE reduction; positive favors treatment",
+      "task_count": 24,
+      "treatment": "map_elites",
+      "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+    },
+    "priority_at_e0": {
+      "cluster_count": 6,
+      "control": "p0e0",
+      "interval_95": [
+        0.42562329644687613,
+        0.7398605077485032
+      ],
+      "mean": 0.6079213033606378,
+      "metric": "paired relative terminal RMSE reduction; positive favors treatment",
+      "task_count": 24,
+      "treatment": "p1e0",
+      "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+    },
+    "priority_at_e1": {
+      "cluster_count": 6,
+      "control": "p0e1",
+      "interval_95": [
+        0.3514364825041439,
+        0.7004648316597634
+      ],
+      "mean": 0.5361264292213849,
+      "metric": "paired relative terminal RMSE reduction; positive favors treatment",
+      "task_count": 24,
+      "treatment": "p1e1",
+      "uncertainty": "descriptive hierarchical cluster/task bootstrap; few clusters"
+    }
+  },
+  "resolved_config": {
+    "active_candidates": 10,
+    "arms": [
+      "coevolution",
+      "matched_bayesian_design",
+      "random",
+      "passive_coverage",
+      "fixed_representation_bed",
+      "no_niches",
+      "oracle_structure_bed"
+    ],
+    "bootstrap_samples": 5000,
+    "candidate_evaluation_budget": 4096,
+    "candidate_generation_budget": 128,
+    "complete_structure_posterior_threshold": 0.6,
+    "eig_samples": 16,
+    "experiment_version": "latent-discovery-pilot-v0.2",
+    "grid_size": 12,
+    "likelihood_noise_floor": 0.015,
+    "maximum_candidates": 48,
+    "maximum_null_false_positive_rate": 0.1,
+    "maximum_questions": 12,
+    "measurement_seed_base": 1800000,
+    "minimum_query_reduction_vs_matched_bed": 0.1,
+    "minimum_task_success_rate": 0.8,
+    "minimum_validation_improvement": 0.2,
+    "null_control_seeds": 30,
+    "persistence_checkpoints": 3,
+    "question_mutations": [
+      "pulse_early",
+      "pulse_late",
+      "pulse_strong",
+      "double_pulse",
+      "feed_low",
+      "feed_high",
+      "kill_low",
+      "kill_high",
+      "cycle_initial_family",
+      "toggle_boundary",
+      "extend_duration"
+    ],
+    "sample_every": 12,
+    "schema_version": 1,
+    "scientific_claim_boundary": {
+      "capability": "recover a complete latent feedback structure absent from every founder and validate it on unseen interventions",
+      "comparative": "reduce restricted mean discovery queries relative to matched Bayesian design",
+      "failure": "do not proceed if capability success is below 80 percent or held-out improvement does not exceed 20 percent"
+    },
+    "scope": "development_pilot_only",
+    "seed": 903127,
+    "seeds_per_truth_cluster": 4,
+    "steps": 36,
+    "task_seed_base": 1700000,
+    "truth_clusters": [
+      {
+        "cluster_id": "validation-slow-weak",
+        "latent_decay": 0.027,
+        "latent_drive": 0.058,
+        "latent_feedback": 2.0
+      },
+      {
+        "cluster_id": "validation-slow-strong",
+        "latent_decay": 0.039,
+        "latent_drive": 0.071,
+        "latent_feedback": 3.0
+      },
+      {
+        "cluster_id": "validation-fast-weak",
+        "latent_decay": 0.053,
+        "latent_drive": 0.096,
+        "latent_feedback": 2.1
+      },
+      {
+        "cluster_id": "validation-fast-strong",
+        "latent_decay": 0.061,
+        "latent_drive": 0.108,
+        "latent_feedback": 3.2
+      },
+      {
+        "cluster_id": "validation-intermediate",
+        "latent_decay": 0.047,
+        "latent_drive": 0.085,
+        "latent_feedback": 2.65
+      },
+      {
+        "cluster_id": "validation-persistent",
+        "latent_decay": 0.031,
+        "latent_drive": 0.077,
+        "latent_feedback": 3.5
+      }
+    ],
+    "world_query_budget": 12
+  },
+  "run_count": 648,
+  "schema_version": 1,
+  "scope": "frozen_validation",
+  "source_hash": "1fe44752d64bcc7d2c8d8fd7018b00f59ec58ea4f82914ac531037da116f6f53",
+  "source_hashes": {
+    "pyproject.toml": "f7ffa327a5f531e14bab0768c24b18126f5456ec3545c008b1611e23648fc7a2",
+    "src/scientific_parallax/__init__.py": "98a726d763585cabf35552fb640c6b9cd07e6a08a0e66d4ed0bb57ab3638212d",
+    "src/scientific_parallax/baselines/__init__.py": "b5f74e36ccf92d9bed4783a1243e3183e2a03fe9a0fb3f3d11aef8b2e6dbe770",
+    "src/scientific_parallax/baselines/gray_scott.py": "1c916ba0c6124fa885fa9e7200abf1156b73e5896b0ec0065f11413c1b8fad59",
+    "src/scientific_parallax/baselines/surrogate.py": "03a6c2a8e6860c4b335913945059938dafb221af549da2709245aaf7fdd60553",
+    "src/scientific_parallax/challenge/__init__.py": "faad8101fcaa71fee9a6113ec5a281b779c9f64f093d7a1f62c64314f1b32beb",
+    "src/scientific_parallax/challenge/blind.py": "b428f9cf1f23d8afec87e0fdd7d2a94a4c8e469e08023a8d0678e26436507eed",
+    "src/scientific_parallax/challenge/runner.py": "2d4fe91436ede953e6cc517e748db56fef9bdacf098376ddc0e6783269f99d63",
+    "src/scientific_parallax/challenge/scoring.py": "e589340c98775308497c716cbda59de8194a6ac4363048069fbf06051848bc82",
+    "src/scientific_parallax/cli.py": "08006aca2126b643926dbad8f88845f7897476ff1ccb8856fc3c5927e644d350",
+    "src/scientific_parallax/coevolution/__init__.py": "a04b26d0a001ba71ce29b86145247141f5e564a96cd7bf63a6a84ea296605129",
+    "src/scientific_parallax/coevolution/checkpoint.py": "edfcdaa47b862e9cfbad7fd9a25672ce92407e45e586fb6f045bf32e5a8c0553",
+    "src/scientific_parallax/coevolution/evidence.py": "7c0c110068e425735708df9fb2caf8dd3e03cd339600128c89f41ade7b47fa55",
+    "src/scientific_parallax/coevolution/scheduler.py": "a3d570711b141d83ed4784f716f56ec7fed22da0bb333a2f35505e60154d07d2",
+    "src/scientific_parallax/coevolution/selection.py": "ef7ce64991625395558ef59c4454c6c7692ee671cc8e8af9cec9a6260f2bac97",
+    "src/scientific_parallax/core/__init__.py": "565df898e64b21cc8f510d665586200d371cc8b88f43610fd658ff9badd45953",
+    "src/scientific_parallax/core/budget.py": "22591d6c46193ffc96cd3615341196da322064065faaddba826fc089b9fb4698",
+    "src/scientific_parallax/core/data_manifest.py": "8e9577e5a3b8dbadc060673203b5c8e0145715a4f65f050501ab579310849cd8",
+    "src/scientific_parallax/core/environment_spec.py": "e9d7a1f308552c56947817c1a3a0c99e068fa88ab01d39a194b36d9ac04e14e7",
+    "src/scientific_parallax/core/reproducibility.py": "79b62de149f6f04ffd2991ddda444f4fb90e60aaf42782633ae3cfa0d5930022",
+    "src/scientific_parallax/core/schema.py": "5a7f6cbe92d8540ffad6cb21203339cf9369df6332a13ccd449572c405338d4c",
+    "src/scientific_parallax/discovery/__init__.py": "fce72085a64cf35b4c1a891c168636c041095a6af7ec25b3fb07aec48176e6ee",
+    "src/scientific_parallax/discovery/latent_final_world.py": "12ded4cda2e4753630285799a7812c832f9c78ad6ffce36ab46614c8f91ff0c5",
+    "src/scientific_parallax/discovery/latent_model.py": "3a464b8692c04d644d3d54299a4a0136b1d2f4642b5d7a785b5bc5f8fe9899e4",
+    "src/scientific_parallax/discovery/latent_questions.py": "200674833bbbe925889e816e5bb7c22eeab9d2dce5a67d202cdc243f8168b131",
+    "src/scientific_parallax/discovery/latent_runner.py": "99f269eb1c73082e62cae6daf6bb88b0cf156287ac20a5cbcc5d98c0b2d3721f",
+    "src/scientific_parallax/discovery/mechanism_audit.py": "64bee0c51ea3cc29a2139b0d16b126e27f22afd186ee337e71eff0da6ec9e815",
+    "src/scientific_parallax/evolution/__init__.py": "68be9d516f5173211b359f17a331b057c82f28085f2637fc602b5ef7a03b6b74",
+    "src/scientific_parallax/evolution/experiment.py": "928b6bf06457775a3bb046fbdebcea170ddd54f972cd7f5e0c710317779d4e71",
+    "src/scientific_parallax/evolution/lineage.py": "54ec4281978e61d67a10f2b52f4c5464278d9572b4c25e74b6a4da97e3a2c9b3",
+    "src/scientific_parallax/evolution/model.py": "352bc29def60a24f4cbb4462562dd98490c0f100721001ab1f8c374feac39c2e",
+    "src/scientific_parallax/evolution/mutation.py": "b49abeb070ac1147e9dbef7ba179bcfb4bd05a66235ee94f6560be1a5a6a2e07",
+    "src/scientific_parallax/evolution/population.py": "d4c28b2b063a5891f9c359b5633e7e83d542aac5e651c13b98e94c28f0aa5c2d",
+    "src/scientific_parallax/protocol/__init__.py": "55a32b7cac84e78a5f1ceb0e0644ca7dcc76dde3fca76d48886cf1ab736a8500",
+    "src/scientific_parallax/protocol/candidate_generator.py": "309ba9d037dbb8de17a66a9843b380c6a93f2c90601bd5dcff85c7f818d52bf0",
+    "src/scientific_parallax/protocol/controls.py": "25c5253dc8088427e9c52e1c2bafc948202e996755c09fc4445d306545c84e36",
+    "src/scientific_parallax/protocol/design.py": "8a258bd4be0748e0e64a702f9b8136613ae8a044f3f7c7b10445e5c2ac4422e4",
+    "src/scientific_parallax/protocol/dry_run.py": "c3f761e494da25b28620c9376bae374a4d262360f6e6902f99920bf33fcb5cc1",
+    "src/scientific_parallax/protocol/evidence_layers.py": "7564ff0d180d876382eb6a7338cb4a07acc1fab66340f508ca8eb39403313ee3",
+    "src/scientific_parallax/protocol/final_world.py": "0a24c2a9231e268861ad4d98c726267134305d791fab809d7df8c329c4bcea77",
+    "src/scientific_parallax/protocol/numerics.py": "f73660c938ae40b7b6320d93166614e15a03b35e8b8caace82571368d9f33303",
+    "src/scientific_parallax/protocol/paradigm_ir.py": "975e8838a1116c27e5d27088397133556a91004b18818e6e9888bd8114e3dc1a",
+    "src/scientific_parallax/protocol/sealed_evaluator.py": "ada6aa4f6130d66d851481486e510992313f6b0c67eb0c37e7280bb2c6665094",
+    "src/scientific_parallax/protocol/statistics.py": "570389042647ec694403ef6592aa9b3f9a8ede0fbb55e16d73281146062f0010",
+    "src/scientific_parallax/questions/__init__.py": "ca85bbe05899b0fabb908c2e9f870379aacb4983a73f0d7bca6f17be1c027e08",
+    "src/scientific_parallax/questions/experiment.py": "c835ade17a83a732d40e399fc9df13dd2b3b81fd9a24fcf9c3bc22c8c850a90b",
+    "src/scientific_parallax/questions/model.py": "baa67913079f2d30514cfba74c75846cc51945e2678e63ce71f039337b1fbc17",
+    "src/scientific_parallax/questions/mutation.py": "14d9a21ad4da80377f68a0ae9a2775b8b6ef10c0511993ce71bc80cd4c412977",
+    "src/scientific_parallax/questions/population.py": "5b01e250d36f0f79f4981db197518fffaf290b2153bd5f42d67c846a56a578ab",
+    "src/scientific_parallax/questions/scoring.py": "2f75abb3e70d78befdb075ff6199a80ebb382713923b73206f27705e78f5aae6",
+    "src/scientific_parallax/step0/__init__.py": "8d3125c18fe19824917fa7c0ad2763f41b95e76aa2c440fa523067e7b704a38e",
+    "src/scientific_parallax/step0/benchmark.py": "42f9715214a13eb164fa1d5cd41e9d0c183b75581dc450565de1c7052420bd04",
+    "src/scientific_parallax/step0/domain.py": "8953dbb11263c42ec93fa45fe820633cb88f2ff73fac0211c80896674268de2f",
+    "src/scientific_parallax/step0/evidence.py": "4061294bc8da35e1b0d5ea44fc87ab210d80eb9571ffd7ddf9dd81edf3ea6cf3",
+    "src/scientific_parallax/step0/experiment.py": "5c5680e3b322c9178e19b02e2e7c26036dc5bd1c1eeabef57031c7243fd1b5ea",
+    "src/scientific_parallax/step0/ledger.py": "e575d8ec9b8a2d65af7dd96d2fd4a632e6c6d2d86726956e09b4e8577ffc0755",
+    "src/scientific_parallax/step0/paradigms.py": "85380e605569561fb815a27f963c7e7fb70153babb5468882b7fbfb9915d1726",
+    "src/scientific_parallax/step0/strategies.py": "24bcd18c7e7264e0282bbae58d0d445c48416f9c2d4a48cff1d4504e4b5cbee9",
+    "src/scientific_parallax/step0/world.py": "dcfc14d770deffef69a2f4814d874c752fab4854187fcfd83a6198f3aba71963",
+    "src/scientific_parallax/validation/__init__.py": "f95b9474abcdda646d518e002c522cac53eada80e7dd740d0fd60af5861a5451",
+    "src/scientific_parallax/validation/the_well.py": "82b4f1570892cd42a40798c4fa3e81562bb56cbcea250fe90f8577b81de3b15f",
+    "src/scientific_parallax/worlds/__init__.py": "7c0da70c645c7e083414b027b9a11aab132c7ead50e816428996e7de46e07f70",
+    "src/scientific_parallax/worlds/base.py": "97273598f2db91b089fbfb07c65621ce97f0c6c252f2816560ad1c59f1a3a465",
+    "src/scientific_parallax/worlds/gray_scott.py": "dc278f5dd10635ea410bff43281dfd5177f922b9598c566473bd779d2fa08096",
+    "src/scientific_parallax/worlds/latent_gray_scott.py": "5aa05ddfe5611be74d676ced48d7e60f0a09699eae9349e794256ae85ebc4a6f",
+    "src/scientific_parallax/worlds/offline.py": "994e7844f84acb608cf347e6286a195078e7ad18be998c002070c54c33cb5868",
+    "uv.lock": "0afaa3791d9b4030975e73a3c2a3cd02178d2554dcba965f7769f2aabcf69e69"
+  },
+  "status": "complete",
+  "task_count": 54,
+  "task_results_sha256": "6a39f7f2fed44ba0ac8a94ec00a29b7b62721aabf7de1994c19979a9e6ab72a6"
+}
