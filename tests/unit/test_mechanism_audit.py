@@ -8,11 +8,13 @@ from pathlib import Path
 import numpy as np
 import pytest
 
+from scientific_parallax.discovery import mechanism_audit as audit_module
 from scientific_parallax.discovery.latent_model import LatentCandidate, two_state_founders
 from scientific_parallax.discovery.latent_runner import ARM_POLICIES, _build_tasks, _run_task
 from scientific_parallax.discovery.mechanism_audit import (
     POLICIES,
     _interval,
+    fixed_reference,
     graph_descriptor,
     load_config,
     retain_archive,
@@ -147,6 +149,46 @@ def test_cluster_interval_is_reproducible_and_paired_zero_is_exact():
     assert first["interval_95"] == [0.0, 0.0]
     assert first["cluster_count"] == 2
     assert np.isfinite(first["mean"])
+
+
+def test_fixed_reference_uses_the_same_noise_weighting_as_search(monkeypatch, small_config):
+    _, config = small_config
+    experiment = _build_tasks(config)[0].questions[0]
+
+    def fake_predict(candidate, experiment, cache, budget):
+        # Unweighted SSE prefers 1.0; calibrated likelihood correctly prefers 0.8.
+        return (
+            (0.0, 0.0, 0.030, 0.0)
+            if candidate.law.reaction_scale == 0.8
+            else (0.025, 0.0, 0.0, 0.0)
+        )
+
+    monkeypatch.setattr(audit_module, "_predict", fake_predict)
+    chosen, _ = fixed_reference([(experiment, (0.0, 0.0, 0.0, 0.0))], [0.8, 1.0], 0.015)
+    assert chosen.law.reaction_scale == 0.8
+
+
+def test_frozen_validation_rejects_dirty_revision(tmp_path, small_config, monkeypatch):
+    audit, config = small_config
+    audit["scope"] = "frozen_validation"
+    audit["overrides"] = config
+    path = tmp_path / "frozen.json"
+    path.write_text(json.dumps(audit))
+    monkeypatch.setattr(
+        audit_module, "capture_environment", lambda _: {"git_dirty": True, "git_revision": "test"}
+    )
+    with pytest.raises(RuntimeError, match="clean committed"):
+        run_audit(path, tmp_path / "output")
+    assert not (tmp_path / "output").exists()
+
+
+def test_development_v2_fixed_grid_includes_every_founder():
+    audit, _ = load_config(
+        Path("configs/experiments/mechanism-audit-development-v2.json"), Path.cwd()
+    )
+    assert {item.law.reaction_scale for item in two_state_founders()} <= set(
+        audit["fixed_reaction_scales"]
+    )
 
 
 def test_small_audit_records_every_arm_and_refuses_overwrite(tmp_path, small_config):

@@ -101,5 +101,21 @@ cross-system generalization. No post-hoc significance fishing across endpoints.
    Do not turn a negative attribution result into another success-rate tuning
    exercise. Original Step 8 is not unlocked by this audit.
 
+## Development revision log
+
+Development v1 (commit `24217b2`) completed 216 runs with all integrity checks
+passing. During its execution, before examining the complete outcomes, review
+identified that the fixed-grid reference was fitted with unweighted squared
+error while the strategies used noise-standardized error. Development v2 aligns
+these training criteria and expands the grid to 25 coefficients, including all
+five founder coefficients. It does not change any search policy. The v1 outputs
+are retained, but v2 supersedes its fixed-reference comparisons.
+
+The primary outcome is explicitly summary-feature RMSE, not full-field RMSE.
+Development v2 also adds secondary pointwise visible-field RMSE, measured only
+after search, and reports raw-RMSE factorial main effects and interaction. These
+changes are made before the frozen validation run. They do not retrospectively
+change v1 or v2 sealed outcomes.
+
 The implementation is invoked as a separate module so frozen v2 source files,
 configuration files and dependency lock remain byte-identical.

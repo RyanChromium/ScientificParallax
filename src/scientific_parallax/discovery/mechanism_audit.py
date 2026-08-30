@@ -11,12 +11,13 @@ import hashlib
 import json
 import math
 from concurrent.futures import ProcessPoolExecutor
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 
+from scientific_parallax.coevolution.evidence import calibrated_noise
 from scientific_parallax.core.budget import BudgetLedger, BudgetLimits
 from scientific_parallax.core.reproducibility import capture_environment, content_hash
 from scientific_parallax.discovery.latent_model import (
@@ -271,6 +272,7 @@ def search(
 def fixed_reference(
     history: list[tuple[LatentGrayScottExperiment, tuple[float, ...]]],
     scales: list[float],
+    noise_floor: float,
 ) -> tuple[LatentCandidate, dict[str, int]]:
     """Training-only grid fit; no latent-class requirement or oracle test selection."""
     budget = BudgetLedger(BudgetLimits(len(history), len(scales), len(scales) * len(history)))
@@ -288,7 +290,8 @@ def fixed_reference(
         error = 0.0
         for experiment, observed in history:
             predicted = np.asarray(_predict(candidate, experiment, cache, budget))
-            error += float(np.sum((predicted - np.asarray(observed)) ** 2))
+            noise = calibrated_noise(len(observed), noise_floor)
+            error += float(np.sum(((predicted - np.asarray(observed)) / noise) ** 2))
         fits.append((error, index, candidate))
     chosen = min(fits, key=lambda item: (item[0], item[1]))[2]
     return chosen, {
@@ -296,6 +299,31 @@ def fixed_reference(
         "shared_observation_count": len(history),
         "grid_size": len(scales),
     }
+
+
+def field_rmse(
+    candidate: LatentCandidate,
+    experiments: tuple[LatentGrayScottExperiment, ...],
+    observations: dict[str, Any],
+) -> float:
+    """Secondary pointwise visible-field error, never a search/selection input."""
+    squared_error = 0.0
+    count = 0
+    for experiment in experiments:
+        noiseless = replace(
+            experiment,
+            measurement=replace(experiment.measurement, noise_std=0.0, mask_fraction=0.0),
+        )
+        predicted = LatentGrayScottWorld(0, candidate.law).observe(noiseless)
+        observed = observations[experiment.content_hash]
+        for key, target in observed.fields.items():
+            residual = predicted.fields[key] - target
+            finite = residual[np.isfinite(residual)]
+            squared_error += float(np.sum(finite**2))
+            count += finite.size
+    if count == 0:
+        raise ValueError("validation fields have no finite observations")
+    return math.sqrt(squared_error / count)
 
 
 def run_task(
@@ -311,17 +339,22 @@ def run_task(
         audit["archive_capacity"],
     )
     reference, reference_budget = fixed_reference(
-        search_result["history"], audit["fixed_reaction_scales"]
+        search_result["history"], audit["fixed_reaction_scales"], config["likelihood_noise_floor"]
     )
     # This is the first point where validation observations are obtained.
+    observed_fields = {
+        experiment.content_hash: world.observe(experiment) for experiment in task.validation
+    }
     validation = {
-        experiment.content_hash: tuple(float(x) for x in world.observe(experiment).summary())
-        for experiment in task.validation
+        key: tuple(float(x) for x in observed.summary())
+        for key, observed in observed_fields.items()
     }
     validation_cache: dict[tuple[str, str], tuple[float, ...]] = {}
     chosen = search_result["chosen"]
     error = _validation_rmse(chosen, task.validation, validation, validation_cache)
     reference_error = _validation_rmse(reference, task.validation, validation, validation_cache)
+    field_error = field_rmse(chosen, task.validation, observed_fields)
+    reference_field_error = field_rmse(reference, task.validation, observed_fields)
     improvement = 1.0 - error / max(reference_error, np.finfo(float).eps)
     compatibility = []
     for keys, posterior in search_result["checkpoints"]:
@@ -346,6 +379,9 @@ def run_task(
         "arm": arm,
         "policy": asdict(POLICIES[arm]),
         "validation_rmse": error,
+        "validation_metric": "RMSE of four visible-field summary features per frame",
+        "secondary_full_field_rmse": field_error,
+        "secondary_fixed_reference_field_rmse": reference_field_error,
         "fixed_reference_rmse": reference_error,
         "fixed_reference_scale": reference.law.reaction_scale,
         "relative_improvement_vs_fixed": improvement,
@@ -362,6 +398,7 @@ def run_task(
         "budget_limits": limits,
         "fixed_reference_budget": reference_budget,
         "validation_model_evaluations": len(validation_cache),
+        "secondary_field_model_evaluations": 2 * len(task.validation),
         "held_out_conditions_never_queried": not (held_out & queried or held_out & set(seed_pool)),
         "resource_ceilings_respected": all(budget[key] <= value for key, value in limits.items()),
     }
@@ -405,6 +442,9 @@ def summarize(results: list[dict[str, Any]], config: dict[str, Any]) -> dict[str
         summaries[arm] = {
             "latent_tasks": len(positives),
             "mean_validation_rmse": float(np.mean([x["validation_rmse"] for x in positives])),
+            "mean_full_field_rmse": float(
+                np.mean([x["secondary_full_field_rmse"] for x in positives])
+            ),
             "predictive_wins": sum(x["predictive_win"] for x in positives),
             "complete_structure_selected": sum(x["complete_structure_selected"] for x in positives),
             "compatibility_v2_successes": sum(x["compatibility_v2_success"] for x in positives),
@@ -445,6 +485,28 @@ def summarize(results: list[dict[str, Any]], config: dict[str, Any]) -> dict[str
             "metric": "paired relative terminal RMSE reduction; positive favors treatment",
             **_interval(rows, config["bootstrap_samples"], config["seed"]),
         }
+    factorial = {}
+    for metric in ("validation_rmse", "secondary_full_field_rmse"):
+        values = {
+            "parent_priority_main_benefit": [],
+            "ensemble_main_benefit": [],
+            "interaction": [],
+        }
+        for task in latent:
+            y00, y01, y10, y11 = [
+                index[(task["task_token"], arm)][metric] for arm in ("p0e0", "p0e1", "p1e0", "p1e1")
+            ]
+            values["parent_priority_main_benefit"].append(
+                (task["truth_cluster"], (y00 - y10 + y01 - y11) / 2)
+            )
+            values["ensemble_main_benefit"].append(
+                (task["truth_cluster"], (y00 - y01 + y10 - y11) / 2)
+            )
+            values["interaction"].append((task["truth_cluster"], (y01 - y11) - (y00 - y10)))
+        factorial[metric] = {
+            name: _interval(rows, config["bootstrap_samples"], config["seed"])
+            for name, rows in values.items()
+        }
     passive_checks = []
     for token, _ in index:
         for p in range(2):
@@ -470,12 +532,23 @@ def summarize(results: list[dict[str, Any]], config: dict[str, Any]) -> dict[str
         "finite_prediction_scores": all(
             math.isfinite(x[key])
             for x in results
-            for key in ("validation_rmse", "fixed_reference_rmse", "relative_improvement_vs_fixed")
+            for key in (
+                "validation_rmse",
+                "fixed_reference_rmse",
+                "relative_improvement_vs_fixed",
+                "secondary_full_field_rmse",
+                "secondary_fixed_reference_field_rmse",
+            )
         ),
     }
     return {
         "arm_summaries": summaries,
         "paired_comparisons": comparisons,
+        "factorial_raw_rmse_effects": factorial,
+        "factorial_sign_convention": (
+            "positive main effect = lower error when enabled; "
+            "interaction = priority benefit at E1 minus priority benefit at E0"
+        ),
         "checks": checks,
         "interpretation_boundary": [
             "Factorial cells separate parent priority from ensemble balancing, not survival.",
@@ -533,7 +606,11 @@ def run_audit(config_path: Path, output: Path, root: Path | None = None) -> dict
         "schema_version": 1,
         "experiment_version": audit["experiment_version"],
         "scope": audit["scope"],
-        "assurance": "local frozen out-of-sample replication; not independent custody",
+        "assurance": (
+            "local frozen out-of-sample replication; not independent custody"
+            if audit["scope"] == "frozen_validation"
+            else "local development experiment; no independent custody"
+        ),
         "audit_config": audit,
         "resolved_config": config,
         "config_hash": content_hash({"audit": audit, "resolved": config}),
