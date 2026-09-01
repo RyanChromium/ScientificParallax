@@ -1,0 +1,78 @@
+{
+  "baseline": {
+    "held_out_null_rmse": 0.002891130307425217,
+    "held_out_positive_rmse": 0.11413544936246027,
+    "null_parameters": {
+      "reaction_scale": 1.0
+    },
+    "positive_parameters": {
+      "reaction_scale": 1.0
+    }
+  },
+  "case_id": "2f77a1134adcc67e",
+  "config_sha256": "ec8e8a2c15ff04ecfc6fbdeab29a914a10cbb0e0dc6ac3e9bdb1eb8a00cf9bcb",
+  "elicitation_world": "null",
+  "hypotheses": [
+    {
+      "additional_state_count": 0,
+      "falsification_test": "Repeat all three conditions while varying only the amplitude of the localized v pulse, including zero and 0.24. Fit one shared p0. Falsify this proposal if the residuals do not scale consistently with reaction exposure u*v**2 across both pulsed and unpulsed runs, especially if it cannot reproduce v-",
+      "held_out_null_rmse": 0.002891130307425217,
+      "held_out_positive_rmse": 0.10802261346420018,
+      "hypothesis_id": "reaction-rate-shift",
+      "null_fit_parameters": {
+        "p0": 1.0
+      },
+      "null_training_rmse": 0.0020229875299044176,
+      "parameter_count": 1,
+      "positive_fit_parameters": {
+        "p0": 1.02
+      },
+      "positive_training_rmse": 0.09695801662121029,
+      "summary": "A small error in the effective autocatalytic reaction rate explains the low-amplitude residuals without adding states."
+    },
+    {
+      "additional_state_count": 0,
+      "falsification_test": "Repeat the stripe condition at two spatial wavelengths while matching initial field means and amplitudes. Falsify this proposal if the early v gradient-energy residual fails to change with wavelength as predicted by diffusion, or if one shared p0 cannot also account for the periodic conditions.",
+      "held_out_null_rmse": 0.002891130307425217,
+      "held_out_positive_rmse": 0.11216565742392663,
+      "hypothesis_id": "v-diffusion-shift",
+      "null_fit_parameters": {
+        "p0": 0.08
+      },
+      "null_training_rmse": 0.0020229875299044176,
+      "parameter_count": 1,
+      "positive_fit_parameters": {
+        "p0": 0.075
+      },
+      "positive_training_rmse": 0.10013042038371703,
+      "summary": "The conspicuous early v gradient-energy and high-fraction residual in the reflecting stripe condition arise from a slight error in v diffusivity."
+    },
+    {
+      "additional_state_count": 1,
+      "falsification_test": "Apply two identical localized v pulses at different delays after initialization. Falsify this proposal if the second response is independent of the first after matching instantaneous u and v, or if the inferred recovery interval does not follow the shared relaxation rate p1.",
+      "held_out_null_rmse": 0.002891130307425217,
+      "held_out_positive_rmse": 0.10453410525701907,
+      "hypothesis_id": "transient-reaction-memory",
+      "null_fit_parameters": {
+        "p0": 0.0,
+        "p1": 0.1
+      },
+      "null_training_rmse": 0.0020229875299044176,
+      "parameter_count": 2,
+      "positive_fit_parameters": {
+        "p0": 0.0291929089076755,
+        "p1": 0.03380806776014131
+      },
+      "positive_training_rmse": 0.09315527700067515,
+      "summary": "A weak, relaxing memory of v exposure modulates reaction strength and can generate delayed sign changes after a pulse; it is more complex than the two-state alternatives and should be retained only if pulse-history dependence is observed."
+    }
+  ],
+  "implementation_sha256": "8206e0921a227db1b8e7509a09ba1a35bb7ceec15c7f48c68fc7f27d1f613bfd",
+  "interpretation_boundary": "This screen evaluates executable proposals from one anonymous synthetic case. The null transfer refits each proposed structure and is not a false-discovery experiment. This screen cannot establish a unique physical state, scientific novelty, or superiority.",
+  "parameter_draws_per_hypothesis": 64,
+  "request_sha256": "766c4614f60f1cf4d937c25db8a53baa0406861a96c1a69088fb98b684a4a290",
+  "response_sha256": "f5ffdb23ca1ee8de5e6f7fbfe4aa3e89c598e02f63abb2021b5874d0815d1189",
+  "schema_version": 1,
+  "scope": "development_only_not_confirmatory",
+  "status": "blind_response_screened"
+}

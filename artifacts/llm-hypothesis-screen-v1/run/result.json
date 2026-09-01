@@ -1,0 +1,92 @@
+{
+  "candidate_prediction_hashes": {
+    "latent-activation-memory": "8592382d1b10802f5f8e739c770da1f97f4144db46abf75e50baf6166c12bab8",
+    "saturating-v-removal": "03b3eb773381c5635dc64d0933d48513bb79557b9a7877876541f73dd4aa825e",
+    "superquadratic-autocatalysis": "e5300cef58a5c81655b602cc640ca9019c8efc2bce0a0666d41a994f45bcbeca",
+    "two-field-baseline": "7616220175e9967360d04f63527e240c17f77a6cd4e18dee777e6c40c25f550a"
+  },
+  "candidate_rmse": {
+    "latent-activation-memory": 0.13019376984889963,
+    "saturating-v-removal": 0.11529327545947565,
+    "superquadratic-autocatalysis": 0.13268610285458884,
+    "two-field-baseline": 0.13726002884876326
+  },
+  "claim_boundary": "One locally selected development intervention; no mechanism identity, novelty, or confirmatory error guarantee.",
+  "decision": "stop_llm_recovered_z_route",
+  "design_commitment_sha256": "b295710e5d585c49799f827696ed4aeb6e7a28d19a4b82367eb94524471b6bbc",
+  "memory_relative_gain_vs_baseline": 0.05148082117664,
+  "memory_relative_gain_vs_state_free": -0.12923992600645076,
+  "minimum_required_gain": 0.1,
+  "observed_summary": [
+    0.9097496398185037,
+    0.15324638652316105,
+    0.0,
+    0.010353467643757285,
+    0.7478250665603164,
+    0.317422731786948,
+    0.0,
+    0.034666048098347564,
+    0.5553175450295559,
+    0.34910012556802456,
+    0.19444444444444445,
+    0.044374411784634554,
+    0.32651154757135953,
+    0.2920267601950579,
+    0.20833333333333334,
+    0.041333462396299044,
+    0.139754581577568,
+    0.16761067411893743,
+    0.13194444444444445,
+    0.016556938798369763,
+    0.0678682762651712,
+    0.16106350408434822,
+    0.10416666666666667,
+    0.013823116577833229,
+    0.17223633065279212,
+    0.27547336093187536,
+    0.1875,
+    0.029480935439290326,
+    0.3312750439960924,
+    0.36588547926935766,
+    0.25,
+    0.04434176177034746,
+    0.6239243851626383,
+    0.489139075514376,
+    0.22916666666666666,
+    0.08549500608586573,
+    0.8923034248527743,
+    0.4507182264083725,
+    0.20833333333333334,
+    0.0852281313275382
+  ],
+  "observed_summary_sha256": "d1dc8e6734297d4c67523a857234c6852796a88137a43bd077ef9d17f5fd5fc6",
+  "schema_version": 1,
+  "selected_experiment": {
+    "boundary": "reflecting",
+    "experiment_id": "design-034",
+    "feed": 0.046,
+    "grid_size": 12,
+    "initial_family": "center_square",
+    "initial_seed": 940000,
+    "kill": 0.064,
+    "pulses": [
+      {
+        "at_step": 12,
+        "center_x": 6,
+        "center_y": 6,
+        "delta_v": 0.17,
+        "radius": 2
+      },
+      {
+        "at_step": 42,
+        "center_x": 6,
+        "center_y": 6,
+        "delta_v": 0.17,
+        "radius": 2
+      }
+    ],
+    "sample_every": 12,
+    "steps": 60
+  },
+  "status": "development_discrimination_complete"
+}

@@ -1,0 +1,9 @@
+{
+  "baseline_reaction_scale": 1.0,
+  "case_id": "2f77a1134adcc67e",
+  "next_step": "obtain one schema-valid response without repository access",
+  "request_sha256": "766c4614f60f1cf4d937c25db8a53baa0406861a96c1a69088fb98b684a4a290",
+  "source_world": "null",
+  "status": "blind_prompt_ready",
+  "training_condition_count": 3
+}

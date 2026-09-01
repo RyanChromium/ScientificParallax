@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "hypotheses": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "additional_states": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "initial": {
+                  "maximum": 1.5,
+                  "minimum": -1.5,
+                  "type": "number"
+                },
+                "name": {
+                  "pattern": "^[a-z][a-z0-9_]{0,15}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "initial"
+              ],
+              "type": "object"
+            },
+            "maxItems": 2,
+            "type": "array"
+          },
+          "falsification_test": {
+            "maxLength": 300,
+            "minLength": 1,
+            "type": "string"
+          },
+          "hypothesis_id": {
+            "pattern": "^[a-z][a-z0-9-]{0,39}$",
+            "type": "string"
+          },
+          "parameters": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "initial": {
+                  "maximum": 10.0,
+                  "minimum": -10.0,
+                  "type": "number"
+                },
+                "lower": {
+                  "maximum": 10.0,
+                  "minimum": -10.0,
+                  "type": "number"
+                },
+                "name": {
+                  "pattern": "^p[0-9]+$",
+                  "type": "string"
+                },
+                "upper": {
+                  "maximum": 10.0,
+                  "minimum": -10.0,
+                  "type": "number"
+                }
+              },
+              "required": [
+                "name",
+                "lower",
+                "upper",
+                "initial"
+              ],
+              "type": "object"
+            },
+            "maxItems": 8,
+            "type": "array"
+          },
+          "rhs": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "expression": {
+                  "maxLength": 500,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "state": {
+                  "pattern": "^[a-z][a-z0-9_]{0,15}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "state",
+                "expression"
+              ],
+              "type": "object"
+            },
+            "maxItems": 4,
+            "minItems": 2,
+            "type": "array"
+          },
+          "summary": {
+            "maxLength": 240,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "hypothesis_id",
+          "summary",
+          "additional_states",
+          "parameters",
+          "rhs",
+          "falsification_test"
+        ],
+        "type": "object"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "hypotheses"
+  ],
+  "type": "object"
+}

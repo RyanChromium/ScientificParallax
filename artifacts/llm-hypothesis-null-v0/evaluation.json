@@ -1,0 +1,78 @@
+{
+  "baseline": {
+    "held_out_null_rmse": 0.002891130307425217,
+    "held_out_positive_rmse": 0.05819443458625873,
+    "null_parameters": {
+      "reaction_scale": 1.0
+    },
+    "positive_parameters": {
+      "reaction_scale": 1.2500000000000002
+    }
+  },
+  "case_id": "2f77a1134adcc67e",
+  "config_sha256": "ec8e8a2c15ff04ecfc6fbdeab29a914a10cbb0e0dc6ac3e9bdb1eb8a00cf9bcb",
+  "elicitation_world": "null",
+  "hypotheses": [
+    {
+      "additional_state_count": 0,
+      "falsification_test": "Repeat all three conditions while varying only the amplitude of the localized v pulse, including zero and 0.24. Fit one shared p0. Falsify this proposal if the residuals do not scale consistently with reaction exposure u*v**2 across both pulsed and unpulsed runs, especially if it cannot reproduce v-",
+      "held_out_null_rmse": 0.002891130307425217,
+      "held_out_positive_rmse": 0.05806158785438874,
+      "hypothesis_id": "reaction-rate-shift",
+      "null_fit_parameters": {
+        "p0": 1.0
+      },
+      "null_training_rmse": 0.0020229875299044176,
+      "parameter_count": 1,
+      "positive_fit_parameters": {
+        "p0": 1.009542399069166
+      },
+      "positive_training_rmse": 0.045107802030584974,
+      "summary": "A small error in the effective autocatalytic reaction rate explains the low-amplitude residuals without adding states."
+    },
+    {
+      "additional_state_count": 0,
+      "falsification_test": "Repeat the stripe condition at two spatial wavelengths while matching initial field means and amplitudes. Falsify this proposal if the early v gradient-energy residual fails to change with wavelength as predicted by diffusion, or if one shared p0 cannot also account for the periodic conditions.",
+      "held_out_null_rmse": 0.002891130307425217,
+      "held_out_positive_rmse": 0.05817292422298801,
+      "hypothesis_id": "v-diffusion-shift",
+      "null_fit_parameters": {
+        "p0": 0.08
+      },
+      "null_training_rmse": 0.0020229875299044176,
+      "parameter_count": 1,
+      "positive_fit_parameters": {
+        "p0": 0.08093639967831086
+      },
+      "positive_training_rmse": 0.04503476827754738,
+      "summary": "The conspicuous early v gradient-energy and high-fraction residual in the reflecting stripe condition arise from a slight error in v diffusivity."
+    },
+    {
+      "additional_state_count": 1,
+      "falsification_test": "Apply two identical localized v pulses at different delays after initialization. Falsify this proposal if the second response is independent of the first after matching instantaneous u and v, or if the inferred recovery interval does not follow the shared relaxation rate p1.",
+      "held_out_null_rmse": 0.002891130307425217,
+      "held_out_positive_rmse": 0.057317844656884755,
+      "hypothesis_id": "transient-reaction-memory",
+      "null_fit_parameters": {
+        "p0": 0.0,
+        "p1": 0.1
+      },
+      "null_training_rmse": 0.0020229875299044176,
+      "parameter_count": 2,
+      "positive_fit_parameters": {
+        "p0": 0.029134297116845016,
+        "p1": 0.19817301088806083
+      },
+      "positive_training_rmse": 0.04426195792351406,
+      "summary": "A weak, relaxing memory of v exposure modulates reaction strength and can generate delayed sign changes after a pulse; it is more complex than the two-state alternatives and should be retained only if pulse-history dependence is observed."
+    }
+  ],
+  "implementation_sha256": "b306c8445ded842290d01dcabe1b809f40732b1b1a31a7ab7e3da8cf84db42c6",
+  "interpretation_boundary": "This is one development null elicitation. Proposing an extra state is not itself a false attribution because the response contains competing models. Only frozen held-out comparisons may raise the protocol warning. One case cannot estimate a false-attribution rate or establish model-wide behavior.",
+  "parameter_draws_per_hypothesis": 64,
+  "request_sha256": "766c4614f60f1cf4d937c25db8a53baa0406861a96c1a69088fb98b684a4a290",
+  "response_sha256": "f5ffdb23ca1ee8de5e6f7fbfe4aa3e89c598e02f63abb2021b5874d0815d1189",
+  "schema_version": 1,
+  "scope": "development_only_not_confirmatory",
+  "status": "blind_response_screened"
+}

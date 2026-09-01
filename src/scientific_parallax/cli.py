@@ -18,6 +18,11 @@ from scientific_parallax.discovery.latent_final_world import (
     provision_latent_final_world,
 )
 from scientific_parallax.discovery.latent_runner import run_latent_discovery_pilot
+from scientific_parallax.discovery.llm_discrimination import run_memory_discrimination
+from scientific_parallax.discovery.llm_hypothesis import (
+    evaluate_blind_response,
+    prepare_blind_screen,
+)
 from scientific_parallax.evolution.experiment import run_step4_control
 from scientific_parallax.protocol.dry_run import run_protocol_dry_run
 from scientific_parallax.protocol.final_world import (
@@ -136,6 +141,30 @@ def _parser() -> argparse.ArgumentParser:
     latent_final.add_argument("--config", type=Path, required=True)
     latent_final.add_argument("--root", type=Path, required=True)
     latent_final.add_argument("--development-root", type=Path, default=Path.cwd())
+    llm_prepare = discovery_action.add_parser(
+        "llm-screen-prepare", help="build an anonymous development prompt for an external LLM"
+    )
+    llm_prepare.add_argument("--config", type=Path, required=True)
+    llm_prepare.add_argument("--output", type=Path, required=True)
+    llm_prepare.add_argument("--world", choices=("positive", "null"), default="positive")
+    llm_evaluate = discovery_action.add_parser(
+        "llm-screen-evaluate", help="validate and score blind LLM equation proposals"
+    )
+    llm_evaluate.add_argument("--config", type=Path, required=True)
+    llm_evaluate.add_argument("--request", type=Path, required=True)
+    llm_evaluate.add_argument("--response", type=Path, required=True)
+    llm_evaluate.add_argument("--output", type=Path, required=True)
+    llm_evaluate.add_argument("--parameter-draws", type=int, default=64)
+    llm_evaluate.add_argument("--world", choices=("positive", "null"), default="positive")
+    llm_discriminate = discovery_action.add_parser(
+        "llm-screen-discriminate",
+        help="select and run one development intervention between frozen LLM proposals",
+    )
+    llm_discriminate.add_argument("--config", type=Path, required=True)
+    llm_discriminate.add_argument("--response", type=Path, required=True)
+    llm_discriminate.add_argument("--evaluation", type=Path, required=True)
+    llm_discriminate.add_argument("--protocol", type=Path, required=True)
+    llm_discriminate.add_argument("--output", type=Path, required=True)
     return parser
 
 
@@ -206,11 +235,30 @@ def main() -> None:
                 sealed_root=args.root,
                 development_root=args.development_root,
             )
-        else:
+        elif args.discovery_action == "latent-confirmatory":
             report = evaluate_latent_final_world_once(
                 config_path=args.config,
                 sealed_root=args.root,
                 development_root=args.development_root,
+            )
+        elif args.discovery_action == "llm-screen-prepare":
+            report = prepare_blind_screen(args.config, args.output, source_world=args.world)
+        elif args.discovery_action == "llm-screen-evaluate":
+            report = evaluate_blind_response(
+                args.config,
+                args.request,
+                args.response,
+                args.output,
+                parameter_draws=args.parameter_draws,
+                source_world=args.world,
+            )
+        else:
+            report = run_memory_discrimination(
+                args.config,
+                args.response,
+                args.evaluation,
+                args.protocol,
+                args.output,
             )
         print(json.dumps(report, indent=2, sort_keys=True))
         return

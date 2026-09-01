@@ -1,0 +1,627 @@
+{
+  "assurance": {
+    "candidate_code_execution": false,
+    "generator_source_in_prompt": false,
+    "held_out_conditions_in_prompt": false
+  },
+  "baseline_fit": {
+    "reaction_scale": 1.0
+  },
+  "case_id": "2f77a1134adcc67e",
+  "evidence": {
+    "baseline_family": "two_field_reaction_diffusion",
+    "conditions": [
+      {
+        "baseline_prediction": {
+          "u": [
+            {
+              "gradient_energy": 0.004024373793555153,
+              "high_fraction": 0.0,
+              "mean": 0.9247380458954753,
+              "standard_deviation": 0.1048816681755584,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.007648705282033593,
+              "high_fraction": 0.0,
+              "mean": 0.8926539185873542,
+              "standard_deviation": 0.140514065377587,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.015841898915886655,
+              "high_fraction": 0.0,
+              "mean": 0.8259603992839865,
+              "standard_deviation": 0.21279004747794986,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": 0.002439285279101455,
+              "high_fraction": 0.1111111111111111,
+              "mean": 0.03724673391674111,
+              "standard_deviation": 0.07357728164491896,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.006272797327336201,
+              "high_fraction": 0.1111111111111111,
+              "mean": 0.05592803812459086,
+              "standard_deviation": 0.11460457815371652,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.012175881552877662,
+              "high_fraction": 0.1111111111111111,
+              "mean": 0.09598267848239507,
+              "standard_deviation": 0.1732787054103034,
+              "time": 36.0
+            }
+          ]
+        },
+        "boundary": "periodic",
+        "condition_id": "condition-0",
+        "duration_steps": 36,
+        "feed": 0.035,
+        "initial_pattern": "center_square",
+        "kill": 0.06,
+        "observed": {
+          "u": [
+            {
+              "gradient_energy": 0.004049625911236397,
+              "high_fraction": 0.0,
+              "mean": 0.9256086820669209,
+              "standard_deviation": 0.10489394173923192,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.007633128274568294,
+              "high_fraction": 0.0,
+              "mean": 0.8930940221102035,
+              "standard_deviation": 0.14050300863295243,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.01587652130569324,
+              "high_fraction": 0.0,
+              "mean": 0.8264188562609383,
+              "standard_deviation": 0.2130660159012633,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": 0.0024248619288411754,
+              "high_fraction": 0.1111111111111111,
+              "mean": 0.03772984772582057,
+              "standard_deviation": 0.0733331214171979,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.006291667851886886,
+              "high_fraction": 0.1111111111111111,
+              "mean": 0.05553289782593676,
+              "standard_deviation": 0.11484344251767509,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.012195664258235834,
+              "high_fraction": 0.1111111111111111,
+              "mean": 0.09626186484503871,
+              "standard_deviation": 0.17333911400529603,
+              "time": 36.0
+            }
+          ]
+        },
+        "pulses": [],
+        "residual_observed_minus_baseline": {
+          "u": [
+            {
+              "gradient_energy": 2.5252117681244003e-05,
+              "high_fraction": 0.0,
+              "mean": 0.0008706361714456712,
+              "standard_deviation": 1.2273563673517729e-05,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": -1.5577007465299338e-05,
+              "high_fraction": 0.0,
+              "mean": 0.0004401035228492889,
+              "standard_deviation": -1.1056744634585502e-05,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 3.462238980658436e-05,
+              "high_fraction": 0.0,
+              "mean": 0.0004584569769517932,
+              "standard_deviation": 0.00027596842331345517,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": -1.44233502602795e-05,
+              "high_fraction": 0.0,
+              "mean": 0.0004831138090794565,
+              "standard_deviation": -0.0002441602277210575,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 1.887052455068483e-05,
+              "high_fraction": 0.0,
+              "mean": -0.00039514029865409667,
+              "standard_deviation": 0.00023886436395856303,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 1.978270535817235e-05,
+              "high_fraction": 0.0,
+              "mean": 0.00027918636264363805,
+              "standard_deviation": 6.040859499262252e-05,
+              "time": 36.0
+            }
+          ]
+        },
+        "sample_every": 12
+      },
+      {
+        "baseline_prediction": {
+          "u": [
+            {
+              "gradient_energy": 0.016166038724613203,
+              "high_fraction": 0.0,
+              "mean": 0.884882735358767,
+              "standard_deviation": 0.19610772479917335,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.024414993898119037,
+              "high_fraction": 0.0,
+              "mean": 0.7630618554406043,
+              "standard_deviation": 0.2750457988485071,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.02428829116970261,
+              "high_fraction": 0.13194444444444445,
+              "mean": 0.6514744231272398,
+              "standard_deviation": 0.27939620779135105,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": 0.019257027361993178,
+              "high_fraction": 0.11805555555555555,
+              "mean": 0.08834328095356955,
+              "standard_deviation": 0.1978661316303786,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.017951851338026615,
+              "high_fraction": 0.18055555555555555,
+              "mean": 0.14768552306361338,
+              "standard_deviation": 0.22243237820462292,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.014784778580768614,
+              "high_fraction": 0.2708333333333333,
+              "mean": 0.1894520400186455,
+              "standard_deviation": 0.2043320553134356,
+              "time": 36.0
+            }
+          ]
+        },
+        "boundary": "periodic",
+        "condition_id": "condition-1",
+        "duration_steps": 36,
+        "feed": 0.035,
+        "initial_pattern": "center_square",
+        "kill": 0.06,
+        "observed": {
+          "u": [
+            {
+              "gradient_energy": 0.016126790773798565,
+              "high_fraction": 0.0,
+              "mean": 0.8843249364965057,
+              "standard_deviation": 0.19618846502840478,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.024461686810308438,
+              "high_fraction": 0.0,
+              "mean": 0.7635822381774341,
+              "standard_deviation": 0.27535743107201266,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.024388122463701555,
+              "high_fraction": 0.11805555555555555,
+              "mean": 0.6517550894976517,
+              "standard_deviation": 0.27965202639977943,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": 0.019288161048742782,
+              "high_fraction": 0.11805555555555555,
+              "mean": 0.08814882747850007,
+              "standard_deviation": 0.19798551164102132,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.017953817124653222,
+              "high_fraction": 0.18055555555555555,
+              "mean": 0.14822306822608777,
+              "standard_deviation": 0.2224374232114692,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.014857743802359793,
+              "high_fraction": 0.2708333333333333,
+              "mean": 0.1887155063172693,
+              "standard_deviation": 0.20465313892264556,
+              "time": 36.0
+            }
+          ]
+        },
+        "pulses": [
+          {
+            "at_step": 9,
+            "delta_v": 0.24,
+            "radius": 2
+          }
+        ],
+        "residual_observed_minus_baseline": {
+          "u": [
+            {
+              "gradient_energy": -3.924795081463803e-05,
+              "high_fraction": 0.0,
+              "mean": -0.0005577988622613717,
+              "standard_deviation": 8.07402292314352e-05,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 4.669291218940136e-05,
+              "high_fraction": 0.0,
+              "mean": 0.0005203827368297498,
+              "standard_deviation": 0.00031163222350555353,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 9.983129399894486e-05,
+              "high_fraction": -0.013888888888888895,
+              "mean": 0.00028066637041190834,
+              "standard_deviation": 0.000255818608428382,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": 3.113368674960426e-05,
+              "high_fraction": 0.0,
+              "mean": -0.00019445347506948096,
+              "standard_deviation": 0.0001193800106427112,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 1.9657866266072077e-06,
+              "high_fraction": 0.0,
+              "mean": 0.0005375451624743954,
+              "standard_deviation": 5.045006846282618e-06,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 7.296522159117892e-05,
+              "high_fraction": 0.0,
+              "mean": -0.0007365337013761908,
+              "standard_deviation": 0.00032108360920996004,
+              "time": 36.0
+            }
+          ]
+        },
+        "sample_every": 12
+      },
+      {
+        "baseline_prediction": {
+          "u": [
+            {
+              "gradient_energy": 0.008269409315258413,
+              "high_fraction": 0.16666666666666666,
+              "mean": 0.7920598718365168,
+              "standard_deviation": 0.17249425942182503,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.017574955656097218,
+              "high_fraction": 0.16666666666666666,
+              "mean": 0.6599883543102548,
+              "standard_deviation": 0.2520909566270236,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.02153495409663551,
+              "high_fraction": 0.3333333333333333,
+              "mean": 0.5027063966908566,
+              "standard_deviation": 0.2871775248329645,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": 0.003738041753347841,
+              "high_fraction": 0.1736111111111111,
+              "mean": 0.10027311167758395,
+              "standard_deviation": 0.10884266183745783,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.011012747012024215,
+              "high_fraction": 0.2013888888888889,
+              "mean": 0.18395323051909818,
+              "standard_deviation": 0.19011626407874047,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.011199835519032232,
+              "high_fraction": 0.3333333333333333,
+              "mean": 0.2548386956548636,
+              "standard_deviation": 0.2046081220069821,
+              "time": 36.0
+            }
+          ]
+        },
+        "boundary": "reflecting",
+        "condition_id": "condition-2",
+        "duration_steps": 36,
+        "feed": 0.025,
+        "initial_pattern": "stripe",
+        "kill": 0.054,
+        "observed": {
+          "u": [
+            {
+              "gradient_energy": 0.008277049419730335,
+              "high_fraction": 0.16666666666666666,
+              "mean": 0.7918777045482815,
+              "standard_deviation": 0.17237977835469176,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.01762401403198281,
+              "high_fraction": 0.16666666666666666,
+              "mean": 0.65953150277107,
+              "standard_deviation": 0.2523467575893258,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.02154129785201464,
+              "high_fraction": 0.3333333333333333,
+              "mean": 0.5021323684304383,
+              "standard_deviation": 0.2869549006871848,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": 0.0038371135211404147,
+              "high_fraction": 0.18055555555555555,
+              "mean": 0.10016264042802836,
+              "standard_deviation": 0.10970739131915164,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 0.01100048102667775,
+              "high_fraction": 0.20833333333333334,
+              "mean": 0.18377699271205314,
+              "standard_deviation": 0.1899181211591387,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 0.011216520831081418,
+              "high_fraction": 0.3333333333333333,
+              "mean": 0.25452499854726146,
+              "standard_deviation": 0.20459720507598592,
+              "time": 36.0
+            }
+          ]
+        },
+        "pulses": [],
+        "residual_observed_minus_baseline": {
+          "u": [
+            {
+              "gradient_energy": 7.640104471922163e-06,
+              "high_fraction": 0.0,
+              "mean": -0.00018216728823527983,
+              "standard_deviation": -0.00011448106713327078,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": 4.905837588559114e-05,
+              "high_fraction": 0.0,
+              "mean": -0.0004568515391848438,
+              "standard_deviation": 0.0002558009623022106,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 6.343755379129706e-06,
+              "high_fraction": 0.0,
+              "mean": -0.0005740282604183022,
+              "standard_deviation": -0.0002226241457796707,
+              "time": 36.0
+            }
+          ],
+          "v": [
+            {
+              "gradient_energy": 9.907176779257393e-05,
+              "high_fraction": 0.0069444444444444475,
+              "mean": -0.0001104712495555854,
+              "standard_deviation": 0.0008647294816938045,
+              "time": 12.0
+            },
+            {
+              "gradient_energy": -1.226598534646503e-05,
+              "high_fraction": 0.0069444444444444475,
+              "mean": -0.00017623780704503766,
+              "standard_deviation": -0.0001981429196017681,
+              "time": 24.0
+            },
+            {
+              "gradient_energy": 1.668531204918576e-05,
+              "high_fraction": 0.0,
+              "mean": -0.0003136971076021511,
+              "standard_deviation": -1.0916930996196506e-05,
+              "time": 36.0
+            }
+          ]
+        },
+        "sample_every": 12
+      }
+    ],
+    "feature_names": [
+      "mean",
+      "standard_deviation",
+      "high_fraction",
+      "gradient_energy"
+    ],
+    "field_names": [
+      "u",
+      "v"
+    ]
+  },
+  "prompt": "You are proposing falsifiable dynamical explanations for an anonymous two-field system.\n\nYou may use only the evidence below. Do not inspect files, use tools, retrieve background material, or assume a particular omitted mechanism. The current public model is:\n\ndu = 0.16*lap(u) - reaction_scale*u*v**2 + feed*(1-u)\ndv = 0.08*lap(v) + reaction_scale*u*v**2 - (feed+kill)*v\nwhere reaction_scale = 1 is a fixed public baseline constant.\n\nPropose exactly three mutually competing revisions. At least one revision must retain exactly two state fields. A revision may introduce up to two additional state fields, but extra fields are not preferred. Use only +, -, *, /, ** with numeric powers no larger than 4, names, and lap(state). Every right-hand side must be a complete derivative for u, v, and every added state. The fixed names feed, kill, and reaction_scale may be reused. Tunable parameters must be named p0, p1, ...; each lower value must be smaller than upper, and initial must lie between them. Prefer the fewest states and parameters that address a specific residual pattern. State one intervention that could falsify each proposal. Return JSON only, matching the supplied schema.\n\nANONYMOUS_EVIDENCE={\"baseline_family\":\"two_field_reaction_diffusion\",\"conditions\":[{\"baseline_prediction\":{\"u\":[{\"gradient_energy\":0.004024373793555153,\"high_fraction\":0.0,\"mean\":0.9247380458954753,\"standard_deviation\":0.1048816681755584,\"time\":12.0},{\"gradient_energy\":0.007648705282033593,\"high_fraction\":0.0,\"mean\":0.8926539185873542,\"standard_deviation\":0.140514065377587,\"time\":24.0},{\"gradient_energy\":0.015841898915886655,\"high_fraction\":0.0,\"mean\":0.8259603992839865,\"standard_deviation\":0.21279004747794986,\"time\":36.0}],\"v\":[{\"gradient_energy\":0.002439285279101455,\"high_fraction\":0.1111111111111111,\"mean\":0.03724673391674111,\"standard_deviation\":0.07357728164491896,\"time\":12.0},{\"gradient_energy\":0.006272797327336201,\"high_fraction\":0.1111111111111111,\"mean\":0.05592803812459086,\"standard_deviation\":0.11460457815371652,\"time\":24.0},{\"gradient_energy\":0.012175881552877662,\"high_fraction\":0.1111111111111111,\"mean\":0.09598267848239507,\"standard_deviation\":0.1732787054103034,\"time\":36.0}]},\"boundary\":\"periodic\",\"condition_id\":\"condition-0\",\"duration_steps\":36,\"feed\":0.035,\"initial_pattern\":\"center_square\",\"kill\":0.06,\"observed\":{\"u\":[{\"gradient_energy\":0.004049625911236397,\"high_fraction\":0.0,\"mean\":0.9256086820669209,\"standard_deviation\":0.10489394173923192,\"time\":12.0},{\"gradient_energy\":0.007633128274568294,\"high_fraction\":0.0,\"mean\":0.8930940221102035,\"standard_deviation\":0.14050300863295243,\"time\":24.0},{\"gradient_energy\":0.01587652130569324,\"high_fraction\":0.0,\"mean\":0.8264188562609383,\"standard_deviation\":0.2130660159012633,\"time\":36.0}],\"v\":[{\"gradient_energy\":0.0024248619288411754,\"high_fraction\":0.1111111111111111,\"mean\":0.03772984772582057,\"standard_deviation\":0.0733331214171979,\"time\":12.0},{\"gradient_energy\":0.006291667851886886,\"high_fraction\":0.1111111111111111,\"mean\":0.05553289782593676,\"standard_deviation\":0.11484344251767509,\"time\":24.0},{\"gradient_energy\":0.012195664258235834,\"high_fraction\":0.1111111111111111,\"mean\":0.09626186484503871,\"standard_deviation\":0.17333911400529603,\"time\":36.0}]},\"pulses\":[],\"residual_observed_minus_baseline\":{\"u\":[{\"gradient_energy\":2.5252117681244003e-05,\"high_fraction\":0.0,\"mean\":0.0008706361714456712,\"standard_deviation\":1.2273563673517729e-05,\"time\":12.0},{\"gradient_energy\":-1.5577007465299338e-05,\"high_fraction\":0.0,\"mean\":0.0004401035228492889,\"standard_deviation\":-1.1056744634585502e-05,\"time\":24.0},{\"gradient_energy\":3.462238980658436e-05,\"high_fraction\":0.0,\"mean\":0.0004584569769517932,\"standard_deviation\":0.00027596842331345517,\"time\":36.0}],\"v\":[{\"gradient_energy\":-1.44233502602795e-05,\"high_fraction\":0.0,\"mean\":0.0004831138090794565,\"standard_deviation\":-0.0002441602277210575,\"time\":12.0},{\"gradient_energy\":1.887052455068483e-05,\"high_fraction\":0.0,\"mean\":-0.00039514029865409667,\"standard_deviation\":0.00023886436395856303,\"time\":24.0},{\"gradient_energy\":1.978270535817235e-05,\"high_fraction\":0.0,\"mean\":0.00027918636264363805,\"standard_deviation\":6.040859499262252e-05,\"time\":36.0}]},\"sample_every\":12},{\"baseline_prediction\":{\"u\":[{\"gradient_energy\":0.016166038724613203,\"high_fraction\":0.0,\"mean\":0.884882735358767,\"standard_deviation\":0.19610772479917335,\"time\":12.0},{\"gradient_energy\":0.024414993898119037,\"high_fraction\":0.0,\"mean\":0.7630618554406043,\"standard_deviation\":0.2750457988485071,\"time\":24.0},{\"gradient_energy\":0.02428829116970261,\"high_fraction\":0.13194444444444445,\"mean\":0.6514744231272398,\"standard_deviation\":0.27939620779135105,\"time\":36.0}],\"v\":[{\"gradient_energy\":0.019257027361993178,\"high_fraction\":0.11805555555555555,\"mean\":0.08834328095356955,\"standard_deviation\":0.1978661316303786,\"time\":12.0},{\"gradient_energy\":0.017951851338026615,\"high_fraction\":0.18055555555555555,\"mean\":0.14768552306361338,\"standard_deviation\":0.22243237820462292,\"time\":24.0},{\"gradient_energy\":0.014784778580768614,\"high_fraction\":0.2708333333333333,\"mean\":0.1894520400186455,\"standard_deviation\":0.2043320553134356,\"time\":36.0}]},\"boundary\":\"periodic\",\"condition_id\":\"condition-1\",\"duration_steps\":36,\"feed\":0.035,\"initial_pattern\":\"center_square\",\"kill\":0.06,\"observed\":{\"u\":[{\"gradient_energy\":0.016126790773798565,\"high_fraction\":0.0,\"mean\":0.8843249364965057,\"standard_deviation\":0.19618846502840478,\"time\":12.0},{\"gradient_energy\":0.024461686810308438,\"high_fraction\":0.0,\"mean\":0.7635822381774341,\"standard_deviation\":0.27535743107201266,\"time\":24.0},{\"gradient_energy\":0.024388122463701555,\"high_fraction\":0.11805555555555555,\"mean\":0.6517550894976517,\"standard_deviation\":0.27965202639977943,\"time\":36.0}],\"v\":[{\"gradient_energy\":0.019288161048742782,\"high_fraction\":0.11805555555555555,\"mean\":0.08814882747850007,\"standard_deviation\":0.19798551164102132,\"time\":12.0},{\"gradient_energy\":0.017953817124653222,\"high_fraction\":0.18055555555555555,\"mean\":0.14822306822608777,\"standard_deviation\":0.2224374232114692,\"time\":24.0},{\"gradient_energy\":0.014857743802359793,\"high_fraction\":0.2708333333333333,\"mean\":0.1887155063172693,\"standard_deviation\":0.20465313892264556,\"time\":36.0}]},\"pulses\":[{\"at_step\":9,\"delta_v\":0.24,\"radius\":2}],\"residual_observed_minus_baseline\":{\"u\":[{\"gradient_energy\":-3.924795081463803e-05,\"high_fraction\":0.0,\"mean\":-0.0005577988622613717,\"standard_deviation\":8.07402292314352e-05,\"time\":12.0},{\"gradient_energy\":4.669291218940136e-05,\"high_fraction\":0.0,\"mean\":0.0005203827368297498,\"standard_deviation\":0.00031163222350555353,\"time\":24.0},{\"gradient_energy\":9.983129399894486e-05,\"high_fraction\":-0.013888888888888895,\"mean\":0.00028066637041190834,\"standard_deviation\":0.000255818608428382,\"time\":36.0}],\"v\":[{\"gradient_energy\":3.113368674960426e-05,\"high_fraction\":0.0,\"mean\":-0.00019445347506948096,\"standard_deviation\":0.0001193800106427112,\"time\":12.0},{\"gradient_energy\":1.9657866266072077e-06,\"high_fraction\":0.0,\"mean\":0.0005375451624743954,\"standard_deviation\":5.045006846282618e-06,\"time\":24.0},{\"gradient_energy\":7.296522159117892e-05,\"high_fraction\":0.0,\"mean\":-0.0007365337013761908,\"standard_deviation\":0.00032108360920996004,\"time\":36.0}]},\"sample_every\":12},{\"baseline_prediction\":{\"u\":[{\"gradient_energy\":0.008269409315258413,\"high_fraction\":0.16666666666666666,\"mean\":0.7920598718365168,\"standard_deviation\":0.17249425942182503,\"time\":12.0},{\"gradient_energy\":0.017574955656097218,\"high_fraction\":0.16666666666666666,\"mean\":0.6599883543102548,\"standard_deviation\":0.2520909566270236,\"time\":24.0},{\"gradient_energy\":0.02153495409663551,\"high_fraction\":0.3333333333333333,\"mean\":0.5027063966908566,\"standard_deviation\":0.2871775248329645,\"time\":36.0}],\"v\":[{\"gradient_energy\":0.003738041753347841,\"high_fraction\":0.1736111111111111,\"mean\":0.10027311167758395,\"standard_deviation\":0.10884266183745783,\"time\":12.0},{\"gradient_energy\":0.011012747012024215,\"high_fraction\":0.2013888888888889,\"mean\":0.18395323051909818,\"standard_deviation\":0.19011626407874047,\"time\":24.0},{\"gradient_energy\":0.011199835519032232,\"high_fraction\":0.3333333333333333,\"mean\":0.2548386956548636,\"standard_deviation\":0.2046081220069821,\"time\":36.0}]},\"boundary\":\"reflecting\",\"condition_id\":\"condition-2\",\"duration_steps\":36,\"feed\":0.025,\"initial_pattern\":\"stripe\",\"kill\":0.054,\"observed\":{\"u\":[{\"gradient_energy\":0.008277049419730335,\"high_fraction\":0.16666666666666666,\"mean\":0.7918777045482815,\"standard_deviation\":0.17237977835469176,\"time\":12.0},{\"gradient_energy\":0.01762401403198281,\"high_fraction\":0.16666666666666666,\"mean\":0.65953150277107,\"standard_deviation\":0.2523467575893258,\"time\":24.0},{\"gradient_energy\":0.02154129785201464,\"high_fraction\":0.3333333333333333,\"mean\":0.5021323684304383,\"standard_deviation\":0.2869549006871848,\"time\":36.0}],\"v\":[{\"gradient_energy\":0.0038371135211404147,\"high_fraction\":0.18055555555555555,\"mean\":0.10016264042802836,\"standard_deviation\":0.10970739131915164,\"time\":12.0},{\"gradient_energy\":0.01100048102667775,\"high_fraction\":0.20833333333333334,\"mean\":0.18377699271205314,\"standard_deviation\":0.1899181211591387,\"time\":24.0},{\"gradient_energy\":0.011216520831081418,\"high_fraction\":0.3333333333333333,\"mean\":0.25452499854726146,\"standard_deviation\":0.20459720507598592,\"time\":36.0}]},\"pulses\":[],\"residual_observed_minus_baseline\":{\"u\":[{\"gradient_energy\":7.640104471922163e-06,\"high_fraction\":0.0,\"mean\":-0.00018216728823527983,\"standard_deviation\":-0.00011448106713327078,\"time\":12.0},{\"gradient_energy\":4.905837588559114e-05,\"high_fraction\":0.0,\"mean\":-0.0004568515391848438,\"standard_deviation\":0.0002558009623022106,\"time\":24.0},{\"gradient_energy\":6.343755379129706e-06,\"high_fraction\":0.0,\"mean\":-0.0005740282604183022,\"standard_deviation\":-0.0002226241457796707,\"time\":36.0}],\"v\":[{\"gradient_energy\":9.907176779257393e-05,\"high_fraction\":0.0069444444444444475,\"mean\":-0.0001104712495555854,\"standard_deviation\":0.0008647294816938045,\"time\":12.0},{\"gradient_energy\":-1.226598534646503e-05,\"high_fraction\":0.0069444444444444475,\"mean\":-0.00017623780704503766,\"standard_deviation\":-0.0001981429196017681,\"time\":24.0},{\"gradient_energy\":1.668531204918576e-05,\"high_fraction\":0.0,\"mean\":-0.0003136971076021511,\"standard_deviation\":-1.0916930996196506e-05,\"time\":36.0}]},\"sample_every\":12}],\"feature_names\":[\"mean\",\"standard_deviation\",\"high_fraction\",\"gradient_energy\"],\"field_names\":[\"u\",\"v\"]}",
+  "response_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "hypotheses": {
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "additional_states": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "initial": {
+                    "maximum": 1.5,
+                    "minimum": -1.5,
+                    "type": "number"
+                  },
+                  "name": {
+                    "pattern": "^[a-z][a-z0-9_]{0,15}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "initial"
+                ],
+                "type": "object"
+              },
+              "maxItems": 2,
+              "type": "array"
+            },
+            "falsification_test": {
+              "maxLength": 300,
+              "minLength": 1,
+              "type": "string"
+            },
+            "hypothesis_id": {
+              "pattern": "^[a-z][a-z0-9-]{0,39}$",
+              "type": "string"
+            },
+            "parameters": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "initial": {
+                    "maximum": 10.0,
+                    "minimum": -10.0,
+                    "type": "number"
+                  },
+                  "lower": {
+                    "maximum": 10.0,
+                    "minimum": -10.0,
+                    "type": "number"
+                  },
+                  "name": {
+                    "pattern": "^p[0-9]+$",
+                    "type": "string"
+                  },
+                  "upper": {
+                    "maximum": 10.0,
+                    "minimum": -10.0,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "lower",
+                  "upper",
+                  "initial"
+                ],
+                "type": "object"
+              },
+              "maxItems": 8,
+              "type": "array"
+            },
+            "rhs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "expression": {
+                    "maxLength": 500,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "state": {
+                    "pattern": "^[a-z][a-z0-9_]{0,15}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "state",
+                  "expression"
+                ],
+                "type": "object"
+              },
+              "maxItems": 4,
+              "minItems": 2,
+              "type": "array"
+            },
+            "summary": {
+              "maxLength": 240,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "hypothesis_id",
+            "summary",
+            "additional_states",
+            "parameters",
+            "rhs",
+            "falsification_test"
+          ],
+          "type": "object"
+        },
+        "maxItems": 3,
+        "minItems": 3,
+        "type": "array"
+      },
+      "schema_version": {
+        "const": 1,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "schema_version",
+      "hypotheses"
+    ],
+    "type": "object"
+  },
+  "schema_version": 1,
+  "scope": "anonymous_development_screen"
+}
