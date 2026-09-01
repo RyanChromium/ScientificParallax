@@ -69,8 +69,9 @@ for (const [path, lang, copy, canonical] of [
     const anchors = tags(html, 'a');
     const email = anchors.find((tag) => tag.href?.startsWith('mailto:'));
     assert.equal(email?.href, `mailto:${contactEmail}`);
-    assert.equal(email?.['aria-label'], `${copy.email}: ${contactEmail}`);
-    assert.ok(html.includes(contactEmail));
+    assert.equal(email?.['aria-label'], copy.email);
+    assert.ok(html.includes(`<span>${copy.email}</span>`));
+    assert.ok(!html.includes(`<span>${contactEmail}</span>`));
     assert.equal(anchors.find((tag) => tag.hreflang === 'zh-CN')?.href, '/');
     assert.equal(anchors.find((tag) => tag.hreflang === 'en')?.href, '/en/');
     assert.equal(

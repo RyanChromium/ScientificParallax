@@ -205,10 +205,10 @@ export default function ProjectPage({ language }: { language: Language }) {
                   <a
                     href={`mailto:${contactEmail}`}
                     className="conversation-link email-link"
-                    aria-label={`${t.email}: ${contactEmail}`}
+                    aria-label={t.email}
                   >
                     <Mail size={18} aria-hidden="true" />
-                    <span>{contactEmail}</span>
+                    <span>{t.email}</span>
                   </a>
                   <a
                     href={repo + '/issues'}

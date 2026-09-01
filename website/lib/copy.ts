@@ -95,7 +95,7 @@ export const chinese = {
   invitationTitle: ['从一个疑问，', '开始对话。'],
   invitation:
     '我们正在整理概念、反例与证据标准，\n暂不绑定某个具体课题。\n如果你也关心这些问题，欢迎带来另一种视角。',
-  email: '发送邮件',
+  email: '联系我们',
   discuss: '交流想法',
   footer: '保持多种视角。接受同一个世界的检验。',
   observation: {
@@ -243,7 +243,7 @@ export const english: typeof chinese = {
   invitationTitle: ['Start a conversation', 'with a question.'],
   invitation:
     'We are organizing concepts, counterexamples and standards of evidence,\nwithout committing to a specific research problem yet.\nIf these questions resonate, bring another perspective.',
-  email: 'Send an email',
+  email: 'Contact us',
   discuss: 'Join the conversation',
   footer: 'Keep multiple perspectives. Test them against the same world.',
   observation: {

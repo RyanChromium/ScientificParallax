@@ -4,7 +4,7 @@
 >
 > An exploratory AI-for-Science project about representation, question generation, measurement, and independent evidence.
 
-**[中文官网](https://www.scientific-parallax.com/) · [English website](https://www.scientific-parallax.com/en/) · [联系 / Email](mailto:ran.chen2025@gmail.com)**
+**[中文官网](https://www.scientific-parallax.com/) · [English website](https://www.scientific-parallax.com/en/) · [联系我们 / Contact us](mailto:ran.chen2025@gmail.com)**
 
 ## 项目定位与主页
 
@@ -14,7 +14,7 @@
 
 - [项目定位稿：科学视差](docs/project-brief.md)
 - [中文官网](https://www.scientific-parallax.com/) / [English website](https://www.scientific-parallax.com/en/)
-- 联系：[`ran.chen2025@gmail.com`](mailto:ran.chen2025@gmail.com)
+- [联系我们 / Contact us](mailto:ran.chen2025@gmail.com)
 - 网站源代码位于 `website/`；[部署说明](website/DEPLOYMENT.md)。
 
 Scientific Parallax 是一个探索性 AI 科研项目，目标是研究：能否让 AI 系统生成、检验并演化不同于人类常规思路的“范式候选”。
