@@ -1,6 +1,10 @@
 # Scientific Parallax
 
 > 让 AI 不只在既有科学地图中预测，而是尝试改变地图的画法。
+>
+> An exploratory AI-for-Science project about representation, question generation, measurement, and independent evidence.
+
+**[中文官网](https://www.scientific-parallax.com/) · [English website](https://www.scientific-parallax.com/en/) · [联系 / Email](mailto:ran.chen2025@gmail.com)**
 
 ## 项目定位与主页
 
@@ -9,9 +13,9 @@
 不作为已经证明的优势。下方原型、实验结果与停止结论保持原样。
 
 - [项目定位稿：科学视差](docs/project-brief.md)
-- 中英文项目主页位于 `website/`，与研究代码分开维护。
-- 官网目标域名为 `scientific-parallax.com`（GitHub Pages 上线与域名切换尚待完成）；[部署说明](website/DEPLOYMENT.md)。
-- 原 Sites 预览保留，但其访问入口曾出现拦截，不作为官网可访问性的保证。
+- [中文官网](https://www.scientific-parallax.com/) / [English website](https://www.scientific-parallax.com/en/)
+- 联系：[`ran.chen2025@gmail.com`](mailto:ran.chen2025@gmail.com)
+- 网站源代码位于 `website/`；[部署说明](website/DEPLOYMENT.md)。
 
 Scientific Parallax 是一个探索性 AI 科研项目，目标是研究：能否让 AI 系统生成、检验并演化不同于人类常规思路的“范式候选”。
 
