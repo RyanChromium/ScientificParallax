@@ -35,9 +35,14 @@ for (const [path, lang, copy, canonical] of [
     assert.ok(html.includes(`<title>${copy.title}</title>`));
     assert.ok(html.includes(copy.methodLimit));
     assert.ok(html.includes(copy.observation.disclaimer));
+    assert.ok(html.includes(copy.examples[0].body));
     assert.ok(html.includes('role="tablist"'));
     assert.equal(
       tags(html, 'button').filter((tag) => tag.role === 'tab').length,
+      3,
+    );
+    assert.equal(
+      tags(html, 'svg').filter((tag) => tag['data-example-diagram']).length,
       3,
     );
     const links = tags(html, 'link');

@@ -1,5 +1,6 @@
 import { ArrowUpRight, ArrowDown, ArrowRight, Mail, Orbit } from 'lucide-react';
 import Observation from './observation';
+import PerspectiveExamples from './perspective-examples';
 import { contactEmail } from '@/lib/contact';
 import { getCopy, languagePath, type Language } from '@/lib/copy';
 const repo = 'https://github.com/RyanChromium/ScientificParallax';
@@ -29,8 +30,9 @@ export default function ProjectPage({ language }: { language: Language }) {
           </a>
           <nav aria-label={t.navigation}>
             <a href="#focus">{t.nav[0]}</a>
-            <a href="#method">{t.nav[1]}</a>
-            <a href="#boundaries">{t.nav[2]}</a>
+            <a href="#examples">{t.nav[1]}</a>
+            <a href="#method">{t.nav[2]}</a>
+            <a href="#boundaries">{t.nav[3]}</a>
           </nav>
           <div className="header-actions">
             <nav className="language-switch" aria-label={t.languageNavigation}>
@@ -131,6 +133,7 @@ export default function ProjectPage({ language }: { language: Language }) {
             ))}
           </div>
         </section>
+        <PerspectiveExamples copy={t} />
         <section className="method-section" id="method">
           <div className="page-width">
             <div className="method-intro">

@@ -10,7 +10,7 @@ export const chinese = {
   brandSub: 'Scientific Parallax',
   navigation: '主导航',
   languageNavigation: '选择语言',
-  nav: ['关注什么', '如何探索', '证据边界'],
+  nav: ['关注什么', '历史切面', '如何探索', '证据边界'],
   archive: '研究记录',
   kind: 'AI 与科学探索 · 一个开放的研究倡议',
   headline: ['换个视角，', '问题也会改变。'],
@@ -55,6 +55,45 @@ export const chinese = {
       tag: '独立证据',
       body: '先封存预测，再面对实验。记录修正、适用范围与失败，用独立证据决定解释的去留，也允许我们自己的方法被推翻。',
       limit: '动听的叙事，还不是科学发现。',
+    },
+  ],
+  examplesLabel: '三个历史切面',
+  examplesTitle: ['换一种语言，', '物理问题也会改变。'],
+  examplesIntro:
+    '这些突破不是把别人的工具借来用，而是重新决定：我们究竟在观察什么。',
+  exampleSource: '查看历史资料',
+  examples: [
+    {
+      kind: 'brownian',
+      field: '植物学观察 × 统计物理',
+      title: '从“花粉在乱动”，到看见原子。',
+      body: '水中颗粒的无规则抖动，原本只像噪声。爱因斯坦不再追问每一次碰撞，而是统计许多轨迹：可测的随机规律，反过来成为看不见的分子正在运动的证据。',
+      diagram: ['看见无规则抖动', '统计许多轨迹', '推断分子碰撞'],
+      diagramAlt:
+        '颗粒的随机轨迹被转化为统计规律，再用来推断不可见的分子碰撞。',
+      sourceHref:
+        'https://www.aps.org/apsnews/2016/08/robert-brown-molecular-motion-pollen',
+    },
+    {
+      kind: 'gravity',
+      field: '微分几何 × 引力',
+      title: '从“一股拉力”，到弯曲的时空。',
+      body: '牛顿式视角把引力看成物体之间的作用力。广义相对论换了一种语言：质量改变时空的几何，物体和光只是沿着其中最自然的路径前进。舞台本身，变成了物理对象。',
+      diagram: ['物体被引力拉动', '质量弯曲时空', '连光也会转弯'],
+      diagramAlt:
+        '引力从物体间的拉力被重新描述为质量造成的时空弯曲，弯曲也改变光的路径。',
+      sourceHref: 'https://www.einstein-online.info/en/GeomGravity/',
+    },
+    {
+      kind: 'symmetry',
+      field: '凝聚态物理 × 粒子物理',
+      title: '从“磁铁选方向”，到真空也有状态。',
+      body: '磁铁遵守的规则不偏爱任何方向，冷却后却会共同选定一个方向。粒子物理借来这个视角：真空不一定是空白，它也可以选择一种状态，让粒子的行为随之改变。',
+      diagram: ['规则不偏爱方向', '系统自己选方向', '真空也可以有状态'],
+      diagramAlt:
+        '方向原本等价的微小磁体自发排列到同一方向，这个视角随后被用于理解具有状态的真空。',
+      sourceHref:
+        'https://www.nobelprize.org/uploads/2018/06/weinberg-lecture.pdf',
     },
   ],
   methodLabel: '一种工作假说',
@@ -137,7 +176,7 @@ export const english: typeof chinese = {
   brandSub: 'An open research initiative',
   navigation: 'Main navigation',
   languageNavigation: 'Choose language',
-  nav: ['Our focus', 'Our approach', 'Evidence & limits'],
+  nav: ['Our focus', 'Examples', 'Our approach', 'Evidence'],
   archive: 'Research archive',
   kind: 'AI & scientific discovery · An open research initiative',
   headline: ['Change the perspective.', 'Change the question.'],
@@ -187,6 +226,57 @@ export const english: typeof chinese = {
       tag: 'Independent tests',
       body: 'Commit to predictions before running experiments. Record revisions, scope and failures. Let independent evidence decide which explanations survive—and allow our own methods to be refuted.',
       limit: 'A compelling story is not a scientific discovery.',
+    },
+  ],
+  examplesLabel: 'Three historical shifts',
+  examplesTitle: ['Change the language,', 'and the physics can change.'],
+  examplesIntro:
+    'These breakthroughs did more than borrow a tool. They changed what physicists thought they were looking at.',
+  exampleSource: 'Read the history',
+  examples: [
+    {
+      kind: 'brownian',
+      field: 'Botany × statistical physics',
+      title: 'From jittering pollen to evidence for atoms.',
+      body: 'The irregular motion of particles in water looked like noise. Einstein stopped asking about each collision and studied many trajectories instead. A measurable pattern in randomness became evidence for invisible molecules in motion.',
+      diagram: [
+        'Observe random motion',
+        'Measure many paths',
+        'Infer molecular impacts',
+      ],
+      diagramAlt:
+        'A random particle path becomes a statistical pattern that reveals otherwise invisible molecular collisions.',
+      sourceHref:
+        'https://www.aps.org/apsnews/2016/08/robert-brown-molecular-motion-pollen',
+    },
+    {
+      kind: 'gravity',
+      field: 'Differential geometry × gravity',
+      title: 'From a pulling force to curved spacetime.',
+      body: 'In the Newtonian view, gravity pulls one object toward another. General relativity changed the language: mass shapes spacetime, while matter and light follow its natural paths. The stage itself became part of the physics.',
+      diagram: [
+        'Gravity pulls objects',
+        'Mass curves spacetime',
+        'Even light bends',
+      ],
+      diagramAlt:
+        'Gravity is reframed from a pulling force to curved spacetime, which also bends the path of light.',
+      sourceHref: 'https://www.einstein-online.info/en/GeomGravity/',
+    },
+    {
+      kind: 'symmetry',
+      field: 'Condensed matter × particle physics',
+      title: 'From magnets choosing a direction to a vacuum with a state.',
+      body: 'The rules of a magnet favor no direction, yet cooling can make all its parts choose one. Particle physics imported that viewpoint: a vacuum need not be blank. It can settle into a state that changes how particles behave.',
+      diagram: [
+        'Rules favor no direction',
+        'The system chooses one',
+        'The vacuum has a state',
+      ],
+      diagramAlt:
+        'Tiny magnets governed by direction-neutral rules align together, motivating a view of the vacuum as a physical state.',
+      sourceHref:
+        'https://www.nobelprize.org/uploads/2018/06/weinberg-lecture.pdf',
     },
   ],
   methodLabel: 'A working hypothesis',
