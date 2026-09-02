@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "updated": "2026-09-02",
+  "status_vocabulary": {
+    "development_complete": "Engineering or protocol objective completed; no broad scientific claim.",
+    "mixed": "Some frozen tests passed and others failed.",
+    "corrected": "A later audit narrowed or withdrew an earlier interpretation.",
+    "stopped": "A frozen stopping condition fired; the next experimental step was not run."
+  },
+  "experiments": [
+    {
+      "id": "EXP-01",
+      "sequence": 1,
+      "slug": "foundation-baselines",
+      "family": "foundations",
+      "title_zh": "数值与固定候选基线",
+      "title_en": "Numerical and fixed-candidate baselines",
+      "stage": "development",
+      "status": "development_complete",
+      "decision": "retain_as_regression_baseline",
+      "question_zh": "数值世界、证据更新和固定候选问题选择是否足够稳定，能够支撑后续实验？",
+      "question_en": "Are the numerical world, evidence updates, and fixed-candidate question selection stable enough to support later experiments?",
+      "result_zh": "基础机制可重放，固定候选能够被区分；结果不证明共进化或科学发现。",
+      "result_en": "The basic mechanisms are replayable and fixed candidates can be distinguished; this does not demonstrate co-evolution or scientific discovery.",
+      "claim_boundary_zh": "只作为工程与协议回归基线。",
+      "claim_boundary_en": "Engineering and protocol regression baseline only.",
+      "links": {
+        "overview": "experiments/exp-01-foundation-baselines/README.md",
+        "plans": [],
+        "docs": [
+          "docs/gray-scott-baseline.md",
+          "docs/step0-protocol.md"
+        ],
+        "configs": [
+          "configs/experiments/gray-scott-baseline.json",
+          "configs/experiments/step0.json"
+        ],
+        "artifacts": [
+          "artifacts/gray_scott/reviewed-development-baseline.md",
+          "artifacts/step0/reviewed-baseline.md",
+          "artifacts/external-data/reviewed-the-well-validation.md"
+        ],
+        "code": [
+          "src/scientific_parallax/baselines/gray_scott.py",
+          "src/scientific_parallax/step0"
+        ],
+        "tests": [
+          "tests/integration/test_gray_scott_baseline.py",
+          "tests/integration/test_step0_run.py"
+        ]
+      }
+    },
+    {
+      "id": "EXP-02",
+      "sequence": 2,
+      "slug": "coevolution-v1",
+      "family": "paradigm-question-coevolution",
+      "title_zh": "范式—问题共进化 v1",
+      "title_en": "Paradigm-question co-evolution v1",
+      "stage": "development_blind_challenge",
+      "status": "stopped",
+      "decision": "stop_before_step8",
+      "question_zh": "共同演化模型与问题，能否比匹配的贝叶斯实验设计更快识别真候选？",
+      "question_en": "Can co-evolving models and questions identify the true candidate faster than matched Bayesian experimental design?",
+      "result_zh": "工程组件全部通过，但盲测主要终点为 1.0 对 1.0 次查询，改进为 0；按规则停止，未进入 Step 8。",
+      "result_en": "All engineering checks passed, but the blinded endpoint was 1.0 versus 1.0 queries, a zero improvement; the study stopped before Step 8.",
+      "claim_boundary_zh": "证明可审计调度与谱系机制能够运行，不证明共进化优于成熟基线。",
+      "claim_boundary_en": "Auditable scheduling and lineage mechanisms ran; superiority over a mature baseline was not demonstrated.",
+      "links": {
+        "overview": "experiments/exp-02-coevolution-v1/README.md",
+        "plans": [
+          "plans/scientific-parallax-research-plan.md"
+        ],
+        "docs": [
+          "docs/experiment-protocol.md",
+          "docs/step4-paradigm-evolution.md",
+          "docs/step5-question-evolution.md",
+          "docs/step6-coevolution-scheduler.md",
+          "docs/step7-blind-development-challenge.md"
+        ],
+        "configs": [
+          "configs/experiments/protocol-dry-run.json",
+          "configs/experiments/step4-paradigm-evolution.json",
+          "configs/experiments/step5-question-evolution.json",
+          "configs/experiments/step6-coevolution.json",
+          "configs/experiments/step7-blind-development.json"
+        ],
+        "artifacts": [
+          "artifacts/protocol/reviewed-dry-run.md",
+          "artifacts/step4/reviewed-paradigm-evolution.md",
+          "artifacts/step5/reviewed-question-evolution.md",
+          "artifacts/step6/reviewed-coevolution.md",
+          "artifacts/step7/reviewed-blind-development.md"
+        ],
+        "code": [
+          "src/scientific_parallax/evolution",
+          "src/scientific_parallax/questions",
+          "src/scientific_parallax/coevolution",
+          "src/scientific_parallax/challenge"
+        ],
+        "tests": [
+          "tests/unit/test_step4_evolution.py",
+          "tests/unit/test_step5_questions.py",
+          "tests/unit/test_step6_coevolution.py",
+          "tests/unit/test_step7_challenge.py"
+        ]
+      }
+    },
+    {
+      "id": "EXP-03",
+      "sequence": 3,
+      "slug": "latent-discovery-v2",
+      "family": "hidden-structure",
+      "title_zh": "受限隐藏结构恢复 v2",
+      "title_en": "Constrained hidden-structure recovery v2",
+      "stage": "local_single_account_confirmatory",
+      "status": "mixed",
+      "decision": "retain_narrow_structural_claim_reject_question_advantage",
+      "question_zh": "在搜索语言明确允许增加隐藏状态时，系统能否通过三步结构路径恢复被留出的合成结构？",
+      "question_en": "When the search language explicitly permits a hidden state, can the system recover the withheld synthetic structure through a three-step path?",
+      "result_zh": "20/20 个隐藏结构任务通过，30 个简单无隐藏结构对照中没有误加；问题共进化没有优于匹配的贝叶斯设计。",
+      "result_en": "All 20 hidden-structure tasks passed and none of 30 simple controls added a hidden state; question co-evolution did not beat matched Bayesian design.",
+      "claim_boundary_zh": "这是受限合成世界中的结构恢复，不是发现自然界的新变量。",
+      "claim_boundary_en": "Constrained structural recovery in a synthetic world, not discovery of a new natural variable.",
+      "links": {
+        "overview": "experiments/exp-03-latent-discovery-v2/README.md",
+        "plans": [],
+        "docs": [
+          "docs/protocol-v2-latent-discovery.md"
+        ],
+        "configs": [
+          "configs/experiments/latent-discovery-pilot.json",
+          "configs/experiments/latent-discovery-confirmatory-v1.json"
+        ],
+        "artifacts": [
+          "artifacts/protocol-v2/reviewed-latent-discovery.md",
+          "artifacts/protocol-v2/confirmatory-v1/result.json"
+        ],
+        "code": [
+          "src/scientific_parallax/discovery/latent_model.py",
+          "src/scientific_parallax/discovery/latent_runner.py",
+          "src/scientific_parallax/discovery/latent_final_world.py"
+        ],
+        "tests": [
+          "tests/unit/test_latent_discovery.py",
+          "tests/unit/test_latent_runner.py",
+          "tests/unit/test_latent_final_world.py"
+        ]
+      }
+    },
+    {
+      "id": "EXP-04",
+      "sequence": 4,
+      "slug": "mechanism-audit-v3",
+      "family": "hidden-structure",
+      "title_zh": "机制归因审计 v3",
+      "title_en": "Mechanism-attribution audit v3",
+      "stage": "frozen_validation",
+      "status": "corrected",
+      "decision": "withdraw_neutral-bridge_attribution_and_stop_novelty_claim",
+      "question_zh": "v2 的优势究竟来自保留中性结构，还是来自搜索顺序和父代选择规则？",
+      "question_en": "Did the v2 effect come from preserving neutral structures, or from search order and parent-selection rules?",
+      "result_zh": "主要效果由优先展开更高结构阶段解释；独特算法优势和原机制归因均未建立。",
+      "result_en": "Priority for expanding higher structural stages explained the main effect; neither a unique algorithmic advantage nor the original mechanism attribution was established.",
+      "claim_boundary_zh": "保留 v2 原始测量，但撤回较强机制解释。",
+      "claim_boundary_en": "The v2 measurements remain, but the stronger mechanism interpretation is withdrawn.",
+      "links": {
+        "overview": "experiments/exp-04-mechanism-audit-v3/README.md",
+        "plans": [
+          "plans/measurement-aware-mechanism-attribution-plan.md",
+          "plans/measurement-aware-mechanism-attribution-review.md"
+        ],
+        "docs": [
+          "docs/protocol-v3-mechanism-audit.md"
+        ],
+        "configs": [
+          "configs/experiments/mechanism-audit-development-v1.json",
+          "configs/experiments/mechanism-audit-development-v2.json",
+          "configs/experiments/mechanism-audit-validation-v1.json"
+        ],
+        "artifacts": [
+          "artifacts/protocol-v3/reviewed-mechanism-audit.md",
+          "artifacts/protocol-v3/validation-v1/report.json"
+        ],
+        "code": [
+          "src/scientific_parallax/discovery/mechanism_audit.py"
+        ],
+        "tests": [
+          "tests/unit/test_mechanism_audit.py"
+        ]
+      }
+    },
+    {
+      "id": "EXP-05",
+      "sequence": 5,
+      "slug": "llm-hidden-mechanism",
+      "family": "llm-hypothesis-generation",
+      "title_zh": "LLM 隐藏机制提案与区分试验",
+      "title_en": "LLM hidden-mechanism proposals and discrimination",
+      "stage": "development",
+      "status": "stopped",
+      "decision": "stop_llm_recovered_z_route",
+      "question_zh": "隔离的 LLM 能否从匿名残差提出类似记忆的隐藏机制，并在冻结干预中胜过无隐藏状态的解释？",
+      "question_en": "Can an isolated LLM propose a memory-like hidden mechanism from anonymous residuals and beat a state-free explanation under a frozen intervention?",
+      "result_zh": "LLM 提出了可执行的记忆解释，但其误差为 0.130194，高于无隐藏状态解释的 0.115293；未达到 10% 改进门槛。",
+      "result_en": "The LLM proposed an executable memory explanation, but its error was 0.130194 versus 0.115293 for the state-free rival and it missed the 10% improvement threshold.",
+      "claim_boundary_zh": "支持假说生成能力，不支持识别或恢复唯一的 Z。",
+      "claim_boundary_en": "Supports executable hypothesis generation, not identification or recovery of a unique Z.",
+      "links": {
+        "overview": "experiments/exp-05-llm-hidden-mechanism/README.md",
+        "plans": [],
+        "docs": [],
+        "configs": [],
+        "artifacts": [
+          "artifacts/llm-hypothesis-screen-v0/README.md",
+          "artifacts/llm-hypothesis-null-v0/README.md",
+          "artifacts/llm-hypothesis-screen-v1/README.md",
+          "artifacts/llm-hypothesis-screen-v1/run/result.json"
+        ],
+        "code": [
+          "src/scientific_parallax/discovery/llm_hypothesis.py",
+          "src/scientific_parallax/discovery/llm_discrimination.py"
+        ],
+        "tests": [
+          "tests/unit/test_llm_hypothesis.py"
+        ]
+      }
+    },
+    {
+      "id": "EXP-06",
+      "sequence": 6,
+      "slug": "direction-pilot-v0",
+      "family": "llm-research-direction",
+      "title_zh": "失败历史驱动的研究方向试验 v0",
+      "title_en": "Failure-history research-direction pilot v0",
+      "stage": "development",
+      "status": "stopped",
+      "decision": "stopped_no_novelty_survivor",
+      "question_zh": "只提供项目失败历史，LLM 能否提出既可执行又不落入成熟通用方法的研究方向？",
+      "question_en": "Given only project failure history, can an LLM propose an executable direction that is not an established generic method?",
+      "result_zh": "提出五项方向，三项通过初筛；排名最高的两项均被文献检查判为成熟通用方法，未运行实验。",
+      "result_en": "Five directions were proposed and three passed initial criticism; literature review classified the top two as mature generic methods, so no experiment ran.",
+      "claim_boundary_zh": "负面历史能约束错误，但不能单独选出非通用问题。",
+      "claim_boundary_en": "Failure history can constrain errors but cannot by itself select a non-generic problem.",
+      "links": {
+        "overview": "experiments/exp-06-direction-pilot-v0/README.md",
+        "plans": [
+          "plans/autonomous-research-direction-pilot.md"
+        ],
+        "docs": [],
+        "configs": [],
+        "artifacts": [
+          "artifacts/research-direction-pilot-v0/outcome.json",
+          "artifacts/research-direction-pilot-v0/literature-review.md"
+        ],
+        "code": [],
+        "tests": []
+      }
+    },
+    {
+      "id": "EXP-07",
+      "sequence": 7,
+      "slug": "evidence-grounded-direction-v1",
+      "family": "llm-research-direction",
+      "title_zh": "异常证据触发的研究方向试验 v1",
+      "title_en": "Evidence-grounded research-direction pilot v1",
+      "stage": "development",
+      "status": "stopped",
+      "decision": "grounding_failed",
+      "question_zh": "只删除一个晚期异常时，LLM 选择的可执行研究方向是否发生预先定义的变化，并能否在相同证据下重复？",
+      "question_en": "When one late anomaly is removed, does the LLM's executable research direction change as predefined, and is it repeatable under identical evidence?",
+      "result_zh": "异常删除使主题从时间历史转向空间形状，但两次完整证据回答选择了不同操作；重复稳定性失败，未执行下游实验。",
+      "result_en": "Removing the anomaly shifted the theme from temporal history to spatial geometry, but the two full-evidence responses chose different operations; repeatability failed and no downstream experiment ran.",
+      "claim_boundary_zh": "本案例显示证据敏感性，但不显示稳定性、项目新颖性或科学新颖性。",
+      "claim_boundary_en": "This case shows evidence sensitivity, not stability, project novelty, or scientific novelty.",
+      "links": {
+        "overview": "experiments/exp-07-evidence-grounded-direction-v1/README.md",
+        "plans": [
+          "plans/evidence-grounded-direction-pilot-v1.md"
+        ],
+        "docs": [],
+        "configs": [],
+        "artifacts": [
+          "artifacts/research-direction-grounding-v1/README.md",
+          "artifacts/research-direction-grounding-v1/assessment.json",
+          "artifacts/research-direction-grounding-v1/literature-position.md"
+        ],
+        "code": [
+          "src/scientific_parallax/direction/grounding.py"
+        ],
+        "tests": [
+          "tests/unit/test_direction_grounding.py"
+        ]
+      }
+    }
+  ]
+}

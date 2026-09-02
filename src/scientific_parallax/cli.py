@@ -12,6 +12,13 @@ from scientific_parallax.baselines.gray_scott import (
 )
 from scientific_parallax.challenge.runner import run_step7_development_challenge
 from scientific_parallax.coevolution.scheduler import run_step6_control
+from scientific_parallax.core.experiment_registry import (
+    ExperimentRegistryError,
+    find_experiment,
+    format_experiment_detail,
+    format_experiment_list,
+    load_experiment_registry,
+)
 from scientific_parallax.discovery.latent_final_world import (
     evaluate_latent_final_world_once,
     freeze_latent_strategy,
@@ -39,6 +46,28 @@ from scientific_parallax.step0.strategies import SELECTORS
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="scientific-parallax")
     command = parser.add_subparsers(dest="command", required=True)
+
+    experiments = command.add_parser(
+        "experiments", help="list, inspect, or validate the experiment registry"
+    )
+    experiments_action = experiments.add_subparsers(dest="experiments_action", required=True)
+    experiments_list = experiments_action.add_parser("list", help="list all experiments")
+    experiments_list.add_argument(
+        "--registry", type=Path, default=Path("experiments/registry.json")
+    )
+    experiments_list.add_argument("--language", choices=("zh", "en"), default="zh")
+    experiments_show = experiments_action.add_parser("show", help="show one experiment")
+    experiments_show.add_argument("identifier", help="experiment ID or slug")
+    experiments_show.add_argument(
+        "--registry", type=Path, default=Path("experiments/registry.json")
+    )
+    experiments_show.add_argument("--language", choices=("zh", "en"), default="zh")
+    experiments_validate = experiments_action.add_parser(
+        "validate", help="validate metadata and every referenced repository path"
+    )
+    experiments_validate.add_argument(
+        "--registry", type=Path, default=Path("experiments/registry.json")
+    )
 
     step0 = command.add_parser("step0", help="run the Step 0 fixed-candidate protocol")
     action = step0.add_subparsers(dest="action", required=True)
@@ -170,6 +199,19 @@ def _parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = _parser().parse_args()
+    if args.command == "experiments":
+        try:
+            registry = load_experiment_registry(args.registry)
+            if args.experiments_action == "list":
+                print(format_experiment_list(registry, language=args.language))
+            elif args.experiments_action == "show":
+                experiment = find_experiment(registry, args.identifier)
+                print(format_experiment_detail(experiment, language=args.language))
+            else:
+                print(f"valid registry: {len(registry['experiments'])} experiments")
+        except ExperimentRegistryError as exc:
+            raise SystemExit(str(exc)) from exc
+        return
     if args.command == "gray-scott":
         config = GrayScottBaselineConfig.from_json(args.config)
         raw_config = json.loads(args.config.read_text(encoding="utf-8"))
