@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "directions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "challenged_assumption": {"type": "string"},
+          "competing_explanations": {
+            "items": {"type": "string"},
+            "maxItems": 4,
+            "minItems": 2,
+            "type": "array"
+          },
+          "decisive_experiment": {
+            "additionalProperties": false,
+            "properties": {
+              "intervention": {"type": "string"},
+              "measurements": {"items": {"type": "string"}, "minItems": 1, "type": "array"},
+              "opposing_predictions": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "explanation": {"type": "string"},
+                    "prediction": {"type": "string"}
+                  },
+                  "required": ["explanation", "prediction"],
+                  "type": "object"
+                },
+                "minItems": 2,
+                "type": "array"
+              }
+            },
+            "required": ["intervention", "measurements", "opposing_predictions"],
+            "type": "object"
+          },
+          "direction_id": {"pattern": "^direction-[1-5]$", "type": "string"},
+          "evidence_dependency": {"items": {"type": "string"}, "minItems": 1, "type": "array"},
+          "local_feasibility": {"type": "string"},
+          "negative_result_value": {"type": "string"},
+          "novelty_risk": {"type": "string"},
+          "research_question": {"type": "string"},
+          "stop_criterion": {"type": "string"},
+          "why_nontrivial": {"type": "string"}
+        },
+        "required": [
+          "direction_id",
+          "research_question",
+          "challenged_assumption",
+          "evidence_dependency",
+          "why_nontrivial",
+          "competing_explanations",
+          "decisive_experiment",
+          "stop_criterion",
+          "local_feasibility",
+          "novelty_risk",
+          "negative_result_value"
+        ],
+        "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array"
+    },
+    "schema_version": {"const": 1, "type": "integer"},
+    "selected_direction_id": {"pattern": "^direction-[1-5]$", "type": "string"},
+    "selection_reason": {"type": "string"}
+  },
+  "required": ["schema_version", "directions", "selected_direction_id", "selection_reason"],
+  "type": "object"
+}

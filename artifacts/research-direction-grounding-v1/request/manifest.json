@@ -1,0 +1,10 @@
+{
+  "ablated_case_id": "case-d832ff5d2ad4",
+  "ablation_rule": "Replace all observed summaries strictly after the second pulse with the frozen reference prediction; preserve earlier measurements and experiment metadata.",
+  "full_case_id": "case-584ed1b7a440",
+  "model_visible_role_labels": false,
+  "schema_version": 1,
+  "source_design_sha256": "b295710e5d585c49799f827696ed4aeb6e7a28d19a4b82367eb94524471b6bbc",
+  "source_result_sha256": "35342b4e33f67889161bdf6565432df514cc281b2e6410994f82aa2579afe1a1",
+  "status": "counterfactual_packets_created"
+}

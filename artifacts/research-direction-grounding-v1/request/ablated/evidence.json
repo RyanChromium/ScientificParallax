@@ -1,0 +1,502 @@
+{
+  "case_id": "case-d832ff5d2ad4",
+  "constraints": [
+    "one local CPU experiment",
+    "no parameter fitting after observation",
+    "one design family with two distinct allowed levels",
+    "negative outcome must kill or redirect the question"
+  ],
+  "evidence_cells": [
+    {
+      "cell_id": "field_a-t12-mean",
+      "feature": "mean",
+      "field": "field_a",
+      "observed": 0.9097496398185037,
+      "reference_prediction": 0.8879351409566181,
+      "residual": 0.02181449886188558,
+      "standardized_residual": 0.43628997723771157,
+      "time": 12.0
+    },
+    {
+      "cell_id": "field_a-t12-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_a",
+      "observed": 0.15324638652316105,
+      "reference_prediction": 0.18954646955729415,
+      "residual": -0.036300083034133096,
+      "standardized_residual": -0.7260016606826619,
+      "time": 12.0
+    },
+    {
+      "cell_id": "field_a-t12-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_a",
+      "observed": 0.0,
+      "reference_prediction": 0.0,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 12.0
+    },
+    {
+      "cell_id": "field_a-t12-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_a",
+      "observed": 0.010353467643757285,
+      "reference_prediction": 0.015042009835977418,
+      "residual": -0.004688542192220133,
+      "standardized_residual": -0.46885421922201326,
+      "time": 12.0
+    },
+    {
+      "cell_id": "field_a-t24-mean",
+      "feature": "mean",
+      "field": "field_a",
+      "observed": 0.7478250665603164,
+      "reference_prediction": 0.7240305253614954,
+      "residual": 0.023794541198821073,
+      "standardized_residual": 0.47589082397642146,
+      "time": 24.0
+    },
+    {
+      "cell_id": "field_a-t24-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_a",
+      "observed": 0.317422731786948,
+      "reference_prediction": 0.31763256113425364,
+      "residual": -0.00020982934730562341,
+      "standardized_residual": -0.004196586946112468,
+      "time": 24.0
+    },
+    {
+      "cell_id": "field_a-t24-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_a",
+      "observed": 0.0,
+      "reference_prediction": 0.0,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 24.0
+    },
+    {
+      "cell_id": "field_a-t24-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_a",
+      "observed": 0.034666048098347564,
+      "reference_prediction": 0.033196142920904066,
+      "residual": 0.001469905177443498,
+      "standardized_residual": 0.1469905177443498,
+      "time": 24.0
+    },
+    {
+      "cell_id": "field_a-t36-mean",
+      "feature": "mean",
+      "field": "field_a",
+      "observed": 0.5553175450295559,
+      "reference_prediction": 0.5350673825803677,
+      "residual": 0.020250162449188203,
+      "standardized_residual": 0.40500324898376405,
+      "time": 36.0
+    },
+    {
+      "cell_id": "field_a-t36-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_a",
+      "observed": 0.34910012556802456,
+      "reference_prediction": 0.3271571816914611,
+      "residual": 0.02194294387656348,
+      "standardized_residual": 0.4388588775312696,
+      "time": 36.0
+    },
+    {
+      "cell_id": "field_a-t36-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_a",
+      "observed": 0.19444444444444445,
+      "reference_prediction": 0.20833333333333334,
+      "residual": -0.013888888888888895,
+      "standardized_residual": -0.2777777777777779,
+      "time": 36.0
+    },
+    {
+      "cell_id": "field_a-t36-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_a",
+      "observed": 0.044374411784634554,
+      "reference_prediction": 0.03901434228491163,
+      "residual": 0.005360069499722925,
+      "standardized_residual": 0.5360069499722925,
+      "time": 36.0
+    },
+    {
+      "cell_id": "field_a-t48-mean",
+      "feature": "mean",
+      "field": "field_a",
+      "observed": 0.32725720769578204,
+      "reference_prediction": 0.32725720769578204,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 48.0
+    },
+    {
+      "cell_id": "field_a-t48-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_a",
+      "observed": 0.2561659806887196,
+      "reference_prediction": 0.2561659806887196,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 48.0
+    },
+    {
+      "cell_id": "field_a-t48-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_a",
+      "observed": 0.20833333333333334,
+      "reference_prediction": 0.20833333333333334,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 48.0
+    },
+    {
+      "cell_id": "field_a-t48-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_a",
+      "observed": 0.028240705560385247,
+      "reference_prediction": 0.028240705560385247,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 48.0
+    },
+    {
+      "cell_id": "field_a-t60-mean",
+      "feature": "mean",
+      "field": "field_a",
+      "observed": 0.19244929657342416,
+      "reference_prediction": 0.19244929657342416,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 60.0
+    },
+    {
+      "cell_id": "field_a-t60-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_a",
+      "observed": 0.13374866842153307,
+      "reference_prediction": 0.13374866842153307,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 60.0
+    },
+    {
+      "cell_id": "field_a-t60-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_a",
+      "observed": 0.13194444444444445,
+      "reference_prediction": 0.13194444444444445,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 60.0
+    },
+    {
+      "cell_id": "field_a-t60-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_a",
+      "observed": 0.009378727142585103,
+      "reference_prediction": 0.009378727142585103,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 60.0
+    },
+    {
+      "cell_id": "field_b-t12-mean",
+      "feature": "mean",
+      "field": "field_b",
+      "observed": 0.0678682762651712,
+      "reference_prediction": 0.08791770670221725,
+      "residual": -0.02004943043704606,
+      "standardized_residual": -0.4009886087409212,
+      "time": 12.0
+    },
+    {
+      "cell_id": "field_b-t12-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_b",
+      "observed": 0.16106350408434822,
+      "reference_prediction": 0.20102894186304074,
+      "residual": -0.03996543777869252,
+      "standardized_residual": -0.7993087555738504,
+      "time": 12.0
+    },
+    {
+      "cell_id": "field_b-t12-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_b",
+      "observed": 0.10416666666666667,
+      "reference_prediction": 0.11805555555555555,
+      "residual": -0.013888888888888881,
+      "standardized_residual": -0.2777777777777776,
+      "time": 12.0
+    },
+    {
+      "cell_id": "field_b-t12-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_b",
+      "observed": 0.013823116577833229,
+      "reference_prediction": 0.020262459807029908,
+      "residual": -0.006439343229196679,
+      "standardized_residual": -0.6439343229196679,
+      "time": 12.0
+    },
+    {
+      "cell_id": "field_b-t24-mean",
+      "feature": "mean",
+      "field": "field_b",
+      "observed": 0.17223633065279212,
+      "reference_prediction": 0.19949166466067828,
+      "residual": -0.027255334007886156,
+      "standardized_residual": -0.5451066801577231,
+      "time": 24.0
+    },
+    {
+      "cell_id": "field_b-t24-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_b",
+      "observed": 0.27547336093187536,
+      "reference_prediction": 0.2911609699058591,
+      "residual": -0.015687608973983747,
+      "standardized_residual": -0.31375217947967493,
+      "time": 24.0
+    },
+    {
+      "cell_id": "field_b-t24-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_b",
+      "observed": 0.1875,
+      "reference_prediction": 0.20833333333333334,
+      "residual": -0.020833333333333343,
+      "standardized_residual": -0.41666666666666685,
+      "time": 24.0
+    },
+    {
+      "cell_id": "field_b-t24-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_b",
+      "observed": 0.029480935439290326,
+      "reference_prediction": 0.03143777416231183,
+      "residual": -0.001956838723021506,
+      "standardized_residual": -0.19568387230215062,
+      "time": 24.0
+    },
+    {
+      "cell_id": "field_b-t36-mean",
+      "feature": "mean",
+      "field": "field_b",
+      "observed": 0.3312750439960924,
+      "reference_prediction": 0.31023154901391287,
+      "residual": 0.021043494982179556,
+      "standardized_residual": 0.4208698996435911,
+      "time": 36.0
+    },
+    {
+      "cell_id": "field_b-t36-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_b",
+      "observed": 0.36588547926935766,
+      "reference_prediction": 0.2839321769097325,
+      "residual": 0.08195330235962517,
+      "standardized_residual": 1.6390660471925034,
+      "time": 36.0
+    },
+    {
+      "cell_id": "field_b-t36-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_b",
+      "observed": 0.25,
+      "reference_prediction": 0.3333333333333333,
+      "residual": -0.08333333333333331,
+      "standardized_residual": -1.6666666666666663,
+      "time": 36.0
+    },
+    {
+      "cell_id": "field_b-t36-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_b",
+      "observed": 0.04434176177034746,
+      "reference_prediction": 0.034578264074202475,
+      "residual": 0.009763497696144985,
+      "standardized_residual": 0.9763497696144985,
+      "time": 36.0
+    },
+    {
+      "cell_id": "field_b-t48-mean",
+      "feature": "mean",
+      "field": "field_b",
+      "observed": 0.42964107612530245,
+      "reference_prediction": 0.42964107612530245,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 48.0
+    },
+    {
+      "cell_id": "field_b-t48-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_b",
+      "observed": 0.22283882967199056,
+      "reference_prediction": 0.22283882967199056,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 48.0
+    },
+    {
+      "cell_id": "field_b-t48-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_b",
+      "observed": 0.006944444444444444,
+      "reference_prediction": 0.006944444444444444,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 48.0
+    },
+    {
+      "cell_id": "field_b-t48-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_b",
+      "observed": 0.029329435811793942,
+      "reference_prediction": 0.029329435811793942,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 48.0
+    },
+    {
+      "cell_id": "field_b-t60-mean",
+      "feature": "mean",
+      "field": "field_b",
+      "observed": 0.46345284327994535,
+      "reference_prediction": 0.46345284327994535,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 60.0
+    },
+    {
+      "cell_id": "field_b-t60-standard_deviation",
+      "feature": "standard_deviation",
+      "field": "field_b",
+      "observed": 0.11379620911587182,
+      "reference_prediction": 0.11379620911587182,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 60.0
+    },
+    {
+      "cell_id": "field_b-t60-high_fraction",
+      "feature": "high_fraction",
+      "field": "field_b",
+      "observed": 0.006944444444444444,
+      "reference_prediction": 0.006944444444444444,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 60.0
+    },
+    {
+      "cell_id": "field_b-t60-gradient_energy",
+      "feature": "gradient_energy",
+      "field": "field_b",
+      "observed": 0.009555294652302536,
+      "reference_prediction": 0.009555294652302536,
+      "residual": 0.0,
+      "standardized_residual": 0.0,
+      "time": 60.0
+    }
+  ],
+  "executable_design_families": [
+    {
+      "allowed_levels": [
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "design_family": "pulse_radius_at_fixed_total_dose"
+    },
+    {
+      "allowed_levels": [
+        0.0,
+        0.08,
+        0.17,
+        0.24,
+        0.32
+      ],
+      "design_family": "second_pulse_amplitude"
+    },
+    {
+      "allowed_levels": [
+        12.0,
+        24.0,
+        30.0,
+        36.0
+      ],
+      "design_family": "pulse_lag"
+    },
+    {
+      "allowed_levels": [
+        0.02,
+        0.035,
+        0.046
+      ],
+      "design_family": "control_feed"
+    },
+    {
+      "allowed_levels": [
+        0.052,
+        0.06,
+        0.064
+      ],
+      "design_family": "control_kill"
+    }
+  ],
+  "experiment": {
+    "boundary": "reflecting",
+    "control_feed": 0.046,
+    "control_kill": 0.064,
+    "grid_size": 12,
+    "initial_family": "localized_center_seed",
+    "pulses": [
+      {
+        "amplitude": 0.17,
+        "radius": 2,
+        "time": 12
+      },
+      {
+        "amplitude": 0.17,
+        "radius": 2,
+        "time": 42
+      }
+    ],
+    "sample_every": 12,
+    "steps": 60
+  },
+  "reference": "best previously tested state-free explanation; parameters frozen",
+  "response_options": {
+    "features": [
+      "mean",
+      "standard_deviation",
+      "high_fraction",
+      "gradient_energy"
+    ],
+    "fields": [
+      "field_a",
+      "field_b"
+    ],
+    "relations": [
+      "a_greater_than_b",
+      "a_less_than_b",
+      "approximately_equal"
+    ],
+    "times": [
+      48.0,
+      60.0
+    ]
+  },
+  "schema_version": 1,
+  "system": "anonymous_two_field_spatial_dynamics"
+}

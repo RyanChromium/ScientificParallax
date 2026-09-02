@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "fatal_flaws": [
+    "method_first",
+    "trivial_complexity_gain",
+    "circular_benchmark_truth",
+    "already_stopped_route",
+    "unfalsifiable",
+    "locally_infeasible",
+    "none"
+  ],
+  "score_dimensions": {
+    "question_specificity": "0 vague slogan; 1 bounded topic; 2 one answerable scientific question",
+    "nontriviality": "0 guaranteed by complexity; 1 uncertain; 2 opposing explanations can both plausibly win",
+    "experimental_discrimination": "0 same prediction; 1 partially different; 2 explicit mutually inconsistent outcomes",
+    "local_feasibility": "0 unavailable resource; 1 uncertain or over budget; 2 executable locally within 30 minutes",
+    "negative_result_value": "0 leaves decisions unchanged; 1 narrows implementation; 2 kills a direction or establishes a reusable boundary"
+  },
+  "survival_rule": "No fatal flaw, total score at least 8, and experimental_discrimination equal to 2.",
+  "literature_check_limit": 2
+}

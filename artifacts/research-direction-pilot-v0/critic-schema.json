@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "literature_check_direction_ids": {
+      "items": {"pattern": "^direction-[1-5]$", "type": "string"},
+      "maxItems": 2,
+      "type": "array"
+    },
+    "reviews": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "direction_id": {"pattern": "^direction-[1-5]$", "type": "string"},
+          "fatal_flaw": {
+            "enum": [
+              "method_first",
+              "trivial_complexity_gain",
+              "circular_benchmark_truth",
+              "already_stopped_route",
+              "unfalsifiable",
+              "locally_infeasible",
+              "none"
+            ],
+            "type": "string"
+          },
+          "fatal_flaw_explanation": {"type": "string"},
+          "rank": {"maximum": 5, "minimum": 1, "type": "integer"},
+          "score": {
+            "additionalProperties": false,
+            "properties": {
+              "experimental_discrimination": {"maximum": 2, "minimum": 0, "type": "integer"},
+              "local_feasibility": {"maximum": 2, "minimum": 0, "type": "integer"},
+              "negative_result_value": {"maximum": 2, "minimum": 0, "type": "integer"},
+              "nontriviality": {"maximum": 2, "minimum": 0, "type": "integer"},
+              "question_specificity": {"maximum": 2, "minimum": 0, "type": "integer"}
+            },
+            "required": [
+              "question_specificity",
+              "nontriviality",
+              "experimental_discrimination",
+              "local_feasibility",
+              "negative_result_value"
+            ],
+            "type": "object"
+          },
+          "strongest_surviving_claim": {"type": "string"},
+          "survives": {"type": "boolean"},
+          "total_score": {"maximum": 10, "minimum": 0, "type": "integer"}
+        },
+        "required": [
+          "direction_id",
+          "fatal_flaw",
+          "fatal_flaw_explanation",
+          "score",
+          "total_score",
+          "survives",
+          "rank",
+          "strongest_surviving_claim"
+        ],
+        "type": "object"
+      },
+      "maxItems": 5,
+      "minItems": 5,
+      "type": "array"
+    },
+    "schema_version": {"const": 1, "type": "integer"},
+    "summary": {"type": "string"}
+  },
+  "required": ["schema_version", "reviews", "literature_check_direction_ids", "summary"],
+  "type": "object"
+}

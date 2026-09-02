@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "completed_grounding_failed",
+  "supersedes": "protocol.json invalidated before scientific evaluation because final files could not be captured",
+  "unchanged_scientific_design": true,
+  "research_question": "Does an LLM's executable research direction causally depend on a specific experimental anomaly?",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "high",
+  "replicates_per_condition": 2,
+  "conditions": [
+    "full_numeric_evidence",
+    "late_anomaly_ablated"
+  ],
+  "isolation": {
+    "fresh_ephemeral_context_per_call": true,
+    "repository_access": false,
+    "web_access": false,
+    "model_visible_condition_labels": false
+  },
+  "success_rule": {
+    "full_anchor": "Each full proposal cites at least two cells above max(2, the absolute-standardized-residual 80th percentile) and at least one ablated cell.",
+    "full_stability": "Both full proposals have the identical design family, response field, response feature, and response time.",
+    "counterfactual_change": "Each ablated proposal differs from the stable full signature in at least two components.",
+    "experiment": "The frozen selected experiment is executed only after the preceding checks pass, and its observed relation uniquely matches one opposing prediction."
+  },
+  "stop_rule": "Do not reprompt, rewrite, or add samples when grounding fails. Do not execute a downstream experiment unless grounding passes.",
+  "launcher_preconditions": [
+    "The response directory exists before any model process starts.",
+    "All four output paths are absent before sampling.",
+    "Each process must exit zero and each output must pass JSON and local cross-field validation."
+  ],
+  "frozen_hashes": {
+    "implementation_sha256": "2dbdf814b9628b644d537c4e870af5f1e239cd3ba1b4b2f4f9d05af991c8c065",
+    "manifest_sha256": "b5526083d07ad73d1f9c0e2cdbca3f1b1c3159a5ee3fe6c8b0f9def45d465e52",
+    "full_evidence_sha256": "9be245881428230f093ee6d22178eb84d712b4d0f4e132130802ec71570abeca",
+    "full_prompt_sha256": "cd0bde0edcb6803dc1483e56066b0820ec42081345fa752df29e61bccb75478a",
+    "full_schema_sha256": "0ca2a2ddb1c62e9cee7fb24bdd770986b286d0132a8f5f84ef72392689348a11",
+    "ablated_evidence_sha256": "58ce0deae70f7ee519aaa379114243f5b78cbeab9b88e21c4b3121305fb8a1ea",
+    "ablated_prompt_sha256": "cd0bde0edcb6803dc1483e56066b0820ec42081345fa752df29e61bccb75478a",
+    "ablated_schema_sha256": "f28491a49ef5455883454c2012be6b8434c627e76e87376f29d23009b664064c"
+  },
+  "response_hashes": {
+    "full_1_sha256": "3c5bc279c7ad4c577c209899edf0b23a68e4b3bfb0a173dd4c2352505d52b46f",
+    "full_2_sha256": "81fd6c73d953d581f849f82354914c6d85303bd8fd7687d102a7c49a3ab1dbd8",
+    "ablated_1_sha256": "fe215223483fcf279b59419819b793464a3fd61db07d24258fe23546e07e1c74",
+    "ablated_2_sha256": "d0675fef3363d4d6db92f2f9e02d46c74b6507cee7b9c4fd19877502867f69ce"
+  },
+  "outcome": {
+    "full_anchor_passed": true,
+    "counterfactual_change_passed": true,
+    "full_replicate_stability_passed": false,
+    "experiment_executed": false,
+    "success_rule_met": false
+  },
+  "limitations": [
+    "The operator saw one invalidated full-condition terminal response before v1.1, but prompts, evidence, code, and success criteria were not changed.",
+    "One anomaly and two samples per condition cannot estimate a general success rate.",
+    "Output reproducibility may reflect decoding behavior rather than scientific reliability.",
+    "The executable intervention menu constrains operational form even though mechanism naming remains open.",
+    "The same synthetic world was used in earlier development, so any executed contrast is not confirmatory."
+  ]
+}

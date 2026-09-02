@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "status": "stopped_no_novelty_survivor",
+  "proposer_response_sha256": "eef529c70d5511965400c7e1730152f4825f38ee4805dc6c7d90f66b2282caeb",
+  "critic_response_sha256": "194e537ed76bc75997bc928cc4aa4889d0b77e7a5892b6b6ae34eca6f9f64991",
+  "critic_survivors": [
+    "direction-3",
+    "direction-1",
+    "direction-4"
+  ],
+  "literature_checked": [
+    {
+      "direction_id": "direction-3",
+      "decision": "stop_generic_known_method_without_evidence_specific_gap"
+    },
+    {
+      "direction_id": "direction-1",
+      "decision": "stop_generic_known_method_without_evidence_specific_gap"
+    }
+  ],
+  "experiment_executed": false,
+  "experiment_skip_reason": "No proposal passed the frozen literature novelty-gap review.",
+  "success_rule_met": false,
+  "next_design_requirement": "Require causal anchoring to a specific numeric anomaly and reject proposals whose operational prediction is invariant when that anomaly is ablated or permuted.",
+  "protocol_deviations": [
+    "The first critic launcher invocation exited before model execution because --ignore-user-config preceded the exec subcommand; the same frozen inputs were then launched once with the corrected argument order."
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "grounding_failed",
+  "high_anomaly_threshold": 2.1104665694826825,
+  "high_anomaly_cell_ids": [
+    "field_b-t48-gradient_energy",
+    "field_b-t48-high_fraction",
+    "field_b-t48-mean",
+    "field_b-t48-standard_deviation",
+    "field_b-t60-gradient_energy",
+    "field_b-t60-high_fraction",
+    "field_b-t60-mean",
+    "field_b-t60-standard_deviation"
+  ],
+  "ablated_cell_ids": [
+    "field_a-t48-gradient_energy",
+    "field_a-t48-mean",
+    "field_a-t48-standard_deviation",
+    "field_a-t60-gradient_energy",
+    "field_a-t60-mean",
+    "field_a-t60-standard_deviation",
+    "field_b-t48-gradient_energy",
+    "field_b-t48-high_fraction",
+    "field_b-t48-mean",
+    "field_b-t48-standard_deviation",
+    "field_b-t60-gradient_energy",
+    "field_b-t60-high_fraction",
+    "field_b-t60-mean",
+    "field_b-t60-standard_deviation"
+  ],
+  "full_anchor_checks": [
+    {
+      "case_id": "case-584ed1b7a440",
+      "high_anomaly_citation_count": 8,
+      "ablated_cell_citation_count": 8,
+      "passes": true
+    },
+    {
+      "case_id": "case-584ed1b7a440",
+      "high_anomaly_citation_count": 4,
+      "ablated_cell_citation_count": 5,
+      "passes": true
+    }
+  ],
+  "full_signatures": [
+    [
+      "second_pulse_amplitude",
+      "field_b",
+      "mean",
+      "60.0"
+    ],
+    [
+      "pulse_lag",
+      "field_b",
+      "mean",
+      "60.0"
+    ]
+  ],
+  "ablated_signatures": [
+    [
+      "pulse_radius_at_fixed_total_dose",
+      "field_b",
+      "gradient_energy",
+      "60.0"
+    ],
+    [
+      "pulse_radius_at_fixed_total_dose",
+      "field_b",
+      "gradient_energy",
+      "48.0"
+    ]
+  ],
+  "full_replicate_stability": false,
+  "full_to_ablated_signature_distances": [
+    2,
+    3
+  ],
+  "counterfactual_change": true,
+  "success_rule_met": false
+}

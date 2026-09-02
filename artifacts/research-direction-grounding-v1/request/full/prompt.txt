@@ -1,0 +1,8 @@
+Read evidence.json and propose exactly one research question.
+
+The question must be causally motivated by the strongest unexplained numerical pattern,
+not by a generic wish to fit better. Cite exact cell_id values. Give two live explanations
+with mutually inconsistent predictions under one experiment chosen from the supplied
+executable design families. Do not add parameters as evidence, do not assume a hidden
+benchmark answer, and do not name or infer a familiar simulator family. A null outcome
+must change the research decision. Return only JSON matching response-schema.json.

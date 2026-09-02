@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "invalidated_output_capture_failure",
+  "research_question": "Does an LLM's executable research direction causally depend on a specific experimental anomaly?",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "high",
+  "replicates_per_condition": 2,
+  "conditions": [
+    "full_numeric_evidence",
+    "late_anomaly_ablated"
+  ],
+  "isolation": {
+    "fresh_ephemeral_context_per_call": true,
+    "repository_access": false,
+    "web_access": false,
+    "model_visible_condition_labels": false
+  },
+  "success_rule": {
+    "full_anchor": "Each full proposal cites at least two cells above max(2, the absolute-standardized-residual 80th percentile) and at least one ablated cell.",
+    "full_stability": "Both full proposals have the identical design family, response field, response feature, and response time.",
+    "counterfactual_change": "Each ablated proposal differs from the stable full signature in at least two components.",
+    "experiment": "The frozen selected experiment is executed only after the preceding checks pass, and its observed relation uniquely matches one opposing prediction."
+  },
+  "stop_rule": "Do not reprompt, rewrite, or add samples when grounding fails. Do not execute a downstream experiment unless grounding passes.",
+  "frozen_hashes": {
+    "implementation_sha256": "2dbdf814b9628b644d537c4e870af5f1e239cd3ba1b4b2f4f9d05af991c8c065",
+    "manifest_sha256": "b5526083d07ad73d1f9c0e2cdbca3f1b1c3159a5ee3fe6c8b0f9def45d465e52",
+    "full_evidence_sha256": "9be245881428230f093ee6d22178eb84d712b4d0f4e132130802ec71570abeca",
+    "full_prompt_sha256": "cd0bde0edcb6803dc1483e56066b0820ec42081345fa752df29e61bccb75478a",
+    "full_schema_sha256": "0ca2a2ddb1c62e9cee7fb24bdd770986b286d0132a8f5f84ef72392689348a11",
+    "ablated_evidence_sha256": "58ce0deae70f7ee519aaa379114243f5b78cbeab9b88e21c4b3121305fb8a1ea",
+    "ablated_prompt_sha256": "cd0bde0edcb6803dc1483e56066b0820ec42081345fa752df29e61bccb75478a",
+    "ablated_schema_sha256": "f28491a49ef5455883454c2012be6b8434c627e76e87376f29d23009b664064c"
+  },
+  "pre_sampling_interface_corrections": [
+    "Four launch attempts were rejected before model sampling because the response API did not permit JSON Schema uniqueItems. The prompts and evidence were unchanged; citation uniqueness moved to the frozen local validator before the four planned samples were launched."
+  ],
+  "invalidation": {
+    "reason": "The launcher did not create the final response directory before sampling. At least one schema-valid final response was visible in terminal output but failed to write; no response set had auditable file capture.",
+    "action": "Stop remaining processes, retain no terminal-copied response, and repeat the unchanged four-sample protocol as v1.1 only after creating and verifying the output directory.",
+    "scientific_evaluation_performed": false
+  },
+  "limitations": [
+    "One anomaly and two samples per condition cannot estimate a general success rate.",
+    "Output reproducibility may reflect decoding behavior rather than scientific reliability.",
+    "The executable intervention menu constrains operational form even though mechanism naming remains open.",
+    "The same synthetic world was used in earlier development, so any executed contrast is not confirmatory."
+  ]
+}

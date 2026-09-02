@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "const": "case-584ed1b7a440",
+      "type": "string"
+    },
+    "competing_explanations": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "explanation_id": {
+            "enum": [
+              "explanation-1",
+              "explanation-2"
+            ]
+          },
+          "statement": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "explanation_id",
+          "statement"
+        ],
+        "type": "object"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "decisive_experiment": {
+      "additionalProperties": false,
+      "properties": {
+        "controlled_variables": {
+          "maxLength": 600,
+          "minLength": 1,
+          "type": "string"
+        },
+        "design_family": {
+          "enum": [
+            "pulse_radius_at_fixed_total_dose",
+            "second_pulse_amplitude",
+            "pulse_lag",
+            "control_feed",
+            "control_kill"
+          ]
+        },
+        "level_a": {
+          "type": "number"
+        },
+        "level_b": {
+          "type": "number"
+        },
+        "opposing_predictions": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "explanation_id": {
+                "enum": [
+                  "explanation-1",
+                  "explanation-2"
+                ]
+              },
+              "rationale": {
+                "maxLength": 500,
+                "minLength": 1,
+                "type": "string"
+              },
+              "relation": {
+                "enum": [
+                  "a_greater_than_b",
+                  "a_less_than_b",
+                  "approximately_equal"
+                ]
+              }
+            },
+            "required": [
+              "explanation_id",
+              "relation",
+              "rationale"
+            ],
+            "type": "object"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "response_feature": {
+          "enum": [
+            "mean",
+            "standard_deviation",
+            "high_fraction",
+            "gradient_energy"
+          ]
+        },
+        "response_field": {
+          "enum": [
+            "field_a",
+            "field_b"
+          ]
+        },
+        "response_time": {
+          "enum": [
+            48.0,
+            60.0
+          ]
+        }
+      },
+      "required": [
+        "design_family",
+        "level_a",
+        "level_b",
+        "controlled_variables",
+        "response_field",
+        "response_feature",
+        "response_time",
+        "opposing_predictions"
+      ],
+      "type": "object"
+    },
+    "empirical_surprise": {
+      "maxLength": 800,
+      "minLength": 1,
+      "type": "string"
+    },
+    "evidence_cell_ids": {
+      "items": {
+        "pattern": "^field_[ab]-t[0-9]+-[a-z_]+$",
+        "type": "string"
+      },
+      "maxItems": 8,
+      "minItems": 2,
+      "type": "array"
+    },
+    "literature_queries": {
+      "items": {
+        "maxLength": 180,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 4,
+      "minItems": 2,
+      "type": "array"
+    },
+    "prior_art_risk": {
+      "maxLength": 500,
+      "minLength": 1,
+      "type": "string"
+    },
+    "research_question": {
+      "maxLength": 500,
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    },
+    "scientific_payoff": {
+      "maxLength": 600,
+      "minLength": 1,
+      "type": "string"
+    },
+    "stop_rule": {
+      "maxLength": 600,
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "research_question",
+    "empirical_surprise",
+    "evidence_cell_ids",
+    "competing_explanations",
+    "decisive_experiment",
+    "stop_rule",
+    "scientific_payoff",
+    "prior_art_risk",
+    "literature_queries"
+  ],
+  "type": "object"
+}

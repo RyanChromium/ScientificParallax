@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "completed_stopped_no_novelty_survivor",
+  "scope": "development_direction_generation_pilot",
+  "proposer": {
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "isolated_workspace": true,
+    "web_access_requested": false,
+    "repository_access_requested": false
+  },
+  "critic": {
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "fresh_context": true,
+    "isolated_workspace": true,
+    "maximum_literature_candidates": 2
+  },
+  "frozen_input_hashes": {
+    "dossier_sha256": "479d41c11e85ec48c654acbfb6500595fc3e78f8738ab0f6dcd7dd49710408a2",
+    "proposer_prompt_sha256": "4b92a81d0ade05a14b07ad63f013ce18eadadeb428625befe6989f3cb4baef57",
+    "proposer_schema_sha256": "daa6cc9c08d38bad34a3252b1c964f28fdf752568c45a757307539211d289709",
+    "critic_prompt_sha256": "8a712b33451ef2bc7391b3155ef846e6bfdde810588a30fb4ba95e147a562a50",
+    "rubric_sha256": "d20746ca3df339b8992825ec2cd38131e4f25c043ccb0d0d9e3036b1d55b9fbf",
+    "critic_schema_sha256": "4567cfea2cf2b9a628c50d90551c1c85ab80c2a15995c8ea6d6593a10c80583a"
+  },
+  "frozen_output_hashes": {
+    "proposer_response_sha256": "eef529c70d5511965400c7e1730152f4825f38ee4805dc6c7d90f66b2282caeb",
+    "critic_response_sha256": "194e537ed76bc75997bc928cc4aa4889d0b77e7a5892b6b6ae34eca6f9f64991"
+  },
+  "success_rule": "At least one proposal passes deterministic structure checks, adversarial review, literature novelty-gap review, and a locally executed decisive test whose result changes the research decision.",
+  "stop_rule": "Stop without rewriting proposals if none survive. Do not regenerate candidates in v0.",
+  "limitations": [
+    "One proposer and one critic sample cannot estimate a general success rate.",
+    "The same model family is used in fresh contexts, so the critic is not independent human review.",
+    "A synthetic local test cannot establish publication-level novelty or real-world importance."
+  ]
+}

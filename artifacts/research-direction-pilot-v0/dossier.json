@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "status": "frozen_research_failure_dossier",
+  "project_goal": "Build an auditable local system in which an LLM proactively proposes scientifically meaningful research directions from failed experiments, rather than being handed a target mechanism.",
+  "available_resources": {
+    "compute": "single local CPU machine; an initial test should finish within 30 minutes",
+    "data": "synthetic dynamical systems and the summarized failed experiments below",
+    "operations": [
+      "write and run small deterministic simulations",
+      "vary initial conditions, interventions, observation operators, and held-out conditions",
+      "run isolated LLM calls",
+      "search and read scientific literature"
+    ],
+    "unavailable": [
+      "new wet-lab measurements",
+      "proprietary datasets",
+      "human expert labeling during the test",
+      "large-scale training or GPU clusters"
+    ]
+  },
+  "failed_or_limited_results": [
+    {
+      "id": "fixed-template-recovery",
+      "finding": "A fixed symbolic mutation path recovered an intentionally matching hidden process in synthetic Gray-Scott worlds.",
+      "why_insufficient": "The representation and benchmark truth were aligned, so recovery did not demonstrate creation of a new scientific concept."
+    },
+    {
+      "id": "llm-memory-hypothesis",
+      "finding": "From anonymous residual summaries, an isolated LLM proposed both a memory field and state-free alternatives.",
+      "why_insufficient": "On a frozen discriminating intervention, the memory proposal was 12.92% worse than the best state-free proposal and improved only 5.15% over baseline, below the fixed 10% threshold."
+    },
+    {
+      "id": "null-world-control",
+      "finding": "On a no-extra-process world, the LLM still proposed an attractive memory story, but fitting placed its effect exactly at zero and it did not improve held-out prediction.",
+      "why_insufficient": "This is one favorable control, not a general false-discovery guarantee."
+    },
+    {
+      "id": "measurement-attribution-route",
+      "finding": "A proposed project on separating physical memory from sensor memory under calibration shift was mapped to block-structured system identification, set-membership identification, and calibration-transfer literature.",
+      "why_insufficient": "The remaining generic question reduced to known identifiability and feasible-set arguments, so the route was stopped before platform development."
+    },
+    {
+      "id": "closure-and-skill-route",
+      "finding": "A predictive-closure gate separated memory-bearing from instantaneous synthetic worlds, but could not identify the cause. A dedicated workflow skill produced no additional scientific content over the same strong LLM reading the evidence certificate.",
+      "why_insufficient": "The gate was evidence discipline, not a new research direction, and the skill mainly enforced formatting."
+    }
+  ],
+  "existing_capabilities": [
+    "reproducible synthetic worlds",
+    "held-out intervention evaluation",
+    "blind prompt packets",
+    "safe equation parsing",
+    "protocol hashes and append-only artifacts",
+    "negative-result and stop-rule documentation"
+  ],
+  "forbidden_shortcuts": [
+    "propose a larger model, more agents, more parameters, or more data as the research direction",
+    "rename the stopped hidden-state or measurement-attribution routes",
+    "define success as matching a hidden answer planted by the benchmark designer",
+    "claim novelty from an LLM-generated phrase without literature comparison",
+    "treat lower training error as mechanism evidence"
+  ],
+  "request_boundary": "Propose research questions and decisive local tests. Do not assume that a new method or software architecture is itself a scientific contribution."
+}
