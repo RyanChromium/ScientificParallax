@@ -195,3 +195,32 @@ that exact grammar. It does not add nonlinear state combinations, coordinate
 reparameterization, or coarse-graining after seeing development behavior.
 Adding those operators requires a protocol amendment, a new runner identity,
 and a newly committed final-world bundle.
+
+## ADR-014: Experiments use stable IDs without moving frozen artifacts
+
+- Status: accepted
+- Date: 2026-09-02
+- Applies to: repository organization and all future experiments
+
+The repository distinguishes scientific experiments through the canonical
+registry at `experiments/registry.json`. Each experiment has a permanent ID, a
+human-readable overview, one current status, one decision, one result summary,
+an explicit claim boundary, and links to its plans, protocols, configurations,
+code, tests, and reviewed artifacts.
+
+Frozen and reviewed outputs remain at their original paths under `artifacts/`.
+Moving them would break historical links and weaken the provenance record.
+The `experiments/` directory is therefore a navigation and metadata layer, not
+a second copy of results.
+
+An engineering step does not automatically become a separate scientific
+experiment. Steps 4–7 remain one co-evolution study sequence because they serve
+one primary question. In contrast, latent-structure recovery, mechanism
+attribution, LLM mechanism proposals, failure-history direction generation, and
+anomaly-grounded direction generation have different questions and decisions,
+so they receive separate IDs.
+
+A stopped experiment cannot be resumed by weakening its old rule. Materially
+changing the question, evidence packet, or endpoint requires a new experiment
+ID. Registry validation checks uniqueness, declared status values, ordering,
+and the existence of every referenced repository path.
